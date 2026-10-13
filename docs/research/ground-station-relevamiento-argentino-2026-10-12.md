@@ -189,7 +189,7 @@ La arquitectura debe responder tres preguntas distintas: qué continúa funciona
 | Dos receptores con alimentación y archivo propios | Fallo de un receptor o de la PC | Transmisor de vuelo, interferencia, protocolo y posibles errores comunes de firmware. |
 | Archivo a bordo | Pérdida del enlace terrestre | Computadora y alimentación de vuelo, tarjeta y recuperación física del CanSat. |
 
-Mi arquitectura objetivo conserva un archivo de vuelo, un archivo propio del receptor y el registro de PC con CSV en otro soporte. La segunda radio terrestre sería una ampliación: la lista actual sólo contempla una para tierra. Primero debo comprobar la alimentación y el almacenamiento independiente del receptor disponible.
+Mi arquitectura objetivo conserva un archivo de vuelo, un archivo propio del receptor y el registro de PC con CSV en otro soporte. La segunda radio terrestre sería una ampliación: la lista actual sólo contempla una para tierra. El almacenamiento persistente del gateway no está cerrado en la lista; requiere asignar o agregar memoria terrestre y acordar su interfaz. Primero debo comprobar alimentación, disponibilidad y registro del receptor elegido.
 
 Dos receptores separados pueden recibir la misma transmisión sin duplicar el tiempo de radio del CanSat. Eso permite diversidad de recepción, pero no salva un transmisor apagado ni demuestra independencia estadística de pérdidas. Antena, ubicación, orientación y energía deben evaluarse en campo; compartir antena, divisor o fuente agrega puntos comunes de falla.
 
@@ -211,7 +211,7 @@ Si falla el USB de respaldo, el archivo principal y el receptor siguen recibiend
 
 Para una tasa r, una interrupción máxima T, un paquete de L bytes y H bytes de metadatos locales:
 
-$B \geq \left\lceil rT \right\rceil (L+H).$
+$$B \geq \left\lceil rT \right\rceil (L+H).$$
 
 T incluye corte, arranque, reconexión y margen. No equivale solamente al segundo durante el cual faltó corriente.
 
@@ -258,7 +258,7 @@ Un respaldo de energía debe demostrar conmutación sin reinicio bajo la carga r
 
 Un capacitor no sustituye automáticamente una batería. Bajo corriente constante, sin pérdidas:
 
-$C \geq \frac{I\,\Delta t}{\Delta V}.$
+$$C \geq \frac{I\,\Delta t}{\Delta V}.$$
 
 Para 100 mA y una caída admisible de 0,5 V, sostener 100 ms requiere aproximadamente 0,02 F; un segundo requiere 0,2 F. Es un ejemplo ideal, no una selección de componente: faltan ESR, regulación, tolerancia, temperatura y latencia de escritura. Una reserva breve puede servir para terminar operaciones; no acredita un segundo de funcionamiento completo.
 
@@ -297,3 +297,4 @@ Los cortes deben repetirse en distintas fases con un patrón de datos conocido. 
 Presentaré arquitectura de recepción local, interfaces confirmadas y pendientes, contrato con electrónica, presupuesto de tiempo de radio, estrategia de registro y respaldo, y una hipótesis de mejora con ensayo comparativo. Usaré la plantilla y evaluación de nuestra convocatoria cuando estén disponibles, sin copiar extensión o rúbrica de otro concurso.
 
 Quedan pendientes la identificación de módulos comprados, las cámaras, el contrato aceptado, los binarios públicos aún no leídos y los ensayos físicos. El avance actual permite tomar decisiones justificadas; todavía no permite afirmar que el sistema integrado funciona ni que supera a los anteriores en vuelo.
+
