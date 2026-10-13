@@ -175,6 +175,123 @@ La AT24C32 de la lista merece evaluación antes de agregar memoria. El diseño n
 
 Estas pruebas están propuestas, no ejecutadas. Los umbrales adicionales de calidad deben acordarse; no los atribuyo a CONAE. La IMU prevista no acredita un choque de 30 g si su rango máximo es 16 g; el ensayo estructural exige un método externo adecuado. El DS18B20 puede tardar hasta 750 ms a 12 bits según su [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/ds18b20.pdf): su conversión debe ser asincrónica para no bloquear radio y control.
 
+## Redundancias y recuperación ante fallas
+
+La arquitectura debe responder tres preguntas distintas: qué continúa funcionando, cuánto historial queda expuesto y cómo recupero datos sin alterar su origen. No prometo pérdida cero ante cualquier combinación de fallas. Defino las fallas cubiertas y mido dos límites: el tiempo de recuperación (RTO) y el intervalo de datos que podría perderse (RPO).
+
+### Dependencias que deben ser independientes
+
+| Respaldo | Falla que puede cubrir | Dependencia que conserva |
+| --- | --- | --- |
+| Dos archivos en el mismo disco | Borrado o error lógico limitado | Fallo físico del disco y caída de la PC. |
+| Disco interno y USB externo | Fallo de un soporte | PC, software de adquisición y alimentación/controlador compartidos. |
+| Dos receptores en el mismo hub | Fallo individual de una radio | Hub, PC y alimentación comunes. |
+| Dos receptores con alimentación y archivo propios | Fallo de un receptor o de la PC | Transmisor de vuelo, interferencia, protocolo y posibles errores comunes de firmware. |
+| Archivo a bordo | Pérdida del enlace terrestre | Computadora y alimentación de vuelo, tarjeta y recuperación física del CanSat. |
+
+Mi arquitectura objetivo conserva un archivo de vuelo, un archivo propio del receptor y el registro de PC con CSV en otro soporte. La segunda radio terrestre sería una ampliación: la lista actual sólo contempla una para tierra. Primero debo comprobar la alimentación y el almacenamiento independiente del receptor disponible.
+
+Dos receptores separados pueden recibir la misma transmisión sin duplicar el tiempo de radio del CanSat. Eso permite diversidad de recepción, pero no salva un transmisor apagado ni demuestra independencia estadística de pérdidas. Antena, ubicación, orientación y energía deben evaluarse en campo; compartir antena, divisor o fuente agrega puntos comunes de falla.
+
+Ambos receptores pueden registrar. Sólo uno tendrá autoridad para enviar telecomandos. El respaldo queda en recepción; el procedimiento de cambio de operador debe deshabilitar el transmisor anterior y revisar pedidos pendientes. No uso un cambio automático de transmisor que pueda repetir MEC después de un corte o generar dos emisores simultáneos.
+
+### Un paquete recibido todavía puede perderse
+
+Propongo este recorrido: capturar bytes → registrar en el receptor → entregar a PC → confirmar escritura durable → actualizar interfaz. El acuse PC–receptor es un mecanismo local por USB; no modifica los comandos de vuelo. La captura usa una cola acotada para que una escritura lenta no bloquee radio.
+
+Conservo el archivo del receptor durante toda la sesión, incluso cuando la PC confirmó. El acuse permite liberar la cola de entrega, no borrar la única copia independiente. Si el receptor mantiene sólo RAM, su protección cubre desconexión de PC mientras siga encendido; no cubre su propio corte de energía.
+
+En la PC evalúo SQLite con WAL y synchronous=FULL, además de generar los CSV exigidos. Hay diferencia entre aceptar bytes, escribir al caché del sistema y confirmar persistencia. La sincronización depende del sistema operativo y del soporte. La copia física de un archivo .db abierto tampoco basta: el WAL puede contener transacciones confirmadas. Para copias de la base uso un procedimiento consistente, como la API de backup; los CSV se escriben por separado en los dos soportes.
+
+Fuentes: [sincronización SQLite](https://www.sqlite.org/pragma.html#pragma_synchronous), [estado persistente del WAL](https://www.sqlite.org/wal.html) y [API de backup](https://www.sqlite.org/backup.html).
+
+Si falla el USB de respaldo, el archivo principal y el receptor siguen recibiendo; la pantalla informa que la segunda copia está atrasada. Registro hasta qué identificador llegó cada destino y recupero pendientes cuando vuelve. Una cola llena debe producir una alarma y un conteo de descarte verificable; no crecimiento ilimitado de memoria ni silencio. Distingo estados terrestres recibido, guardado y respaldado: no marco dos copias durables antes de confirmar ambas. Son estados del registro local, no nuevos STATE de vuelo.
+
+### Dimensionamiento del historial
+
+Para una tasa r, una interrupción máxima T, un paquete de L bytes y H bytes de metadatos locales:
+
+$B \geq \left\lceil rT \right\rceil (L+H).$
+
+T incluye corte, arranque, reconexión y margen. No equivale solamente al segundo durante el cual faltó corriente.
+
+| Supuesto ilustrativo | Memoria de registros |
+| --- | ---: |
+| 60 s, 1 Hz, 200 B + 24 B locales | 13 440 B, aproximadamente 13,13 KiB |
+| 120 s con los mismos tamaños | 26 880 B, 26,25 KiB |
+| 120 s, paquetes de 255 B + 24 B locales | 33 480 B, aproximadamente 32,70 KiB |
+| Dos horas, 1 Hz, 200 B + 24 B locales | 1 612 800 B, antes de metadatos del sistema de archivos |
+
+Estos tamaños no incluyen estructuras del firmware, pilas, buffers de drivers o imágenes. Dos horas de historial de sensores son pequeñas frente a una SD, pero grandes para una cola de RAM de la BlackPill. La política de memoria debe fijar tamaños máximos, capacidad y comportamiento ante desborde.
+
+### La recuperación por radio tiene un costo
+
+En un ejemplo de ventanas fijas de un segundo, reservo una telemetría actual, un comando ilustrativo de 23 B y 50 ms totales de margen. La respuesta histórica ocupa 208 B: 200 B de datos y 8 B supuestos para distinguirla. No es un formato aprobado ni asegura espacio para todos los metadatos.
+
+Con BW 125 kHz, CR 4/5, cabecera explícita, CRC y preámbulo de 8 símbolos:
+
+| Configuración | Telemetría actual | Históricos completos adicionales por ventana | Recuperar 60 registros |
+| --- | ---: | ---: | ---: |
+| SF7, paquete actual de 128 B | 215,296 ms | 2 | 30 s |
+| SF7, paquete actual de 200 B | 317,696 ms | 1 | 60 s |
+| SF8, paquete actual de 200 B | 563,712 ms | 0 | No cabe con este esquema |
+
+Son resultados del modelo, con paquetes completos que no cruzan la siguiente ventana de telemetría. Otro tamaño, fragmentación o planificación puede cambiar el resultado. No incluyen acuses adicionales, pérdidas y reintentos. Reservar margen no acredita que sea suficiente.
+
+En una ventana dedicada, transmitir 60 respuestas de 208 B a SF7 suma como mínimo 19,68 s de emisión, antes de cambios TX/RX, pedidos y errores. Por eso el historial tiene prioridad inferior a telemetría actual y comandos críticos. Una recuperación masiva durante descenso puede empeorar justo la recepción que quiero proteger.
+
+### Identidad, conteos y procedencia
+
+Mantengo separados la identidad de la medición, el contador de transmisiones del vehículo y las observaciones de recepción. F1 incrementa el contador con cada transmisión. Reenviar un paquete viejo con su contador intacto requiere aclaración; cambiar ese contador y perder el identificador original también impide deduplicar. La extensión debe conservar la identidad de origen y respetar la semántica reglamentaria acordada.
+
+El registro terrestre lleva contexto de misión, equipo, identificador de origen, hora de medición, hora de recepción, receptor y procedencia. Los metadatos locales no cambian los 22 campos obligatorios. Los identificadores de la extensión de vuelo deben acordarse con electrónica; no defino aquí un comando nuevo.
+
+Si dos receptores entregan la misma transmisión, conservo dos observaciones y una medida única. Si el mismo identificador llega con contenidos diferentes, conservo ambos y marco conflicto. No sobrescribo automáticamente ni elijo por RSSI. Tampoco presento una medida recuperada de SD después del vuelo como recepción exitosa durante el vuelo.
+
+G14 pide contar recepción exitosa durante el vuelo. Conservo conteos por receptor y transmisiones únicas agregadas; debo acordar su presentación cuando haya diversidad. Una pérdida se considera pendiente mientras pueda ser un atraso; su recuperación no borra la evidencia de que llegó tarde. No uso interpolación como dato original.
+
+El anexo recomienda almacenamiento a bordo como respaldo, pero indica que sólo la telemetría transmitida se examina y califica el día del vuelo; el respaldo puede usarse en la revisión posterior. Debo consultar el tratamiento de retransmisiones históricas. Recuperar el archivo no demuestra cumplimiento de la visualización en tiempo real.
+
+### Alimentación y reinicio controlado
+
+Un respaldo de energía debe demostrar conmutación sin reinicio bajo la carga real. La batería del portátil no prueba por sí sola estabilidad de sus puertos USB. En vuelo debo medir especialmente caídas de tensión durante actuación, transmisión y escritura, con el circuito que electrónica confirme.
+
+Un capacitor no sustituye automáticamente una batería. Bajo corriente constante, sin pérdidas:
+
+$C \geq \frac{I\,\Delta t}{\Delta V}.$
+
+Para 100 mA y una caída admisible de 0,5 V, sostener 100 ms requiere aproximadamente 0,02 F; un segundo requiere 0,2 F. Es un ejemplo ideal, no una selección de componente: faltan ESR, regulación, tolerancia, temperatura y latencia de escritura. Una reserva breve puede servir para terminar operaciones; no acredita un segundo de funcionamiento completo.
+
+STM32 ofrece watchdog y mecanismos de supervisión de tensión que deben configurarse para la placa real. El watchdog debe depender del progreso de tareas críticas, no refrescarse incondicionalmente desde una interrupción que siga activa mientras el programa está bloqueado. Ese progreso no exige un fix GPS ni recibir radio: la ausencia de señal debe generar un diagnóstico, no una secuencia permanente de resets. Al arrancar capturo las banderas de reset antes de limpiarlas y registro el estado restaurado. Las banderas pueden acumularse; no prometen una causa única.
+
+Fuentes: [watchdog ST](https://wiki.st.com/stm32mcu/wiki/Getting_started_with_WDG), [alimentación ST](https://wiki.st.com/stm32mcu/wiki/Basics_of_power_supply_design_for_MCU) y [definiciones RCC del driver ST](https://github.com/STMicroelectronics/stm32f4xx-hal-driver/blob/master/Inc/stm32f4xx_hal_rcc.h).
+
+El reinicio restaura tiempo, contador, CAL y estado según F1/F2/F5. No permite medir durante una interrupción real. Tampoco ordeno nuevamente una liberación por el simple hecho de restaurar un estado. Un corte entre actuación y escritura puede dejar el resultado incierto; necesito evidencia física o una política segura de mecanismo, no repetir MEC a ciegas.
+
+### La SD y la EEPROM también pueden fallar
+
+La [nota del autor de FatFs](https://elm-chan.org/fsw/ff/doc/appnote.html#critical) advierte que cortar una escritura puede dañar datos o estructuras FAT. f_sync reduce la exposición, sin convertirse en garantía universal. Propongo registros con longitud, secuencia y verificación de integridad, recuperación de registros completos y una política explícita de sincronización. Un CRC detecta errores, no reconstruye bytes ni evita que la tarjeta quede inaccesible.
+
+Para contador y configuración evalúo registros alternados con secuencia, integridad y validación de commit. Debo considerar vida útil y tiempo de escritura del chip real. La frontera entre completar una emisión y confirmar el contador en memoria no es atómica por software: persistir antes puede contar una emisión que no terminó; persistir después puede perder su actualización. Ese caso exige definir qué se cuenta y diseñar supervisión y reserva de energía adecuadas.
+
+Radio y microSD pueden compartir SPI. La tarea de archivo necesita tiempos acotados de ocupación y prioridad compatible con radio; no escribo a SD desde la interrupción de recepción. Una falla de almacenamiento debe permitir continuar telemetría y control cuando sea posible, informando la pérdida de respaldo.
+
+### Evidencia y ensayos de recuperación
+
+El [modelo reproducible](https://github.com/edulandoni/astra-cansat/blob/docs/ground-station-continuidad/verification/ground-station-redundancy-analysis.js) y sus [resultados](https://github.com/edulandoni/astra-cansat/blob/docs/ground-station-continuidad/verification/ground-station-redundancy-analysis.json) incluyen dimensionamiento, radio y doce escenarios lógicos de corte. Un control negativo confirma en RAM y descarta la copia pendiente: pierde el registro si la PC cae antes de persistir. La alternativa conserva archivo del receptor y confirma persistencia; permite recuperar y deduplicar bajo las hipótesis ideales del modelo. No simula corrupción de flash, tiempos de sistema de archivos ni hardware.
+
+| Ensayo físico pendiente | Variación de falla | Qué debo medir |
+| --- | --- | --- |
+| Corte de receptor | Antes, durante y después de escribir; con y sin PC conectada | Último registro íntegro, pérdidas, integridad de archivo y tiempo de arranque. |
+| Caída de PC | Antes del commit, después del commit y antes del acuse local | Recuperación, duplicados y continuidad del receptor. |
+| Pérdida de respaldo | USB ausente, lento o lleno | Atraso de copia, alarma, ocupación máxima y recuperación sin detener captura. |
+| Receptor principal fuera de servicio | Radio apagada, hub desconectado y PC detenida, por separado | Continuidad del respaldo y dependencias comunes. |
+| Corte durante mecanismo | Antes y después de actuación y persistencia | Estado restaurado, evidencia física y ausencia de actuación repetida accidental. |
+| Interrupción de sensores o bus | Sensor desconectado y operación que supera su timeout | Datos inválidos identificados, avance de tareas críticas y recuperación. |
+| Historial incompleto | Pérdidas dispersas, ráfagas y backlog superior a la cola | Latencia actual, duración de recuperación, descarte explícito y prioridad de comandos. |
+
+Los cortes deben repetirse en distintas fases con un patrón de datos conocido. Mido duración máxima observada, no sólo promedio; la duración de interrupción total incluye reinicio y reconexión. Antes de aceptar una política fijo RPO/RTO por falla y un límite de cola. Una sola prueba que reinicia correctamente no cierra la validación de persistencia.
+
 ## Qué llevaré al PDR
 
 Presentaré arquitectura de recepción local, interfaces confirmadas y pendientes, contrato con electrónica, presupuesto de tiempo de radio, estrategia de registro y respaldo, y una hipótesis de mejora con ensayo comparativo. Usaré la plantilla y evaluación de nuestra convocatoria cuando estén disponibles, sin copiar extensión o rúbrica de otro concurso.
