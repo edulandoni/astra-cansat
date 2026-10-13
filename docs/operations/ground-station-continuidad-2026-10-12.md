@@ -7,7 +7,7 @@ Me encargo de la recepción, el registro y la visualización de telemetría, y d
 
 ## Prioridades actualizadas
 
-La lista electrónica de Drive utilizada para las compras es la referencia de hardware actual. Los HTML de prueba son antecedentes prescindibles y no fijan la arquitectura nueva. La prioridad es preparar el PDR, cerrar las interfaces con electrónica y fundamentar una mejora mediante ensayos. El [relevamiento argentino y los cálculos de capacidad](https://github.com/edulandoni/astra-cansat/blob/docs/ground-station-continuidad/docs/research/ground-station-relevamiento-argentino-2026-10-12.md) desarrollan este avance.
+Jira ASTRA pasa a ser la fuente principal de decisiones, tareas y trazabilidad del PDR. La lista electrónica de Drive utilizada para las compras acredita disponibilidad: ambos tonos verdes significan material ya disponible y los demás renglones siguen pendientes, según el criterio acordado. El [inventario y los faltantes al 13/10](https://github.com/edulandoni/astra-cansat/blob/docs/ground-station-continuidad/docs/research/ground-station-inventario-y-faltantes-2026-10-13.md) documentan 17 renglones verdes y 7 pendientes. La lectura de Jira sigue pendiente de acceso autenticado; no se modificaron incidencias. Los HTML de prueba son antecedentes prescindibles y no fijan la arquitectura nueva. La prioridad es preparar el PDR, cerrar las interfaces con electrónica y fundamentar una mejora mediante ensayos. El [relevamiento argentino y los cálculos de capacidad](https://github.com/edulandoni/astra-cansat/blob/docs/ground-station-continuidad/docs/research/ground-station-relevamiento-argentino-2026-10-12.md) desarrollan este avance.
 
 ## Fuentes y ubicación
 
@@ -38,7 +38,7 @@ Se cotejaron 34 archivos con bytes disponibles contra los SHA-256 del manifest o
 | Persistencia terrestre | Exportación manual JSON/CSV; no hay escritura continua ni segunda copia física verificada. |
 | Telecomandos | Emisor ficticio; un eco cambia el estado del pedido, pero no acredita ejecución física. |
 | Hardware | La documentación no acredita un conjunto integrado ni ensayos físicos. |
-| Jira | No se verificó un proyecto accesible desde esta sesión. No se crearon incidencias ni proyectos. |
+| Jira | Proyecto ASTRA identificado como fuente principal de trazabilidad. El navegador requiere autenticación; la lectura de incidencias sigue pendiente. No se hicieron cambios en Jira. |
 
 La estación independiente no incluye la carpeta hermana Referencias que usa la ayuda. Para ejecutarla con esas fuentes, conservar la estructura completa de Iteracion_04.
 
@@ -94,7 +94,7 @@ No se decidió todavía entre aplicación web, aplicación de escritorio o inter
 
 ## Diferencias de hardware y presupuesto
 
-La referencia actual es la lista electrónica de Drive utilizada para las compras: STM32F411, ATGM336H, INA3221 y SX1276, con ESP32 como gateway terrestre condicionado a disponibilidad. El presupuesto v05 con ESP32 principal, GY-NEO6MV2 e INA219 es histórico y no define la arquitectura actual. Debo confirmar versiones de módulos, pines, alimentación y disponibilidad física; las cantidades de la lista no acreditan instalación.
+La referencia actual es la lista electrónica de Drive utilizada para las compras: STM32F411, ATGM336H, INA3221 y SX1276, con ESP32 como gateway terrestre ya disponible según el renglón verde de compras. El presupuesto v05 con ESP32 principal, GY-NEO6MV2 e INA219 es histórico y no define la arquitectura actual. Debo confirmar versiones de módulos, pines, alimentación y disponibilidad física; las cantidades de la lista no acreditan instalación.
 
 El manual E220 incluido documenta una dirección de comunicación y filtrado; eso no demuestra por sí solo cumplimiento de NetID/PanID. Tampoco se presume interoperabilidad con SX1276 o XBee por compartir banda.
 
