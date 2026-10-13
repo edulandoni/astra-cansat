@@ -5,6 +5,10 @@ Autor: Cristian Ponsone. Revisión: 12 de octubre de 2026.
 
 Me encargo de la recepción, el registro y la visualización de telemetría, y de la interfaz de telecomandos. La revisión de esta fecha reconstruye el estado del trabajo previo, contrasta el código con los documentos y deja identificados los pasos para desarrollar la estación operativa. No modifica las aplicaciones originales ni cierra la elección de tecnología.
 
+## Prioridades actualizadas
+
+La lista electrónica de Drive utilizada para las compras es la referencia de hardware actual. Los HTML de prueba son antecedentes prescindibles y no fijan la arquitectura nueva. La prioridad es preparar el PDR, cerrar las interfaces con electrónica y fundamentar una mejora mediante ensayos. El [relevamiento argentino y los cálculos de capacidad](https://github.com/edulandoni/astra-cansat/blob/docs/ground-station-continuidad/docs/research/ground-station-relevamiento-argentino-2026-10-12.md) desarrollan este avance.
+
 ## Fuentes y ubicación
 
 | Fuente | Ubicación |
@@ -90,11 +94,11 @@ No se decidió todavía entre aplicación web, aplicación de escritorio o inter
 
 ## Diferencias de hardware y presupuesto
 
-El paquete v05 presupone ESP32 principal, GY-NEO6MV2, INA219 y radios candidatas con PAN ID. La lista electrónica de Drive identifica STM32F411 como baseline y propone ATGM336H, INA3221 y SX1276 con ESP32 como gateway terrestre. No mezclo ambas listas ni doy por validada la sustitución. Necesito registrar la configuración acordada y actualizar sus interfaces y presupuesto juntos.
+La referencia actual es la lista electrónica de Drive utilizada para las compras: STM32F411, ATGM336H, INA3221 y SX1276, con ESP32 como gateway terrestre condicionado a disponibilidad. El presupuesto v05 con ESP32 principal, GY-NEO6MV2 e INA219 es histórico y no define la arquitectura actual. Debo confirmar versiones de módulos, pines, alimentación y disponibilidad física; las cantidades de la lista no acreditan instalación.
 
 El manual E220 incluido documenta una dirección de comunicación y filtrado; eso no demuestra por sí solo cumplimiento de NetID/PanID. Tampoco se presume interoperabilidad con SX1276 o XBee por compartir banda.
 
-Reconciliación del presupuesto JSON al 10/10/2026:
+Reconciliación histórica del presupuesto JSON v05 al 10/10/2026; no es el presupuesto actualizado de la lista de compras:
 
 | Alcance | Base ARS | Con reserva del 20% ARS |
 | --- | ---: | ---: |
@@ -119,10 +123,11 @@ Estas consultas se preparan para el equipo y el docente. No se enviaron a tercer
 
 ## Próximo paso de Ground Station
 
-Preparar el contrato compartido y los criterios de aceptación del registro antes de implementar transporte real. Mientras tanto, reutilizar el receptor y el laboratorio para ensayar escenarios con verdad conocida, conservando las versiones originales. La prioridad es que el dato recibido quede guardado y pueda reconstruirse; la presentación consume ese registro.
+Preparar el contrato compartido y los criterios de aceptación del registro para el PDR antes de implementar transporte real. Los prototipos HTML no son un punto de partida obligatorio. La nueva arquitectura debe conservar el dato recibido y permitir reconstruir la sesión; la presentación consume ese registro. El relevamiento argentino identifica alternativas de gateway, límites de radio y un ensayo de diagnóstico de eventos con sensores existentes.
 
 ## Cambio de historial y colaboración
 
 Se retiró de la ascendencia de main el commit de prueba eee5f19df6696c43ffd47797ed3468800d07d3b7 y su único archivo. El cambio posterior de Edu se reconstruyó conservando los blobs de las dos imágenes de STM32; el nuevo commit es eacf308a5101f0c12b05d63e749b3a1cb6930690 y acredita a Edu como coautor. Se verificó que la única diferencia entre los árboles anterior y nuevo es la eliminación de la prueba.
 
 La actualización se realizó condicionada al SHA anterior de main. Las copias locales que ya tenían el historial anterior deben sincronizarse antes de volver a subir cambios, preservando cualquier trabajo sin publicar. Quitar un commit de las ramas no garantiza que GitHub deje de servir inmediatamente su URL o que desaparezca de clones anteriores.
+

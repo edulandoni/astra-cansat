@@ -1,0 +1,226 @@
+{
+  "kind": "analisis_teorico_no_ensayo_fisico",
+  "semtech_formula_comparisons": 2304,
+  "radio_assumptions": {
+    "bandwidth_Hz": 125000,
+    "coding_rate": "4/5",
+    "preamble_symbols": 8,
+    "header": "explicit",
+    "crc": true,
+    "period_ms": 1000,
+    "excluded": "guard times, switching, host delay, extra framing, acknowledgements and retries"
+  },
+  "example_packet": {
+    "text": "1000,13:14:02,7200,F,DESCENT,400.0,25.0,96.0,3.8,0.25,-12.50,1.20,-3.10,0.10,0.20,9.80,13:14:02,726.0,-34.6000,-58.4000,12,CXON\r",
+    "field_count": 22,
+    "bytes": 128,
+    "accel_units": "PENDIENTE ACLARACION CONAE; valores solo ilustrativos",
+    "gps_signs": "PENDIENTE ACLARACION CONAE; ejemplo convencional sur/oeste negativo"
+  },
+  "example_command_max_bytes": 23,
+  "airtime": [
+    {
+      "sf": 7,
+      "payload_bytes": 128,
+      "telemetry_ms": 215.296,
+      "command_ms": 61.696,
+      "one_telemetry_and_command_ms": 276.992,
+      "two_telemetry_and_command_ms": 492.288,
+      "remaining_1Hz_ms": 723.008
+    },
+    {
+      "sf": 7,
+      "payload_bytes": 200,
+      "telemetry_ms": 317.696,
+      "command_ms": 61.696,
+      "one_telemetry_and_command_ms": 379.392,
+      "two_telemetry_and_command_ms": 697.088,
+      "remaining_1Hz_ms": 620.608
+    },
+    {
+      "sf": 7,
+      "payload_bytes": 250,
+      "telemetry_ms": 389.376,
+      "command_ms": 61.696,
+      "one_telemetry_and_command_ms": 451.072,
+      "two_telemetry_and_command_ms": 840.448,
+      "remaining_1Hz_ms": 548.928
+    },
+    {
+      "sf": 8,
+      "payload_bytes": 128,
+      "telemetry_ms": 379.392,
+      "command_ms": 113.152,
+      "one_telemetry_and_command_ms": 492.544,
+      "two_telemetry_and_command_ms": 871.936,
+      "remaining_1Hz_ms": 507.456
+    },
+    {
+      "sf": 8,
+      "payload_bytes": 200,
+      "telemetry_ms": 563.712,
+      "command_ms": 113.152,
+      "one_telemetry_and_command_ms": 676.864,
+      "two_telemetry_and_command_ms": 1240.576,
+      "remaining_1Hz_ms": 323.136
+    },
+    {
+      "sf": 8,
+      "payload_bytes": 250,
+      "telemetry_ms": 686.592,
+      "command_ms": 113.152,
+      "one_telemetry_and_command_ms": 799.744,
+      "two_telemetry_and_command_ms": 1486.336,
+      "remaining_1Hz_ms": 200.256
+    },
+    {
+      "sf": 9,
+      "payload_bytes": 128,
+      "telemetry_ms": 676.864,
+      "command_ms": 205.824,
+      "one_telemetry_and_command_ms": 882.688,
+      "two_telemetry_and_command_ms": 1559.552,
+      "remaining_1Hz_ms": 117.312
+    },
+    {
+      "sf": 9,
+      "payload_bytes": 200,
+      "telemetry_ms": 1004.544,
+      "command_ms": 205.824,
+      "one_telemetry_and_command_ms": 1210.368,
+      "two_telemetry_and_command_ms": 2214.912,
+      "remaining_1Hz_ms": -210.368
+    },
+    {
+      "sf": 9,
+      "payload_bytes": 250,
+      "telemetry_ms": 1229.824,
+      "command_ms": 205.824,
+      "one_telemetry_and_command_ms": 1435.648,
+      "two_telemetry_and_command_ms": 2665.472,
+      "remaining_1Hz_ms": -435.648
+    },
+    {
+      "sf": 10,
+      "payload_bytes": 128,
+      "telemetry_ms": 1230.848,
+      "command_ms": 370.688,
+      "one_telemetry_and_command_ms": 1601.536,
+      "two_telemetry_and_command_ms": 2832.384,
+      "remaining_1Hz_ms": -601.536
+    },
+    {
+      "sf": 10,
+      "payload_bytes": 200,
+      "telemetry_ms": 1845.248,
+      "command_ms": 370.688,
+      "one_telemetry_and_command_ms": 2215.936,
+      "two_telemetry_and_command_ms": 4061.184,
+      "remaining_1Hz_ms": -1215.936
+    },
+    {
+      "sf": 10,
+      "payload_bytes": 250,
+      "telemetry_ms": 2254.848,
+      "command_ms": 370.688,
+      "one_telemetry_and_command_ms": 2625.536,
+      "two_telemetry_and_command_ms": 4880.384,
+      "remaining_1Hz_ms": -1625.536
+    },
+    {
+      "sf": 11,
+      "payload_bytes": 128,
+      "telemetry_ms": 2707.456,
+      "command_ms": 823.296,
+      "one_telemetry_and_command_ms": 3530.752,
+      "two_telemetry_and_command_ms": 6238.208,
+      "remaining_1Hz_ms": -2530.752
+    },
+    {
+      "sf": 11,
+      "payload_bytes": 200,
+      "telemetry_ms": 4018.176,
+      "command_ms": 823.296,
+      "one_telemetry_and_command_ms": 4841.472,
+      "two_telemetry_and_command_ms": 8859.648,
+      "remaining_1Hz_ms": -3841.472
+    },
+    {
+      "sf": 11,
+      "payload_bytes": 250,
+      "telemetry_ms": 4919.296,
+      "command_ms": 823.296,
+      "one_telemetry_and_command_ms": 5742.592,
+      "two_telemetry_and_command_ms": 10661.888,
+      "remaining_1Hz_ms": -4742.592
+    },
+    {
+      "sf": 12,
+      "payload_bytes": 128,
+      "telemetry_ms": 4923.392,
+      "command_ms": 1482.752,
+      "one_telemetry_and_command_ms": 6406.144,
+      "two_telemetry_and_command_ms": 11329.536,
+      "remaining_1Hz_ms": -5406.144
+    },
+    {
+      "sf": 12,
+      "payload_bytes": 200,
+      "telemetry_ms": 7217.152,
+      "command_ms": 1482.752,
+      "one_telemetry_and_command_ms": 8699.904,
+      "two_telemetry_and_command_ms": 15917.056,
+      "remaining_1Hz_ms": -7699.904
+    },
+    {
+      "sf": 12,
+      "payload_bytes": 250,
+      "telemetry_ms": 8855.552,
+      "command_ms": 1482.752,
+      "one_telemetry_and_command_ms": 10338.304,
+      "two_telemetry_and_command_ms": 19193.856,
+      "remaining_1Hz_ms": -9338.304
+    }
+  ],
+  "pressure_quantization": {
+    "assumptions": {
+      "temperature_K": 288.15,
+      "pressure_Pa": 101325.0,
+      "model": "isothermal local hypsometric sensitivity"
+    },
+    "height_step_for_0_1kPa_m": 8.3241,
+    "half_quantization_step_m": 4.1621,
+    "pressure_change_for_0_1m_Pa": 1.2013
+  },
+  "filter_response": [
+    {
+      "coefficient": 2,
+      "samples_to_75_percent": 2,
+      "response_seconds_at_2Hz": 1.0,
+      "response_seconds_at_10Hz": 0.2
+    },
+    {
+      "coefficient": 4,
+      "samples_to_75_percent": 5,
+      "response_seconds_at_2Hz": 2.5,
+      "response_seconds_at_10Hz": 0.5
+    },
+    {
+      "coefficient": 8,
+      "samples_to_75_percent": 11,
+      "response_seconds_at_2Hz": 5.5,
+      "response_seconds_at_10Hz": 1.1
+    },
+    {
+      "coefficient": 16,
+      "samples_to_75_percent": 22,
+      "response_seconds_at_2Hz": 11.0,
+      "response_seconds_at_10Hz": 2.2
+    }
+  ],
+  "sources": [
+    "https://github.com/Lora-net/LoRaMac-node/blob/master/src/radio/sx1276/sx1276.c",
+    "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp280-ds001.pdf",
+    "https://www.argentina.gob.ar/sites/default/files/2026/08/anexo_requerimientos_tecnicos_-_cansat_universitario_2026-2027.pdf"
+  ]
+}
