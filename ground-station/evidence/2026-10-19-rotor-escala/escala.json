@@ -1,0 +1,58 @@
+{
+  "inputs": {
+    "constant_descending_mass_kg": 0.5,
+    "illustrative_apogee_m": 500,
+    "illustrative_rotor_release_fraction": 0.8,
+    "assumed_constant_descent_m_s": 5,
+    "g_m_s2": 9.80665
+  },
+  "reference_total_gravity_wh": 0.6810173611111111,
+  "rotor_phase_height_m": 400.0,
+  "rotor_phase_gravity_j": 1961.33,
+  "rotor_phase_gravity_wh": 0.5448138888888888,
+  "assumed_phase_duration_s": 80.0,
+  "gravitational_power_scale_w": 24.516624999999998,
+  "cases": [
+    {
+      "hypothetical_global_efficiency": 0.01,
+      "electric_energy_j": 19.6133,
+      "electric_energy_wh": 0.005448138888888889,
+      "average_electric_power_w": 0.24516624999999997,
+      "equivalent_minutes_at_1w": 0.32688833333333334,
+      "fraction_of_hypothetical_1w_2h_budget": 0.0027240694444444443
+    },
+    {
+      "hypothetical_global_efficiency": 0.05,
+      "electric_energy_j": 98.0665,
+      "electric_energy_wh": 0.027240694444444446,
+      "average_electric_power_w": 1.2258312500000001,
+      "equivalent_minutes_at_1w": 1.6344416666666668,
+      "fraction_of_hypothetical_1w_2h_budget": 0.013620347222222223
+    },
+    {
+      "hypothetical_global_efficiency": 0.1,
+      "electric_energy_j": 196.133,
+      "electric_energy_wh": 0.05448138888888889,
+      "average_electric_power_w": 2.4516625000000003,
+      "equivalent_minutes_at_1w": 3.2688833333333336,
+      "fraction_of_hypothetical_1w_2h_budget": 0.027240694444444446
+    },
+    {
+      "hypothetical_global_efficiency": 0.2,
+      "electric_energy_j": 392.266,
+      "electric_energy_wh": 0.10896277777777778,
+      "average_electric_power_w": 4.903325000000001,
+      "equivalent_minutes_at_1w": 6.537766666666667,
+      "fraction_of_hypothetical_1w_2h_budget": 0.05448138888888889
+    }
+  ],
+  "limits": [
+    "500 m y los rendimientos globales son hipótesis, no datos de vuelo ni eficiencia medida.",
+    "Uso masa constante: si separo contenedor o piezas debo recalcular cada fase.",
+    "La escala mgh corresponde al cambio gravitatorio del tramo; no suma energía del viento ni cambios de energía cinética.",
+    "No toda esa energía está disponible en el eje; las pérdidas aerodinámicas y eléctricas forman parte del rendimiento global supuesto.",
+    "No predigo RPM, torque, despliegue, estabilidad, velocidad real ni admisibilidad reglamentaria.",
+    "Aumentar la carga eléctrica cambia el freno del generador y puede cambiar la autorrotación y el descenso; aquí no resuelvo ese acoplamiento.",
+    "No puedo alimentar la espera de dos horas dentro del cohete mediante un rotor que aún no recibe flujo."
+  ]
+}

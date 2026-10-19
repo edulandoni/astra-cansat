@@ -28,3 +28,8 @@ El formato de 22 campos y TEAM_ID de cuatro dígitos es una convención heredada
 Las entradas fechadas y las capturas se conservan. Una conclusión nueva se agrega en otro documento o comentario con referencia al anterior. Este índice puede incorporar enlaces a nuevas entradas; su versión inicial queda en Git.
 
 Jira es la bitácora principal: [ASTRA-20](https://astrateam2026.atlassian.net/browse/ASTRA-20), [ASTRA-21](https://astrateam2026.atlassian.net/browse/ASTRA-21), [ASTRA-22](https://astrateam2026.atlassian.net/browse/ASTRA-22).
+
+## Investigación agregada el 19/10/2026
+
+- [Antecedentes CanSat y catálogo de 35 registros](docs/investigacion/2026-10-19-antecedentes-cansat.md).
+- [Autorrotación y generación eléctrica: antecedentes, límites y cálculo](docs/investigacion/2026-10-19-rotor-y-generacion.md).
