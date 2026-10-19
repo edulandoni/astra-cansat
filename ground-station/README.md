@@ -33,3 +33,15 @@ Jira es la bitácora principal: [ASTRA-20](https://astrateam2026.atlassian.net/b
 
 - [Antecedentes CanSat y catálogo de 35 registros](docs/investigacion/2026-10-19-antecedentes-cansat.md).
 - [Autorrotación y generación eléctrica: antecedentes, límites y cálculo](docs/investigacion/2026-10-19-rotor-y-generacion.md).
+
+## Ubicación de los temas — actualización del 19/10/2026
+
+Para continuar el diario uso el [mapa vigente](docs/trazabilidad-vigente-2026-10-19.md). Los enlaces de las entradas anteriores conservan su contexto histórico.
+
+- [ASTRA-33: diario, trazabilidad y respaldo](docs/temas/diario-y-respaldo/README.md).
+- [ASTRA-34: investigación de calidad de datos](docs/temas/calidad-de-datos/README.md).
+- [ASTRA-35: antecedentes CanSat](docs/temas/antecedentes-cansat/README.md).
+- [ASTRA-36: rotor y generación eléctrica](docs/temas/rotor-y-energia/README.md).
+- [Revisión de los 35 comentarios y corrección de referencias](docs/historial/2026-10-19-orden-comentarios.md).
+
+El receptor y los ensayos de CSV siguen en ASTRA-21; el respaldo de documentación de Jira continúa en ASTRA-33. Los originales permanecen íntegros.

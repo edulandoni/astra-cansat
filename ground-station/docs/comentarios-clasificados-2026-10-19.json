@@ -1,0 +1,465 @@
+{
+  "fecha": "2026-10-19",
+  "alcance": "35 comentarios de las siete tareas propias consultadas antes de la corrección",
+  "originales_se_conservan": true,
+  "comentarios": [
+    {
+      "source_issue": "ASTRA-18",
+      "comment_id": "10014",
+      "created": "2026-10-17T12:29:03.603-0300",
+      "heading": "## Bitácora 17/10/2026 — descripción anterior conservada y motivo de su actualización",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-18?focusedCommentId=10014",
+      "targets": [
+        "ASTRA-18"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-18",
+      "comment_id": "10025",
+      "created": "2026-10-17T12:31:25.774-0300",
+      "heading": "## Bitácora 17/10/2026 — identificación propia y comparación RF después de v2",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-18?focusedCommentId=10025",
+      "targets": [
+        "ASTRA-18"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-18",
+      "comment_id": "10029",
+      "created": "2026-10-17T12:43:26.355-0300",
+      "heading": "## Bitácora 17/10/2026 — estado de trabajo y alcance",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-18?focusedCommentId=10029",
+      "targets": [
+        "ASTRA-18"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-18",
+      "comment_id": "10038",
+      "created": "2026-10-19T19:28:16.200-0300",
+      "heading": "## 19/10/2026 — COMENTARIO 4 — Comparación v1/v2 de groundstation en GitHub",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-18?focusedCommentId=10038",
+      "targets": [
+        "ASTRA-18"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-20",
+      "comment_id": "10008",
+      "created": "2026-10-17T12:14:52.795-0300",
+      "heading": "## Evaluación del banco frente a v2 — 17/10/2026",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10008",
+      "targets": [
+        "ASTRA-20"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-20",
+      "comment_id": "10022",
+      "created": "2026-10-17T12:31:19.882-0300",
+      "heading": "## Bitácora 17/10/2026 — desarrollo del simulador de misión y alcance alcanzado",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10022",
+      "targets": [
+        "ASTRA-20"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-20",
+      "comment_id": "10030",
+      "created": "2026-10-17T12:43:28.289-0300",
+      "heading": "## Bitácora 17/10/2026 — estado de trabajo y alcance",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10030",
+      "targets": [
+        "ASTRA-20"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-20",
+      "comment_id": "10036",
+      "created": "2026-10-17T12:45:26.936-0300",
+      "heading": "## Bitácora 17/10/2026 — redacción y estados de mis tareas",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10036",
+      "targets": [
+        "ASTRA-20",
+        "ASTRA-33"
+      ],
+      "action": "Separar tema mixto",
+      "why": "Estado del simulador aquí; voz, metodología y gestión de mi área en ASTRA-33."
+    },
+    {
+      "source_issue": "ASTRA-20",
+      "comment_id": "10037",
+      "created": "2026-10-17T12:51:27.592-0300",
+      "heading": "## 17/10/2026 — COMENTARIO 5 — Metodología fija del diario",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10037",
+      "targets": [
+        "ASTRA-33"
+      ],
+      "action": "Reubicar continuidad",
+      "why": "La metodología del diario es transversal, no desarrollo del simulador."
+    },
+    {
+      "source_issue": "ASTRA-20",
+      "comment_id": "10039",
+      "created": "2026-10-19T19:28:18.460-0300",
+      "heading": "## 19/10/2026 — COMENTARIO 6 — Banco, antecedentes y diario de mi área publicados en GitHub",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10039",
+      "targets": [
+        "ASTRA-20",
+        "ASTRA-22",
+        "ASTRA-33"
+      ],
+      "action": "Separar tema mixto",
+      "why": "Banco/simulador en ASTRA-20, antecedente de GUI en ASTRA-22 y publicación/método/exportador en ASTRA-33."
+    },
+    {
+      "source_issue": "ASTRA-20",
+      "comment_id": "10045",
+      "created": "2026-10-19T19:30:01.870-0300",
+      "heading": "## 19/10/2026 — COMENTARIO 7 — Cierre del respaldo Jira → GitHub",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10045",
+      "targets": [
+        "ASTRA-33"
+      ],
+      "action": "Reubicar continuidad",
+      "why": "Aviso de respaldo documental de Jira."
+    },
+    {
+      "source_issue": "ASTRA-20",
+      "comment_id": "10046",
+      "created": "2026-10-19T19:32:28.996-0300",
+      "heading": "## 19/10/2026 — ACTUALIZACIÓN COMENTARIOS 6 y 7 (del 19/10/2026) — COMENTARIO 8 — Control del respaldo",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10046",
+      "targets": [
+        "ASTRA-33"
+      ],
+      "action": "Reubicar continuidad",
+      "why": "Corrección del exportador documental, no del simulador."
+    },
+    {
+      "source_issue": "ASTRA-20",
+      "comment_id": "10048",
+      "created": "2026-10-19T19:33:02.310-0300",
+      "heading": "## 19/10/2026 — COMENTARIO 9 — Respaldo final de las actualizaciones",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10048",
+      "targets": [
+        "ASTRA-33"
+      ],
+      "action": "Reubicar continuidad",
+      "why": "Aviso de respaldo documental de Jira."
+    },
+    {
+      "source_issue": "ASTRA-21",
+      "comment_id": "10009",
+      "created": "2026-10-17T12:14:54.870-0300",
+      "heading": "## Revisión de adquisición y CSV frente a v2 — 17/10/2026",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10009",
+      "targets": [
+        "ASTRA-21"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-21",
+      "comment_id": "10023",
+      "created": "2026-10-17T12:31:21.802-0300",
+      "heading": "## Bitácora 17/10/2026 — decisiones de recepción y registro del banco",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10023",
+      "targets": [
+        "ASTRA-21"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-21",
+      "comment_id": "10031",
+      "created": "2026-10-17T12:43:30.339-0300",
+      "heading": "## Bitácora 17/10/2026 — estado de trabajo y alcance",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10031",
+      "targets": [
+        "ASTRA-21"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-21",
+      "comment_id": "10040",
+      "created": "2026-10-19T19:28:20.617-0300",
+      "heading": "## 19/10/2026 — COMENTARIO 4 — Parser, CSV y respaldo trazable en GitHub",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10040",
+      "targets": [
+        "ASTRA-21",
+        "ASTRA-33"
+      ],
+      "action": "Separar tema mixto",
+      "why": "Parser/CSV aquí; exportador y respaldo de Jira en ASTRA-33."
+    },
+    {
+      "source_issue": "ASTRA-21",
+      "comment_id": "10047",
+      "created": "2026-10-19T19:32:31.128-0300",
+      "heading": "## 19/10/2026 — ACTUALIZACIÓN COMENTARIO 4 (del 19/10/2026) — COMENTARIO 5 — Control del respaldo",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10047",
+      "targets": [
+        "ASTRA-33"
+      ],
+      "action": "Reubicar continuidad",
+      "why": "Control de etiqueta y huellas del respaldo documental."
+    },
+    {
+      "source_issue": "ASTRA-21",
+      "comment_id": "10049",
+      "created": "2026-10-19T19:59:51.410-0300",
+      "heading": "## 19/10/2026 — COMENTARIO 6 — Investigación de innovación y prevención sin hardware",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10049",
+      "targets": [
+        "ASTRA-34"
+      ],
+      "action": "Reubicar continuidad",
+      "why": "Investigación exploratoria de calidad/prevención. Los hallazgos concretos sirven de evidencia relacionada a ASTRA-21; las ideas aún no son implementación."
+    },
+    {
+      "source_issue": "ASTRA-21",
+      "comment_id": "10050",
+      "created": "2026-10-19T20:01:06.804-0300",
+      "heading": "## 19/10/2026 — COMENTARIO 7 — Cierre del respaldo de la investigación",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10050",
+      "targets": [
+        "ASTRA-33"
+      ],
+      "action": "Reubicar continuidad",
+      "why": "Aviso de respaldo documental."
+    },
+    {
+      "source_issue": "ASTRA-21",
+      "comment_id": "10051",
+      "created": "2026-10-19T20:13:23.209-0300",
+      "heading": "## 19/10/2026 — ACTUALIZACIÓN COMENTARIO 6 (del 19/10/2026) — COMENTARIO 8 — Resiliencia y recuperación sin hardware",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10051",
+      "targets": [
+        "ASTRA-21"
+      ],
+      "related": [
+        "ASTRA-34"
+      ],
+      "action": "Conservar",
+      "why": "Ensayos concretos de reconexión, registro y recuperación CSV; relación con investigación sin duplicar el avance."
+    },
+    {
+      "source_issue": "ASTRA-21",
+      "comment_id": "10052",
+      "created": "2026-10-19T20:22:14.256-0300",
+      "heading": "## 19/10/2026 — ACTUALIZACIÓN COMENTARIO 6 — COMENTARIO 9: antecedentes CanSat y rotor generador",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10052",
+      "targets": [
+        "ASTRA-35",
+        "ASTRA-36"
+      ],
+      "action": "Separar tema mixto",
+      "why": "Catálogo de CanSat en ASTRA-35; viabilidad del rotor y cálculo en ASTRA-36."
+    },
+    {
+      "source_issue": "ASTRA-21",
+      "comment_id": "10053",
+      "created": "2026-10-19T20:23:07.030-0300",
+      "heading": "## 19/10/2026 — COMENTARIO 10 — Respaldo del comentario 9",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10053",
+      "targets": [
+        "ASTRA-33"
+      ],
+      "action": "Reubicar continuidad",
+      "why": "Aviso de respaldo documental."
+    },
+    {
+      "source_issue": "ASTRA-22",
+      "comment_id": "10010",
+      "created": "2026-10-17T12:14:56.866-0300",
+      "heading": "## Revisión de GUI frente a v2 — 17/10/2026",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-22?focusedCommentId=10010",
+      "targets": [
+        "ASTRA-22"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-22",
+      "comment_id": "10024",
+      "created": "2026-10-17T12:31:23.792-0300",
+      "heading": "## Bitácora 17/10/2026 — pantalla del banco y límites de validación",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-22?focusedCommentId=10024",
+      "targets": [
+        "ASTRA-22"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-22",
+      "comment_id": "10032",
+      "created": "2026-10-17T12:43:32.356-0300",
+      "heading": "## Bitácora 17/10/2026 — estado de trabajo y alcance",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-22?focusedCommentId=10032",
+      "targets": [
+        "ASTRA-22"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-22",
+      "comment_id": "10041",
+      "created": "2026-10-19T19:28:22.883-0300",
+      "heading": "## 19/10/2026 — COMENTARIO 4 — GUI y antecedente visual conservados",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-22?focusedCommentId=10041",
+      "targets": [
+        "ASTRA-22"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-23",
+      "comment_id": "10013",
+      "created": "2026-10-17T12:15:03.037-0300",
+      "heading": "## Trazabilidad RF v2 — 17/10/2026",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-23?focusedCommentId=10013",
+      "targets": [
+        "ASTRA-23"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-23",
+      "comment_id": "10033",
+      "created": "2026-10-17T12:43:35.005-0300",
+      "heading": "## Bitácora 17/10/2026 — estado de trabajo y alcance",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-23?focusedCommentId=10033",
+      "targets": [
+        "ASTRA-23"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-23",
+      "comment_id": "10042",
+      "created": "2026-10-19T19:28:24.996-0300",
+      "heading": "## 19/10/2026 — COMENTARIO 3 — Referencias de tierra para la integración futura",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-23?focusedCommentId=10042",
+      "targets": [
+        "ASTRA-23"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-24",
+      "comment_id": "10034",
+      "created": "2026-10-17T12:43:37.008-0300",
+      "heading": "## Bitácora 17/10/2026 — estado de trabajo y alcance",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-24?focusedCommentId=10034",
+      "targets": [
+        "ASTRA-24"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-24",
+      "comment_id": "10043",
+      "created": "2026-10-19T19:28:27.116-0300",
+      "heading": "## 19/10/2026 — COMENTARIO 2 — Explicación de la interfaz pendiente con vuelo",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-24?focusedCommentId=10043",
+      "targets": [
+        "ASTRA-24"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-25",
+      "comment_id": "10028",
+      "created": "2026-10-17T12:31:32.033-0300",
+      "heading": "## Bitácora 17/10/2026 — capacidad de enlace y redundancia como antecedentes de diseño",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-25?focusedCommentId=10028",
+      "targets": [
+        "ASTRA-25"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-25",
+      "comment_id": "10035",
+      "created": "2026-10-17T12:43:38.943-0300",
+      "heading": "## Bitácora 17/10/2026 — estado de trabajo y alcance",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-25?focusedCommentId=10035",
+      "targets": [
+        "ASTRA-25"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    },
+    {
+      "source_issue": "ASTRA-25",
+      "comment_id": "10044",
+      "created": "2026-10-19T19:28:29.251-0300",
+      "heading": "## 19/10/2026 — COMENTARIO 3 — Ubicación de antecedentes y límites del enlace",
+      "source_url": "https://astrateam2026.atlassian.net/browse/ASTRA-25?focusedCommentId=10044",
+      "targets": [
+        "ASTRA-25"
+      ],
+      "action": "Conservar",
+      "why": "El contenido técnico, requisito o estado está relacionado con el objetivo de esta tarea."
+    }
+  ],
+  "entradas_nuevas": [
+    {
+      "tarea": "ASTRA-33",
+      "id": "10054"
+    },
+    {
+      "tarea": "ASTRA-33",
+      "id": "10055"
+    },
+    {
+      "tarea": "ASTRA-34",
+      "id": "10056"
+    },
+    {
+      "tarea": "ASTRA-35",
+      "id": "10057"
+    },
+    {
+      "tarea": "ASTRA-36",
+      "id": "10058"
+    },
+    {
+      "tarea": "ASTRA-20",
+      "id": "10059"
+    },
+    {
+      "tarea": "ASTRA-21",
+      "id": "10060"
+    }
+  ]
+}
