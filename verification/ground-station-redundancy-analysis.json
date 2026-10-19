@@ -1,0 +1,251 @@
+{
+  "kind": "synthetic_design_analysis_not_hardware_validation",
+  "buffers": [
+    {
+      "seconds": 60,
+      "rateHz": 1,
+      "payloadBytes": 200,
+      "localMetadataBytes": 24,
+      "bytes": 13440,
+      "KiB": 13.125
+    },
+    {
+      "seconds": 120,
+      "rateHz": 1,
+      "payloadBytes": 200,
+      "localMetadataBytes": 24,
+      "bytes": 26880,
+      "KiB": 26.25
+    }
+  ],
+  "twoHourLogBytes": 1612800,
+  "max255BytePacket120SecondBufferBytes": 33480,
+  "radioAssumptions": {
+    "bandwidthHz": 125000,
+    "codingRate": "4/5",
+    "preambleSymbols": 8,
+    "crc": true,
+    "header": "explicit",
+    "slotMs": 1000,
+    "replayBytes": 208,
+    "commandBytes": 23,
+    "totalGuardMs": 50,
+    "exclusions": "extra acknowledgements, address overhead beyond assumed sizes, retries, errors, RF regulations",
+    "scheduling": "fixed one-second slots; whole packets cannot cross next live slot; conservative example"
+  },
+  "radio": [
+    {
+      "sf": 7,
+      "liveBytes": 128,
+      "liveMs": 215.296,
+      "replayMs": 327.936,
+      "commandMs": 61.696,
+      "guardMs": 50,
+      "liveAndControlFits": true,
+      "replayPerSlot": 2,
+      "secondsFor60Missing": 30,
+      "exclusiveReplay60Seconds": 19.67616
+    },
+    {
+      "sf": 7,
+      "liveBytes": 200,
+      "liveMs": 317.696,
+      "replayMs": 327.936,
+      "commandMs": 61.696,
+      "guardMs": 50,
+      "liveAndControlFits": true,
+      "replayPerSlot": 1,
+      "secondsFor60Missing": 60,
+      "exclusiveReplay60Seconds": 19.67616
+    },
+    {
+      "sf": 8,
+      "liveBytes": 128,
+      "liveMs": 379.392,
+      "replayMs": 584.192,
+      "commandMs": 113.152,
+      "guardMs": 50,
+      "liveAndControlFits": true,
+      "replayPerSlot": 0,
+      "secondsFor60Missing": null,
+      "exclusiveReplay60Seconds": 35.051520000000004
+    },
+    {
+      "sf": 8,
+      "liveBytes": 200,
+      "liveMs": 563.712,
+      "replayMs": 584.192,
+      "commandMs": 113.152,
+      "guardMs": 50,
+      "liveAndControlFits": true,
+      "replayPerSlot": 0,
+      "secondsFor60Missing": null,
+      "exclusiveReplay60Seconds": 35.051520000000004
+    },
+    {
+      "sf": 9,
+      "liveBytes": 128,
+      "liveMs": 676.864,
+      "replayMs": 1045.504,
+      "commandMs": 205.824,
+      "guardMs": 50,
+      "liveAndControlFits": true,
+      "replayPerSlot": 0,
+      "secondsFor60Missing": null,
+      "exclusiveReplay60Seconds": 62.73023999999999
+    },
+    {
+      "sf": 9,
+      "liveBytes": 200,
+      "liveMs": 1004.544,
+      "replayMs": 1045.504,
+      "commandMs": 205.824,
+      "guardMs": 50,
+      "liveAndControlFits": false,
+      "replayPerSlot": 0,
+      "secondsFor60Missing": null,
+      "exclusiveReplay60Seconds": 62.73023999999999
+    }
+  ],
+  "holdUpConstantCurrentExample": {
+    "currentA": 0.1,
+    "allowedVoltageDropV": 0.5,
+    "capacitanceFFor100ms": 0.020000000000000004,
+    "capacitanceFFor1second": 0.2,
+    "exclusions": "ESR, regulator efficiency and dynamics, temperature, tolerance, SD write worst case"
+  },
+  "experiments": [
+    {
+      "policy": "ack_ram",
+      "cutStage": 1,
+      "gatewayPowerLoss": false,
+      "acknowledged": true,
+      "originallyDurable": 0,
+      "finalUniqueRecords": 0,
+      "lost": true,
+      "archiveRetained": false
+    },
+    {
+      "policy": "ack_ram",
+      "cutStage": 1,
+      "gatewayPowerLoss": true,
+      "acknowledged": true,
+      "originallyDurable": 0,
+      "finalUniqueRecords": 0,
+      "lost": true,
+      "archiveRetained": false
+    },
+    {
+      "policy": "ack_ram",
+      "cutStage": 2,
+      "gatewayPowerLoss": false,
+      "acknowledged": true,
+      "originallyDurable": 1,
+      "finalUniqueRecords": 1,
+      "lost": false,
+      "archiveRetained": false
+    },
+    {
+      "policy": "ack_ram",
+      "cutStage": 2,
+      "gatewayPowerLoss": true,
+      "acknowledged": true,
+      "originallyDurable": 1,
+      "finalUniqueRecords": 1,
+      "lost": false,
+      "archiveRetained": false
+    },
+    {
+      "policy": "ack_ram",
+      "cutStage": 3,
+      "gatewayPowerLoss": false,
+      "acknowledged": true,
+      "originallyDurable": 1,
+      "finalUniqueRecords": 1,
+      "lost": false,
+      "archiveRetained": false
+    },
+    {
+      "policy": "ack_ram",
+      "cutStage": 3,
+      "gatewayPowerLoss": true,
+      "acknowledged": true,
+      "originallyDurable": 1,
+      "finalUniqueRecords": 1,
+      "lost": false,
+      "archiveRetained": false
+    },
+    {
+      "policy": "durable_archive",
+      "cutStage": 1,
+      "gatewayPowerLoss": false,
+      "acknowledged": false,
+      "originallyDurable": 0,
+      "finalUniqueRecords": 1,
+      "lost": false,
+      "archiveRetained": true
+    },
+    {
+      "policy": "durable_archive",
+      "cutStage": 1,
+      "gatewayPowerLoss": true,
+      "acknowledged": false,
+      "originallyDurable": 0,
+      "finalUniqueRecords": 1,
+      "lost": false,
+      "archiveRetained": true
+    },
+    {
+      "policy": "durable_archive",
+      "cutStage": 2,
+      "gatewayPowerLoss": false,
+      "acknowledged": false,
+      "originallyDurable": 1,
+      "finalUniqueRecords": 1,
+      "lost": false,
+      "archiveRetained": true
+    },
+    {
+      "policy": "durable_archive",
+      "cutStage": 2,
+      "gatewayPowerLoss": true,
+      "acknowledged": false,
+      "originallyDurable": 1,
+      "finalUniqueRecords": 1,
+      "lost": false,
+      "archiveRetained": true
+    },
+    {
+      "policy": "durable_archive",
+      "cutStage": 3,
+      "gatewayPowerLoss": false,
+      "acknowledged": true,
+      "originallyDurable": 1,
+      "finalUniqueRecords": 1,
+      "lost": false,
+      "archiveRetained": true
+    },
+    {
+      "policy": "durable_archive",
+      "cutStage": 3,
+      "gatewayPowerLoss": true,
+      "acknowledged": true,
+      "originallyDurable": 1,
+      "finalUniqueRecords": 1,
+      "lost": false,
+      "archiveRetained": true
+    }
+  ],
+  "causalExample": {
+    "uniqueMeasurements": 1,
+    "receiptObservations": 2,
+    "measurementTimePreserved": true,
+    "wireCounterSemantics": "not modeled; requires agreed extension"
+  },
+  "assumptions": [
+    "durable commits are ideal and do not corrupt unrelated data",
+    "receiver archival media survives the modeled power interruption",
+    "no physical radio, flash controller, filesystem or battery behavior is simulated",
+    "no claim of zero real-world loss or acceptance of retransmitted data by judges"
+  ]
+}

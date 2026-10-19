@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-12",
+  "author": "Cristian Ponsone",
+  "inventory": {
+    "files": 93,
+    "folders": 17,
+    "retrieved_non_pdf_files": 81,
+    "pdf_text_reads": 10,
+    "reference_images_inspected": 2,
+    "exact_sha256_manifest_matches": 34,
+    "exact_sha256_mismatches": 0,
+    "standalone_working_copy_files": 13,
+    "standalone_matches_v04": true
+  },
+  "checks": {
+    "station_v04": {
+      "passed": 13,
+      "failed": 0,
+      "execution": "node Pruebas/test_station_v04.cjs"
+    },
+    "measurements_v05": {
+      "passed": 12,
+      "failed": 0,
+      "execution": "node Pruebas/test_mediciones_v05.cjs"
+    },
+    "budget_json": {
+      "rows": 44,
+      "flight": 660784.32,
+      "ground": 243000,
+      "development": 120000,
+      "shipping": 30000,
+      "base": 1053784.32,
+      "with_reserve_20": 1264541.18
+    }
+  },
+  "limits": {
+    "browser_ui_repeated": false,
+    "browser_reason": "Local file protocol blocked by browser policy",
+    "xlsx_formulas_verified": false,
+    "radio_hardware_tested": false,
+    "serial_implemented": false,
+    "continuous_disk_backup_implemented": false
+  },
+  "git": {
+    "removed_from_main": "eee5f19df6696c43ffd47797ed3468800d07d3b7",
+    "previous_head": "817da5363a94a10226b3768e5e9ce44fe1101da6",
+    "new_head": "eacf308a5101f0c12b05d63e749b3a1cb6930690",
+    "tree_changes": [
+      "Removed test file only"
+    ],
+    "preserved_image_blobs": [
+      "4530e2d08110b87c3ddab91c78d7a56f39cdcb50",
+      "d95b652a042d3343a2efb2452ce5f0426ed901b2"
+    ]
+  }
+}
