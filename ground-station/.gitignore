@@ -1,0 +1,5 @@
+# Salidas locales; las evidencias publicadas se guardan aparte y con contexto.
+banco-usb-v0.1/runs/
+__pycache__/
+*.pyc
+.env

@@ -1,0 +1,21 @@
+✔ all 22 base fields, optional delimiter, ASCII and CR termination are generated (6.9532ms)
+✔ one-byte fragments, concatenated messages and whole frames yield identical data (16.3014ms)
+✔ LF does not act as a packet terminator (0.5019ms)
+✔ wrong team, F origin, invalid clocks, malformed numbers and bad optional separators are rejected (0.8226ms)
+✔ GPS absence is distinct from numeric zero and leaves other sensors valid (8.5583ms)
+✔ duplicate packets do not refresh latest-data time or add graph points (0.9856ms)
+✔ late valid packet repairs a gap without rewinding the latest display (0.6191ms)
+✔ fault session and restart preserve transmit counter and mission UTC (13.5538ms)
+✔ command is sent first; only a received telemetry echo confirms it (0.7603ms)
+✔ JSON replay preserves ASCII bytes, raw messages, samples, counts and command lifecycle (46.3091ms)
+✔ legacy v03 JSON can still replay without inventing its missing official fields (1.3619ms)
+✔ CSV includes all accepted receptions and pads optional columns (0.5382ms)
+✔ bounded corrupt frame is recorded, recovery continues, unsafe metadata is refused (1.186ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 389.5306

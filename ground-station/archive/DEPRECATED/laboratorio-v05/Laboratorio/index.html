@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Laboratorio de mediciones CanSat</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff;color:#111;font:19px/1.45 Arial,sans-serif}main{max-width:1160px;margin:auto;padding:24px}h1{font-size:30px}h2{font-size:24px;margin-top:28px}p{max-width:100ch}button,input,select{font:inherit;color:inherit}button{background:#fff;border:1px solid #333;padding:5px 10px;border-radius:5px}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #1459ba;outline-offset:2px}input[type=number]{width:150px;padding:5px}input[type=checkbox]{width:22px;height:22px;vertical-align:middle}.controls,.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.controls label{display:block}.result{border-bottom:2px solid #333;padding:12px 0}.value{font-size:26px;font-weight:bold}.context{font-size:19px}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px 6px;border-bottom:1px solid #999;vertical-align:top}th{font-weight:bold}.help{font-size:19px}.note{border-left:3px solid #333;padding-left:12px}.alert{font-weight:bold}dialog{max-width:700px;width:calc(100% - 30px);max-height:85vh;overflow:auto;padding:24px;background:#fff;color:#111}dialog::backdrop{background:#0008}.head{display:flex;justify-content:space-between;gap:16px;align-items:center}.head h2{margin:0}a{color:#174e9c}@media(max-width:700px){main{padding:15px}.controls,.results{grid-template-columns:1fr}table,tbody,tr,td{display:block}thead{display:none}tr{padding:10px 0;border-bottom:1px solid #888}td{border:0;padding:5px 0}input[type=number]{width:130px}h1{font-size:26px}button{min-height:44px}}
+</style></head><body><main>
+<h1>Laboratorio de mediciones y cálculos</h1>
+<p class="note"><strong>Todo es simulado.</strong> Esta calculadora enseña cómo aprovechar los sensores y qué ocurre si faltan datos. La estación operativa de práctica sigue en v04; este laboratorio no es la pantalla que se presenta durante el vuelo.</p>
+<h2>Qué aporta cada pieza <button data-info="blocks" aria-label="Explicar cómo compartir sensores">ⓘ</button></h2>
+<p>Desactivá una entrada para simular su falla. Las piezas obligatorias permanecen en el presupuesto; esta selección no autoriza a quitarlas del CanSat.</p>
+<table><thead><tr><th>Entrada disponible</th><th>Mediciones y cálculos</th><th>Explicación</th></tr></thead><tbody>
+<tr><td><label><input id="baro" type="checkbox" checked> Barómetro</label></td><td>Presión → altura → velocidad de descenso.</td><td><button data-info="baro" aria-label="Explicar barómetro">ⓘ</button></td></tr>
+<tr><td><label><input id="temp" type="checkbox" checked> Temperatura interna</label></td><td>Temperatura del lugar elegido dentro del vehículo.</td><td><button data-info="temp" aria-label="Explicar temperatura">ⓘ</button></td></tr>
+<tr><td><label><input id="imu" type="checkbox" checked> IMU de seis ejes</label></td><td>Aceleración XYZ y giro XYZ; magnitudes y estabilidad.</td><td><button data-info="imu" aria-label="Explicar IMU">ⓘ</button></td></tr>
+<tr><td><label><input id="gps" type="checkbox" checked> GPS</label></td><td>Posición, altura MSL, UTC y satélites; trayectoria.</td><td><button data-info="gps" aria-label="Explicar GPS">ⓘ</button></td></tr>
+<tr><td><label><input id="electric" type="checkbox" checked> Tensión y corriente</label></td><td>Una placa → tensión, corriente, potencia, energía.</td><td><button data-info="electric" aria-label="Explicar medición eléctrica">ⓘ</button></td></tr>
+<tr><td><label><input id="solar" type="checkbox" checked> Panel solar</label></td><td>Señal eléctrica bajo carga → detección de iluminación.</td><td><button data-info="solar" aria-label="Explicar panel solar">ⓘ</button></td></tr>
+</tbody></table>
+<p id="coverage" role="status" aria-live="polite"></p>
+<h2>Probá los cálculos con números ficticios</h2>
+<div class="controls">
+<label>Presión actual (hPa) <button data-info="pressure" aria-label="Explicar presión actual">ⓘ</button><br><input id="pressure" type="number" min="300" max="1100" step="0.1" value="950"></label>
+<label>Presión de referencia P0 (hPa) <button data-info="reference" aria-label="Explicar referencia de altura">ⓘ</button><br><input id="reference" type="number" min="300" max="1100" step="0.01" value="1013.25"></label>
+<label>Tensión del pack (V) <button data-info="voltage" aria-label="Explicar tensión de batería">ⓘ</button><br><input id="voltage" type="number" min="0" max="20" step="0.1" value="8"></label>
+<label>Corriente del pack (A) <button data-info="current" aria-label="Explicar corriente">ⓘ</button><br><input id="current" type="number" min="0" max="3.2" step="0.01" value="0.3"></label>
+<label>Descenso del ejemplo (m/s) <button data-info="descent" aria-label="Explicar velocidad de descenso">ⓘ</button><br><input id="rate" type="number" min="0" max="30" step="0.1" value="15"></label>
+<label>Recepción del ejemplo <button data-info="gaps" aria-label="Explicar huecos y tiempos">ⓘ</button><br><select id="fault"><option value="normal">Diez muestras, una por segundo</option><option value="gap">Faltan tres muestras intermedias</option><option value="time">Timestamps duplicados</option></select></label>
+</div>
+<div class="results" aria-live="polite">
+<div class="result">Altura relativa calculada <button data-info="altitude" aria-label="Explicar altura calculada">ⓘ</button><div id="altitude" class="value"></div><div class="context">Modelo barométrico aproximado; depende de P0.</div></div>
+<div class="result">Potencia calculada <button data-info="power" aria-label="Explicar potencia">ⓘ</button><div id="power" class="value"></div><div class="context">P = tensión × corriente del mismo pack.</div></div>
+<div class="result">Descenso calculado de la ventana <button data-info="descent" aria-label="Explicar pendiente calculada">ⓘ</button><div id="descent" class="value"></div><div id="descent-note" class="context"></div></div>
+<div class="result">Energía cubierta del ejemplo <button data-info="energy" aria-label="Explicar integración de energía">ⓘ</button><div id="energy" class="value"></div><div id="energy-note" class="context"></div></div>
+</div>
+<p>El ejemplo de descenso comienza a 600 m y usa la velocidad elegida para generar diez muestras. Su altura inicial es independiente del cálculo de presión. La energía usa V e I constantes: es una demostración de nueve segundos, no consumo acumulado de un vehículo.</p>
+<h2>Presupuesto y alternativa de radio <button data-info="budget" aria-label="Explicar presupuesto">ⓘ</button></h2>
+<label>Objetivo de precio por radio (ARS) <button data-info="radio" aria-label="Explicar costo y compatibilidad de radio">ⓘ</button><br><input id="radio-price" type="number" min="0" max="1000000" step="1000" value="180000"></label>
+<p>No es una cotización. Se cambian ambos extremos de radio; las demás partidas se mantienen y la reserva es 20%. Toda alternativa debe pasar revisión de banda, red, dirección, alcance y firmware.</p>
+<div class="results" aria-live="polite"><div class="result">CanSat con reserva <button data-info="cap" aria-label="Explicar límite del vehículo">ⓘ</button><div id="flight-cost" class="value"></div><div id="cap-note" class="context"></div></div><div class="result">Hardware y ensayos completos con reserva <button data-info="full" aria-label="Explicar costo completo">ⓘ</button><div id="project-cost" class="value"></div><div class="context">Supone notebook prestada/propia; no incluye viajes. Algunas partidas aún no están cotizadas.</div></div></div>
+<h2>Innovación propuesta <button data-info="innovation" aria-label="Explicar innovación y sus límites">ⓘ</button></h2>
+<p>Verificar cada despliegue relacionando contacto físico, video, altura, descenso y giro. La aplicación mostraría qué está observado, qué está calculado y qué evidencia falta. Un eco de comando o un cambio de estado del programa no prueban que se abrió el paracaídas.</p>
+<p><a href="../Presupuesto_CanSat_v05.xlsx">Presupuesto editable</a> · <a href="../Medicion_presupuesto_y_visualizacion_v05.md">Evaluación técnica para continuar</a> · <a href="../../Iteracion_04/Estacion_simulada/index.html">Estación simulada v04</a></p>
+<dialog id="help" aria-labelledby="help-title"><div class="head"><h2 id="help-title"></h2><button id="close" aria-label="Cerrar explicación">Cerrar</button></div><div id="help-text"></div></dialog>
+</main><script src="mediciones.js"></script><script src="laboratorio.js"></script></body></html>

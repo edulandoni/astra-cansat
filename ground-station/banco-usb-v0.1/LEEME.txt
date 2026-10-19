@@ -1,0 +1,95 @@
+ASTRA GROUND STATION v0.1 — BANCO USB — 17/10/2026
+
+PARA PROBAR AHORA, SIN PLACA NI ANTENA
+Abrir INICIAR_SIMULACION.cmd. Usa Python ya instalado en esta notebook.
+La aplicación no necesita internet ni paquetes adicionales para simular en PC.
+La misión dura 131 segundos, con un paquete por segundo; luego permanece visible.
+Cerrar la ventana finaliza la adquisición y cierra los archivos.
+
+Los escenarios se eligen al iniciar desde una terminal en esta carpeta:
+python app.py --scenario NOMINAL
+python app.py --scenario PACKET_LOSS
+python app.py --scenario CORRUPTED_PACKET
+python app.py --scenario GPS_LOSS
+python app.py --scenario RESET
+
+TEAM_ID 1000 es el ejemplo imaginario de CONAE. NO es el número de ASTRA.
+Reemplazarlo con --team NNNN cuando se confirme el número asignado.
+No se configuró frecuencia, modulación, potencia, Sync Word ni addressing.
+
+ARCHIVOS
+Cada ejecución crea runs/<sesión UTC>/Flight_1000.csv y reception.jsonl.
+El CSV conserva las 22 columnas oficiales, únicamente registros válidos únicos.
+reception.jsonl conserva recepciones, duplicados, rechazos y desconexiones.
+Los archivos no se sobrescriben. Se conserva cada sesión, incluidas pruebas.
+Una opción --backup D:\ASTRA permite una segunda copia CSV en otro disco.
+Dos carpetas en un mismo disco NO prueban independencia del respaldo G2.
+Los errores de escritura quedan visibles. No hay cola durable de reintentos;
+un disco que falla requiere atención y conciliación desde el registro restante.
+
+ENSAYO ESP32, DESPUÉS DE IDENTIFICAR LA PLACA
+1. Identificar modelo y versión exactos y el puerto COM.
+2. Instalar/usar el core Arduino ESP32 adecuado; seleccionar placa correcta.
+3. Revisar firmware/GCS_FlightSimulator/GCS_FlightSimulator.ino.
+4. Mantener TEAM_ID ficticio para banco o ingresar el asignado. Elegir SCENARIO.
+5. Compilar y cargar con la herramienta correspondiente a esa placa.
+6. Para la recepción USB instalar: python -m pip install -r requirements.txt
+7. Ejecutar: python app.py --port COM5 --team 1000
+   COM5 es sólo un ejemplo. USB local: 115200 baud; no es un parámetro RF.
+8. Cerrar otros monitores serie que ocupen el puerto.
+
+No se compiló/cargó este firmware: falta identificar la placa y no hay toolchain
+Arduino configurada. El comportamiento físico no está validado.
+El firmware no utiliza radio, actuadores ni sensores: todos los datos son ficticios.
+El simulador USB emite una misión de 131 muestras y se detiene. Para reiniciar
+una misión, abrir una NUEVA sesión de la aplicación y reiniciar el simulador.
+Abrir un puerto puede reiniciar algunas placas; registrar ese comportamiento.
+
+ALCANCE Y LIMITACIONES
+La GUI muestra simultáneamente las 22 variables y seis gráficos sin pestañas,
+con fondo claro, letras de 14 pt y trazos/ejes destacados. Verificar legibilidad
+y ajuste en la pantalla y bajo sol reales; no se certificó G12 por esta prueba.
+Señala datos antiguos tras 3 s sin un paquete aceptado.
+Contabiliza recepciones válidas, registros únicos, duplicados, rechazos y huecos
+observados entre contadores. No inventa pérdidas anteriores a la primera recepción
+ni posteriores a la última; no se conoce ese denominador sin evidencia adicional.
+Paquetes atrasados pueden completar huecos sin reemplazar el dato actual.
+Un contador que retrocede se marca ambiguo: revisar reset, duplicado o nueva misión.
+No hay reconocimiento universal de reinicio sin un identificador de sesión acordado.
+RESET simula tres observaciones no entregadas con contador/hora continuos; NO prueba
+persistencia ante ESP.restart, corte de energía ni brownout. Eso pertenece a F1/F2/F5.
+GPS_LOSS retiene la última posición, hora y altitud GPS; GPS_SATS=0 avisa sin fix.
+Esa convención es de banco y queda TBR para el ICD; nunca se presenta como medición
+actual. Sin un campo de validez acordado no se presupone que GPS_SATS>0 sea fix válido.
+
+El framer exige CR único; CRLF no es la trama oficial y se rechaza. Buffer máximo
+2048 bytes; ante exceso descarta hasta el próximo CR y registra el evento.
+La recepción serie reintenta cada 2 s y descarta fragmentos de la conexión anterior.
+Los tests comprueban framing por fragmentos; falta ensayar reconexión USB física.
+El parser controla estructura, números finitos, campos, modo, estado y coordenadas;
+no acredita CRC ni detecta toda alteración numérica que siga siendo plausible.
+Las extensiones opcionales se reconocen en el parser pero esta adquisición v0.1 las
+rechaza explícitamente hasta acordar nombres de columnas y esquema con Edu.
+
+No hay telecomandos implementados todavía. CX, ST, CAL, MEC, CMD_ECHO y señal solar
+requieren trabajo posterior trazado a G1/G15/X7 y ASTRA-10/19. CMD_ECHO=NONE en banco.
+MODE=S identifica el dato sintético. No se afirma implementar el modo de simulación
+completo del vehículo de vuelo ni su lógica real de recuperación.
+
+PRUEBAS REPRODUCIBLES
+python -m unittest -v test_ground
+Nueve pruebas: misión/estados, fragmentación, overflow/recuperación, validación,
+huecos/duplicados/atrasados, salto grande acotado, cinco escenarios con doble CSV,
+GPS retenido y preservación de sesiones. Resultados en VERIFICACION.txt.
+Estos son ensayos de software, no pruebas RF, de alcance, de potencia ni de autonomía.
+
+ARQUITECTURA
+simulator.py o USB → acquisition.py → protocol.py → storage.py
+                                        └────→ cola → app.py (GUI)
+El worker adquiere y guarda aunque la GUI demore. Una cola de presentación limitada
+puede descartar actualizaciones antiguas de pantalla; no descarta por eso el CSV.
+No se implementó aún almacenamiento independiente en el gateway ESP32.
+El futuro gateway debe entregar el mismo payload ASCII para reutilizar este parser.
+CRC, cabecera RF y metadatos deben procesarse en el adaptador/gateway acordado.
+
+Consultar ANALISIS_Y_PENDIENTES.txt para requisitos, Jira y decisiones compartidas.
