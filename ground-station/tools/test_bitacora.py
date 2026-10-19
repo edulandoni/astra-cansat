@@ -37,12 +37,13 @@ class BitacoraTests(unittest.TestCase):
                 self.assertEqual(list(Path(d).iterdir()),[])
 
     def test_same_content_and_sync_notice_do_not_create_loops(self):
-        with tempfile.TemporaryDirectory() as d:
-            c=self.capture();save(c,d)
-            c['captured_utc']='2026-10-20T22:00:00Z'
-            c['issues'][0]['updated']='2026-10-20T22:00:00Z'
-            c['issues'][0]['comments'].append({'id':'2','body':'[JIRA-GITHUB-SYNC] Respaldo publicado'})
-            self.assertIsNone(save(c,d))
+        for marker in ['[JIRA-GITHUB-SYNC]',r'\[JIRA-GITHUB-SYNC\]']:
+            with self.subTest(marker=marker),tempfile.TemporaryDirectory() as d:
+                c=self.capture();save(c,d)
+                c['captured_utc']='2026-10-20T22:00:00Z'
+                c['issues'][0]['updated']='2026-10-20T22:00:00Z'
+                c['issues'][0]['comments'].append({'id':'2','body':marker+' Respaldo publicado'})
+                self.assertIsNone(save(c,d))
 
     def test_restricted_comments_and_contact_metadata_are_not_published(self):
         with tempfile.TemporaryDirectory() as d:
@@ -59,5 +60,14 @@ class BitacoraTests(unittest.TestCase):
             self.assertNotIn('secreto',bodies)
             self.assertNotIn('interno',bodies)
             self.assertEqual(json.loads(text)['issues'][0]['excluded_comments'],2)
+
+    def test_previous_fingerprint_version_does_not_force_another_capture(self):
+        with tempfile.TemporaryDirectory() as d:
+            c=self.capture();folder=save(c,d)
+            manifest=folder/'manifest.json'
+            old=json.loads(manifest.read_text(encoding='utf-8'))
+            old['content_sha256']='huella_de_una_regla_anterior'
+            manifest.write_text(json.dumps(old),encoding='utf-8')
+            self.assertIsNone(save(c,d))
 
 if __name__=='__main__': unittest.main(verbosity=2)

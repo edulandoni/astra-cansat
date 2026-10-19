@@ -60,7 +60,8 @@ def content_hash(issues):
     semantic=json.loads(json.dumps(issues))
     for row in semantic:
         row.pop('updated',None)
-        row['comments']=[c for c in row['comments'] if SYNC_MARKER not in c['body']]
+        row['comments']=[c for c in row['comments'] if SYNC_MARKER not in
+                         c['body'].replace('\\[','[').replace('\\]',']')]
     return hashlib.sha256(json.dumps(semantic,ensure_ascii=False,sort_keys=True).encode()).hexdigest()
 
 def save(capture, output):
@@ -68,8 +69,9 @@ def save(capture, output):
     fingerprint=content_hash(issues)
     output=Path(output)
     for manifest in sorted(output.glob('*/manifest.json'), reverse=True):
-        old=json.loads(manifest.read_text(encoding='utf-8'))
-        if old.get('content_sha256')==fingerprint:
+        old_capture=json.loads((manifest.parent/'captura.json').read_text(encoding='utf-8'))
+        # Recalculo la comparación con la regla actual; el manifest histórico queda intacto.
+        if content_hash(old_capture['issues'])==fingerprint:
             return None
         break
     stamp=str(capture['captured_utc'])

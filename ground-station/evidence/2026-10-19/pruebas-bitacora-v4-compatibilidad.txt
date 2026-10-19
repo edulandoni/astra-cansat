@@ -1,0 +1,10 @@
+test_incomplete_and_foreign_captures_leave_no_output (test_bitacora.BitacoraTests.test_incomplete_and_foreign_captures_leave_no_output) ... ok
+test_previous_fingerprint_version_does_not_force_another_capture (test_bitacora.BitacoraTests.test_previous_fingerprint_version_does_not_force_another_capture) ... ok
+test_restricted_comments_and_contact_metadata_are_not_published (test_bitacora.BitacoraTests.test_restricted_comments_and_contact_metadata_are_not_published) ... ok
+test_same_content_and_sync_notice_do_not_create_loops (test_bitacora.BitacoraTests.test_same_content_and_sync_notice_do_not_create_loops) ... ok
+test_updates_preserve_original (test_bitacora.BitacoraTests.test_updates_preserve_original) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.120s
+
+OK
