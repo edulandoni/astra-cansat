@@ -1,0 +1,4 @@
+{"received_utc": "2026-10-19T23:10:59.595886+00:00", "kind": "disconnect", "reason": "APERTURA_SINTETICA_FALLIDA"}
+{"received_utc": "2026-10-19T23:10:59.595886+00:00", "kind": "disconnect", "reason": "DESCONEXION_SINTETICA"}
+{"received_utc": "2026-10-19T23:10:59.595886+00:00", "kind": "accepted", "raw": "1000,13:00:01,2,S,LAUNCH_PAD,0.0,23.0,101.3,4.1,0.18,0.40,0.99,0.14,0.00,0.00,9.81,13:00:01,30.0,-34.6000,-58.4000,9,NONE\r"}
+{"received_utc": "2026-10-19T23:10:59.597892+00:00", "kind": "accepted", "raw": "1000,13:00:02,3,S,LAUNCH_PAD,0.0,23.0,101.3,4.1,0.18,0.78,0.94,0.28,0.00,0.00,9.81,13:00:02,30.0,-34.6000,-58.4000,9,NONE\r"}

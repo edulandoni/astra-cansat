@@ -17,6 +17,7 @@ Me encargo de recibir, registrar y mostrar la telemetría en tierra. Esta carpet
 | Revisar simuladores anteriores | [Archivo DEPRECATED](archive/DEPRECATED/README.md) |
 | Entender el respaldo diario | [Automatización](docs/respaldo-jira-2026-10-19.md) |
 | Investigar mejoras sin hardware | [Prevención de fallas y oportunidades](docs/investigacion/2026-10-19-innovacion-y-prevencion.md) |
+| Revisar desconexiones y recuperación de archivos | [Ensayos de resiliencia](docs/investigacion/2026-10-19-resiliencia-y-recuperacion.md) |
 
 ## Estado de esta incorporación
 
