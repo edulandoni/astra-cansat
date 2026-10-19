@@ -1,0 +1,11 @@
+caso,aceptados_parser,rechazados_parser,observacion
+control_nominal,131,0,El parser acepta la misión sintética base.
+control_equipo_ajeno,0,1,El parser rechaza el identificador ajeno de banco.
+salto_altitud,1,0,Un número finito con formato correcto atraviesa el parser; no hay una alarma semántica en esta capa.
+temperatura_extrema,1,0,Un número finito con formato correcto atraviesa el parser; no hay una alarma semántica en esta capa.
+giro_extremo,1,0,Un número finito con formato correcto atraviesa el parser; no hay una alarma semántica en esta capa.
+altura_congelada,20,0,El parser acepta veinte alturas iguales mientras la presión sintética cambia. Esto no identifica por sí solo qué sensor falló.
+reloj_congelado,10,0,Acepta diez horas de misión iguales con contadores crecientes; una hora bien escrita no acredita avance temporal.
+duplicado_con_contenido_distinto,,,"El segundo paquete con el mismo contador se cuenta como duplicado y queda en raw, pero no se compara su contenido para avisar conflicto."
+reinicio_real_de_contador_modelado,,,Con un contador que vuelve al inicio hay aviso de ambigüedad. La recepción continúa pero latest conserva el contador alto anterior. Necesito acordar cómo distinguir sesiones.
+fallo_escritura_raw,,,Una excepción sintética al registrar raw termina el worker con ERROR. No hay continuidad degradada ni recuperación automática en esta ruta.
