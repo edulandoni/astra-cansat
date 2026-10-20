@@ -1,0 +1,21 @@
+{
+  "hoja": "PDR",
+  "diapositivas_plantilla": 89,
+  "filas_con_maximo_numerico": 127,
+  "criterios_visibles": 86,
+  "criterios_ocultos": 41,
+  "maximos_visibles_sumados": 180,
+  "maximos_incluidos_en_H177": 262,
+  "formulas": {
+    "G2": "=((D177+E177)/2)/H177",
+    "D177": "=SUM(D4:D176)",
+    "E177": "=SUM(E4:E176)",
+    "F177": "=SUM(F4:F176)",
+    "H177": "=SUM(H4:H176)"
+  },
+  "excepcion_puntaje": {
+    "celda": "H175",
+    "maximo": 10
+  },
+  "nota": "Inspección del archivo, no confirmación de la rúbrica efectiva del jurado. No modifiqué ni recalculé el original."
+}

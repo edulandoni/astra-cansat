@@ -10,3 +10,7 @@ Los originales fechados se conservan. Uso estas tareas para continuar cada tema:
 | Rotor y generación | [ASTRA-36 y cálculo](../temas/rotor-y-energia/README.md) |
 
 La metodología y el respaldo de documentación se mantienen en [ASTRA-33](../temas/diario-y-respaldo/README.md). Las referencias originales a ASTRA-21 dentro de informes anteriores son históricas: no indican dónde seguir agregando todos los temas.
+
+## Incorporación del 19/10/2026 — Aula CONAE
+
+[Fuentes oficiales del aula: actualización de requisitos y prioridades](../aula/2026-10-19/revision-aula.md), con bitácora propia en [ASTRA-37](https://astrateam2026.atlassian.net/browse/ASTRA-37). Los informes anteriores se conservan.

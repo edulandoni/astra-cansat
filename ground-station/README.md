@@ -45,3 +45,7 @@ Para continuar el diario uso el [mapa vigente](docs/trazabilidad-vigente-2026-10
 - [Revisión de los 35 comentarios y corrección de referencias](docs/historial/2026-10-19-orden-comentarios.md).
 
 El receptor y los ensayos de CSV siguen en ASTRA-21; el respaldo de documentación de Jira continúa en ASTRA-33. Los originales permanecen íntegros.
+
+## Incorporación del 19/10/2026 — Aula CONAE
+
+[Revisión del aula oficial, plantillas PDR y aclaraciones](docs/aula/2026-10-19/revision-aula.md), con bitácora propia en [ASTRA-37](https://astrateam2026.atlassian.net/browse/ASTRA-37). Los informes anteriores se conservan.

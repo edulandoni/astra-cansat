@@ -1,0 +1,42 @@
+{
+  "consulta": "2026-10-19",
+  "curso": "https://educacion.conae.gov.ar/aulavirtual/course/view.php?id=106",
+  "archivos": [
+    {
+      "id": "bases",
+      "titulo": "Bases y condiciones",
+      "archivo_original": "bases_y_condiciones_-_cansat_universitario_2026-2027.pdf",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5139",
+      "sha256": "d416ed8c463786b4c23196bec8b2e31002156f27126a3e7d9e14fe0dac6c39eb",
+      "bytes": 285660,
+      "copia": "Original conservado localmente; esta publicación guarda análisis y huellas."
+    },
+    {
+      "id": "anexo",
+      "titulo": "Anexo A v2, actualizado 16/10",
+      "archivo_original": "Anexo A v2 .pdf",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5140",
+      "sha256": "27932c87654b64b443d41483c9b48adb06d7d1379dd7a01d54e4ea0035057bc7",
+      "bytes": 532650,
+      "copia": "Original conservado localmente; esta publicación guarda análisis y huellas."
+    },
+    {
+      "id": "pdr",
+      "titulo": "Plantilla PDR v2",
+      "archivo_original": "PDR Template - V2.pptx",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5465",
+      "sha256": "38122779a5245f5015eb67fd26c7da60a29c6272cbe85b5797cda6bdffb37036",
+      "bytes": 3364607,
+      "copia": "Original conservado localmente; esta publicación guarda análisis y huellas."
+    },
+    {
+      "id": "scores",
+      "titulo": "Planilla PDR Scoresheet v2",
+      "archivo_original": "Scoresheet V2.xlsx",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5466",
+      "sha256": "a72559e8d3473d7a40e5737bdabbd9aacf6c8db5e94517df91f4ab0e09c84f97",
+      "bytes": 43312,
+      "copia": "Original conservado localmente; esta publicación guarda análisis y huellas."
+    }
+  ]
+}

@@ -20,3 +20,9 @@ Estas pautas se aplican únicamente dentro de ground-station/. No imponen metodo
 - ASTRA-20: simulador; ASTRA-21: receptor/parser/registro y recuperación CSV; ASTRA-22: GUI; ASTRA-18/23/24/25: sus alcances originales.
 - Diferenciar respaldo de CSV de vuelo (ASTRA-21) de respaldo de documentación de Jira (ASTRA-33). Si una entrada mezcla temas, desglosarla en nuevas entradas relacionadas y conservar el original.
 - Las claves antiguas de documentos/commits son históricas; no reescribirlas para ocultar una ubicación incorrecta. Usar la clave temática correcta en nuevas publicaciones. No presentar esta reorganización como nuevos ensayos.
+
+## Incorporación del 19/10/2026: fuentes del aula
+
+- ASTRA-37 conserva revisión del aula CONAE, plantillas/evaluación PDR, aclaraciones oficiales y contradicciones. Leer docs/aula/2026-10-19/revision-aula.md junto con el mapa vigente antes de usar conclusiones anteriores.
+- Los efectos sobre código, datos, GUI, antena o interfaz se registran también en su tarea técnica. ASTRA-33 conserva únicamente metodología/publicación/respaldo.
+- Conservar el anexo y las respuestas como fuentes distintas. No resolver silenciosamente discrepancias de envolvente, plazo o planilla. No publicar contraseña, cookies, claves de sesión ni transcripciones de sesión completas. No deducir TEAM_ID a partir del nombre de acceso.

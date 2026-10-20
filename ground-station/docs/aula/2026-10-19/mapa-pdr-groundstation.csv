@@ -1,0 +1,10 @@
+item_pdr,diapositiva,fila_scoresheet,necesidad,tareas,estado
+69,72,145,Diagrama general de tierra,ASTRA-23;ASTRA-24,Arquitectura prevista; falta diagrama final y validación de integración.
+70,73,146,Componentes y conexiones de tierra,ASTRA-23,Sin SX1276 integrado ni prueba física; modelo exacto de placa pendiente.
+71,74,148,Comparar al menos dos antenas e incluir patrones,ASTRA-18;ASTRA-25,"Sin antena seleccionada; faltan fuentes, comparación y parámetros acordados."
+72,75,149,Montaje de antena portátil o de mesa,ASTRA-23;ASTRA-25,Diseño y comprobación pendientes.
+73,76,150,Selección de antena justificada,ASTRA-18;ASTRA-25,Pendiente de alternativas y presupuesto de enlace.
+74,77,151,"Software, pantalla, gráficos, comandos verificados y CSV",ASTRA-21;ASTRA-22;ASTRA-24,"Prototipo y ensayos sintéticos existentes; faltan solar, comandos, unidades, hardware y legibilidad."
+55,58,126,Ejemplo de paquete propio justificado,ASTRA-24;ASTRA-18,"Acordar con vuelo; ASCII22 es banco heredado, no formato oficial obligatorio."
+56,59,127,Lista y formato de telecomandos,ASTRA-24,"Acordar cero barométrico, UTC, batería/solar, respuestas y verificación."
+79,82,157,Plan de ensayos de simulación,ASTRA-20;ASTRA-21;ASTRA-22,Hay escenarios y evidencia sintética; no sustituyen pruebas físicas ni misión dinámica validada.
