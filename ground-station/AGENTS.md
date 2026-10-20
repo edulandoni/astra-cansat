@@ -34,3 +34,10 @@ Estas pautas se aplican únicamente dentro de ground-station/. No imponen metodo
 - Publicar un original por tema y enlazar desde otros; conservar versiones fechadas. Para movimientos verificar padres e identificadores y registrar origen/destino sin reemplazar contenido ni cambiar permisos.
 - El diario de organización sigue en ASTRA-33. Las novedades oficiales van a ASTRA-37 y su carpeta temática de requisitos; las pruebas y decisiones técnicas siguen en sus tareas. No usar la carpeta general de decisiones como depósito de todos los análisis.
 - El banco USB es experimental con formato heredado; no archivar toda herramienta provisional como DEPRECATED. El histórico y las versiones previas conservan su valor de evidencia, sin presentarse como la línea de desarrollo vigente.
+
+## Análisis diario priorizado del aula — actualización del 20/10/2026
+
+- ASTRA-37 conserva fuentes, versiones, cobertura y cambios oficiales; ASTRA-38 conserva informes diarios priorizados y su diario al corte. No reemplazar ni renombrar ASTRA-37.
+- Leer docs/aula/2026-10-20/Metodo_analisis_diario_2026-10-20.md y la actualización posterior más reciente. Conservar un informe nuevo por ejecución diaria con hora Argentina, novedades separadas del panorama acumulado, utilidad, prioridades justificadas y fuentes. Si falta acceso o evidencia, identificar el corte como parcial.
+- El informe y comentario diarios en ASTRA-38 se generan aunque no haya novedades, indicando sin cambios. Esta pauta específica actualiza la anterior de no publicar nada sin novedades sólo para ese informe de corte. Investigación y avisos de respaldo siguen evitando duplicados sin avance real.
+- Fotos y antecedentes van a ASTRA-35 y su carpeta de investigación; rotor a ASTRA-36. Registrar tipo, fuente, crédito, permisos y acceso visual real; no convertir referencias localizadas en imágenes inspeccionadas ni premios en validación de cada función.

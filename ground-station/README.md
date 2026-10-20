@@ -65,3 +65,7 @@ La [actualización 03](docs/aula/2026-10-19/referencias-y-verificacion-actualiza
 ## Organización de Drive — actualización del 20/10/2026
 
 La [entrada actual de Drive](https://drive.google.com/file/d/12H-VdifFyThzj4Tz-kXOLtM6EO0BBj49/view?usp=drivesdk) reúne el acceso por temas de groundstation. La [actualización de organización](docs/organizacion-drive/2026-10-20/Reorganizacion_Drive_2026-10-20.md) conserva las ubicaciones anteriores, el mapa Drive–Jira–GitHub, las verificaciones y la pauta de mejora continua. Las entradas anteriores siguen describiendo sus fechas; para continuar uso esta navegación y las actualizaciones posteriores.
+
+## Análisis diario del aula e investigación — actualización del 20/10/2026
+
+El [primer panorama priorizado del 20/10](docs/aula/2026-10-20/Informe_aula_2026-10-20_1156_ART.md) explica preguntas, respuestas, publicaciones y pendientes. El diario de ese análisis continúa en [ASTRA-38](https://astrateam2026.atlassian.net/browse/ASTRA-38); [ASTRA-37](https://astrateam2026.atlassian.net/browse/ASTRA-37) mantiene fuentes y cobertura. La [metodología del corte diario](docs/aula/2026-10-20/Metodo_analisis_diario_2026-10-20.md) actualiza la cadencia sin borrar las entradas anteriores. La [revisión de antecedentes, código y fotos](docs/investigacion/2026-10-20-antecedentes-codigo-y-fotos.md) y su [catálogo visual](docs/investigacion/2026-10-20-catalogo-visual-cansat.csv) documentan el avance en ASTRA-35.
