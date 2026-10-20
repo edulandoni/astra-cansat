@@ -49,3 +49,7 @@ El receptor y los ensayos de CSV siguen en ASTRA-21; el respaldo de documentaci�
 ## Incorporación del 19/10/2026 — Aula CONAE
 
 [Revisión del aula oficial, plantillas PDR y aclaraciones](docs/aula/2026-10-19/revision-aula.md), con bitácora propia en [ASTRA-37](https://astrateam2026.atlassian.net/browse/ASTRA-37). Los informes anteriores se conservan.
+
+## Objetivo activo — documentación oficial completa
+
+[Inventario de cobertura y revisión diaria del aula](docs/aula/2026-10-19/objetivo-cobertura-total.md). La revisión inicial no se considera 100%; el audio y la auditoría exhaustiva de archivos siguen abiertos en ASTRA-37.
