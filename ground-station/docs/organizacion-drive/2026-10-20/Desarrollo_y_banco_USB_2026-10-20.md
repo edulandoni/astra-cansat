@@ -1,0 +1,10 @@
+# Desarrollo de groundstation y banco de pruebas
+20/10/2026. Diario técnico: [ASTRA-20](https://astrateam2026.atlassian.net/browse/ASTRA-20), [ASTRA-21](https://astrateam2026.atlassian.net/browse/ASTRA-21) y [ASTRA-22](https://astrateam2026.atlassian.net/browse/ASTRA-22).
+
+La línea de trabajo está en [groundstation/ground-station](https://github.com/edulandoni/astra-cansat/tree/groundstation/ground-station). Para ejecutar el banco uso [sus instrucciones versionadas](https://github.com/edulandoni/astra-cansat/blob/51c475eb2df8cf2ab5317c5e03455f8ad7c4b729/ground-station/banco-usb-v0.1/README.md). En PC puedo iniciar `python app.py --scenario NOMINAL` desde la carpeta del banco. Hay escenarios NOMINAL, PACKET_LOSS, CORRUPTED_PACKET, GPS_LOSS y RESET.
+
+Conservo el [ZIP original del 17/10](https://drive.google.com/file/d/1dOL2imloQJ7vsTKhMbexEt3YG8NyAUSK/view) como una captura de aquella versión, no como descarga automáticamente actualizada. Su ubicación cambió desde Revision_v1_v2_2026-10-17; mantiene su identificador. Antes de usarlo leo los avisos v2 del repositorio: el TEAM_ID ficticio 1000 y los 22 campos son convenciones del banco, no requisitos actuales ni formato acordado con vuelo.
+
+El banco genera datos sintéticos, los interpreta, registra CSV y muestra telemetría. No configura radio ni demuestra autonomía, enlace, desconexión física o resistencia ante pérdida eléctrica. RESET es una interrupción lógica. El descenso debe revisarse antes de usarlo como demostración del requisito C3. Las [pruebas documentadas](https://github.com/edulandoni/astra-cansat/blob/51c475eb2df8cf2ab5317c5e03455f8ad7c4b729/ground-station/docs/pruebas-2026-10-19.md) indican qué se ejecutó y qué no.
+
+La estación v04 y el laboratorio original quedan en [histórico](https://drive.google.com/drive/folders/1m8UuMYo1uPxvCZOqLKsNPPRGEoFaxsp9). Mantengo esas aplicaciones completas con sus referencias; no mezclo sus fuentes con el banco actual. Para integrar radio necesito primero identificar mi placa y acordar la interfaz con Edu.

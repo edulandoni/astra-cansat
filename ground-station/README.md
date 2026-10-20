@@ -61,3 +61,7 @@ Completé la [auditoría de los cuatro archivos](docs/aula/2026-10-19/auditoria-
 ## Cierre documental del corte del 19/10/2026
 
 La [actualización 03](docs/aula/2026-10-19/referencias-y-verificacion-actualizacion-03.md) incorpora las referencias oficiales enlazadas desde bases, el reglamento de participación, la segunda lectura íntegra del audio y el control de toda la línea visual. El [inventario vigente de 30 entradas](docs/aula/2026-10-19/cobertura-actualizacion-03.json) registra el material disponible analizado y conserva métodos, límites y dudas. La revisión diaria sigue activa para cambios y publicaciones pendientes. Este cierre documental no certifica hardware, cumplimiento de la misión o exactitud infalible de las herramientas.
+
+## Organización de Drive — actualización del 20/10/2026
+
+La [entrada actual de Drive](https://drive.google.com/file/d/12H-VdifFyThzj4Tz-kXOLtM6EO0BBj49/view?usp=drivesdk) reúne el acceso por temas de groundstation. La [actualización de organización](docs/organizacion-drive/2026-10-20/Reorganizacion_Drive_2026-10-20.md) conserva las ubicaciones anteriores, el mapa Drive–Jira–GitHub, las verificaciones y la pauta de mejora continua. Las entradas anteriores siguen describiendo sus fechas; para continuar uso esta navegación y las actualizaciones posteriores.

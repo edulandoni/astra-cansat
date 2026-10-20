@@ -1,0 +1,387 @@
+{
+  "fecha_local": "2026-10-20",
+  "jira": "https://astrateam2026.atlassian.net/browse/ASTRA-33",
+  "root": "https://drive.google.com/drive/folders/1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50",
+  "folders_created": [
+    {
+      "success": true,
+      "id": "1f0FDLVv-JTNntZuxuveJLvkG6OPM0QP8",
+      "url": "https://drive.google.com/drive/folders/1f0FDLVv-JTNntZuxuveJLvkG6OPM0QP8",
+      "title": "01_Desarrollo_groundstation",
+      "parent_id": "1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50"
+    },
+    {
+      "success": true,
+      "id": "1-bP1G1SJQ0rPiITxEWzIyLK3W5qofIK0",
+      "url": "https://drive.google.com/drive/folders/1-bP1G1SJQ0rPiITxEWzIyLK3W5qofIK0",
+      "title": "02_Requisitos_y_aula_CONAE",
+      "parent_id": "1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50"
+    },
+    {
+      "success": true,
+      "id": "1S8nVqudilvHrPWxr1FW-ZRHrQbQNSukE",
+      "url": "https://drive.google.com/drive/folders/1S8nVqudilvHrPWxr1FW-ZRHrQbQNSukE",
+      "title": "05_Investigacion_y_propuestas",
+      "parent_id": "1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50"
+    },
+    {
+      "success": true,
+      "id": "1m8UuMYo1uPxvCZOqLKsNPPRGEoFaxsp9",
+      "url": "https://drive.google.com/drive/folders/1m8UuMYo1uPxvCZOqLKsNPPRGEoFaxsp9",
+      "title": "90_Historico_y_DEPRECATED",
+      "parent_id": "1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50"
+    },
+    {
+      "success": true,
+      "id": "1WXim7QB9TFnCWGwnXtX8SBEmgXU2HOTf",
+      "url": "https://drive.google.com/drive/folders/1WXim7QB9TFnCWGwnXtX8SBEmgXU2HOTf",
+      "title": "Fuentes_oficiales",
+      "parent_id": "1-bP1G1SJQ0rPiITxEWzIyLK3W5qofIK0"
+    },
+    {
+      "success": true,
+      "id": "1iFKw_xhV6nifKSPLrurKMlmgZBXnxfPb",
+      "url": "https://drive.google.com/drive/folders/1iFKw_xhV6nifKSPLrurKMlmgZBXnxfPb",
+      "title": "Analisis_y_aclaraciones",
+      "parent_id": "1-bP1G1SJQ0rPiITxEWzIyLK3W5qofIK0"
+    },
+    {
+      "success": true,
+      "id": "1RH2Q1chaF0YNMZy3XKEjQQDo-bf09yWx",
+      "url": "https://drive.google.com/drive/folders/1RH2Q1chaF0YNMZy3XKEjQQDo-bf09yWx",
+      "title": "Antecedentes_CanSat",
+      "parent_id": "1S8nVqudilvHrPWxr1FW-ZRHrQbQNSukE"
+    },
+    {
+      "success": true,
+      "id": "1IL0hGxgxzt7K8_Q6PNfYtTM3dF8S3niU",
+      "url": "https://drive.google.com/drive/folders/1IL0hGxgxzt7K8_Q6PNfYtTM3dF8S3niU",
+      "title": "Calidad_de_datos_y_prevencion",
+      "parent_id": "1S8nVqudilvHrPWxr1FW-ZRHrQbQNSukE"
+    },
+    {
+      "success": true,
+      "id": "1zag_HwHRkb6JK6ovV8MavUg4jsZNCL6G",
+      "url": "https://drive.google.com/drive/folders/1zag_HwHRkb6JK6ovV8MavUg4jsZNCL6G",
+      "title": "Rotor_y_energia",
+      "parent_id": "1S8nVqudilvHrPWxr1FW-ZRHrQbQNSukE"
+    },
+    {
+      "success": true,
+      "id": "1KiS4oyz2YWM2JCI2gOTFUOVspsglJgLZ",
+      "url": "https://drive.google.com/drive/folders/1KiS4oyz2YWM2JCI2gOTFUOVspsglJgLZ",
+      "title": "Documentacion_historica",
+      "parent_id": "1m8UuMYo1uPxvCZOqLKsNPPRGEoFaxsp9"
+    },
+    {
+      "success": true,
+      "id": "1vj3ahMZcdAkrf8ePNREI_fyzy82ZsogP",
+      "url": "https://drive.google.com/drive/folders/1vj3ahMZcdAkrf8ePNREI_fyzy82ZsogP",
+      "title": "Organizacion_y_registros",
+      "parent_id": "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+    }
+  ],
+  "changes_verified": [
+    {
+      "utc": "2026-10-20T14:30:17.547Z",
+      "id": "1i523f6PGiS5qzzRei1rGly_dQpq7r40M",
+      "original_name": "03_Documentacion_y_decisiones",
+      "final_name": "03_Decisiones_e_interfaces",
+      "original_parents": [
+        "1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50"
+      ],
+      "final_parents": [
+        "1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50"
+      ],
+      "url": "https://drive.google.com/drive/folders/1i523f6PGiS5qzzRei1rGly_dQpq7r40M",
+      "original_size": null,
+      "final_size": null
+    },
+    {
+      "utc": "2026-10-20T14:30:19.172Z",
+      "id": "1t_MY6pQ0dQlwyEijGzghcCDUrdUNqTSH",
+      "original_name": "05_Entregables",
+      "final_name": "06_Material_para_PDR_y_video",
+      "original_parents": [
+        "1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50"
+      ],
+      "final_parents": [
+        "1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50"
+      ],
+      "url": "https://drive.google.com/drive/folders/1t_MY6pQ0dQlwyEijGzghcCDUrdUNqTSH",
+      "original_size": null,
+      "final_size": null
+    },
+    {
+      "utc": "2026-10-20T14:30:21.456Z",
+      "id": "1fP87iRnI99sJf3BuwS-V5zAXWfBRCnYM",
+      "original_name": "01_Archivo_original_2026-10-12",
+      "final_name": "01_Archivo_original_2026-10-12",
+      "original_parents": [
+        "1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50"
+      ],
+      "final_parents": [
+        "1m8UuMYo1uPxvCZOqLKsNPPRGEoFaxsp9"
+      ],
+      "url": "https://drive.google.com/drive/folders/1fP87iRnI99sJf3BuwS-V5zAXWfBRCnYM",
+      "original_size": null,
+      "final_size": null
+    },
+    {
+      "utc": "2026-10-20T14:30:24.718Z",
+      "id": "1czmyjIeHlK3XrtRwmsIABAQj-74LC8Eb",
+      "original_name": "02_Estacion_simulada_v04_original",
+      "final_name": "02_Estacion_simulada_v04_original",
+      "original_parents": [
+        "1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50"
+      ],
+      "final_parents": [
+        "1m8UuMYo1uPxvCZOqLKsNPPRGEoFaxsp9"
+      ],
+      "url": "https://drive.google.com/drive/folders/1czmyjIeHlK3XrtRwmsIABAQj-74LC8Eb",
+      "original_size": null,
+      "final_size": null
+    },
+    {
+      "utc": "2026-10-20T14:30:26.975Z",
+      "id": "12f7A5ruj7AYT2Hr2W_TZNpSuT_3sk6fu",
+      "original_name": "00_LEER_PRIMERO.md",
+      "final_name": "00_LEER_PRIMERO.md",
+      "original_parents": [
+        "1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50"
+      ],
+      "final_parents": [
+        "1KiS4oyz2YWM2JCI2gOTFUOVspsglJgLZ"
+      ],
+      "url": "https://drive.google.com/file/d/12f7A5ruj7AYT2Hr2W_TZNpSuT_3sk6fu/view?usp=drivesdk",
+      "original_size": "2772",
+      "final_size": "2772"
+    },
+    {
+      "utc": "2026-10-20T14:30:30.801Z",
+      "id": "16P_8tdACes23uirmR-koQlB5iE0oVhEf",
+      "original_name": "Revision_v1_v2_2026-10-17",
+      "final_name": "Revision_v1_v2_2026-10-17",
+      "original_parents": [
+        "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+      ],
+      "final_parents": [
+        "1iFKw_xhV6nifKSPLrurKMlmgZBXnxfPb"
+      ],
+      "url": "https://drive.google.com/drive/folders/16P_8tdACes23uirmR-koQlB5iE0oVhEf",
+      "original_size": null,
+      "final_size": null
+    },
+    {
+      "utc": "2026-10-20T14:30:35.032Z",
+      "id": "1chQKLRid1GQzvK1oyajmSSrI74BeOtso",
+      "original_name": "ASTRA37_Cierre_documental_aula_2026-10-19_actualizacion_03.md",
+      "final_name": "ASTRA37_Cierre_documental_aula_2026-10-19_actualizacion_03.md",
+      "original_parents": [
+        "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+      ],
+      "final_parents": [
+        "1iFKw_xhV6nifKSPLrurKMlmgZBXnxfPb"
+      ],
+      "url": "https://drive.google.com/file/d/1chQKLRid1GQzvK1oyajmSSrI74BeOtso/view?usp=drivesdk",
+      "original_size": "11207",
+      "final_size": "11207"
+    },
+    {
+      "utc": "2026-10-20T14:30:36.946Z",
+      "id": "1-4LCEyCUqAB6JCbZGa0nUAeqlLz0HUfK",
+      "original_name": "ASTRA37_Revision_archivos_y_audiovisuales_2026-10-19_actualizacion_02.md",
+      "final_name": "ASTRA37_Revision_archivos_y_audiovisuales_2026-10-19_actualizacion_02.md",
+      "original_parents": [
+        "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+      ],
+      "final_parents": [
+        "1iFKw_xhV6nifKSPLrurKMlmgZBXnxfPb"
+      ],
+      "url": "https://drive.google.com/file/d/1-4LCEyCUqAB6JCbZGa0nUAeqlLz0HUfK/view?usp=drivesdk",
+      "original_size": "20675",
+      "final_size": "20675"
+    },
+    {
+      "utc": "2026-10-20T14:30:39.106Z",
+      "id": "1FA0LB32ekpHXlosXWMAVkTuWswSj9gKC",
+      "original_name": "2026-10-19_revision_aula_CONAE.md",
+      "final_name": "2026-10-19_revision_aula_CONAE.md",
+      "original_parents": [
+        "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+      ],
+      "final_parents": [
+        "1iFKw_xhV6nifKSPLrurKMlmgZBXnxfPb"
+      ],
+      "url": "https://drive.google.com/file/d/1FA0LB32ekpHXlosXWMAVkTuWswSj9gKC/view?usp=drivesdk",
+      "original_size": "13117",
+      "final_size": "13117"
+    },
+    {
+      "utc": "2026-10-20T14:30:41.495Z",
+      "id": "1FfjXDy4PqOR_YrYXC6q-z9sKzD_UhWG8",
+      "original_name": "2026-10-19-catalogo-cansat.csv",
+      "final_name": "2026-10-19-catalogo-cansat.csv",
+      "original_parents": [
+        "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+      ],
+      "final_parents": [
+        "1RH2Q1chaF0YNMZy3XKEjQQDo-bf09yWx"
+      ],
+      "url": "https://drive.google.com/file/d/1FfjXDy4PqOR_YrYXC6q-z9sKzD_UhWG8/view?usp=drivesdk",
+      "original_size": "7799",
+      "final_size": "7799"
+    },
+    {
+      "utc": "2026-10-20T14:30:52.817Z",
+      "id": "1BX75keo-wQGLqeGxd_uILAh4JPx_Acfk",
+      "original_name": "2026-10-19-antecedentes-cansat.md",
+      "final_name": "2026-10-19-antecedentes-cansat.md",
+      "original_parents": [
+        "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+      ],
+      "final_parents": [
+        "1RH2Q1chaF0YNMZy3XKEjQQDo-bf09yWx"
+      ],
+      "url": "https://drive.google.com/file/d/1BX75keo-wQGLqeGxd_uILAh4JPx_Acfk/view?usp=drivesdk",
+      "original_size": "8069",
+      "final_size": "8069"
+    },
+    {
+      "utc": "2026-10-20T14:30:54.968Z",
+      "id": "1gn-23kr-wZz9REoaCJ5ZivTevtMtpFoc",
+      "original_name": "2026-10-19-rotor-y-generacion.md",
+      "final_name": "2026-10-19-rotor-y-generacion.md",
+      "original_parents": [
+        "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+      ],
+      "final_parents": [
+        "1zag_HwHRkb6JK6ovV8MavUg4jsZNCL6G"
+      ],
+      "url": "https://drive.google.com/file/d/1gn-23kr-wZz9REoaCJ5ZivTevtMtpFoc/view?usp=drivesdk",
+      "original_size": "8736",
+      "final_size": "8736"
+    },
+    {
+      "utc": "2026-10-20T14:30:56.995Z",
+      "id": "1wEzkKh5uReyrSSN03JehKGbvvXgJA3bk",
+      "original_name": "Estado_ground_station_2026-10-12.md",
+      "final_name": "Estado_ground_station_2026-10-12.md",
+      "original_parents": [
+        "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+      ],
+      "final_parents": [
+        "1KiS4oyz2YWM2JCI2gOTFUOVspsglJgLZ"
+      ],
+      "url": "https://drive.google.com/file/d/1wEzkKh5uReyrSSN03JehKGbvvXgJA3bk/view?usp=drivesdk",
+      "original_size": "13349",
+      "final_size": "13349"
+    },
+    {
+      "utc": "2026-10-20T14:30:58.805Z",
+      "id": "1_fi5Mjg0Czi0Op6ArQAaQoZd60pFk56P",
+      "original_name": "Ground_station_inventario_y_faltantes_2026-10-13.md",
+      "final_name": "Ground_station_inventario_y_faltantes_2026-10-13.md",
+      "original_parents": [
+        "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+      ],
+      "final_parents": [
+        "1KiS4oyz2YWM2JCI2gOTFUOVspsglJgLZ"
+      ],
+      "url": "https://drive.google.com/file/d/1_fi5Mjg0Czi0Op6ArQAaQoZd60pFk56P/view?usp=drivesdk",
+      "original_size": "11486",
+      "final_size": "11486"
+    },
+    {
+      "utc": "2026-10-20T14:31:00.953Z",
+      "id": "1JWF0SGr2vqOWcNde7DDraJDny64J78Pv",
+      "original_name": "Ground_station_relevamiento_argentino_2026-10-12.md",
+      "final_name": "Ground_station_relevamiento_argentino_2026-10-12.md",
+      "original_parents": [
+        "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+      ],
+      "final_parents": [
+        "1RH2Q1chaF0YNMZy3XKEjQQDo-bf09yWx"
+      ],
+      "url": "https://drive.google.com/file/d/1JWF0SGr2vqOWcNde7DDraJDny64J78Pv/view?usp=drivesdk",
+      "original_size": "36952",
+      "final_size": "36952"
+    },
+    {
+      "utc": "2026-10-20T14:31:03.779Z",
+      "id": "1dOL2imloQJ7vsTKhMbexEt3YG8NyAUSK",
+      "original_name": "Banco_USB_legacy_v1_2026-10-17.zip",
+      "final_name": "Banco_USB_legacy_v1_2026-10-17.zip",
+      "original_parents": [
+        "16P_8tdACes23uirmR-koQlB5iE0oVhEf"
+      ],
+      "final_parents": [
+        "1f0FDLVv-JTNntZuxuveJLvkG6OPM0QP8"
+      ],
+      "url": "https://drive.google.com/file/d/1dOL2imloQJ7vsTKhMbexEt3YG8NyAUSK/view?usp=drivesdk",
+      "original_size": "69567",
+      "final_size": "69567"
+    },
+    {
+      "utc": "2026-10-20T14:31:06.417Z",
+      "id": "1Cz643hgGvxKKtbbdQcNWe27jqzGVHYov",
+      "original_name": "Metodologia_fija_diario_sin_sobrescritura_17-10-2026.txt",
+      "final_name": "Metodologia_fija_diario_sin_sobrescritura_17-10-2026.txt",
+      "original_parents": [
+        "16P_8tdACes23uirmR-koQlB5iE0oVhEf"
+      ],
+      "final_parents": [
+        "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+      ],
+      "url": "https://drive.google.com/file/d/1Cz643hgGvxKKtbbdQcNWe27jqzGVHYov/view?usp=drivesdk",
+      "original_size": "3900",
+      "final_size": "3900"
+    },
+    {
+      "utc": "2026-10-20T14:31:08.499Z",
+      "id": "1VJKlQe6Y1nrOpPmz6K44wkzyRCUyzzHR",
+      "original_name": "PAUTA_BITACORA_JIRA_CANSAT.txt",
+      "final_name": "PAUTA_BITACORA_JIRA_CANSAT.txt",
+      "original_parents": [
+        "16P_8tdACes23uirmR-koQlB5iE0oVhEf"
+      ],
+      "final_parents": [
+        "1i523f6PGiS5qzzRei1rGly_dQpq7r40M"
+      ],
+      "url": "https://drive.google.com/file/d/1VJKlQe6Y1nrOpPmz6K44wkzyRCUyzzHR/view?usp=drivesdk",
+      "original_size": "2550",
+      "final_size": "2550"
+    },
+    {
+      "utc": "2026-10-20T14:31:10.707Z",
+      "id": "1Eg5nFWSGCnWUZtL9F8nVoTNsPm9zJkSp",
+      "original_name": "anexo_requerimientos_tecnicos_-_cansat_universitario_2026-2027_v2.pdf",
+      "final_name": "anexo_requerimientos_tecnicos_-_cansat_universitario_2026-2027_v2.pdf",
+      "original_parents": [
+        "16P_8tdACes23uirmR-koQlB5iE0oVhEf"
+      ],
+      "final_parents": [
+        "1WXim7QB9TFnCWGwnXtX8SBEmgXU2HOTf"
+      ],
+      "url": "https://drive.google.com/file/d/1Eg5nFWSGCnWUZtL9F8nVoTNsPm9zJkSp/view?usp=drivesdk",
+      "original_size": "532650",
+      "final_size": "532650"
+    },
+    {
+      "utc": "2026-10-20T14:31:12.652Z",
+      "id": "1TbKuxQMr4HkIdFulr2HvFlowbHGc98Kx",
+      "original_name": "anexo_requerimientos_tecnicos_-_cansat_universitario_2026-2027.pdf",
+      "final_name": "anexo_requerimientos_tecnicos_-_cansat_universitario_2026-2027.pdf",
+      "original_parents": [
+        "16P_8tdACes23uirmR-koQlB5iE0oVhEf"
+      ],
+      "final_parents": [
+        "1WXim7QB9TFnCWGwnXtX8SBEmgXU2HOTf"
+      ],
+      "url": "https://drive.google.com/file/d/1TbKuxQMr4HkIdFulr2HvFlowbHGc98Kx/view?usp=drivesdk",
+      "original_size": "290309",
+      "final_size": "290309"
+    }
+  ],
+  "limits": "Movimientos de metadatos sin sustituir bytes; los identificadores permanecen. Las carpetas históricas completas conservan su interior. No modifiqué permisos ni carpetas generales ajenas."
+}

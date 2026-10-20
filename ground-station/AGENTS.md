@@ -26,3 +26,11 @@ Estas pautas se aplican únicamente dentro de ground-station/. No imponen metodo
 - ASTRA-37 conserva revisión del aula CONAE, plantillas/evaluación PDR, aclaraciones oficiales y contradicciones. Leer docs/aula/2026-10-19/revision-aula.md junto con el mapa vigente antes de usar conclusiones anteriores.
 - Los efectos sobre código, datos, GUI, antena o interfaz se registran también en su tarea técnica. ASTRA-33 conserva únicamente metodología/publicación/respaldo.
 - Conservar el anexo y las respuestas como fuentes distintas. No resolver silenciosamente discrepancias de envolvente, plazo o planilla. No publicar contraseña, cookies, claves de sesión ni transcripciones de sesión completas. No deducir TEAM_ID a partir del nombre de acceso.
+
+## Organización estable de Drive — actualización del 20/10/2026
+
+- Leer docs/organizacion-drive/2026-10-20/Mantenimiento_y_mejora_continua_2026-10-20.md y el mapa de esa carpeta antes de publicar archivos o reorganizar mi Drive. Seguir actualizaciones fechadas posteriores sin borrar las anteriores.
+- Mantener carpetas principales por función; agregar pruebas/versiones dentro de su tema. Una nueva publicación no justifica mover o renumerar la estructura. Revisarla sólo ante confusión real o al preparar un hito.
+- Publicar un original por tema y enlazar desde otros; conservar versiones fechadas. Para movimientos verificar padres e identificadores y registrar origen/destino sin reemplazar contenido ni cambiar permisos.
+- El diario de organización sigue en ASTRA-33. Las novedades oficiales van a ASTRA-37 y su carpeta temática de requisitos; las pruebas y decisiones técnicas siguen en sus tareas. No usar la carpeta general de decisiones como depósito de todos los análisis.
+- El banco USB es experimental con formato heredado; no archivar toda herramienta provisional como DEPRECATED. El histórico y las versiones previas conservan su valor de evidencia, sin presentarse como la línea de desarrollo vigente.
