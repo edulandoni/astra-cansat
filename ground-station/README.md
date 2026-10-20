@@ -53,3 +53,7 @@ El receptor y los ensayos de CSV siguen en ASTRA-21; el respaldo de documentaci�
 ## Objetivo activo — documentación oficial completa
 
 [Inventario de cobertura y revisión diaria del aula](docs/aula/2026-10-19/objetivo-cobertura-total.md). La revisión inicial no se considera 100%; el audio y la auditoría exhaustiva de archivos siguen abiertos en ASTRA-37.
+
+## Avance de cobertura — segunda lectura del 19/10/2026
+
+Completé la [auditoría de los cuatro archivos](docs/aula/2026-10-19/auditoria-archivos-actualizacion-01.md), con [controles verificables](docs/aula/2026-10-19/control-archivos-actualizacion-01.json). Agregué el [análisis asistido de los audiovisuales y una consulta nueva](docs/aula/2026-10-19/audiovisuales-y-foro-actualizacion-02.md). El [inventario ampliado](docs/aula/2026-10-19/cobertura-actualizacion-02.json) reúne 22 recursos y conserva los límites del reconocimiento de voz y el muestreo visual. El objetivo de 100% sigue activo; no se presenta una revisión audiovisual asistida como certificación exhaustiva.
