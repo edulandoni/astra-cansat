@@ -1,0 +1,92 @@
+{
+  "tarea": "ASTRA-37",
+  "fecha_utc": "2026-10-20T01:03:10.591880+00:00",
+  "copias_actuales_aula": [
+    {
+      "recurso": 5139,
+      "sha256": "d416ed8c463786b4c23196bec8b2e31002156f27126a3e7d9e14fe0dac6c39eb",
+      "bytes": 285660,
+      "coincide_con_primera_revision": true
+    },
+    {
+      "recurso": 5140,
+      "sha256": "27932c87654b64b443d41483c9b48adb06d7d1379dd7a01d54e4ea0035057bc7",
+      "bytes": 532650,
+      "coincide_con_primera_revision": true
+    },
+    {
+      "recurso": 5465,
+      "sha256": "38122779a5245f5015eb67fd26c7da60a29c6272cbe85b5797cda6bdffb37036",
+      "bytes": 3364607,
+      "coincide_con_primera_revision": true
+    },
+    {
+      "recurso": 5466,
+      "sha256": "a72559e8d3473d7a40e5737bdabbd9aacf6c8db5e94517df91f4ab0e09c84f97",
+      "bytes": 43312,
+      "coincide_con_primera_revision": true
+    }
+  ],
+  "paginas_publicas": [
+    {
+      "url": "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina",
+      "archivo": "cansat-argentina.html",
+      "sha256_html": "dc8fbd94e21475c7c041b8856cc5b87eb1bde341ed4e8c6a28cff5bd55654148",
+      "sha256_texto_principal": "e0d064ab38d78f4b62b889d7a09b23a897e6a538e7ab5b5dd7f790d95df9b5e1"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/cansat-universitario",
+      "archivo": "cansat-universitario.html",
+      "sha256_html": "6df5f56f2877d723c0a79ad00c63903721ca455dab771cfff4f058e2e8c62355",
+      "sha256_texto_principal": "fa4581fe58f01864002cd705770d7d9a133717b12f135945851eabba5488b076"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario",
+      "archivo": "requisitos-cansat-universitario.html",
+      "sha256_html": "e84ad46a33b7f55189a015adcfd381f3fe2cb805e6feb2b10e7677fb42e82c2e",
+      "sha256_texto_principal": "bc1343a838b5d4e747d0639c5389b8632bf4b3e179bc551ba4782f0fbda96cf6"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/cronograma",
+      "archivo": "cronograma.html",
+      "sha256_html": "6fcd51bd19424f8e1d7bba6a712c1016904d9d5be77ffe8a304512b21ad34122",
+      "sha256_texto_principal": "59a49a084ac24b81a8d246513ae4f434d9afda6d449c69b6033355ff3d3955d6"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/como-me-inscribo",
+      "archivo": "como-me-inscribo.html",
+      "sha256_html": "2bb5fe7d351f37328375464e7fb43a6ed72444e343bd04e2dd737939ce2e7c14",
+      "sha256_texto_principal": "5b2a17efd9cc37346e529d500795ef43a60baa4d209779169d7b9669078c19c4"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/convocatoria-cansat-universitario-2026",
+      "archivo": "convocatoria-cansat-universitario-2026.html",
+      "sha256_html": "27a576f49251aa074babebe29a0f7219e895b7a074744a7e00dbcd3e7bb7a4b0",
+      "sha256_texto_principal": "55da784295eee3ec88e7e668872b4ddb682f4aa1d79af0b3c8da6cbf2b792f11"
+    }
+  ],
+  "archivos_publicos": [
+    {
+      "nombre": "anexo_requerimientos_tecnicos_-_cansat_universitario_2026-2027_v2.pdf",
+      "sha256": "27932c87654b64b443d41483c9b48adb06d7d1379dd7a01d54e4ea0035057bc7",
+      "bytes": 532650,
+      "paginas": 7,
+      "url": "https://www.argentina.gob.ar/sites/default/files/2026/08/anexo_requerimientos_tecnicos_-_cansat_universitario_2026-2027_v2.pdf"
+    },
+    {
+      "nombre": "bases_y_condiciones_-_cansat_universitario_2026-2027.pdf",
+      "sha256": "d416ed8c463786b4c23196bec8b2e31002156f27126a3e7d9e14fe0dac6c39eb",
+      "bytes": 285660,
+      "paginas": 12,
+      "url": "https://www.argentina.gob.ar/sites/default/files/2026/08/bases_y_condiciones_-_cansat_universitario_2026-2027.pdf"
+    },
+    {
+      "nombre": "reglamento_de_participacion_-_cansat_universitario_2026-2027.pdf",
+      "sha256": "8f9ee4268ca41ec94450e797dc3d363ad57c2f2b9be24f7f07669a6945f16067",
+      "bytes": 170885,
+      "paginas": 2,
+      "url": "https://www.argentina.gob.ar/sites/default/files/2026/08/reglamento_de_participacion_-_cansat_universitario_2026-2027.pdf"
+    }
+  ],
+  "nota": "Originales y capturas completas permanecen privados; sólo se publican referencias, huellas y mi análisis."
+}

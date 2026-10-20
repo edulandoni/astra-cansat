@@ -1,0 +1,100 @@
+{
+  "tarea": "ASTRA-37",
+  "fecha_utc": "2026-10-20T01:03:10.591880+00:00",
+  "video": [
+    {
+      "source": "CONAE - Presentacion.mp4",
+      "sha256": "aeea75cd9f7b71f504648c5fc772b49636060dc9d548f1fd077916c0fa1b3a1f",
+      "duration_s": 146.36,
+      "decoded_frames": 3659,
+      "ocr_frames": 209,
+      "frame_rate": "25/1",
+      "last_frame_s": 146.32,
+      "max_frame_gap_s": 0.040000000000020464,
+      "frame_sequence_sha256": "bd70fee3c58a2fe669682766fb39064d98a3aff23958cebebcc1007195a6e5fc",
+      "decode_errors": 0,
+      "first_ocr_frame_s": 0.0,
+      "last_ocr_frame_s": 146.0,
+      "max_ocr_interval_s": 1.0,
+      "abrupt_changes": 65
+    },
+    {
+      "source": "Reunion_apertura_CANSAT_2026_m4-HQMSi2Wo_Visual360.mp4",
+      "sha256": "38460f7079319de33f80c3f8b081606979e0adc4a3f35c5db2f1c51e0f789242",
+      "duration_s": 3105.033333,
+      "decoded_frames": 93151,
+      "ocr_frames": 3106,
+      "frame_rate": "30/1",
+      "last_frame_s": 3105.0,
+      "max_frame_gap_s": 0.033333333333757764,
+      "frame_sequence_sha256": "5f8199cc2a47190481146183ae213d89cefd11266099dee98475c5e6787aa670",
+      "decode_errors": 0,
+      "first_ocr_frame_s": 0.0,
+      "last_ocr_frame_s": 3105.0,
+      "max_ocr_interval_s": 1.0,
+      "abrupt_changes": 0
+    }
+  ],
+  "segunda_lectura_audio": [
+    {
+      "material": "institucional",
+      "sha256_fuente": "aeea75cd9f7b71f504648c5fc772b49636060dc9d548f1fd077916c0fa1b3a1f",
+      "duration_s": 146.36,
+      "decoded_samples": 2341760,
+      "sample_rate": 16000,
+      "model": "base",
+      "vad_filter": false,
+      "complete": true,
+      "recognized_segments": 0,
+      "last_recognized_end_s": null,
+      "sha256_resultado_privado": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "material": "apertura",
+      "sha256_fuente": "45b5ebff7bee0cc3966c9bfeaef9d33cb7d977244ef05f21ff8071a3e117b740",
+      "duration_s": 3105.041,
+      "decoded_samples": 49680533,
+      "sample_rate": 16000,
+      "model": "base",
+      "vad_filter": false,
+      "complete": true,
+      "recognized_segments": 480,
+      "last_recognized_end_s": 3102.68,
+      "sha256_resultado_privado": "c932b5f6fa8c2bdad7917bc27b472b606a197eb8b2ad379806f42c47709601f7"
+    }
+  ],
+  "primera_lectura_audio": {
+    "models": [
+      "small"
+    ],
+    "complete": true,
+    "fuente": "audiovisuales-y-foro-actualizacion-02.md"
+  },
+  "revision_de_imagenes": {
+    "institucional": {
+      "imagenes_inspeccionadas": 209,
+      "hojas_contacto_inspeccionadas": 18
+    },
+    "apertura": {
+      "candidatos_ocr_inspeccionados": 24,
+      "muestras_periodicas_previas_inspeccionadas": 53,
+      "candidatos_texto_tecnico_ocr": 0
+    }
+  },
+  "aula": {
+    "secciones_visibles": 3,
+    "actividades_en_indice": 9,
+    "debates_releidos": 7,
+    "mensajes_releidos": 14,
+    "copias_archivos_reverificadas": 4
+  },
+  "automatizacion": {
+    "id": "respaldo-diario-jira-github-groundstation",
+    "status": "ACTIVE",
+    "rrule": "FREQ=DAILY;BYHOUR=21;BYMINUTE=0;BYSECOND=0",
+    "notification_policy": "failed_runs_only",
+    "referencias_publicas_incluidas": true,
+    "ejecucion_futura_acreditada": false
+  },
+  "limites": "Análisis documental asistido, sin escucha humana ni OCR de cada cuadro. Se procesó toda la línea de tiempo, se contrastaron lecturas completas y se revisaron imágenes/textos candidatos. No es exactitud del 100%, certificación de cumplimiento, prueba física o resolución de contradicciones oficiales."
+}
