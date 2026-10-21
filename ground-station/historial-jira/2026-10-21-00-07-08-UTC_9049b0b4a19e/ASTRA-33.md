@@ -1,0 +1,379 @@
+# ASTRA-33 — DOC — Mantener diario, trazabilidad y respaldo de groundstation
+
+[Abrir en Jira](https://astrateam2026.atlassian.net/browse/ASTRA-33)
+
+Estado observado: En curso. Asignación: Cristian Ponsone. Creación: Cristian Ponsone.
+
+## Descripción original consultada
+
+## Objetivo
+
+Conservar el diario y el respaldo Jira → GitHub de mi área con trazabilidad por tema. Jira es la fuente del razonamiento para el PDR; GitHub conserva código, evidencias y versiones.
+
+## Alcance
+
+Metodología sin sobrescritura, índices, mapa de comentarios y archivos, exportador de capturas y respaldo diario. Sólo mis tareas y ground-station/ en la rama groundstation. No regula cómo trabajan otras áreas.
+
+## Resultado esperado y cierre
+
+Cada avance tiene tarea temática, fecha, objetivo, resultados, límites y evidencia. Las correcciones enlazan originales; no se borran, editan ni trasladan físicamente comentarios históricos. El respaldo consulta todas las páginas y verifica pertenencia; conserva capturas y excluye datos privados. Sus avisos se registran aquí. La programación y la máquina deben estar disponibles; no prometo un servicio independiente permanente.
+
+## Estado real al crear esta tarea
+
+El método, exportador y respaldo ya están documentados y tienen verificaciones previas. Inicio esta tarea para ordenar la ubicación de sus registros; no atribuyo ensayos nuevos. Las entradas procedentes de ASTRA-20 y ASTRA-21 se incorporarán mediante comentarios nuevos con enlaces de origen. La tarea continúa como mantenimiento En curso.
+
+## Comentarios conservados
+
+### 2026-10-19T20:41:04.561-0300 — comentario 10054
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10054). Última edición informada: 2026-10-19T20:41:04.561-0300.
+
+## 19/10/2026 — COMENTARIO 1 — Diario de mi área y corrección de ubicación
+
+### Motivo y criterio
+
+Separé el mantenimiento de la bitácora de las tareas de desarrollo. Antes registré metodología y avisos generales en el simulador ASTRA-20 y en el receptor ASTRA-21; esa ubicación mezcló sus objetivos. Desde esta entrada, esta tarea es la referencia para diario, trazabilidad y respaldo. No borro, edito ni traslado físicamente los originales. Estas incorporaciones son una reorganización de trabajo anterior, no avances nuevos repetidos.
+
+### Método vigente
+
+Escribo en primera persona por mi trabajo y en plural por el equipo. Registro fecha real y número correlativo dentro de cada tarea; para una actualización enlazo la entrada original y explico cambio, motivo, evidencia y efectos. Conservo descripciones, comentarios, adjuntos, archivos y versiones anteriores. Una copia no autoriza a sustituirlos.
+
+Cada avance registra problema y requisitos, objetivo, trabajo y alternativas, configuración/versión, pruebas y resultados, evidencia, límites, pendientes y qué puedo afirmar en el PDR. Jira conserva el razonamiento; GitHub conserva código/evidencias y referencias de ida y vuelta. Un enlace aislado no reemplaza el relato.
+
+Cada tema tiene su tarea. Backlog se reserva a ideas no asumidas; Por hacer a trabajo comprometido sin comenzar; En curso a trabajo iniciado. Sólo gestiono tareas creadas por mí o asignadas a mí, y sólo publico en mi rama groundstation y ground-station/. Este método se aplica a mi área, sin imponerlo al resto.
+
+### Procedencia e historial
+
+La metodología fija original sigue íntegra en ASTRA-20, comentario 5 del 17/10:  
+https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10037  
+La entrada previa sobre voz y estados se conserva:  
+https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10036
+
+Documento histórico: https://github.com/edulandoni/astra-cansat/blob/a1a7d383ed4498b540c0f7a12500a66f84bc3551/ground-station/docs/metodologia-2026-10-19.md  
+La referencia histórica a ASTRA-20 se entiende como origen, no como ubicación futura de la metodología.
+
+Creé y pasé esta tarea por las transiciones disponibles hasta En curso porque ya existe implementación/documentación y ahora estoy manteniendo su organización. No cierro los desarrollos por esta corrección.
+
+### 2026-10-19T20:41:06.830-0300 — comentario 10055
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10055). Última edición informada: 2026-10-19T20:41:06.830-0300.
+
+## 19/10/2026 — COMENTARIO 2 — Respaldo Jira → GitHub y antecedentes incorporados
+
+### Trabajo que corresponde a esta tarea
+
+El exportador guardar_bitacora.py recibe una lectura normalizada y verificada; no inicia sesión ni consulta Jira por sí solo. Guarda carpetas nuevas con JSON, documentos legibles, índice y manifiestos. Comprueba pertenencia y páginas completas. La copia pública omite correos, identificadores de cuenta y comentarios restringidos/internos; no incluye adjuntos binarios ni reacciones. Jira conserva los originales.
+
+La automatización de este chat quedó programada diariamente a las 21:00 de Argentina y complementa el cierre de cada tanda. Depende de aplicación, máquina y conexiones. Hoy actualicé su destino de avisos a ASTRA-33, conservando horario, estado ACTIVE y política failed_runs_only. La confirmación del cambio acredita configuración, no una ejecución futura.
+
+### Corrección técnica anterior que conservo
+
+El primer control de deduplicación no reconocía la etiqueta del respaldo escapada por Jira y creó una captura adicional. Se corrigió para admitir formas normal/escapada y comparar huellas anteriores sin reescribir manifiestos. La verificación anterior informó cinco pruebas aprobadas y «Sin cambios» al repetir la lectura real. No repito esos ensayos en esta reorganización ni los atribuyo al simulador o al parser.
+
+### De dónde provienen las entradas
+
+ASTRA-20: comentarios 6 (parte de publicación general), 7, 8 y 9:  
+https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10039  
+https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10045  
+https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10046  
+https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10048
+
+ASTRA-21: comentario 4 (sólo exportador/respaldo), 5, 7 y 10:  
+https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10040  
+https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10047  
+https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10050  
+https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10053
+
+Los apartados técnicos de simulador/parser de las entradas mixtas permanecen vinculados a sus tareas. El respaldo de documentación de Jira es distinto del respaldo de CSV de vuelo: este último sí corresponde a ASTRA-21.
+
+### Evidencia conservada y pendientes
+
+Exportador y pruebas: https://github.com/edulandoni/astra-cansat/tree/groundstation/ground-station/tools  
+Capturas anteriores: https://github.com/edulandoni/astra-cansat/tree/groundstation/ground-station/historial-jira  
+Corrección anterior: https://github.com/edulandoni/astra-cansat/commit/4fe04e377c9a786dc15dec4e406010c534b3a1bc
+
+Falta verificar cada ejecución futura y mantener la clasificación al incorporar temas nuevos. No reescribo comentarios ni mensajes de commits históricos. Los avisos generales siguientes pertenecen exclusivamente a esta tarea.
+
+### 2026-10-19T20:43:59.081-0300 — comentario 10061
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10061). Última edición informada: 2026-10-19T20:43:59.081-0300.
+
+## 19/10/2026 — COMENTARIO 3 — Auditoría y mapa temático publicados
+
+Revisé los 35 comentarios existentes en mis siete tareas antes de la corrección: 23 conservan su ubicación, 8 continúan en una tarea propia y 4 tenían temas mezclados que desglosé. No edité ni eliminé comentarios anteriores. ASTRA-20 recibió la aclaración 10059 y ASTRA-21 la 10060, ambas con enlaces al destino.
+
+Creé ASTRA-33/34/35/36, asignadas a mí y En curso porque los trabajos ya comenzaron. Los ensayos concretos de reconexión, almacenamiento y recuperación CSV siguen en ASTRA-21. No cambié estados, responsables o descripciones de las siete tareas anteriores.
+
+En GitHub consulté la lista del repositorio y los comentarios de conversación/revisión: el PR histórico 1 no tenía comentarios que reubicar. Conservé archivos fechados y mensajes de commits; agregué un mapa vigente, guías por tema y clasificación de cada comentario. La auditoría explica también la asociación corregida de los commits históricos, sin reescribirlos.
+
+Comprobé 187 archivos preexistentes conservados byte por byte; sólo amplié README y AGENTS de mi área, además de crear los documentos nuevos. Revisé enlaces locales, manifiestos de las ocho capturas históricas y ausencia de cadenas de credenciales. No modifiqué código ni ejecuté ensayos técnicos nuevos.
+
+Actualicé la automatización existente: sus avisos van exclusivamente a ASTRA-33. Verifiqué en la configuración guardada que mantiene ACTIVE, horario diario 21:00 y notificaciones failed_runs_only. Una ejecución futura sigue pendiente; esta revisión no la simula.
+
+Auditoría completa: https://github.com/edulandoni/astra-cansat/blob/a4c26b05bc66ef77efa702f03256e4bb3ba2d3c8/ground-station/docs/historial/2026-10-19-orden-comentarios.md  
+Clasificación: https://github.com/edulandoni/astra-cansat/blob/a4c26b05bc66ef77efa702f03256e4bb3ba2d3c8/ground-station/docs/comentarios-clasificados-2026-10-19.json  
+Mapa vigente: https://github.com/edulandoni/astra-cansat/blob/a4c26b05bc66ef77efa702f03256e4bb3ba2d3c8/ground-station/docs/trazabilidad-vigente-2026-10-19.md  
+Actualización del respaldo: https://github.com/edulandoni/astra-cansat/blob/a4c26b05bc66ef77efa702f03256e4bb3ba2d3c8/ground-station/docs/respaldo-jira-actualizacion-2026-10-19.md  
+Cambio: https://github.com/edulandoni/astra-cansat/commit/a4c26b05bc66ef77efa702f03256e4bb3ba2d3c8
+
+Esta entrada corrige la ubicación; los originales siguen visibles y enlazados como historial. Mantener este mapa al incorporar temas nuevos es trabajo de esta tarea.
+
+### 2026-10-19T20:45:13.482-0300 — comentario 10065
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10065). Última edición informada: 2026-10-19T20:45:13.482-0300.
+
+## 19/10/2026 — COMENTARIO 4 — Respaldo de cierre de la corrección temática
+
+\[JIRA-GITHUB-SYNC\]
+
+Publiqué una captura nueva de mis once tareas, con 46 comentarios y el historial consultado. Comprobé que los 35 comentarios previos conservan cuerpo y fechas, y que las siete tareas anteriores mantienen título, descripción, creador, responsable y estado. Las cuatro nuevas tareas están asignadas a mí y En curso.
+
+Captura: https://github.com/edulandoni/astra-cansat/tree/c8596057d0cfcb04ffacef89819daa5f90b9f7a9/ground-station/historial-jira/2026-10-19-23-44-36-UTC_2ef2adf7fa77  
+Cierre: https://github.com/edulandoni/astra-cansat/blob/c8596057d0cfcb04ffacef89819daa5f90b9f7a9/ground-station/docs/historial/2026-10-19-cierre-orden-comentarios.md  
+Mapa vigente: https://github.com/edulandoni/astra-cansat/blob/c8596057d0cfcb04ffacef89819daa5f90b9f7a9/ground-station/docs/trazabilidad-vigente-2026-10-19.md  
+Cambio: https://github.com/edulandoni/astra-cansat/commit/c8596057d0cfcb04ffacef89819daa5f90b9f7a9
+
+Verifiqué la publicación remota de groundstation y que main conserva su referencia. Los nueve manifiestos de capturas y los enlaces revisados son coherentes. Los avisos generales siguientes quedan aquí; este aviso no genera otra captura por sí solo y se incluirá con el próximo cambio real. No se realizaron nuevos ensayos técnicos ni se modificaron áreas ajenas.
+
+### 2026-10-19T21:04:40.376-0300 — comentario 10074
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10074). Última edición informada: 2026-10-19T21:04:40.376-0300.
+
+## 19/10/2026 — COMENTARIO 5 — Publicación de la revisión del aula CONAE
+
+La revisión de fuentes del aula tiene su propia tarea ASTRA-37, asignada a mí y En curso. Conserva el acceso oficial, cuatro materiales, versiones/huellas, seis debates técnicos, contradicciones y límites. Las consecuencias específicas se registraron en ASTRA-18/20/21/22/24/25/36, sin modificar sus descripciones ni resultados anteriores.
+
+Publiqué sólo mis notas, inventario de huellas, revisión estructural de la planilla y mapa PDR de groundstation. No publiqué credenciales, cookies, enlaces de sesión, nómina ni los originales completos del aula. Los cuatro originales quedaron juntos en la carpeta local de revisión con nombres conservados y registro de movimientos. La copia del informe en mi Drive fue leída después de subirla.
+
+Bitácora de fuentes: https://astrateam2026.atlassian.net/browse/ASTRA-37?focusedCommentId=10066  
+Cambio: https://github.com/edulandoni/astra-cansat/commit/5f9d8c310ecbecc9e1b7d0cc8d29d5d43df7b406  
+Informe: https://github.com/edulandoni/astra-cansat/blob/5f9d8c310ecbecc9e1b7d0cc8d29d5d43df7b406/ground-station/docs/aula/2026-10-19/revision-aula.md  
+Drive: https://drive.google.com/file/d/1FA0LB32ekpHXlosXWMAVkTuWswSj9gKC/view?usp=drivesdk
+
+Verifiqué enlaces locales, integridad de las fuentes históricas y manifiestos; no hice ensayos técnicos nuevos. La grabación está localizada sin transcripción accesible y su audio completo sigue pendiente. La captura de cierre debe incluir ahora las doce tareas propias, no limitarse a las siete iniciales.
+
+### 2026-10-19T21:05:40.409-0300 — comentario 10075
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10075). Última edición informada: 2026-10-19T21:05:40.409-0300.
+
+## 19/10/2026 — COMENTARIO 6 — Respaldo de la revisión del aula
+
+\[JIRA-GITHUB-SYNC\]
+
+Publiqué la captura completa de mis doce tareas, con 56 comentarios y el historial consultado. Incluye ASTRA-37 y las consecuencias técnicas de las aclaraciones del aula en sus tareas correspondientes. Conservo las capturas previas y los originales. La fecha UTC de la carpeta ya es 20/10; la revisión se realizó el 19/10 en Argentina.
+
+Captura: https://github.com/edulandoni/astra-cansat/tree/9d611778c4fdc0b3de10ec4ac8fbbc6477ce24d6/ground-station/historial-jira/2026-10-20-00-05-20-UTC_198e451ab1ed  
+Publicación y tareas: https://github.com/edulandoni/astra-cansat/blob/9d611778c4fdc0b3de10ec4ac8fbbc6477ce24d6/ground-station/docs/historial/2026-10-19-publicacion-aula-conae.md  
+Cambio: https://github.com/edulandoni/astra-cansat/commit/9d611778c4fdc0b3de10ec4ac8fbbc6477ce24d6
+
+Verifiqué la referencia remota de groundstation, main sin cambios, diez manifiestos íntegros y enlaces locales. No publiqué credenciales ni archivos completos del aula. No ejecuté ensayos físicos nuevos. Las contradicciones de plazo, envolvente y Scoresheet siguen pendientes en ASTRA-37, junto con el audio sin transcripción y los documentos aún no publicados.
+
+Este aviso no genera otra captura por sí solo; se incorpora con el próximo cambio real.
+
+### 2026-10-19T21:11:49.432-0300 — comentario 10077
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10077). Última edición informada: 2026-10-19T21:11:49.432-0300.
+
+## 19/10/2026 — COMENTARIO 7 — Ampliación de la revisión diaria del aula
+
+Amplié la automatización existente respaldo-diario-jira-github-groundstation; ahora se llama «Aula CONAE y respaldo diario · Groundstation». Conservé horario diario 21:00 Argentina, estado ACTIVE, chat de destino y política failed_runs_only. No creé otra programación.
+
+Primero revisará el curso oficial y comparará recursos, versiones/huellas, respuestas editadas o nuevas y fechas/condiciones de entrega. Registrará novedades y avance real de cobertura en ASTRA-37 y los efectos específicos en su tarea técnica. Después respaldará todas mis tareas con el procedimiento existente. Sin novedades ni avance no creará comentarios o commits repetidos; los indicadores de leído y tokens de sesión no cuentan como cambio sustantivo.
+
+Los avisos del respaldo siguen exclusivamente aquí. La revisión puede agregar documentación fechada dentro de docs/aula/ e historial de publicación, además de índices propios; el respaldo sigue limitado a historial-jira/. No se toca main ni otras áreas. No se guardan credenciales en prompt o archivos ni se envían mensajes/entregas en el aula. Si no puede ingresar, deberá informar el impedimento sin afirmar que revisó.
+
+Comprobé la configuración guardada; confirma la ampliación, no una ejecución diaria futura. El objetivo de cobertura total sigue activo con archivos y audio pendientes.
+
+Documento de alcance: https://github.com/edulandoni/astra-cansat/blob/88996d3c95fd1deb04760bdc08e778830bc7144d/ground-station/docs/aula/2026-10-19/objetivo-cobertura-total.md  
+Cambio publicado: https://github.com/edulandoni/astra-cansat/commit/88996d3c95fd1deb04760bdc08e778830bc7144d
+
+### 2026-10-19T21:12:49.921-0300 — comentario 10078
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10078). Última edición informada: 2026-10-19T21:12:49.921-0300.
+
+## 19/10/2026 — COMENTARIO 8 — Respaldo del objetivo activo y ampliación diaria
+
+\[JIRA-GITHUB-SYNC\]
+
+Conservé una captura nueva de mis doce tareas con 59 comentarios y páginas completas de historial. Incluye el objetivo de cobertura total de ASTRA-37 y la ampliación de la automatización diaria, sin sustituir los originales. El objetivo sigue activo: esta captura no acredita que el contenido pendiente ya esté investigado.
+
+Captura: https://github.com/edulandoni/astra-cansat/tree/0bdcd774edf8e759f60f8918084c834c1bf75455/ground-station/historial-jira/2026-10-20-00-12-35-UTC_91075934f729  
+Cambio: https://github.com/edulandoni/astra-cansat/commit/0bdcd774edf8e759f60f8918084c834c1bf75455
+
+Comprobé once manifiestos, enlaces y publicación de groundstation. La copia pública mantiene las exclusiones de datos personales, comentarios restringidos e internos. No contiene credenciales. Este aviso no produce otro respaldo por sí solo.
+
+### 2026-10-19T21:37:05.068-0300 — comentario 10082
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10082). Última edición informada: 2026-10-19T21:37:05.068-0300.
+
+## 19/10/2026 — COMENTARIO 9 — Publicación de la segunda lectura del aula
+
+Publiqué cinco archivos de mi área: auditoría completa de los cuatro materiales, controles verificables, análisis asistido de audiovisuales, inventario ampliado de 22 recursos y enlace de entrada en README. Conservo entradas y fuentes anteriores. No cambié código ni carpetas ajenas.
+
+Los hallazgos y sus límites están en ASTRA-37, comentario 3: https://astrateam2026.atlassian.net/browse/ASTRA-37?focusedCommentId=10079. Las actualizaciones RF y rotor continúan en ASTRA-18/36. Esta tarea registra solamente la publicación y el respaldo.
+
+Verifiqué fuentes históricas, once manifiestos, enlaces locales y alcance de los cambios. Comprobé la publicación remota de groundstation y que main mantiene su referencia. No publiqué archivos completos del aula, audio, transcripción automática ni credenciales. La copia nueva en mi carpeta Drive fue comprobada por metadatos y lectura de contenido; no sustituye la anterior.
+
+Cambio: https://github.com/edulandoni/astra-cansat/commit/5728978901d20b221c6cd5c50c9841ac357be0bb  
+Copia Drive: https://drive.google.com/file/d/1-4LCEyCUqAB6JCbZGa0nUAeqlLz0HUfK/view?usp=drivesdk  
+Inventario y pendientes: https://github.com/edulandoni/astra-cansat/blob/5728978901d20b221c6cd5c50c9841ac357be0bb/ground-station/docs/aula/2026-10-19/cobertura-actualizacion-02.json
+
+El objetivo de 100% permanece activo por los límites audiovisuales expresamente documentados. La revisión diaria ampliada mantiene su configuración; esta entrada no acredita una ejecución programada futura. A continuación conservo una captura nueva de las doce tareas propias, con todas las páginas de comentarios e historial.
+
+### 2026-10-19T21:38:42.518-0300 — comentario 10083
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10083). Última edición informada: 2026-10-19T21:38:42.518-0300.
+
+## 19/10/2026 — COMENTARIO 10 — Respaldo de la segunda lectura del aula
+
+\[JIRA-GITHUB-SYNC\]
+
+Publiqué una captura nueva de mis doce tareas, con 64 comentarios y 36 entradas de historial de cambios. Consulté todas las páginas y verifiqué pertenencia por creador/asignación. No hubo comentarios restringidos/internos que incluir; la copia mantiene exclusión de correos, identificadores innecesarios, binarios y reacciones. Conservo todas las capturas anteriores.
+
+Captura: https://github.com/edulandoni/astra-cansat/tree/2540aa82dc9bcba7ac2c306968e6a8f2f1c8d632/ground-station/historial-jira/2026-10-20-00-37-57-UTC_73ad0027e522  
+Cambio: https://github.com/edulandoni/astra-cansat/commit/2540aa82dc9bcba7ac2c306968e6a8f2f1c8d632  
+Lectura temática: https://astrateam2026.atlassian.net/browse/ASTRA-37?focusedCommentId=10079
+
+Comprobé doce manifiestos íntegros, enlaces locales, fuentes históricas conservadas, alcance exclusivo dentro de mi carpeta y ausencia de cadenas de credenciales en la revisión. El commit de respaldo agregó sólo archivos de historial-jira/. Verifiqué la referencia remota de groundstation y main sin cambios. La captura tiene fecha UTC 20/10; esta jornada sigue siendo 19/10 en Argentina.
+
+El inventario documental se amplió a 22 recursos; el objetivo de cobertura 100% sigue activo por los límites audiovisuales registrados. Este aviso no genera otra captura por sí solo ni acredita ensayos físicos o una ejecución programada futura.
+
+### 2026-10-19T22:06:51.852-0300 — comentario 10085
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10085). Última edición informada: 2026-10-19T22:06:51.852-0300.
+
+## 19/10/2026 — COMENTARIO 11 — Publicación del cierre documental y referencias oficiales
+
+Publiqué el informe de actualización 03, inventario de 30 entradas, huellas de fuentes actuales y controles de ambos audiovisuales. El cierre de investigación, métodos, límites y aclaraciones continúan en ASTRA-37, comentario 4: https://astrateam2026.atlassian.net/browse/ASTRA-37?focusedCommentId=10084. Aquí registro sólo publicación, configuración y respaldo.
+
+Conservé los inventarios y entradas anteriores. Comprobé fuentes históricas, doce manifiestos y enlaces locales. La publicación agregó cuatro documentos y amplió el índice, sólo en ground-station/ de groundstation. Verifiqué el remoto y main sin cambios. No publiqué originales completos, grabaciones, transcripciones, capturas de participantes o credenciales.
+
+La copia nueva en mi carpeta Drive fue verificada por metadatos y lectura. Los originales, copias de control, páginas de referencia y registros de movimientos permanecen en el conjunto local de esta revisión; los auxiliares de un intento de descarga incompleto se conservaron sin mover ni usar como evidencia.
+
+Amplié la misma automatización para incluir las referencias oficiales enlazadas por las bases. Comprobé que mantiene ACTIVE, ejecución diaria 21:00 Argentina, chat de destino y política failed_runs_only; no creé otra programación. La confirmación acredita configuración, no una ejecución futura.
+
+Cambio: https://github.com/edulandoni/astra-cansat/commit/3887c316d2a202f220ec687ed6a1fbfdba670124  
+Informe: https://github.com/edulandoni/astra-cansat/blob/3887c316d2a202f220ec687ed6a1fbfdba670124/ground-station/docs/aula/2026-10-19/referencias-y-verificacion-actualizacion-03.md  
+Drive: https://drive.google.com/file/d/1chQKLRid1GQzvK1oyajmSSrI74BeOtso/view?usp=drivesdk
+
+A continuación conservo una nueva captura completa de mis doce tareas. No hubo cambios de código ni ensayos físicos. El seguimiento diario conserva las futuras publicaciones y aclaraciones pendientes.
+
+### 2026-10-19T22:10:30.478-0300 — comentario 10086
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10086). Última edición informada: 2026-10-19T22:10:30.478-0300.
+
+## 19/10/2026 — COMENTARIO 12 — Respaldo del cierre documental
+
+\[JIRA-GITHUB-SYNC\]
+
+Publiqué una captura completa de mis doce tareas, con 67 comentarios y 36 entradas de historial, tras consultar todas las páginas y verificar pertenencia por creador/asignación. La copia conserva las exclusiones de datos personales innecesarios, comentarios restringidos/internos, binarios y reacciones; no hubo comentarios excluidos en esta consulta.
+
+Comprobé que los 64 comentarios de la captura anterior mantienen cuerpo y fechas, y que las doce tareas conservan título, descripción, creador, responsable y estado. El respaldo sólo agregó archivos dentro de historial-jira/. Verifiqué trece manifiestos, enlaces, fuentes históricas y publicación remota de groundstation; main conserva su referencia.
+
+Captura: https://github.com/edulandoni/astra-cansat/tree/51c475eb2df8cf2ab5317c5e03455f8ad7c4b729/ground-station/historial-jira/2026-10-20-01-07-57-UTC_2dc0477ac15d  
+Cambio: https://github.com/edulandoni/astra-cansat/commit/51c475eb2df8cf2ab5317c5e03455f8ad7c4b729  
+Cierre de investigación y límites: https://astrateam2026.atlassian.net/browse/ASTRA-37?focusedCommentId=10084  
+Informe: https://github.com/edulandoni/astra-cansat/blob/3887c316d2a202f220ec687ed6a1fbfdba670124/ground-station/docs/aula/2026-10-19/referencias-y-verificacion-actualizacion-03.md
+
+El inventario vigente reúne 30 recursos revisados al corte, con métodos asistidos y dudas conservadas. La automatización mantiene la revisión diaria del aula y referencias oficiales. Esta captura no representa ensayos físicos ni acredita una ejecución programada futura. La fecha UTC de la captura es 20/10; corresponde a la jornada del 19/10 en Argentina.
+
+Este aviso se incorporará con el próximo cambio real y no genera un respaldo adicional por sí solo.
+
+### 2026-10-20T11:40:18.149-0300 — comentario 10087
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10087). Última edición informada: 2026-10-20T11:40:18.149-0300.
+
+## 20/10/2026 — COMENTARIO 13 — Reorganización de Drive y mejora continua de groundstation
+
+### Motivo y objetivo
+
+La entrada de mi Drive seguía centrada en el laboratorio y la estación del 12/10. Después incorporé el banco USB, ensayos de recuperación, estudios de antecedentes y rotor y la revisión del aula. Necesitaba encontrar lo vigente sin confundirlo con versiones anteriores ni perder la historia.
+
+Organicé mi espacio por temas que pueden mantenerse aunque cambien las herramientas: desarrollo; requisitos y aula; decisiones e interfaces; ensayos; investigación; material para PDR/video; e histórico. Aplico esto a groundstation y manejo de datos de mi área.
+
+### Qué hice
+
+Creé 11 carpetas, moví 18 elementos y renombré 2 carpetas existentes. Conservo los identificadores y enlaces originales. Los paquetes históricos se movieron completos con sus archivos y referencias. La estación v04 queda como antecedente DEPRECATED para la línea actual; el banco USB sigue siendo una herramienta experimental útil y conserva su advertencia de formato heredado.
+
+Separé fuentes v1/v2 de análisis, trasladé las revisiones del aula a requisitos y los estudios de otros CanSat y rotor a investigación. Conservé el estado del 12/10, el inventario del 13/10, el antiguo instructivo y todas las revisiones fechadas. Los manifiestos anteriores siguen describiendo su fecha; un registro nuevo permite reconstruir las ubicaciones.
+
+Publiqué 17 archivos de consulta: 9 guías, 6 copias de documentos versionados con enlaces utilizables desde Drive, un paquete de evidencias y experimentos de PC y el registro de movimientos. El paquete conserva 39 archivos de evidence/ y experiments/, con manifiesto SHA-256. No ejecuté nuevamente esos ensayos ni los contabilizo como trabajo nuevo.
+
+La entrada principal es [00_EMPEZAR_ACA](https://drive.google.com/file/d/12H-VdifFyThzj4Tz-kXOLtM6EO0BBj49/view?usp=drivesdk). El [mapa Drive–Jira–GitHub](https://drive.google.com/file/d/1LIF_YtBnltenTIXojtHhaE4o8xGO4hWM/view) enlaza cada tema con su diario y sus archivos. Las investigaciones no se registran como implementación terminada.
+
+### Cómo mantengo la estructura
+
+Dejé una [pauta de mejora continua](https://drive.google.com/file/d/1CI3WMSbKoRgJsBWNnndZ4AgolJRQ-34V/view): agrego avances fechados dentro del tema, enlazo un mismo original desde otros lugares y actualizo los accesos cuando cambia qué conviene consultar. Reviso la estructura ante una confusión concreta o al preparar un hito; un ensayo o versión nueva no justifica renumerar o mover todo. Las conclusiones que cambian llevan una ACTUALIZACIÓN con referencia al original, sin borrarlo.
+
+Amplié la automatización diaria existente para publicar nuevas revisiones del aula en su ubicación temática, conservando versiones y evitando duplicados. Verifiqué su configuración ACTIVE, el horario de 21:00 de Argentina, el mismo chat y la política de notificaciones anterior. Esto verifica la configuración, no una ejecución futura. El respaldo completo de Jira continúa en GitHub; desde Drive lo enlazo, sin crear una copia redundante diaria.
+
+### Verificación y límites
+
+Comprobé los nombres y carpetas de los 17 archivos publicados. Releí completos los 15 Markdown y comparé sus textos; comprobé igualdad semántica del registro JSON y SHA-256 idéntico del ZIP remoto. También verifiqué los 39 archivos del paquete y los 20 cambios de metadatos.
+
+No reemplacé los bytes de los originales, no cambié permisos ni reorganicé HARDWARE, DOCUMENTOS u otras áreas. No cambié estados, responsables, descripciones ni comentarios anteriores de Jira. No modifiqué main ni protocol/. Los ensayos físicos, identificación exacta de la placa, TEAM_ID, interfaz acordada y enlace RF siguen pendientes. Ordenar documentos no acredita esas funciones.
+
+### Publicación y evidencia
+
+Publiqué la documentación, el registro de movimientos y los enlaces en [el commit 2a404c2](https://github.com/edulandoni/astra-cansat/commit/2a404c224882889f421d359f55c5bd9952a69a01), únicamente en groundstation/ground-station. Verifiqué el resultado remoto y main permanece en su revisión anterior.
+
+El [informe de reorganización](https://github.com/edulandoni/astra-cansat/blob/2a404c224882889f421d359f55c5bd9952a69a01/ground-station/docs/organizacion-drive/2026-10-20/Reorganizacion_Drive_2026-10-20.md) enlaza los 17 archivos, sus huellas y el registro de ubicaciones. [Registro de movimientos en Drive](https://drive.google.com/file/d/1HzmyHC56TMmEU8mlIeICc2xucVqjt9JP/view).
+
+Continúo las pruebas y cambios técnicos en sus tareas temáticas; esta entrada documenta organización, publicación y trazabilidad.
+
+### 2026-10-20T12:08:12.757-0300 — comentario 10092
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10092). Última edición informada: 2026-10-20T12:08:12.757-0300.
+
+## 20/10/2026 — COMENTARIO 14 — Análisis diario del aula e investigación en la automatización existente
+
+Amplié la rutina existente para que el registro del aula produzca un panorama que podamos usar al trabajar y redactar el PDR. Creé ASTRA-38, asignada a mi cuenta y ya En curso por el primer informe. ASTRA-37 conserva fuentes y cobertura; ASTRA-35 los antecedentes/fotos; ASTRA-24 los efectos sobre interfaz. No moví el diario general al receptor ni cambié las descripciones o comentarios anteriores.
+
+El orden diario es: revisar y registrar fuentes; generar informe priorizado; hacer una investigación complementaria acotada; respaldar todas mis tareas de Jira, incluida ASTRA-38. Conservo la automatización respaldo-diario-jira-github-groundstation, su ejecución de las 21:00 de Argentina, estado ACTIVE, mismo chat y política de notificaciones anterior. Verifiqué el texto guardado íntegro en UTF-8 y esos campos. No creé otra automatización ni afirmo una ejecución futura ya realizada.
+
+El informe diario tendrá novedades separadas del panorama acumulado, preguntas/respuestas o publicaciones, prioridades justificadas, utilidad, fuentes, acciones propuestas y dudas. Se crea un corte aunque no haya novedades, identificándolo sin cambios; si falta acceso se marca parcial. Esa es la actualización específica de la pauta anterior para el informe de ASTRA-38. Los avisos de respaldo e investigación siguen evitando publicaciones repetidas sin avance real.
+
+La investigación complementaria revisará hasta tres fuentes primarias nuevas o ampliará una ficha, con registro de lo ya consultado, resultados/fallas y referencias visuales con estado real, crédito y permisos observados. No transforma premios, renders o fotos en pruebas de nuestro hardware.
+
+Publiqué [el informe del corte 11:56 ART](https://drive.google.com/file/d/13hQj8Ckp6KJv3cu1L5xeCX3Rwx4_NbLe/view?usp=drivesdk), [su método](https://drive.google.com/file/d/1vfcMYqX-nZhh_-icHyeb5jyx0g8puI_H/view?usp=drivesdk), [la investigación y actualización visual](https://drive.google.com/file/d/1b9XCAivqKZMcVMAbVtPAozInPlc2hu_O/view?usp=drivesdk) y [el catálogo](https://drive.google.com/file/d/18BSOE-_4108xSY262aXTrw4BSOr6CcaW/view?usp=drivesdk) en sus carpetas existentes. Verifiqué nombre, padre y contenido completo de las cuatro publicaciones Drive. Los controles y documentos están en [el commit 9208b92](https://github.com/edulandoni/astra-cansat/commit/9208b923e87ddc301a89951e6b362ccd861e0d93), confirmado en el remoto de groundstation; main permanece igual. No reorganicé otra vez las carpetas ni modifiqué otras áreas.
+
+El primer corte detectó una respuesta nueva sobre comandos, siete debates/15 mensajes y cuatro archivos con huellas iguales. La investigación conserva cinco archivos de código leídos y siete referencias visuales, cuatro inspeccionadas. Es documentación y análisis; no repite ensayos ni acredita RF, energía o mecanismos físicos. El respaldo diario posterior capturará estas entradas con la consulta completa por creador/asignación, conservando todos los originales.
+
+### 2026-10-20T12:11:25.048-0300 — comentario 10093
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-33?focusedCommentId=10093). Última edición informada: 2026-10-20T12:11:25.048-0300.
+
+## 20/10/2026 — COMENTARIO 15 — Respaldo del análisis diario y la investigación
+
+\[JIRA-GITHUB-SYNC\]
+
+Publiqué una captura nueva al corte UTC 20/10/2026 15:09:40, con las 13 tareas creadas por mí o asignadas a mi cuenta, 74 comentarios accesibles y 38 entradas de historial de campos. Incluye ASTRA-38, sus transiciones y primer informe; la novedad oficial en ASTRA-37; la investigación y referencias visuales de ASTRA-35; el efecto sobre interfaz en ASTRA-24; y las entradas recientes de organización/configuración en ASTRA-33.
+
+Leí todas las páginas disponibles de tareas, comentarios e historial, verifiqué pertenencia y conservé originales y capturas anteriores. No descargué adjuntos binarios ni reacciones. El exportador aplica las exclusiones de comentarios restringidos/internos, correos e identificadores de cuenta. Verifiqué los manifiestos de las 14 capturas conservadas y los archivos nuevos; preservé también los espacios y saltos de línea de las citas históricas Markdown.
+
+[Captura completa y archivos legibles](https://github.com/edulandoni/astra-cansat/tree/c07568d/ground-station/historial-jira/2026-10-20-15-09-40-UTC_c7500b092190) y [commit de respaldo](https://github.com/edulandoni/astra-cansat/commit/c07568d). Verifiqué el resultado remoto: este commit sólo agrega 16 archivos de ground-station/historial-jira/ en groundstation. Main permanece en su revisión anterior.
+
+Este aviso queda fuera de esa captura, que corresponde al corte anterior a publicarlo. Su marca no disparará otro respaldo por sí sola. El respaldo conserva documentación y no representa ensayos nuevos de telemetría o hardware.
+
+## Historial de cambios de campos
+
+### 2026-10-19T20:39:31.912-0300 — cambio 10134
+
+Autoría original: Cristian Ponsone.
+
+Campo: status.
+
+Antes: Backlog
+
+Después: Por hacer
+
+### 2026-10-19T20:39:53.040-0300 — cambio 10138
+
+Autoría original: Cristian Ponsone.
+
+Campo: status.
+
+Antes: Por hacer
+
+Después: En curso
+
