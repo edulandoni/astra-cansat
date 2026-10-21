@@ -14,3 +14,7 @@ La metodología y el respaldo de documentación se mantienen en [ASTRA-33](../te
 ## Incorporación del 19/10/2026 — Aula CONAE
 
 [Fuentes oficiales del aula: actualización de requisitos y prioridades](../aula/2026-10-19/revision-aula.md), con bitácora propia en [ASTRA-37](https://astrateam2026.atlassian.net/browse/ASTRA-37). Los informes anteriores se conservan.
+
+## Incorporación del 20/10/2026 — corte diario
+
+[DJS Arya: vuelo, recuperación y referencias visuales](2026-10-20-djs-arya-vuelo-y-recuperacion.md), con [suplemento F08/F09](2026-10-20-catalogo-visual-suplemento-diario.csv). Conservo el catálogo anterior.
