@@ -18,3 +18,7 @@ La metodología y el respaldo de documentación se mantienen en [ASTRA-33](../te
 ## Incorporación del 20/10/2026 — corte diario
 
 [DJS Arya: vuelo, recuperación y referencias visuales](2026-10-20-djs-arya-vuelo-y-recuperacion.md), con [suplemento F08/F09](2026-10-20-catalogo-visual-suplemento-diario.csv). Conservo el catálogo anterior.
+
+## Incorporación del 21/10/2026
+
+[COSMOS: CSV publicado, huecos y estación](2026-10-21-cosmos-csv-y-estacion.md), con métricas reproducibles y referencia visual F10.
