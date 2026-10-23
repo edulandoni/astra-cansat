@@ -22,3 +22,7 @@ La metodología y el respaldo de documentación se mantienen en [ASTRA-33](../te
 ## Incorporación del 21/10/2026
 
 [COSMOS: CSV publicado, huecos y estación](2026-10-21-cosmos-csv-y-estacion.md), con métricas reproducibles y referencia visual F10.
+
+## Incorporación del 22/10/2026
+
+[RSX: PFR, fallas y contradicciones](2026-10-22-rsx-pfr-y-fallas.md) · [Estabilidad previa y evidencia para rotor](2026-10-22-rotor-estabilidad-y-evidencia.md) · [Suplemento visual F11/F12](2026-10-22-catalogo-visual-rsx.csv).
