@@ -69,6 +69,7 @@ def summarize(root,output,expected,minimum_seconds=7200):
                 raw_conserved=len(journals)==1 and events==storage['events'] and all(d['saved']==events for d in destinations if d['kind']=='raw'),
                 gui_progress_observed=len(during)>=2 and bool(callback_gaps) and max(callback_gaps)<=10,
                 bounded_observed_containers=bool(during) and queue_bounded,
+                memory_reader_initialized_once=bool(during) and all(e.get('memory_reader_initializations')==1 for e in during),
                 input_read_clean=not errors)
     result=dict(recorded_utc=datetime.now(timezone.utc).isoformat(),source='USB_BENCH' if checks['source_usb'] else 'OTHER',
                 segment=segment,packets=len(packets),expected_packets=expected,minimum_real_seconds=minimum_seconds,
@@ -77,6 +78,7 @@ def summarize(root,output,expected,minimum_seconds=7200):
                 interval_seconds=dict(min=min(intervals),median=statistics.median(intervals),mean=statistics.mean(intervals),max=max(intervals)) if intervals else None,
                 gui=dict(observations_during_flow=len(during),maximum_callback_gap_seconds=max(callback_gaps) if callback_gaps else None,
                          observed_working_set_bytes=dict(min=min(memory),max=max(memory),first=memory[0],last=memory[-1]) if memory else None,
+                         memory_reader_initializations=sorted(set(e.get('memory_reader_initializations',0) for e in during)),
                          maximum_history=max((e.get('history_size',0) for e in during),default=0),maximum_display_queue=max((e.get('update_queue',0) for e in during),default=0)),
                 checks=checks,passed=all(checks.values()),active_errors=active_errors,total_events_by_kind=dict(kinds),
                 mission_clock_step_histogram=dict(clock_steps),states=dict(Counter(e['values'][4] for e in packets)),

@@ -5,6 +5,7 @@ import json
 import queue
 import threading
 import time
+from functools import lru_cache
 import tkinter as tk
 from tkinter import ttk
 from collections import deque
@@ -20,18 +21,25 @@ UNITS=dict(ALTITUDE='m AGL',TEMPERATURE='°C',PRESSURE='kPa',VOLTAGE='V',CURRENT
            **{k:'rad/s' for k in ['GYRO_R','GYRO_P','GYRO_Y']},
            **{k:'m/s²' for k in ['ACCEL_R','ACCEL_P','ACCEL_Y']})
 
-def working_set_bytes():
-    """Mido memoria del propio proceso en Windows; no estimo si no hay API."""
-    import sys
-    if sys.platform!='win32':return None
+@lru_cache(maxsize=1)
+def windows_memory_api():
+    """Creo tipos y firmas una sola vez: ctypes retiene los tipos de puntero."""
     import ctypes
     from ctypes import wintypes
     class Counters(ctypes.Structure):
         _fields_=[('cb',wintypes.DWORD),('PageFaultCount',wintypes.DWORD)]+[(k,ctypes.c_size_t) for k in ['PeakWorkingSetSize','WorkingSetSize','QuotaPeakPagedPoolUsage','QuotaPagedPoolUsage','QuotaPeakNonPagedPoolUsage','QuotaNonPagedPoolUsage','PagefileUsage','PeakPagefileUsage']]
-    obj=Counters();obj.cb=ctypes.sizeof(obj)
     current=ctypes.WinDLL('kernel32').GetCurrentProcess;current.restype=wintypes.HANDLE
     get=ctypes.WinDLL('psapi').GetProcessMemoryInfo
     get.argtypes=[wintypes.HANDLE,ctypes.POINTER(Counters),wintypes.DWORD];get.restype=wintypes.BOOL
+    return current,get,Counters
+
+def working_set_bytes():
+    """Mido memoria del propio proceso; no estimo si la API no está disponible."""
+    import sys
+    if sys.platform!='win32':return None
+    import ctypes
+    current,get,Counters=windows_memory_api()
+    obj=Counters();obj.cb=ctypes.sizeof(obj)
     return obj.WorkingSetSize if get(current(),ctypes.byref(obj),obj.cb) else None
 
 def main():
@@ -114,7 +122,7 @@ def main():
         elapsed=time.monotonic()-started
         if elapsed-last_health>=5:
             last_health=elapsed
-            e.event('gui_health',elapsed=elapsed,working_set_bytes=working_set_bytes(),totals={k:snap[k] for k in ['total_valid','total_unique','invalid','overflows','data_age','link_age','unique','observed_gaps']},storage=snap['storage'],history_size=len(history),update_queue=e.updates.qsize())
+            e.event('gui_health',elapsed=elapsed,working_set_bytes=working_set_bytes(),memory_reader_initializations=windows_memory_api.cache_info().misses,totals={k:snap[k] for k in ['total_valid','total_unique','invalid','overflows','data_age','link_age','unique','observed_gaps']},storage=snap['storage'],history_size=len(history),update_queue=e.updates.qsize())
         if current!=snap['segment']:current=snap['segment'];history.clear()
         while not e.updates.empty():
             try:segment,packet=e.updates.get_nowait()

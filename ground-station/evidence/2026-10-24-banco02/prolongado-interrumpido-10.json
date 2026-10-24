@@ -1,0 +1,123 @@
+{
+  "recorded_utc": "2026-10-24T04:08:10.309815+00:00",
+  "source": "USB_BENCH",
+  "segment": "0002_4a37b4ff0c48",
+  "packets": 1906,
+  "expected_packets": 7261,
+  "minimum_real_seconds": 7200,
+  "first_received_utc": "2026-10-24T03:36:21.107141+00:00",
+  "last_received_utc": "2026-10-24T04:08:06.170371+00:00",
+  "monotonic_span_seconds": 1905.0629999999655,
+  "utc_span_seconds": 1905.0632300376892,
+  "interval_seconds": {
+    "min": 0.9370000000344589,
+    "median": 1.0,
+    "mean": 1.0000330708661236,
+    "max": 1.062000000034459
+  },
+  "gui": {
+    "observations_during_flow": 369,
+    "maximum_callback_gap_seconds": 5.265999999945052,
+    "observed_working_set_bytes": {
+      "min": 41136128,
+      "max": 50204672,
+      "first": 41136128,
+      "last": 50204672
+    },
+    "maximum_history": 300,
+    "maximum_display_queue": 1
+  },
+  "checks": {
+    "source_usb": true,
+    "monotonic_timestamps": true,
+    "at_least_required_real_seconds": false,
+    "expected_counter_sequence": false,
+    "csv_equals_packets": true,
+    "synthetic_mode_declared": true,
+    "mission_clock_advances": true,
+    "no_active_frame_errors": true,
+    "no_duplicates_or_conflicts": true,
+    "writers_drained": true,
+    "raw_conserved": true,
+    "gui_progress_observed": true,
+    "bounded_observed_containers": true,
+    "input_read_clean": true
+  },
+  "passed": false,
+  "active_errors": {
+    "rejected": 0,
+    "overflow": 0,
+    "source_error": 0,
+    "disconnected": 0
+  },
+  "total_events_by_kind": {
+    "environment": 1,
+    "connected": 1,
+    "command_queued": 5,
+    "command_sent": 5,
+    "wire": 2620,
+    "control": 1917,
+    "segment": 2,
+    "validated": 1906,
+    "packet": 1906,
+    "gui_health": 369
+  },
+  "mission_clock_step_histogram": {
+    "1": 1905
+  },
+  "states": {
+    "LAUNCH_PAD": 10,
+    "ASCENT": 20,
+    "APOGEE": 1,
+    "DESCENT": 6,
+    "PROBE_RELEASE": 1,
+    "PAYLOAD_RELEASE": 79,
+    "LANDED": 1789
+  },
+  "read_errors": [],
+  "destinations": [
+    {
+      "destination": 0,
+      "kind": "raw",
+      "saved": 8732,
+      "pending": 0,
+      "error": "",
+      "dropped": 0,
+      "dropped_seq_ranges": [],
+      "loss_ledger_truncated": false,
+      "last_confirmed_seq": 8732,
+      "capacity": 600
+    },
+    {
+      "destination": 0,
+      "kind": "csv",
+      "saved": 1906,
+      "pending": 0,
+      "error": "",
+      "dropped": 0,
+      "dropped_seq_ranges": [],
+      "loss_ledger_truncated": false,
+      "last_confirmed_seq": 8732,
+      "capacity": 600
+    }
+  ],
+  "source_files_sha256": {
+    "journal.jsonl": "4adbcdb8fe5442f0686229a6b41c36723d49e4d76e02b48293d82750aa851340",
+    "storage-summary.json": "22e16940aa54e19bc30a008ed5c262938331170bc6121c1749547ca961d71567",
+    "segments/0002_4a37b4ff0c48/Flight_1000.csv": "7b2c420d67c1155f063bf83a6fa00f56151ac1317cdcd23332e1796c23e41744"
+  },
+  "software_source_sha256": {
+    "analyze.py": "446d825a0e869d432e5ef0f0aa3024ee597841b4ddfc02b609100325c591d218",
+    "app.py": "2a06b2273869b48e1583ad9e30d7ac21373ba2163fdaa713ba1251fe89c22d8e",
+    "campaign.py": "ae39c2ef56210f97ee5368593d9f7d742ac22d546ad4692bf08f0e77aca3b2f6",
+    "engine.py": "f5fce95dce60b2dee5af021073de15272a2322ddc29a1593c2a93b68a5385085",
+    "journal.py": "a949e02c24d8851380ff73cea27737b975385f9979eb4d6dc0e0f4d15bc5d3f6",
+    "mission.py": "d66b5260961bd5628dd38b08882511d576c44ac11bbee79b3d61010c8e3b6b39",
+    "recover.py": "0b251f4b8f5ba704c38f2018c139f0aee44f1e4f4e526c540b33858a0ff961b3",
+    "sources.py": "49f2173007990b6beae4056ddb04b671cf21a173e423b795b7763f1c276738b1",
+    "test_bench.py": "8fe8cb65bab0615d5a4a5bad5f4c63901d334df82d4885797f8341a0d77a9d48",
+    "wire.py": "9968dfd8cea3575510bed93965c695b683d0cb1f6f0e1a30da62180a936f52a7",
+    "firmware\\AstraBench02\\AstraBench02.ino": "a0df3d3d47896444b252da68a17c0956168910fbf4cc7504b4bffba86de69fbe"
+  },
+  "limits": "Ensayo de flujo USB sintético, sin RF ni autonomía. Working set es memoria residente observada, no prueba universal de ausencia de fugas. GUI observada por callbacks y contenedores; un intervalo de más de10s entre registros impide aprobar continuidad por este analizador. No equiparo cantidad acelerada o ventana abierta a dos horas reales."
+}

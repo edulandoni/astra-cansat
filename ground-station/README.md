@@ -20,6 +20,8 @@ La [actualización de potencia y tiempo de aire del 24/10](docs/interfaces/2026-
 
 La [actualización 06](docs/2026-10-24-gps-presentacion-actualizacion-06.md) corrige la presentación sin solución GPS y verifica que el dato original se conserve. Es posterior al snapshot del ensayo prolongado.
 
+La [actualización 07](docs/2026-10-24-medidor-y-reinicio-prolongado-actualizacion-07.md) conserva un intento prolongado interrumpido, identifica una acumulación del medidor de memoria y registra la corrección y el segundo intento. No declara todavía dos horas aprobadas.
+
 ## Por dónde empezar
 
 | Necesidad | Ubicación |

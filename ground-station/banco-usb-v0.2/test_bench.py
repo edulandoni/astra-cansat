@@ -227,4 +227,15 @@ class GPSPresentationTests(unittest.TestCase):
                 self.assertFalse(retained);self.assertEqual(view['GPS_LATITUDE'],e.latest.data['GPS_LATITUDE'])
             finally:s.close()
 
+class MemoryInstrumentationTests(unittest.TestCase):
+    @unittest.skipUnless(__import__('sys').platform=='win32','Medidor de Windows')
+    def test_memory_queries_do_not_accumulate_ctypes_pointer_types(self):
+        import ctypes
+        from app import working_set_bytes,windows_memory_api
+        self.assertGreater(working_set_bytes(),0)
+        initial=len(ctypes._pointer_type_cache)
+        for _ in range(500):self.assertGreater(working_set_bytes(),0)
+        self.assertEqual(len(ctypes._pointer_type_cache),initial)
+        self.assertEqual(windows_memory_api.cache_info().misses,1)
+
 if __name__=='__main__':unittest.main(verbosity=2)
