@@ -14,6 +14,7 @@ from pathlib import Path
 from journal import Store
 from engine import Engine,display,telemetry_view
 from sources import PCBench,serial_loop,replay_loop
+from quality import quality_flags
 from wire import FIELDS,PROFILE,SCENARIOS
 
 UNITS=dict(ALTITUDE='m AGL',TEMPERATURE='°C',PRESSURE='kPa',VOLTAGE='V',CURRENT='A',
@@ -51,12 +52,16 @@ def main():
     p.add_argument('--replay',type=Path);p.add_argument('--speed',type=float,default=1)
     p.add_argument('--auto-run',action='store_true');p.add_argument('--samples',type=int,default=131)
     p.add_argument('--duration',type=float,help='Cierro el ensayo al alcanzar estos segundos reales; no acelera el emisor')
+    p.add_argument('--data-stale-seconds',type=float,default=3.)
+    p.add_argument('--gps-stale-seconds',type=float,default=3.)
     p.add_argument('--start-minimized',action='store_true',help='Mantengo el ensayo activo sin tapar el chat')
     a=p.parse_args();source=a.source or ('usb' if a.port else 'pc')
     if source=='usb' and not a.port:p.error('USB requiere --port')
     if source=='replay' and not a.replay:p.error('Reproducción requiere --replay')
     if not a.team.isascii() or not a.team.isdigit() or len(a.team)!=4:p.error('TEAM de banco: cuatro dígitos')
     if a.speed<=0:p.error('Velocidad positiva requerida')
+    try:quality_flags({},a.data_stale_seconds,a.gps_stale_seconds)
+    except ValueError as exc:p.error(str(exc))
     store=Store(a.output,a.backup);e=Engine(store,a.team,a.profile,{'pc':'PC_BENCH','usb':'USB_BENCH','replay':'REPLAY'}[source])
     store.emit('environment',source=e.source,profile=a.profile,source_sha256={str(f.relative_to(Path(__file__).parent)):hashlib.sha256(f.read_bytes()).hexdigest() for f in Path(__file__).parent.rglob('*') if f.suffix in {'.py','.ino'}},duration=a.duration,samples=a.samples)
     started=time.monotonic();last_health=0
@@ -119,10 +124,11 @@ def main():
     def update():
         nonlocal current,auto_started,last_health
         snap=e.snapshot()
+        quality=quality_flags(snap,a.data_stale_seconds,a.gps_stale_seconds)
         elapsed=time.monotonic()-started
         if elapsed-last_health>=5:
             last_health=elapsed
-            e.event('gui_health',elapsed=elapsed,working_set_bytes=working_set_bytes(),memory_reader_initializations=windows_memory_api.cache_info().misses,totals={k:snap[k] for k in ['total_valid','total_unique','invalid','overflows','data_age','link_age','unique','observed_gaps']},storage=snap['storage'],history_size=len(history),update_queue=e.updates.qsize())
+            e.event('gui_health',quality_flags=quality,elapsed=elapsed,working_set_bytes=working_set_bytes(),memory_reader_initializations=windows_memory_api.cache_info().misses,totals={k:snap[k] for k in ['total_valid','total_unique','invalid','overflows','data_age','link_age','unique','observed_gaps']},storage=snap['storage'],history_size=len(history),update_queue=e.updates.qsize())
         if current!=snap['segment']:current=snap['segment'];history.clear()
         while not e.updates.empty():
             try:segment,packet=e.updates.get_nowait()
@@ -134,7 +140,7 @@ def main():
             elif data[k] is None:text='— SIN FIX'
             else:text=data[k]+' '+UNITS.get(k,'')+(' (última válida)' if k in retained else '')
             var.set(text)
-        age=snap['data_age'];fresh='SIN DATOS ACTUALES' if age is None else f'Edad del dato {age:.1f} s'+(' — ANTIGUO' if age>3 else '')
+        age=snap['data_age'];fresh='SIN DATOS ACTUALES' if age is None else f'Edad del dato {age:.1f} s'+(' — ANTIGUO' if quality['telemetry_stale'] else '')
         link_age=snap['link_age'];link_text='sin mensaje válido' if link_age is None else f'último mensaje válido hace {link_age:.1f} s'
         header.set(f"{snap['source']} | {snap['status']} | {link_text} | {fresh} | TEAM {a.team} FICTICIO | segmento {current}")
         power=snap['power'];solar='Sin consulta batería/solar' if power is None else f"Batería simulada {power['voltage']} V | Solar simulado {power['solar_voltage']} V | edad {time.monotonic()-power['at']:.1f} s"
@@ -143,6 +149,7 @@ def main():
         if snap['ambiguous']:flags.append('Sesión ambigua; no muestro datos anteriores como actuales')
         if snap['clock_warning']:flags.append('Contador avanza pero hora de misión no avanza: revisar')
         if data and data['GPS_SATS']=='0':flags.append('GPS SIN FIX; '+('sin posición válida anterior' if snap['gps'] is None else 'posición retenida, edad '+str(round(snap['gps_age'],1) if snap['gps_age'] is not None else 'desconocida')+' s'))
+        if quality['gps_stale']:flags.append(f"GPS SIN ACTUALIZAR: última solución hace {snap['gps_age']:.1f} s; satélites declarados {data['GPS_SATS']}")
         if snap['done']:flags.append('Simulación terminada; no se esperan más muestras')
         if snap['overflows']:flags.append(f"Tramas excesivas {snap['overflows']}: descartadas del parser; revisar bytes en registro bruto")
         for status in snap['storage']:

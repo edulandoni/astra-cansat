@@ -1,5 +1,6 @@
 """ASTRA-21: escritores independientes y acotados; nunca confundo RX con durable."""
 import csv
+import copy
 import json
 import os
 import threading
@@ -96,11 +97,13 @@ class Store:
         with self.lock:
             self.seq+=1
             e=dict(seq=self.seq,pc_session=self.session,received_utc=utc(),received_elapsed_seconds=time.monotonic()-self.started_monotonic,kind=kind,**data)
-            # Serializo antes de repartir: ningún consumidor modifica el evento.
+            # Congelo también listas/diccionarios anidados: una modificación del
+            # productor posterior a emit no puede reescribir el evento pendiente.
+            e=copy.deepcopy(e)
             json.dumps(e,allow_nan=False)
             for w in self.writers:
                 if w.kind=='raw' or kind=='packet':w.submit(e)
-            return e
+            return copy.deepcopy(e)
     def status(self):return [dict(destination=i//2,root=str(w.root),**w.status()) for i,w in enumerate(self.writers)]
     def drain(self,timeout=5):
         end=time.monotonic()+timeout

@@ -74,3 +74,7 @@ Además de comparar filas entre copias, bloqueo reconstrucción si un diario sel
 ## Aceptación USB — 24/10/2026
 
 [Resultado prolongado y matriz de toda la etapa](../docs/2026-10-24-aceptacion-banco-usb-actualizacion-09.md): 7261 paquetes en 7260,328 s reales entre primera y última muestra, escritores drenados y reconstrucción idéntica. El informe conserva el intento interrumpido, las versiones y los pendientes de RF/autonomía/STM32 y copia externa simultánea.
+
+## Calidad y guardas — 24/10/2026
+
+La pantalla avisa GPS sin actualizar aun con satélites declarados, siempre que la telemetría general siga fresca. Configuro edades con `--data-stale-seconds 3 --gps-stale-seconds 3`; son umbrales de banco, no de vuelo. [Métricas y captura](../docs/investigacion/2026-10-24-calidad-medida-y-cierre-investigacion.md) · [Prueba USB de órdenes inválidas](../docs/2026-10-24-ordenes-negativas-usb.md). Pruebo con `python -m unittest -v test_bench test_quality`.

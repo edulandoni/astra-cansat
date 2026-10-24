@@ -39,7 +39,8 @@ class Tracker:
         return result
 
 class Engine:
-    def __init__(self,store,team='1000',profile=PROFILE,source='USB_BENCH',timeout=3):
+    def __init__(self,store,team='1000',profile=PROFILE,source='USB_BENCH',timeout=3,clock=None):
+        self.now=clock if clock is not None else lambda: time.monotonic()
         self.store=store;self.team=team;self.profile=profile;self.source=source;self.timeout=timeout
         self.stop=threading.Event();self.lock=threading.RLock();self.outgoing=queue.Queue(100)
         self.updates=queue.Queue(250);self.commands=OrderedDict();self.command_seq=0
@@ -112,13 +113,13 @@ class Engine:
                         previous=self.epoch;self.epoch=None;self.peer={};self.handshake=None
                         self.latest=None;self.value_at=None;self.gps=None;self.gps_at=None;self.power=None
                         self.finished=None;self.ambiguous=True;self.waiting_identity=True
-                        self.boot_probe_at=time.monotonic()+.5 if self.source!='REPLAY' else None
+                        self.boot_probe_at=self.now()+.5 if self.source!='REPLAY' else None
                         self.status='Conectado — arranque detectado; esperando identidad del firmware'
                         for c in self.commands.values():
                             if c['state'] in {'queued','sent','accepted'}:c['state']='unknown';c['reason']='Arranque ROM sin identidad nueva confirmada'
                         self.event('boot_observed',previous_epoch=previous,confirmed_identity=False)
                     continue
-                self.link_at=time.monotonic()
+                self.link_at=self.now()
                 if category=='control':self.control_received+=1;self.on_control(value);continue
                 self.on_packet(value,raw)
     def on_control(self,obj):
@@ -151,7 +152,7 @@ class Engine:
             if phase=='accepted' and c['state'] in {'executed','rejected'}:return
             c['state']=phase;c['result']=obj
             if c['op']=='POWER_STATUS' and phase=='executed' and self.epoch==(obj['boot'],obj['run']):
-                self.power=dict(voltage=obj.get('voltage'),solar_voltage=obj.get('solar_voltage'),at=time.monotonic(),synthetic=True)
+                self.power=dict(voltage=obj.get('voltage'),solar_voltage=obj.get('solar_voltage'),at=self.now(),synthetic=True)
     def on_packet(self,packet,raw):
         if self.epoch is None:
             if self.profile==PROFILE:
@@ -167,7 +168,7 @@ class Engine:
         if result not in {'new','late'}:return
         self.total_unique+=1;self.event('packet',values=packet.values,count=packet.count)
         if result=='late' or self.ambiguous:return
-        self.latest=packet;self.value_at=time.monotonic()
+        self.latest=packet;self.value_at=self.now()
         same=self.previous_clock==packet.data['MISSION_TIME']
         self.clock_frozen=self.clock_frozen+1 if same else 0
         self.clock_warning=self.clock_frozen>=3
@@ -189,7 +190,7 @@ class Engine:
             obj=dict(kind='command',team=self.team,id=ident,seq=self.command_seq,client=self.store.session,op=op,args=args)
             try:self.outgoing.put_nowait(obj)
             except queue.Full:raise ValueError('Cola de transmisión llena')
-            self.commands[ident]=dict(id=ident,op=op,state='queued',args=args,message=obj,deadline=time.monotonic()+self.timeout,late=False)
+            self.commands[ident]=dict(id=ident,op=op,state='queued',args=args,message=obj,deadline=self.now()+self.timeout,late=False)
             if len(self.commands)>256:
                 for k,c in list(self.commands.items()):
                     if c['state'] not in {'queued','sent','accepted'}:del self.commands[k];break
@@ -201,18 +202,18 @@ class Engine:
             if self.profile!=PROFILE or self.source=='REPLAY':raise ValueError('Sólo banco bidireccional')
             obj=c['message'];self.outgoing.put_nowait(obj)
             self.event('command_repeat_requested',previous_state=c['state'],message=obj)
-            c['state']='queued';c['deadline']=time.monotonic()+self.timeout
+            c['state']='queued';c['deadline']=self.now()+self.timeout
     def sent(self,obj):
         with self.lock:
             c=self.commands.get(obj['id'])
             if c and c['state']=='queued':
-                c['state']='sent';c['deadline']=time.monotonic()+self.timeout
+                c['state']='sent';c['deadline']=self.now()+self.timeout
                 self.event('command_sent',message=obj)
     def can_send(self,obj):
         with self.lock:return self.commands.get(obj['id'],{}).get('state')=='queued'
     def expire(self):
         with self.lock:
-            now=time.monotonic()
+            now=self.now()
             # Un único sondeo nuevo tras el arranque; no repito órdenes previas
             # ni sondeo indefinidamente un bootloader que no ejecuta firmware.
             if self.waiting_identity and self.boot_probe_at is not None and now>=self.boot_probe_at:
@@ -226,7 +227,7 @@ class Engine:
                     c['state']='timeout';self.event('command_timeout',id=c['id'])
     def snapshot(self):
         with self.lock:
-            now=time.monotonic();t=self.tracker
+            now=self.now();t=self.tracker
             return dict(status=self.status,source=self.source,profile=self.profile,segment=self.segment,epoch=self.epoch,
                         latest=self.latest.data if self.latest else None,link_age=None if self.link_at is None else now-self.link_at,
                         data_age=None if self.value_at is None else now-self.value_at,gps=self.gps,

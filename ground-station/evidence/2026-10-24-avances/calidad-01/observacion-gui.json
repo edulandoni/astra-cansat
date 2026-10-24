@@ -1,0 +1,15 @@
+{
+  "source": "REPLAY_GUI",
+  "input_sha256": "de2c20d89403e0f4b56a9871426fd8894c8fb5f4a253812f2d40d5131e49d60e",
+  "screenshot_sha256": "9c7d6e21cd33afc67bd90a90cfaa5d135073924853b92fab2a71c29b3314b05d",
+  "observations_with_gps_stale": 5,
+  "telemetry_stale_during_gps_warning": false,
+  "visible_count": 6,
+  "visible_satellites": 9,
+  "visible_data_age_s": 0.7,
+  "visible_gps_age_s": 10.7,
+  "commands_disabled": true,
+  "closed_clean": true,
+  "desktop_control_closed_after": true,
+  "limits": "Reproducción sintética a 0,5x, sin puerto USB ni GPS físico. No acredita demora de vuelo."
+}

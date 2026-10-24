@@ -1,0 +1,12 @@
+{
+  "packet_count": 131,
+  "sequence_exact": true,
+  "csv_equal": true,
+  "classifications": {
+    "new": 131
+  },
+  "storage_clean": true,
+  "passed": true,
+  "tool_sha256": "7065c3429ef26b81675a193c60980273d35d8d37c9cbc8fa35720cedd06095d4",
+  "limits": "Segunda pasada, con protección de copias anidadas; no son 14 tipos nuevos de prueba ni dos horas adicionales."
+}

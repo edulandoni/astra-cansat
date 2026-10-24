@@ -1,0 +1,184 @@
+{
+  "recorded_utc": "2026-10-24T06:30:51.128360+00:00",
+  "source": "USB_BENCH",
+  "profile": "bench-usb-0.2",
+  "cases": [
+    {
+      "op": "STOP",
+      "args": {},
+      "id": "20261024T062835_458976Z_594238091383:2",
+      "state": "executed",
+      "reason": null,
+      "passed": true
+    },
+    {
+      "op": "CAL_ZERO",
+      "args": {},
+      "id": "20261024T062835_458976Z_594238091383:3",
+      "state": "executed",
+      "reason": null,
+      "passed": true
+    },
+    {
+      "op": "SET_TIME",
+      "args": {
+        "utc_seconds": 23316
+      },
+      "id": "20261024T062835_458976Z_594238091383:4",
+      "state": "executed",
+      "reason": null,
+      "passed": true
+    },
+    {
+      "op": "RUN",
+      "args": {
+        "scenario": "INVALID",
+        "samples": 131
+      },
+      "id": "20261024T062835_458976Z_594238091383:5",
+      "state": "rejected",
+      "reason": "BAD_ARGUMENT",
+      "passed": true
+    },
+    {
+      "op": "RUN",
+      "args": {
+        "scenario": "NOMINAL",
+        "samples": 0
+      },
+      "id": "20261024T062835_458976Z_594238091383:6",
+      "state": "rejected",
+      "reason": "BAD_ARGUMENT",
+      "passed": true
+    },
+    {
+      "op": "SET_TIME",
+      "args": {
+        "utc_seconds": 86400
+      },
+      "id": "20261024T062835_458976Z_594238091383:7",
+      "state": "rejected",
+      "reason": "BAD_TIME",
+      "passed": true
+    },
+    {
+      "op": "RUN_WRONG_TEAM",
+      "team": "1001",
+      "state": "timeout",
+      "new_packets": 0,
+      "passed": true
+    },
+    {
+      "op": "POWER_STATUS",
+      "args": {},
+      "id": "20261024T062835_458976Z_594238091383:9",
+      "state": "executed",
+      "reason": null,
+      "passed": true
+    },
+    {
+      "op": "RUN",
+      "args": {
+        "scenario": "NOMINAL",
+        "samples": 131
+      },
+      "id": "20261024T062835_458976Z_594238091383:10",
+      "state": "executed",
+      "reason": null,
+      "passed": true
+    },
+    {
+      "op": "REPEAT_RUN",
+      "count_before": 5,
+      "count_after": 5,
+      "same_run": true,
+      "passed": true
+    },
+    {
+      "op": "CAL_ZERO",
+      "args": {},
+      "id": "20261024T062835_458976Z_594238091383:11",
+      "state": "rejected",
+      "reason": "NOT_LAUNCH_PAD",
+      "passed": true
+    },
+    {
+      "op": "SET_TIME",
+      "args": {
+        "utc_seconds": 0
+      },
+      "id": "20261024T062835_458976Z_594238091383:12",
+      "state": "rejected",
+      "reason": "NOT_LAUNCH_PAD",
+      "passed": true
+    },
+    {
+      "op": "COMPLETE_MISSION",
+      "unique": 131,
+      "lost": 0,
+      "invalid": 0,
+      "quality": {
+        "telemetry_stale": false,
+        "gps_no_fix": false,
+        "gps_stale": false,
+        "mission_clock_frozen": false,
+        "ambiguous_context": false,
+        "storage_error": false,
+        "known_storage_loss": false,
+        "loss_detail_incomplete": false
+      },
+      "passed": true
+    },
+    {
+      "op": "STOP",
+      "args": {},
+      "id": "20261024T062835_458976Z_594238091383:13",
+      "state": "executed",
+      "reason": null,
+      "passed": true
+    }
+  ],
+  "error": null,
+  "passed": true,
+  "storage": [
+    {
+      "destination": 0,
+      "kind": "raw",
+      "saved": 639,
+      "pending": 0,
+      "error": "",
+      "dropped": 0,
+      "dropped_seq_ranges": [],
+      "loss_ledger_truncated": false,
+      "last_confirmed_seq": 639,
+      "capacity": 600
+    },
+    {
+      "destination": 0,
+      "kind": "csv",
+      "saved": 131,
+      "pending": 0,
+      "error": "",
+      "dropped": 0,
+      "dropped_seq_ranges": [],
+      "loss_ledger_truncated": false,
+      "last_confirmed_seq": 633,
+      "capacity": 600
+    }
+  ],
+  "source_sha256": {
+    "analyze.py": "446d825a0e869d432e5ef0f0aa3024ee597841b4ddfc02b609100325c591d218",
+    "app.py": "b016781f96a13549de564cc325e7413147bc44b7fd6b9251edda19480e8f4b84",
+    "campaign.py": "ae39c2ef56210f97ee5368593d9f7d742ac22d546ad4692bf08f0e77aca3b2f6",
+    "engine.py": "dcc3deec62a18a7bb6fb835b6eed846f3a233a525117a5b901bd8c772092f875",
+    "journal.py": "a949e02c24d8851380ff73cea27737b975385f9979eb4d6dc0e0f4d15bc5d3f6",
+    "mission.py": "d66b5260961bd5628dd38b08882511d576c44ac11bbee79b3d61010c8e3b6b39",
+    "quality.py": "c2bbc38cfc5bbd83f91f141c2171816b70fa804354c976bd17e20fbeef7278ae",
+    "recover.py": "9d6b15114b7a542eb8121c0adf99b1b175406973aa13b772c0e9a550f152000d",
+    "sources.py": "49f2173007990b6beae4056ddb04b671cf21a173e423b795b7763f1c276738b1",
+    "test_bench.py": "4011731a7f0e8a9ff794516fc5a69cc1d7a82a7e2884987e20e39d2a2b3307a2",
+    "test_quality.py": "07c8a2eea7581ab13a1bcd4ef18d57c18481a587c68dd036d5832eaa10d88706",
+    "wire.py": "9968dfd8cea3575510bed93965c695b683d0cb1f6f0e1a30da62180a936f52a7"
+  },
+  "limits": "Sólo USB sintético. La ausencia de respuesta a equipo ajeno se observa en este banco; no prueba addressing RF, autenticación ni una actuación física. Sin reinicio, carga de firmware o transmisión de radio."
+}
