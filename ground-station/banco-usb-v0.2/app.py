@@ -122,7 +122,8 @@ def main():
         data=display(snap['latest'])
         for k,var in labels.items():var.set((data[k]+' '+UNITS.get(k,'')) if k in data else '—')
         age=snap['data_age'];fresh='SIN DATOS ACTUALES' if age is None else f'Edad del dato {age:.1f} s'+(' — ANTIGUO' if age>3 else '')
-        header.set(f"{snap['source']} | {snap['status']} | {fresh} | TEAM {a.team} FICTICIO | segmento {current}")
+        link_age=snap['link_age'];link_text='sin mensaje válido' if link_age is None else f'último mensaje válido hace {link_age:.1f} s'
+        header.set(f"{snap['source']} | {snap['status']} | {link_text} | {fresh} | TEAM {a.team} FICTICIO | segmento {current}")
         power=snap['power'];solar='Sin consulta batería/solar' if power is None else f"Batería simulada {power['voltage']} V | Solar simulado {power['solar_voltage']} V | edad {time.monotonic()-power['at']:.1f} s"
         detail.set(f"Tramas RX {snap['frames_received']} | control {snap['control_received']} | válidos del segmento {snap['received']} | únicos {snap['unique']} | huecos {snap['observed_gaps']} | duplicados {snap['duplicates']} | conflictos {snap['conflicts']} | rechazos totales {snap['invalid']}\n{solar}")
         flags=[]
@@ -136,7 +137,8 @@ def main():
         if snap['commands']:
             c=snap['commands'][-1]
             state_text={'queued':'En cola','sent':'Enviada','accepted':'Aceptada','rejected':'Rechazada','executed':'Ejecutada en simulación','timeout':'Sin respuesta a tiempo','unknown':'Resultado desconocido'}.get(c['state'],c['state'])
-            command_state.set(c['op']+': '+state_text+(' — respuesta tardía' if c['late'] else '')+' '+c.get('result',{}).get('reason',''))
+            result=c.get('result',{});previous_context=bool(result) and (result.get('boot'),result.get('run'))!=snap['epoch']
+            command_state.set(('Histórico de otro contexto: ' if previous_context else '')+c['op']+': '+state_text+(' — respuesta tardía' if c['late'] else '')+' '+result.get('reason',''))
         if a.auto_run and not auto_started and e.peer:
             auto_started=True
             send('CAL_ZERO');send('SET_TIME',utc_seconds=int(datetime.now(timezone.utc).timestamp())%86400);send('POWER_STATUS');send('RUN',scenario=scenario.get(),samples=a.samples)

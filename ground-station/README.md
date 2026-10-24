@@ -8,6 +8,8 @@ También preparé la [propuesta de interfaz para revisar con Edu](docs/interface
 
 La [actualización02 del módulo y los comandos](docs/interfaces/2026-10-23-modulo-radio-y-comandos-actualizacion-02.md) agrega la referencia informada por Edu, la discrepancia de pinout con la foto y un cálculo reproducible de tiempo de aire. No configura RF ni confirma aún la variante física.
 
+La [actualización03 del ensayo RST](docs/2026-10-23-rst-fisico-actualizacion-03.md) conserva la incidencia de modo descarga, la recepción posterior1..131 y la corrección del receptor cuando no llega una identidad nueva.
+
 Me encargo de recibir, registrar y mostrar la telemetría en tierra. Esta carpeta reúne mi código, pruebas y decisiones. La rama `groundstation` es mi línea de trabajo del subsistema; no establece reglas para las otras áreas del equipo.
 
 ## Por dónde empezar

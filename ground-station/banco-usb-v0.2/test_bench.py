@@ -144,4 +144,30 @@ class BenchTests(unittest.TestCase):
             self.assertEqual(e.commands[ident]['state'],'executed');self.assertFalse(e.commands[ident]['late'])
             self.assertFalse(e.ambiguous);self.assertIsNotNone(e.peer);s.close()
 
+    def test_rom_download_boot_invalidates_old_values_without_hello(self):
+        with tempfile.TemporaryDirectory() as d:
+            s,e,b=self.setup_engine(d);e.feed(sample(0)[0]);old=e.segment
+            pending=e.command('POWER_STATUS')
+            e.feed(b'\nrst:0x1 (POWERON_RESET),boot:0x3 (DOWNLOAD_BOOT(UART0/UART1/SDIO_REI_REO_V2))\r\nwaiting for download\r')
+            self.assertIsNone(e.latest);self.assertIsNone(e.epoch);self.assertIsNone(e.gps)
+            self.assertTrue(e.ambiguous);self.assertTrue(e.waiting_identity)
+            self.assertEqual(e.commands[pending]['state'],'unknown')
+            # Sin anuncio nuevo no acepto una muestra bajo el contexto anterior.
+            e.feed(sample(0)[0]);self.assertEqual(e.total_unique,1)
+            b.boot='boot_after_button';b.hello();e.feed(sample(0)[0])
+            self.assertNotEqual(e.segment,old);self.assertEqual(e.latest.count,1)
+            self.assertFalse(e.waiting_identity);self.assertFalse(e.ambiguous)
+            s.close()
+
+    def test_rom_probe_recovers_missed_hello_without_repeating_old_orders(self):
+        with tempfile.TemporaryDirectory() as d:
+            s,e,b=self.setup_engine(d);e.feed(sample(0)[0])
+            e.feed(b'\nrst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)\r')
+            with patch('engine.time.monotonic',return_value=time.monotonic()+.6):e.expire()
+            ident=e.handshake;self.assertIsNotNone(ident);obj=e.outgoing.get_nowait()
+            b.boot='new_boot_without_hello';b.run='idle';e.sent(obj);b.execute(obj)
+            self.assertEqual(e.epoch,(b.boot,'idle'));self.assertFalse(e.waiting_identity)
+            self.assertEqual(e.commands[ident]['state'],'executed');self.assertIsNone(e.boot_probe_at)
+            s.close()
+
 if __name__=='__main__':unittest.main(verbosity=2)

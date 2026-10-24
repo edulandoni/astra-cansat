@@ -1,0 +1,21 @@
+{
+  "recorded_utc": "2026-10-24T02:45:19.925903+00:00",
+  "command": "python -m unittest -q test_bench",
+  "result": "OK",
+  "tests": 12,
+  "reported_duration_seconds": 6.514,
+  "scope": "Pruebas de software observadas en esta ejecución, incluidas invalidación ROM sin hello y sondeo único para anuncio perdido. No es otra pulsación física ni dos horas.",
+  "source_sha256": {
+    "analyze.py": "446d825a0e869d432e5ef0f0aa3024ee597841b4ddfc02b609100325c591d218",
+    "app.py": "a57ce822c6597a12a39db4d212ccda1e1eaf15bb11ce817d8790cc84aeb4c231",
+    "campaign.py": "ae39c2ef56210f97ee5368593d9f7d742ac22d546ad4692bf08f0e77aca3b2f6",
+    "engine.py": "f5fce95dce60b2dee5af021073de15272a2322ddc29a1593c2a93b68a5385085",
+    "journal.py": "b846dc060e71fc4306e9b7ab5526318eb43814c744a0933b1005ba5466100ead",
+    "mission.py": "d66b5260961bd5628dd38b08882511d576c44ac11bbee79b3d61010c8e3b6b39",
+    "recover.py": "0b251f4b8f5ba704c38f2018c139f0aee44f1e4f4e526c540b33858a0ff961b3",
+    "sources.py": "42936d5669426f51040d3a04c56321de0873635c948395e6115c1bfdc83e64f6",
+    "test_bench.py": "2c1487972e0908eb41295f9ee7a133f6cfd25bc914a053fe7d9e31af8dfdd1e9",
+    "wire.py": "9968dfd8cea3575510bed93965c695b683d0cb1f6f0e1a30da62180a936f52a7",
+    "firmware/AstraBench02/AstraBench02.ino": "bb46ae48b14adf76c29f746d9da6d14e77815f4a9113b99e0c7e89d11a609f9a"
+  }
+}

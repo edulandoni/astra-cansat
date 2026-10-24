@@ -2,6 +2,7 @@
 import hashlib
 import math
 import queue
+import re
 import threading
 import time
 import uuid
@@ -50,10 +51,14 @@ class Engine:
         self.oracle={};self.finished=None;self.peer={};self.power=None;self.segment_serial=0
         self.connection_serial=0;self.handshake=None
         self.frames_received=0;self.control_received=0
+        self.waiting_identity=False
+        self.boot_probe_at=None
     def event(self,kind,**data):
         return self.store.emit(kind,source=self.source,profile=self.profile,team=self.team,segment=self.segment,**data)
     def context(self,boot,run,reason='metadata',preserve_command=None):
         epoch=(str(boot),str(run))
+        self.boot_probe_at=None
+        if self.waiting_identity:self.status='Conectado';self.waiting_identity=False
         if epoch==self.epoch:
             self.ambiguous=False
             return
@@ -83,6 +88,7 @@ class Engine:
             self.demux=Demux();self.status='Desconectado: '+reason
             self.latest=None;self.value_at=None;self.ambiguous=True
             self.peer={};self.handshake=None
+            self.boot_probe_at=None
             self.event('disconnected',reason=reason)
             for c in self.commands.values():
                 if c['state'] in {'queued','sent','accepted'}:c['state']='unknown';c['reason']='Interrupción del transporte'
@@ -99,7 +105,19 @@ class Engine:
                 except (ValueError,UnicodeError,TypeError) as exc:
                     self.invalid+=1;self.event('rejected',raw_hex=raw.hex(),reason=str(exc));continue
                 if category=='diagnostic':
-                    self.diagnostics+=1;self.event('diagnostic',raw_hex=raw.hex());continue
+                    self.diagnostics+=1;self.event('diagnostic',raw_hex=raw.hex())
+                    # ROM de mi banco ESP32: un reset sin hello no conserva la
+                    # identidad anterior. No invento un boot a partir del texto.
+                    if self.profile==PROFILE and re.fullmatch(rb'\s*rst:0x[0-9a-fA-F]+[^\r\n]*,\s*boot:0x[0-9a-fA-F]+[^\r\n]*\r',raw):
+                        previous=self.epoch;self.epoch=None;self.peer={};self.handshake=None
+                        self.latest=None;self.value_at=None;self.gps=None;self.gps_at=None;self.power=None
+                        self.finished=None;self.ambiguous=True;self.waiting_identity=True
+                        self.boot_probe_at=time.monotonic()+.5 if self.source!='REPLAY' else None
+                        self.status='Conectado — arranque detectado; esperando identidad del firmware'
+                        for c in self.commands.values():
+                            if c['state'] in {'queued','sent','accepted'}:c['state']='unknown';c['reason']='Arranque ROM sin identidad nueva confirmada'
+                        self.event('boot_observed',previous_epoch=previous,confirmed_identity=False)
+                    continue
                 self.link_at=time.monotonic()
                 if category=='control':self.control_received+=1;self.on_control(value);continue
                 self.on_packet(value,raw)
@@ -195,6 +213,14 @@ class Engine:
     def expire(self):
         with self.lock:
             now=time.monotonic()
+            # Un único sondeo nuevo tras el arranque; no repito órdenes previas
+            # ni sondeo indefinidamente un bootloader que no ejecuta firmware.
+            if self.waiting_identity and self.boot_probe_at is not None and now>=self.boot_probe_at:
+                self.boot_probe_at=None
+                try:
+                    self.handshake=self.command('POWER_STATUS')
+                    self.commands[self.handshake]['handshake_connection']=self.connection_serial
+                except (ValueError,queue.Full) as exc:self.event('identity_probe_not_queued',reason=str(exc))
             for c in self.commands.values():
                 if c['state'] in {'queued','sent','accepted'} and now>c['deadline']:
                     c['state']='timeout';self.event('command_timeout',id=c['id'])
