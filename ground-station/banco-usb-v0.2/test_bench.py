@@ -238,4 +238,20 @@ class MemoryInstrumentationTests(unittest.TestCase):
         self.assertEqual(len(ctypes._pointer_type_cache),initial)
         self.assertEqual(windows_memory_api.cache_info().misses,1)
 
+class RecordedConflictRecoveryTests(unittest.TestCase):
+    def test_recorded_conflict_inside_one_journal_blocks_reconstruction(self):
+        with tempfile.TemporaryDirectory() as d:
+            s=Store(Path(d)/'source');e=Engine(s);b=PCBench(e);b.hello()
+            try:
+                e.feed(sample(0)[0])
+                fields=sample(0)[0][:-1].decode().split(',');fields[5]='999.0'
+                e.feed((','.join(fields)+'\r').encode())
+                self.assertEqual(e.total_conflicts,1)
+            finally:s.close()
+            original=s.roots[0]/'journal.jsonl';output=Path(d)/'recovered'
+            result=recover([original],output)
+            self.assertEqual(result['candidates'],1)
+            self.assertFalse(result['written']);self.assertTrue(result['conflicts'])
+            self.assertTrue(result['originals_unchanged']);self.assertFalse(list(output.rglob('*.csv')))
+
 if __name__=='__main__':unittest.main(verbosity=2)

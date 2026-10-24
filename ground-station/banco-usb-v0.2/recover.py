@@ -35,6 +35,13 @@ def recover(inputs,output):
             for lineno,e,error in records(path):
                 if error:errors.append(dict(file=str(path),line=lineno,reason=error));continue
                 if not isinstance(e,dict):errors.append(dict(file=str(path),line=lineno,reason='Evento no es objeto'));continue
+                if e.get('kind')=='validated' and e.get('classification')=='conflict':
+                    # El receptor conserva el primer paquete y deja la segunda
+                    # versión contradictoria en el diario, sin duplicar el CSV.
+                    # Ignorar esa marca volvería falsamente limpia la recuperación.
+                    conflicts.append(dict(key=[e.get(k) for k in ['pc_session','segment','team','count']],
+                                          source=str(path),line=lineno,reason='Conflicto registrado durante adquisición'))
+                    continue
                 if e.get('kind')!='packet':continue
                 try:
                     values=e['values'];packet=parse((','.join(values)+'\r').encode('ascii'),e['team'])

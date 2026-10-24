@@ -1,0 +1,26 @@
+{
+  "recorded_utc": "2026-10-24T05:10:46.338342+00:00",
+  "kind": "software-regression-no-USB",
+  "fixture": "One accepted packet, same counter with a different altitude, receiver records validated/classification=conflict and preserves first CSV row.",
+  "before": {
+    "written": true,
+    "candidates": 1,
+    "conflicts": 0
+  },
+  "after": {
+    "written": false,
+    "candidates": 1,
+    "conflicts": 1,
+    "originals_unchanged": true
+  },
+  "tests": {
+    "passed": 18,
+    "runtime_seconds": 5.397
+  },
+  "sha256": {
+    "original_journal": "d124e01874c0342f321839f88223b53f2f89d08d1b367c3ef6c2a41cf5b4c1fc",
+    "old_recover": "0b251f4b8f5ba704c38f2018c139f0aee44f1e4f4e526c540b33858a0ff961b3",
+    "new_recover": "9d6b15114b7a542eb8121c0adf99b1b175406973aa13b772c0e9a550f152000d"
+  },
+  "limits": "Only sees conflicts provided in selected sources. CSV alone cannot reveal marks retained exclusively in a missing journal. Does not adjudicate which conflicting measurement is true. Ongoing USB snapshot is unchanged; recovery tool is offline."
+}

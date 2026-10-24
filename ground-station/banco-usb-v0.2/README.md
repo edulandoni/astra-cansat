@@ -66,3 +66,7 @@ Resultados, límites y evidencia: [primera actualización de esta etapa](../docs
 ## Uso sin tapar el chat — 24/10/2026
 
 `--start-minimized` deja la ventana en la barra de tareas y mantiene adquisición, archivo y actualizaciones de Tk activos. `Ctrl+M` minimiza la ventana del banco sin enviar órdenes al ESP32. Al terminar una inspección vuelvo al chat actual para mantener visibles las preguntas y maniobras pendientes. Una ventana minimizada no demuestra por sí sola que la GUI siga respondiendo: lo compruebo con observaciones y el registro `gui_health`.
+
+## Conflictos de recuperación — 24/10/2026
+
+Además de comparar filas entre copias, bloqueo reconstrucción si un diario seleccionado conserva una marca de conflicto detectado durante adquisición. Un CSV aislado no revela marcas que sólo quedaron en un diario ausente. [Caso antes/después](../docs/2026-10-24-recuperacion-conflicto-interno-actualizacion-08.md).

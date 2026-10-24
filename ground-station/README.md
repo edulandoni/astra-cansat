@@ -22,6 +22,8 @@ La [actualización 06](docs/2026-10-24-gps-presentacion-actualizacion-06.md) cor
 
 La [actualización 07](docs/2026-10-24-medidor-y-reinicio-prolongado-actualizacion-07.md) conserva un intento prolongado interrumpido, identifica una acumulación del medidor de memoria y registra la corrección y el segundo intento. No declara todavía dos horas aprobadas.
 
+La [actualización 08](docs/2026-10-24-recuperacion-conflicto-interno-actualizacion-08.md) evita declarar limpia una reconstrucción cuando el propio diario ya registra un conflicto entre mensajes del mismo contador.
+
 ## Por dónde empezar
 
 | Necesidad | Ubicación |
