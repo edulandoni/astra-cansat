@@ -69,3 +69,7 @@ La [entrada actual de Drive](https://drive.google.com/file/d/12H-VdifFyThzj4Tz-k
 ## Análisis diario del aula e investigación — actualización del 20/10/2026
 
 El [primer panorama priorizado del 20/10](docs/aula/2026-10-20/Informe_aula_2026-10-20_1156_ART.md) explica preguntas, respuestas, publicaciones y pendientes. El diario de ese análisis continúa en [ASTRA-38](https://astrateam2026.atlassian.net/browse/ASTRA-38); [ASTRA-37](https://astrateam2026.atlassian.net/browse/ASTRA-37) mantiene fuentes y cobertura. La [metodología del corte diario](docs/aula/2026-10-20/Metodo_analisis_diario_2026-10-20.md) actualiza la cadencia sin borrar las entradas anteriores. La [revisión de antecedentes, código y fotos](docs/investigacion/2026-10-20-antecedentes-codigo-y-fotos.md) y su [catálogo visual](docs/investigacion/2026-10-20-catalogo-visual-cansat.csv) documentan el avance en ASTRA-35.
+
+## Primera placa física — actualización del 23/10/2026
+
+[Identificación, controlador, secuencia BOOT y herramientas de banco USB](docs/2026-10-23-banco-esp32-usb.md). El registro distingue preparación y compilación de carga y recepción física; conservo el estado histórico anterior. Diario en ASTRA-20 y ASTRA-21.

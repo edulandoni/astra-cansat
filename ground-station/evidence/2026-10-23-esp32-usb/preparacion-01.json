@@ -1,0 +1,42 @@
+{
+  "recorded_utc": "2026-10-24T00:41:25.072923+00:00",
+  "jira": [
+    "ASTRA-20",
+    "ASTRA-21"
+  ],
+  "physical_board": "ZY-ESP32 según foto; revisión comercial no confirmada",
+  "usb_bridge": "CP2102 / VID10C4 PID_EA60",
+  "initial_windows_problem_code": 28,
+  "driver_installed": "Silicon Labs 11.5.0.417; catálogo Microsoft; firma Microsoft Windows Hardware Compatibility Publisher válida",
+  "port": "COM5",
+  "chip_query": {
+    "chip": "ESP32-D0WD-V3",
+    "revision": "3.1",
+    "flash_bytes": 4194304,
+    "crystal_mhz": 40,
+    "manufacturer_hex": "5e",
+    "device_hex": "4016"
+  },
+  "manual_boot_sequence": "Mantuve BOOT, pulsé y solté EN/RST y solté BOOT. Conecté con --before no-reset y consulté flash-id.",
+  "automatic_boot_error": "Wrong boot mode detected (0x13)",
+  "backup_attempt_1": "Lectura de 4MB a 460800 interrumpida: chip dejó de responder; no hay copia completa acreditada.",
+  "backup_attempt_2": "Sin nuevo reinicio manual, no hubo respuesta de sincronización. No se escribió flash.",
+  "compile": {
+    "arduino_cli": "1.5.1",
+    "esp32_core": "3.3.12",
+    "fqbn": "esp32:esp32:esp32:FlashMode=dio,FlashFreq=40,FlashSize=4M,UploadSpeed=115200",
+    "program_bytes": 281044,
+    "global_bytes": 22124,
+    "source_sha256": "1e0d78499cb05bbae38c07a2655b37c75c9519cc7bbf4ddcac56de571d9d0c81",
+    "result": "OK; el primer intento falló por búsqueda de bits/c++config.h. Usé ruta corta para runtime.tools.esp-x32.path, manteniendo la ruta real de directories.data; el enlace como directories.data no funcionó."
+  },
+  "software_tests": {
+    "suite": "test_ground",
+    "passed": 9
+  },
+  "limits": [
+    "Todavía no se acredita carga ni recepción de misión física.",
+    "Sin configuración WiFi/Bluetooth/SX1276, telecomandos de vuelo o RF.",
+    "TEAM1000 ficticio, esquema de 22 campos heredado y provisional."
+  ]
+}
