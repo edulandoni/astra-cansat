@@ -5,9 +5,10 @@ from protocol import Framer, Counter, parse
 from simulator import sample
 
 class Acquisition:
-    def __init__(self, recorder, team='1000', scenario='NOMINAL', port=None, baud=115200):
+    def __init__(self, recorder, team='1000', scenario='NOMINAL', port=None, baud=115200, bench_reset=False):
         self.recorder, self.team, self.scenario = recorder, team, scenario
         self.port, self.baud = port, baud
+        self.bench_reset = bench_reset
         self.counter = Counter()
         self.invalid = 0
         self.status = 'Iniciando'
@@ -63,9 +64,25 @@ class Acquisition:
         except ImportError:
             self.status = 'Falta pyserial: instalar requirements.txt'
             return
+        bench_reset_done = False
         while not self.stop.is_set():
             try:
                 with serial.Serial(self.port,self.baud,timeout=.2) as link:
+                    if self.bench_reset and not bench_reset_done:
+                        # Sólo banco conocido: el sketch empieza a emitir a 1 s.
+                        # Reinicio una vez y conservo el arranque fuera del parser;
+                        # no descarto esta ventana en conexiones normales/RF.
+                        link.dtr = False
+                        link.rts = True
+                        self.stop.wait(.15)
+                        link.rts = False
+                        bench_reset_done = True
+                        self.recorder.event(kind='bench_reset', method='EN/RTS', power_cycle=False)
+                        until = time.monotonic()+.5
+                        while not self.stop.is_set() and time.monotonic()<until:
+                            startup = link.read(512)
+                            if startup:
+                                self.recorder.event(kind='startup_window', raw_hex=startup.hex())
                     # New framer for each connection; no joining stale fragments.
                     framer = Framer()
                     self.status = f'USB {self.port} conectado'

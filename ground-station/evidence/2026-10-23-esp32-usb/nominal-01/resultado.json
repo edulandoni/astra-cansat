@@ -1,0 +1,44 @@
+{
+  "source": "ESP32 físico → CP210x → USB; datos de misión sintéticos",
+  "started_utc": "2026-10-24T00:53:09.239229+00:00",
+  "ended_utc": "2026-10-24T00:55:27.001405+00:00",
+  "port": "COM5",
+  "baud": 115200,
+  "team": "1000",
+  "scenario_label": "NOMINAL",
+  "reset_rts_requested": true,
+  "startup_window_seconds": 0.5,
+  "received": 131,
+  "unique": 131,
+  "duplicates": 0,
+  "observed_gaps": 0,
+  "counter_warning": "",
+  "rejected": 0,
+  "framing_overflows": 0,
+  "states": [
+    "LAUNCH_PAD",
+    "ASCENT",
+    "APOGEE",
+    "DESCENT",
+    "PROBE_RELEASE",
+    "PAYLOAD_RELEASE",
+    "LANDED"
+  ],
+  "first_count": 1,
+  "last_count": 131,
+  "interval_seconds": {
+    "min": 0.8910000000614673,
+    "median": 1.0,
+    "max": 1.1089999999385327
+  },
+  "recording_error": "",
+  "capture_error": null,
+  "nominal_complete": true,
+  "limits": "No acredita radio, sensores reales, autonomía, corte eléctrico o formato RF/CONAE v2 acordado. Ventana de arranque excluida explícitamente y conservada en crudo; no usar con firmware de inicio más rápido sin revisar esta condición.",
+  "files_sha256": {
+    "Flight_1000.csv": "cccb6bee79a1da0215d87a1d5448a7bfee5c22042d715c452fe57585bb7a97b7",
+    "reception.jsonl": "1731c646acc0d1fc029b26da2e2ab6fb25ba22f57f94f79e271d4740dad5507a",
+    "usb-original.bin": "f949b2fcf0888f75754c94a68e7bb112a2b57ce6c9c582dca435e882e3ac8dbd"
+  },
+  "public_copy_note": "Conservo completos los originales en la sesión local. Publico CSV, resultados y 131 eventos accepted; excluyo el binario USB original y eventos startup_window de la copia pública. Sus huellas se conservan como procedencia. Todos los valores de misión son ficticios."
+}

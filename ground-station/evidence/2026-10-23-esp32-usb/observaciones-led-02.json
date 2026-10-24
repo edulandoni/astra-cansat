@@ -1,0 +1,11 @@
+{
+  "registered_utc": "2026-10-24T00:47:42.897465+00:00",
+  "source": "Observación visual propia comunicada durante la prueba, no medición instrumental",
+  "sequence": [
+    "Al enchufar por primera vez observé una luz azul continua.",
+    "Tras mantener BOOT, pulsar y soltar EN/RST y soltar BOOT, observé que se apagó, encendió aproximadamente medio segundo y se apagó.",
+    "Al repetir el procedimiento observé el mismo comportamiento.",
+    "Durante la nueva lectura de flash observé que volvió a quedar encendida de forma continua."
+  ],
+  "interpretation": "No atribuyo estado de boot, éxito de programación o fallo a la luz sin evidencia independiente. La consulta serial y el resultado de cada operación son los controles."
+}

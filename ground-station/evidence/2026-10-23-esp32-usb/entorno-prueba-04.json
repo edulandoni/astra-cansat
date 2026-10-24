@@ -1,0 +1,8 @@
+{
+  "python": "3.12.10",
+  "pyserial": "3.5",
+  "esptool": "5.3.0",
+  "arduino_cli": "1.5.1",
+  "arduino_esp32_core": "3.3.12",
+  "source_firmware_unchanged_sha256": "1e0d78499cb05bbae38c07a2655b37c75c9519cc7bbf4ddcac56de571d9d0c81"
+}

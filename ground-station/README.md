@@ -73,3 +73,7 @@ El [primer panorama priorizado del 20/10](docs/aula/2026-10-20/Informe_aula_2026
 ## Primera placa física — actualización del 23/10/2026
 
 [Identificación, controlador, secuencia BOOT y herramientas de banco USB](docs/2026-10-23-banco-esp32-usb.md). El registro distingue preparación y compilación de carga y recepción física; conservo el estado histórico anterior. Diario en ASTRA-20 y ASTRA-21.
+
+## Misión USB física — actualización posterior del 23/10/2026
+
+[Primera misión completa, respaldo original y corrección del inicio de la GUI](docs/2026-10-23-prueba-usb-fisica-actualizacion-02.md). Recibí 131 muestras sintéticas desde la placa y otras 131 en la pantalla; conservo la preparación y el primer intento de GUI por separado.

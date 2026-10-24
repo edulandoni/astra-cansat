@@ -1,0 +1,41 @@
+{
+  "recorded_utc": "2026-10-24T00:55:30.475218+00:00",
+  "backup": {
+    "file": "flash_original_intento03.bin",
+    "bytes": 4194304,
+    "sha256": "a312ead25e36d3ab004b4fea46efae0fa43274c45631514b6cac47b30e809472",
+    "location": "Descargas, carpeta temática local de esta prueba; binario excluido del repositorio público",
+    "independent_disk": false
+  },
+  "flash_read_baud": 115200,
+  "upload_baud": 115200,
+  "source_sha256": "1e0d78499cb05bbae38c07a2655b37c75c9519cc7bbf4ddcac56de571d9d0c81",
+  "artifacts": [
+    {
+      "offset": "0x1000",
+      "bytes": 23520,
+      "sha256": "f7ec7b7d9026e12dd3616bf79cee0e78974a2605afbc2863fcfb0ac9aeb159d4",
+      "name": "GCS_FlightSimulator.ino.bootloader.bin"
+    },
+    {
+      "offset": "0x8000",
+      "bytes": 3072,
+      "sha256": "148b959cbff1c38aa8e1d5c0ba9d612c54997b945e56a63f41223eef650653a1",
+      "name": "GCS_FlightSimulator.ino.partitions.bin"
+    },
+    {
+      "offset": "0xe000",
+      "bytes": 8192,
+      "sha256": "f94c5d786a7a8fab06ac5d10e33bf37711a6697636dc037559ea19cc410a17f0",
+      "name": "boot_app0.bin"
+    },
+    {
+      "offset": "0x10000",
+      "bytes": 281200,
+      "sha256": "c05845154eedecee9a2b839675502ca07c880aede7687285a01aae82ac9ce7dc",
+      "name": "GCS_FlightSimulator.ino.bin"
+    }
+  ],
+  "upload_result": "Esptool terminó correctamente y verificó las cuatro escrituras por hash; no se solicitó borrado completo de flash",
+  "limits": "Copia local en el mismo disco, no respaldo independiente. No valida RF ni restauración efectiva del original."
+}

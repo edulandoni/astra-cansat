@@ -24,3 +24,7 @@ Puedo comprobar reconstrucción de paquetes, validación, contador, rechazos y r
 Todavía no demostré comunicación física con la placa. Antes de compilar el sketch necesito identificarla. No hay radio configurada, telecomandos completos ni ensayo de autonomía. RESET simula una interrupción lógica: no prueba un corte eléctrico. El descenso ficticio necesita revisión antes de usarlo como evidencia de C3. GPS_LOSS retiene el último dato y lo señala; no representa una posición nueva.
 
 La carpeta runs/ es de uso local. Los resultados que publico como evidencia se guardan en ../evidence/ con fecha y contexto. Dos archivos en un mismo disco no acreditan respaldo físico independiente.
+
+## Actualización del 23/10/2026 — placa física y arranque de banco
+
+La [prueba física posterior](../docs/2026-10-23-prueba-usb-fisica-actualizacion-02.md) agrega identificación, carga y dos misiones USB completas. El sketch y parser se conservan; agregué la opción explícita de GUI python app.py --port COM5 --team 1000 --bench-reset-once para reiniciar una vez y conservar el arranque fuera del parser. Sólo se usa con el simulador conocido que comienza al segundo. La adquisición normal no activa esta ventana. Las versiones anteriores del código quedan en Git, incluidas las que documenta el estado inicial de este banco.

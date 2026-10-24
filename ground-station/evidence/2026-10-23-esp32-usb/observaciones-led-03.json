@@ -1,0 +1,6 @@
+{
+  "registered_utc": "2026-10-24T00:54:02.414725+00:00",
+  "source": "Observación visual propia comunicada durante la primera captura de telemetría USB",
+  "observation": "Durante la recepción de la misión observé que la luz empezó a titilar.",
+  "interpretation": "No atribuyo cada destello a un paquete ni uso el LED como contador. La recepción serial queda registrada por separado."
+}
