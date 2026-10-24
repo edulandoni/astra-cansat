@@ -1,5 +1,11 @@
 # Alcance: groundstation y manejo de datos
 
+## Interacción con ventanas — actualización del24/10/2026
+
+- Después de revisar u operar la interfaz del banco, vuelvo al chat actual en la app deGPT/Codex antes de pedir una maniobra o esperar respuesta. No dejo otra ventana tapando las preguntas.
+- Uso la navegación propia de la app para mostrar el chat actual. No manipulo el contenido deGPT mediante automatización de pantalla ni cierro el receptor para recuperar foco cuando debe seguir ensayando.
+- Si necesito observar otra vez laGUI, la identifico y reviso; al terminar repito el retorno al chat. No doy por hecha una maniobra física por tiempo transcurrido: compruebo su efecto y solicito respuesta cuando hace falta.
+
 Estas pautas se aplican únicamente dentro de ground-station/. No imponen metodología a otras áreas.
 
 - Escribo como Cristian: primera persona para mi trabajo y plural para el equipo. No escribo sobre mí como un tercero ni uso «Instrucción expresa de Cristian» en publicaciones nuevas.
