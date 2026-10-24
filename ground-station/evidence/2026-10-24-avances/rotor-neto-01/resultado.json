@@ -1,0 +1,78 @@
+{
+  "hypotheses_only": true,
+  "cases": {
+    "sin_carga_extra": {
+      "inputs": {
+        "mass_kg": 0.5,
+        "height_m": 400.0,
+        "descent_m_s": 5.0,
+        "efficiency": 0.1,
+        "extra_load_w": 0.0,
+        "standby_s": 0.0
+      },
+      "active_seconds": 80.0,
+      "gravity_ceiling_j": 1961.33,
+      "generated_wh": 0.05448138888888889,
+      "incremental_consumption_wh": 0.0,
+      "net_incremental_wh": 0.05448138888888889,
+      "break_even_global_efficiency": 0.0,
+      "interpretation": "Diferencia energética hipotética; un valor positivo no valida despliegue, estabilidad, masa o velocidad.",
+      "limits": "Sin energía de viento ni cambios cinéticos. Rendimiento global incluye cadena de conversión; la carga extra debe excluir pérdidas ya incluidas para no descontarlas dos veces. No resto el consumo común del CanSat: comparo sólo el agregado. No acredita autonomía previa al descenso."
+    },
+    "auxiliar_solo_en_descenso": {
+      "inputs": {
+        "mass_kg": 0.5,
+        "height_m": 400.0,
+        "descent_m_s": 5.0,
+        "efficiency": 0.1,
+        "extra_load_w": 0.2,
+        "standby_s": 0.0
+      },
+      "active_seconds": 80.0,
+      "gravity_ceiling_j": 1961.33,
+      "generated_wh": 0.05448138888888889,
+      "incremental_consumption_wh": 0.0044444444444444444,
+      "net_incremental_wh": 0.050036944444444446,
+      "break_even_global_efficiency": 0.008157729703823426,
+      "interpretation": "Diferencia energética hipotética; un valor positivo no valida despliegue, estabilidad, masa o velocidad.",
+      "limits": "Sin energía de viento ni cambios cinéticos. Rendimiento global incluye cadena de conversión; la carga extra debe excluir pérdidas ya incluidas para no descontarlas dos veces. No resto el consumo común del CanSat: comparo sólo el agregado. No acredita autonomía previa al descenso."
+    },
+    "auxiliar_dos_horas_previas": {
+      "inputs": {
+        "mass_kg": 0.5,
+        "height_m": 400.0,
+        "descent_m_s": 5.0,
+        "efficiency": 0.1,
+        "extra_load_w": 0.2,
+        "standby_s": 7200.0
+      },
+      "active_seconds": 80.0,
+      "gravity_ceiling_j": 1961.33,
+      "generated_wh": 0.05448138888888889,
+      "incremental_consumption_wh": 0.40444444444444444,
+      "net_incremental_wh": -0.34996305555555557,
+      "break_even_global_efficiency": 0.7423534030479317,
+      "interpretation": "Diferencia energética hipotética; un valor positivo no valida despliegue, estabilidad, masa o velocidad.",
+      "limits": "Sin energía de viento ni cambios cinéticos. Rendimiento global incluye cadena de conversión; la carga extra debe excluir pérdidas ya incluidas para no descontarlas dos veces. No resto el consumo común del CanSat: comparo sólo el agregado. No acredita autonomía previa al descenso."
+    },
+    "sin_generacion_con_auxiliar": {
+      "inputs": {
+        "mass_kg": 0.5,
+        "height_m": 400.0,
+        "descent_m_s": 5.0,
+        "efficiency": 0.0,
+        "extra_load_w": 0.2,
+        "standby_s": 0.0
+      },
+      "active_seconds": 80.0,
+      "gravity_ceiling_j": 1961.33,
+      "generated_wh": 0.0,
+      "incremental_consumption_wh": 0.0044444444444444444,
+      "net_incremental_wh": -0.0044444444444444444,
+      "break_even_global_efficiency": 0.008157729703823426,
+      "interpretation": "Diferencia energética hipotética; un valor positivo no valida despliegue, estabilidad, masa o velocidad.",
+      "limits": "Sin energía de viento ni cambios cinéticos. Rendimiento global incluye cadena de conversión; la carga extra debe excluir pérdidas ya incluidas para no descontarlas dos veces. No resto el consumo común del CanSat: comparo sólo el agregado. No acredita autonomía previa al descenso."
+    }
+  },
+  "recommendation": "Continúo sólo como investigación opcional; no presupuesto energía útil ni sustituyo recuperación/paneles/autonomía sin ensayos y acuerdo de responsables."
+}

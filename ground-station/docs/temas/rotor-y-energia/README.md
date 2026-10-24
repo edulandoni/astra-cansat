@@ -9,3 +9,7 @@ Aquí continúo la viabilidad del rotor generador. Su origen histórico es parte
 - [Resultados ilustrativos](../../../evidence/2026-10-19-rotor-escala/escala.json).
 
 Los documentos originales conservan sus referencias anteriores. Para la ubicación vigente consulto este índice y el [mapa general](../../trazabilidad-vigente-2026-10-19.md).
+
+## Actualización del 24/10/2026
+
+[Balance incremental y consumo de la electrónica añadida](../../investigacion/2026-10-24-rotor-energia-incremental.md). Conservo el cálculo original; todavía no hay ensayo aerodinámico o eléctrico de rotor.

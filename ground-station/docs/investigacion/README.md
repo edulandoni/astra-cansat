@@ -34,3 +34,7 @@ La metodología y el respaldo de documentación se mantienen en [ASTRA-33](../te
 ## Incorporaciones de tierra del 23 y 24/10/2026
 
 [Antecedentes convertidos en pruebas](2026-10-23-antecedentes-a-pruebas.md) · [Referencias visuales GCS](2026-10-23-catalogo-visual-gcs.csv) · [Criterios generales del premio Mark Walker y límites para DJS](2026-10-24-criterios-premio-groundstation.md).
+
+## Avances del 24/10/2026
+
+[Calidad medida y cierre técnico de investigación](2026-10-24-calidad-medida-y-cierre-investigacion.md) · [Rotor: energía incremental y consumo propio](2026-10-24-rotor-energia-incremental.md).
