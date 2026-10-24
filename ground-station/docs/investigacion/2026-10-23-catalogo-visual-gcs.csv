@@ -1,0 +1,9 @@
+id,equipo,edicion,fuente,pagina_pdf,tipo,vista,utilidad,credito,permiso
+GCS01,Daedalus,2026,https://www.cansatcompetition.com/assets/docs/2026/cansat2026_1043_pdr_v07.pdf,123,diagrama,si,arquitectura de tierra,Team1043,No confirmado; enlace sin republicar
+GCS02,Daedalus,2026,https://www.cansatcompetition.com/assets/docs/2026/cansat2026_1043_pdr_v07.pdf,129,prototipo documentado,si,disposición estación,Team1043,No confirmado; enlace sin republicar
+GCS03,Daedalus,2026,https://www.cansatcompetition.com/assets/docs/2026/cansat2026_1043_pdr_v07.pdf,131,captura GUI,si,legibilidad y distribución,Team1043,No confirmado; enlace sin republicar
+GCS04,Daedalus,2026,https://www.cansatcompetition.com/assets/docs/2026/cansat2026_1043_pdr_v07.pdf,135,árbol de archivos,si,raw y CSV separados,Team1043,No confirmado; enlace sin republicar
+GCS05,SEDS ITBA,2025,https://cansatcompetition.com/docs/teams/cansat2025_3165_pdr_v01.pdf,113,diagrama,si,interfaz radio USB,Team3165,No confirmado; enlace sin republicar
+GCS06,SEDS ITBA,2025,https://cansatcompetition.com/docs/teams/cansat2025_3165_pdr_v01.pdf,117,patrón de antena,si,omnidireccional y elevación,Team3165; origen fabricante por confirmar,No confirmado; enlace sin republicar
+GCS07,SEDS ITBA,2025,https://cansatcompetition.com/docs/teams/cansat2025_3165_pdr_v01.pdf,118,patrón de antena,si,Yagi directiva y apuntado,Team3165; origen fabricante por confirmar,No confirmado; enlace sin republicar
+GCS08,SEDS ITBA,2025,https://cansatcompetition.com/docs/teams/cansat2025_3165_pdr_v01.pdf,119,render montaje,si,mano frente a trípode,Team3165,No confirmado; enlace sin republicar

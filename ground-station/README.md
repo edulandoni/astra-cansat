@@ -1,5 +1,11 @@
 # Groundstation y manejo de datos
 
+## Incorporación del 23/10/2026 — banco experimental v0.2
+
+[Banco resistente a fallos y USB bidireccional](banco-usb-v0.2/README.md) · [Resultados y pendientes de aceptación](docs/2026-10-23-banco02-actualizacion-01.md). Conservo v0.1 y todas las entradas anteriores. La línea nueva distingue simulación, USB físico y pruebas aún pendientes; no aprueba RF ni el protocolo de vuelo.
+
+También preparé la [propuesta de interfaz para revisar con Edu](docs/interfaces/2026-10-23-propuesta-banco-y-vuelo.md), la [comparación preliminar de antenas y enlace](docs/interfaces/2026-10-23-antenas-y-link-budget-preliminar.md) y la [tabla de antecedentes a pruebas](docs/investigacion/2026-10-23-antecedentes-a-pruebas.md).
+
 Me encargo de recibir, registrar y mostrar la telemetría en tierra. Esta carpeta reúne mi código, pruebas y decisiones. La rama `groundstation` es mi línea de trabajo del subsistema; no establece reglas para las otras áreas del equipo.
 
 ## Por dónde empezar
