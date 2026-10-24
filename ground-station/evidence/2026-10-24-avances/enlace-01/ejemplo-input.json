@@ -1,0 +1,30 @@
+{
+  "label": "EJEMPLO ARITMÉTICO: NO ES EL ENLACE ASTRA",
+  "example_only": true,
+  "values": {
+    "frequency_mhz": 915,
+    "distance_m": 1000,
+    "tx_power_dbm": 10,
+    "tx_gain_dbi": 0,
+    "rx_gain_dbi": 5,
+    "tx_cable_loss_db": 1,
+    "rx_cable_loss_db": 1,
+    "polarization_loss_db": 3,
+    "other_loss_db": 2,
+    "rx_sensitivity_dbm": -110,
+    "required_margin_db": 10
+  },
+  "sources": {
+    "frequency_mhz": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "distance_m": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "tx_power_dbm": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "tx_gain_dbi": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "rx_gain_dbi": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "tx_cable_loss_db": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "rx_cable_loss_db": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "polarization_loss_db": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "other_loss_db": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "rx_sensitivity_dbm": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "required_margin_db": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA"
+  }
+}

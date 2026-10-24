@@ -1,0 +1,30 @@
+{
+  "label": "ASTRA: entradas pendientes, sin perfil aprobado",
+  "example_only": false,
+  "values": {
+    "frequency_mhz": null,
+    "distance_m": null,
+    "tx_power_dbm": null,
+    "tx_gain_dbi": null,
+    "rx_gain_dbi": null,
+    "tx_cable_loss_db": null,
+    "rx_cable_loss_db": null,
+    "polarization_loss_db": null,
+    "other_loss_db": null,
+    "rx_sensitivity_dbm": null,
+    "required_margin_db": null
+  },
+  "sources": {
+    "frequency_mhz": "TBD: acuerdo o medición requerida",
+    "distance_m": "TBD: acuerdo o medición requerida",
+    "tx_power_dbm": "TBD: acuerdo o medición requerida",
+    "tx_gain_dbi": "TBD: acuerdo o medición requerida",
+    "rx_gain_dbi": "TBD: acuerdo o medición requerida",
+    "tx_cable_loss_db": "TBD: acuerdo o medición requerida",
+    "rx_cable_loss_db": "TBD: acuerdo o medición requerida",
+    "polarization_loss_db": "TBD: acuerdo o medición requerida",
+    "other_loss_db": "TBD: acuerdo o medición requerida",
+    "rx_sensitivity_dbm": "TBD: acuerdo o medición requerida",
+    "required_margin_db": "TBD: acuerdo o medición requerida"
+  }
+}

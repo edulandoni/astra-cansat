@@ -1,0 +1,108 @@
+{
+  "state": "DRAFT_NOT_APPROVED",
+  "purpose": "Lista de acuerdos y evidencia; no es configuración ejecutable de radio.",
+  "fields": {
+    "module_variant": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "pinout_reference": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "frequency_hz": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "modulation": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "bandwidth_or_bitrate": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "tx_power_dbm": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "sensitivity_same_mode": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "sync_word": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "crc_policy": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "team_id": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "source_destination_format": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "broadcast_rejection": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "packet_format_units": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "boot_mission_counter": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "command_ack_policy": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "timeout_retry_policy": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "antenna_cables": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    },
+    "agreement_reference": {
+      "value": null,
+      "status": "TBD",
+      "evidence": null
+    }
+  },
+  "known_discrepancies": [
+    "Foto con 16 contactos frente a manual localizado de 14: identificar variante y no cablear por intuición.",
+    "100 mW de anuncio no acredita operación continua; contrastar régimen +20 dBm y perfil conjunto."
+  ],
+  "acceptance_before_hardware": [
+    "Identificar físicamente módulo y pinout de ambas unidades.",
+    "Comprobar alimentación, desacoplo y antena compatible.",
+    "Revisar y registrar el perfil con ambos extremos; no trasladar JSON/timeout de banco a vuelo por defecto.",
+    "Ensayo RX/TX e interoperabilidad pendientes; esta lista no los ejecuta."
+  ],
+  "review_ground": null,
+  "review_flight": null
+}

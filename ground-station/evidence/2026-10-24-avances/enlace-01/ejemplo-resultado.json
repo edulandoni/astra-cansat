@@ -1,0 +1,54 @@
+{
+  "label": "EJEMPLO ARITMÉTICO: NO ES EL ENLACE ASTRA",
+  "example_only": true,
+  "missing": [],
+  "fspl_db": 91.67620510321234,
+  "received_power_dbm": -83.67620510321234,
+  "margin_db": 26.32379489678766,
+  "headroom_above_required_db": 16.32379489678766,
+  "additional_loss_sweep": [
+    {
+      "extra_loss_db": 0,
+      "margin_db": 26.32379489678766
+    },
+    {
+      "extra_loss_db": 3,
+      "margin_db": 23.32379489678766
+    },
+    {
+      "extra_loss_db": 6,
+      "margin_db": 20.32379489678766
+    },
+    {
+      "extra_loss_db": 10,
+      "margin_db": 16.32379489678766
+    }
+  ],
+  "values": {
+    "frequency_mhz": 915,
+    "distance_m": 1000,
+    "tx_power_dbm": 10,
+    "tx_gain_dbi": 0,
+    "rx_gain_dbi": 5,
+    "tx_cable_loss_db": 1,
+    "rx_cable_loss_db": 1,
+    "polarization_loss_db": 3,
+    "other_loss_db": 2,
+    "rx_sensitivity_dbm": -110,
+    "required_margin_db": 10
+  },
+  "sources": {
+    "frequency_mhz": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "distance_m": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "tx_power_dbm": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "tx_gain_dbi": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "rx_gain_dbi": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "tx_cable_loss_db": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "rx_cable_loss_db": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "polarization_loss_db": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "other_loss_db": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "rx_sensitivity_dbm": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA",
+    "required_margin_db": "Hipótesis explícita de ejemplo; no medición ni selección ASTRA"
+  },
+  "limits": "Referencia de espacio libre, no alcance medido. Ganancias en la dirección real y sensibilidad del mismo modo/perfil. No incluye automáticamente suelo, interferencia, shadowing o normativa. TBD no se reemplaza por cero."
+}
