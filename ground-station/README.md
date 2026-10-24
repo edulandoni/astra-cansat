@@ -26,6 +26,8 @@ La [actualización 08](docs/2026-10-24-recuperacion-conflicto-interno-actualizac
 
 La [actualización 09: aceptación del banco USB](docs/2026-10-24-aceptacion-banco-usb-actualizacion-09.md) reúne el resultado prolongado de 7261 paquetes en 2 h 1 min reales, reconstrucción coincidente, matriz completa de la etapa y límites para el PDR.
 
+La [actualización 10](docs/2026-10-24-control-reproduccion-actualizacion-10.md) aclara qué archivos del manifiesto pertenecen a Git y qué artefactos ignorados quedaron copiados sin usarse durante la adquisición.
+
 ## Por dónde empezar
 
 | Necesidad | Ubicación |
