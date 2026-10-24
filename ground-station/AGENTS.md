@@ -5,6 +5,7 @@
 - Después de revisar u operar la interfaz del banco, vuelvo al chat actual en la app deGPT/Codex antes de pedir una maniobra o esperar respuesta. No dejo otra ventana tapando las preguntas.
 - Uso la navegación propia de la app para mostrar el chat actual. No manipulo el contenido deGPT mediante automatización de pantalla ni cierro el receptor para recuperar foco cuando debe seguir ensayando.
 - Si necesito observar otra vez laGUI, la identifico y reviso; al terminar repito el retorno al chat. No doy por hecha una maniobra física por tiempo transcurrido: compruebo su efecto y solicito respuesta cuando hace falta.
+- Cierro la sesión de control de pantalla al terminar la operación; no la mantengo abierta en espera. La adquisición USB, el procesamiento de archivos y las consultas por API continúan sin activar control del escritorio. Sólo vuelvo a activarlo cuando necesito una operación concreta en la interfaz.
 
 Estas pautas se aplican únicamente dentro de ground-station/. No imponen metodología a otras áreas.
 
