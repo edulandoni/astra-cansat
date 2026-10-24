@@ -1,0 +1,16 @@
+{
+  "utc": "2026-10-24T02:23:47.895976+00:00",
+  "results": [
+    {
+      "suite": "v0.2",
+      "exit_code": 0,
+      "output": "test_all_scenarios_model_and_framing (test_bench.BenchTests.test_all_scenarios_model_and_framing) ... ok\ntest_bounded_overflow_is_explicit (test_bench.BenchTests.test_bounded_overflow_is_explicit) ... ok\ntest_clock_freeze_and_nominal_no_false_alarm (test_bench.BenchTests.test_clock_freeze_and_nominal_no_false_alarm) ... ok\ntest_command_duplicates_timeout_and_late_result (test_bench.BenchTests.test_command_duplicates_timeout_and_late_result) ... ok\ntest_epochs_conflicts_and_gps (test_bench.BenchTests.test_epochs_conflicts_and_gps) ... ok\ntest_independent_raw_failure_and_recovery (test_bench.BenchTests.test_independent_raw_failure_and_recovery) ... ok\ntest_legacy_ambiguity_and_SI (test_bench.BenchTests.test_legacy_ambiguity_and_SI) ... ok\ntest_malformed_control_and_late_result_never_rewind_epoch (test_bench.BenchTests.test_malformed_control_and_late_result_never_rewind_epoch) ... ok\ntest_reconnect_handshake_recovers_a_missed_boot_announcement (test_bench.BenchTests.test_reconnect_handshake_recovers_a_missed_boot_announcement) ... ok\ntest_replay_and_recovery_preserve_input_and_scope (test_bench.BenchTests.test_replay_and_recovery_preserve_input_and_scope) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 5.182s\n\nOK\n"
+    },
+    {
+      "suite": "v0.1",
+      "exit_code": 0,
+      "output": "test_framing_all_chunk_sizes (test_ground.GroundTests.test_framing_all_chunk_sizes) ... ok\ntest_full_nominal_and_states (test_ground.GroundTests.test_full_nominal_and_states) ... ok\ntest_gaps_late_duplicates (test_ground.GroundTests.test_gaps_late_duplicates) ... ok\ntest_gps_loss_retains_last_fix (test_ground.GroundTests.test_gps_loss_retains_last_fix) ... ok\ntest_large_gap_is_bounded (test_ground.GroundTests.test_large_gap_is_bounded) ... ok\ntest_overlong_recovers (test_ground.GroundTests.test_overlong_recovers) ... ok\ntest_scenarios_and_recording (test_ground.GroundTests.test_scenarios_and_recording) ... ok\ntest_sessions_do_not_overwrite (test_ground.GroundTests.test_sessions_do_not_overwrite) ... ok\ntest_strict_validation (test_ground.GroundTests.test_strict_validation) ... ok\ntest_bench_boot_preserved_and_reset_only_first_connection (test_usb_startup.StartupTests.test_bench_boot_preserved_and_reset_only_first_connection) ... ok\ntest_normal_serial_never_resets_or_discards_startup_window (test_usb_startup.StartupTests.test_normal_serial_never_resets_or_discards_startup_window) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 2.107s\n\nOK\n"
+    }
+  ],
+  "limits": "Pruebas de software; no sustituyen desconexión física, soportes distintos ni dos horas."
+}

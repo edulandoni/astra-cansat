@@ -1,0 +1,169 @@
+{
+  "started_utc": "2026-10-24T02:11:42.916522+00:00",
+  "source": "PC_BENCH",
+  "profile": "bench-usb-0.2",
+  "samples": 131,
+  "period": 0.005,
+  "cases": [
+    {
+      "scenario": "NOMINAL",
+      "segment": "0002_5a5d61b84d9a",
+      "elapsed_seconds": 4.202999999979511,
+      "unique": 131,
+      "received": 131,
+      "rejected": 0,
+      "duplicates": 0,
+      "observed_gaps": 0,
+      "oracle": {
+        "emitted": 131
+      },
+      "expected": {
+        "emitted": 131,
+        "omitted": 0,
+        "corrupted": 0
+      },
+      "last_state": "LANDED",
+      "unique_matches": true,
+      "oracle_matches": true,
+      "rejections_match": true,
+      "gaps_match": true
+    },
+    {
+      "scenario": "PACKET_LOSS",
+      "segment": "0003_8d91ab923a08",
+      "elapsed_seconds": 4.26500000001397,
+      "unique": 118,
+      "received": 118,
+      "rejected": 0,
+      "duplicates": 0,
+      "observed_gaps": 13,
+      "oracle": {
+        "emitted": 118,
+        "omitted": 13
+      },
+      "expected": {
+        "emitted": 118,
+        "omitted": 13,
+        "corrupted": 0
+      },
+      "last_state": "LANDED",
+      "unique_matches": true,
+      "oracle_matches": true,
+      "rejections_match": true,
+      "gaps_match": true
+    },
+    {
+      "scenario": "CORRUPTED_PACKET",
+      "segment": "0004_37181640ad41",
+      "elapsed_seconds": 4.282000000006519,
+      "unique": 121,
+      "received": 121,
+      "rejected": 10,
+      "duplicates": 0,
+      "observed_gaps": 10,
+      "oracle": {
+        "emitted": 121,
+        "corrupted": 10
+      },
+      "expected": {
+        "emitted": 121,
+        "omitted": 0,
+        "corrupted": 10
+      },
+      "last_state": "LANDED",
+      "unique_matches": true,
+      "oracle_matches": true,
+      "rejections_match": true,
+      "gaps_match": true
+    },
+    {
+      "scenario": "GPS_LOSS",
+      "segment": "0005_0e5a602b440a",
+      "elapsed_seconds": 4.217999999993481,
+      "unique": 131,
+      "received": 131,
+      "rejected": 0,
+      "duplicates": 0,
+      "observed_gaps": 0,
+      "oracle": {
+        "emitted": 131
+      },
+      "expected": {
+        "emitted": 131,
+        "omitted": 0,
+        "corrupted": 0
+      },
+      "last_state": "LANDED",
+      "unique_matches": true,
+      "oracle_matches": true,
+      "rejections_match": true,
+      "gaps_match": true
+    },
+    {
+      "scenario": "RESET",
+      "segment": "0006_5a942d4d3864",
+      "elapsed_seconds": 4.172000000020489,
+      "unique": 128,
+      "received": 128,
+      "rejected": 0,
+      "duplicates": 0,
+      "observed_gaps": 3,
+      "oracle": {
+        "emitted": 128,
+        "omitted": 3
+      },
+      "expected": {
+        "emitted": 128,
+        "omitted": 3,
+        "corrupted": 0
+      },
+      "last_state": "LANDED",
+      "unique_matches": true,
+      "oracle_matches": true,
+      "rejections_match": true,
+      "gaps_match": true
+    }
+  ],
+  "error": null,
+  "source_sha256": {
+    "app.py": "95ba729a0e5116e5e41b395402279396025645367e9493ad1d2ac533a4bd10e2",
+    "campaign.py": "ae39c2ef56210f97ee5368593d9f7d742ac22d546ad4692bf08f0e77aca3b2f6",
+    "engine.py": "57f816a2782380508bfd86e6ddaa75004a2d6206baaf91b7f873e4dc008a3465",
+    "journal.py": "b846dc060e71fc4306e9b7ab5526318eb43814c744a0933b1005ba5466100ead",
+    "mission.py": "d66b5260961bd5628dd38b08882511d576c44ac11bbee79b3d61010c8e3b6b39",
+    "recover.py": "912777b5a4c1979622ebcb3294b66691616e51e4de2f6ac57b79ee91fdc37d4b",
+    "sources.py": "42936d5669426f51040d3a04c56321de0873635c948395e6115c1bfdc83e64f6",
+    "test_bench.py": "535d5c19d761ba96ec8a211042185e3acb889672953c38f55eed20c6c8f59a67",
+    "wire.py": "9968dfd8cea3575510bed93965c695b683d0cb1f6f0e1a30da62180a936f52a7",
+    "firmware\\AstraBench02\\AstraBench02.ino": "bb46ae48b14adf76c29f746d9da6d14e77815f4a9113b99e0c7e89d11a609f9a"
+  },
+  "ended_utc": "2026-10-24T02:12:04.293058+00:00",
+  "storage": [
+    {
+      "destination": 0,
+      "kind": "raw",
+      "saved": 3326,
+      "pending": 0,
+      "error": "",
+      "dropped": 0,
+      "dropped_seq_ranges": [],
+      "loss_ledger_truncated": false,
+      "last_confirmed_seq": 3326,
+      "capacity": 600
+    },
+    {
+      "destination": 0,
+      "kind": "csv",
+      "saved": 629,
+      "pending": 0,
+      "error": "",
+      "dropped": 0,
+      "dropped_seq_ranges": [],
+      "loss_ledger_truncated": false,
+      "last_confirmed_seq": 3324,
+      "capacity": 600
+    }
+  ],
+  "all_cases_match": true,
+  "limits": "Datos sintéticos; USB físico sólo si source=USB_BENCH. Sin RF, autonomía o prueba eléctrica acreditadas. Rechazos se cuentan por segmento en el diario."
+}
