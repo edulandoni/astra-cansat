@@ -31,3 +31,9 @@ Modelo ilustrativo: espera 10 s, ascenso hasta 500 m en t=30 s; descenso a 15 m/
 Escenarios de 131 instantes: NOMINAL 131 válidos; PACKET_LOSS 13 omisiones; CORRUPTED_PACKET 10 presiones inválidas; GPS_LOSS sin fix t=50..64, última posición válida retenida; RESET omite t=60..62 y conserva contexto. Este RESET lógico es distinto del botón RST, desenchufado y caída eléctrica.
 
 Antes de integrar vuelo necesito acordar campos y unidades, semántica de validez y estados, TEAM_ID y direccionamiento, identidad persistente de arranque/misión, comandos, confirmaciones, duplicados, CRC y perfil de radio. Todo ello permanece propuesto o TBD/TBR; no copio esta envoltura USB a RF por defecto.
+
+## Actualización del 24/10/2026: identidad entre sesiones de PC
+
+Detecté que usar sólo el número de orden como `run` permitía repetirlo al cambiar de sesión PC con el mismo arranque del ESP32. En la revisión nueva uso `run = client + "_" + seq`, con cliente ASCII alfanumérico, guion o guion bajo. El anuncio incluye `run_identity=client-sequence`. Los registros anteriores conservan sus identificadores y no se reescriben. La PC acepta ambos formatos históricos, pero la revisión nueva debe comprobarse físicamente antes de atribuirle resultados.
+
+Aclaro el límite de deduplicación: la memoria de 64 resultados pertenece al cliente activo y se limpia al cambiar de cliente o reiniciar el emisor. No garantiza ejecución única entre clientes alternados ni después de perder esa memoria. La PC no retransmite automáticamente órdenes previas. Este mecanismo de banco no es una garantía de seguridad ni un contrato de vuelo.

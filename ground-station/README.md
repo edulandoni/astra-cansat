@@ -12,6 +12,8 @@ La [actualización03 del ensayo RST](docs/2026-10-23-rst-fisico-actualizacion-03
 
 La [actualización04 del24/10](docs/2026-10-24-reconexion-y-doble-soporte-actualizacion-04.md) agrega reconexiónUSB, una anomalía de encuadre conservada, reproducción enC:+otro discoUSB y reconstrucción coincidente; las dos horas y la nueva carga siguen pendientes en ese corte.
 
+La [actualización 05](docs/2026-10-24-cadencia-identidad-e-inicio-prolongado-actualizacion-05.md) verifica la cadencia corta y la identidad entre sesiones e inicia el ensayo prolongado. Su inicio no acredita el resultado de dos horas.
+
 Me encargo de recibir, registrar y mostrar la telemetría en tierra. Esta carpeta reúne mi código, pruebas y decisiones. La rama `groundstation` es mi línea de trabajo del subsistema; no establece reglas para las otras áreas del equipo.
 
 ## Por dónde empezar

@@ -1,0 +1,60 @@
+{
+  "recorded_utc": "2026-10-24T03:27:55.360036+00:00",
+  "source": "USB_BENCH",
+  "profile": "bench-usb-0.2",
+  "hello": {
+    "v": "bench-usb-0.2",
+    "kind": "hello",
+    "team": "1000",
+    "boot": "ac6f824ce6bcf428",
+    "run": "5",
+    "synthetic": true,
+    "scenario": "NOMINAL",
+    "cadence": "fixed-deadline-1000ms"
+  },
+  "count": 131,
+  "complete_sequence": true,
+  "first_to_last_seconds": 129.985347032547,
+  "interval_mean": 0.9998872848657462,
+  "interval_median": 1.017362117767334,
+  "interval_min": 0.9471971988677979,
+  "interval_max": 1.0413310527801514,
+  "first_received_utc": "2026-10-24T03:24:00.391066+00:00",
+  "last_received_utc": "2026-10-24T03:26:10.376413+00:00",
+  "source_journal_sha256": "7e3ab254b6a84a0ace69cf969683546df5b9b00cbe61744fe6a260829c0a086c",
+  "storage": [
+    {
+      "destination": 0,
+      "kind": "raw",
+      "saved": 647,
+      "pending": 0,
+      "error": "",
+      "dropped": 0,
+      "dropped_seq_ranges": [],
+      "loss_ledger_truncated": false,
+      "last_confirmed_seq": 647,
+      "capacity": 600
+    },
+    {
+      "destination": 0,
+      "kind": "csv",
+      "saved": 131,
+      "pending": 0,
+      "error": "",
+      "dropped": 0,
+      "dropped_seq_ranges": [],
+      "loss_ledger_truncated": false,
+      "last_confirmed_seq": 642,
+      "capacity": 600
+    }
+  ],
+  "upload": {
+    "offset": "0x10000",
+    "bytes": 311152,
+    "compressed_bytes": 184115,
+    "duration_reported_seconds": 17.0,
+    "hash_verified": true,
+    "bootloader_and_partition_tables_unchanged_verified": true
+  },
+  "limits": "Una misión corta USB. No acredita dos horas ni ausencia absoluta de jitter. Esta revisión aún usa run basado sólo en secuencia de orden: se prepara corrección de identidad entre sesiones PC."
+}

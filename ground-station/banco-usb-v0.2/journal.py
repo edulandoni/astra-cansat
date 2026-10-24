@@ -83,6 +83,7 @@ class Writer:
 
 class Store:
     def __init__(self,root,backup=None,capacity=600,hooks=None):
+        self.started_monotonic=time.monotonic()
         self.session=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S_%fZ')+'_'+uuid.uuid4().hex[:12]
         if backup and Path(root).resolve()==Path(backup).resolve():raise ValueError('Los destinos deben ser diferentes')
         self.roots=[Path(root)/self.session]+([Path(backup)/self.session] if backup else [])
@@ -94,7 +95,7 @@ class Store:
     def emit(self,kind,**data):
         with self.lock:
             self.seq+=1
-            e=dict(seq=self.seq,pc_session=self.session,received_utc=utc(),kind=kind,**data)
+            e=dict(seq=self.seq,pc_session=self.session,received_utc=utc(),received_elapsed_seconds=time.monotonic()-self.started_monotonic,kind=kind,**data)
             # Serializo antes de repartir: ningún consumidor modifica el evento.
             json.dumps(e,allow_nan=False)
             for w in self.writers:

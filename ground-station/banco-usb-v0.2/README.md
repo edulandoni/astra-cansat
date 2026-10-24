@@ -62,3 +62,7 @@ La reproducción genera una sesión y archivos nuevos, queda marcada REPLAY y no
 Si falla entrada automática a programación: mantengo BOOT, pulso y suelto EN/RST, suelto BOOT y cargo sin nuevo reset previo. La luz no demuestra por sí sola modo ni recepción. Para correr después de programar uso EN/RST o el reinicio explícito de banco.
 
 Resultados, límites y evidencia: [primera actualización de esta etapa](../docs/2026-10-23-banco02-actualizacion-01.md). Los ensayos pendientes continúan en entradas nuevas.
+
+## Uso sin tapar el chat — 24/10/2026
+
+`--start-minimized` deja la ventana en la barra de tareas y mantiene adquisición, archivo y actualizaciones de Tk activos. `Ctrl+M` minimiza la ventana del banco sin enviar órdenes al ESP32. Al terminar una inspección vuelvo al chat actual para mantener visibles las preguntas y maniobras pendientes. Una ventana minimizada no demuestra por sí sola que la GUI siga respondiendo: lo compruebo con observaciones y el registro `gui_health`.

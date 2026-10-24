@@ -43,6 +43,7 @@ def main():
     p.add_argument('--replay',type=Path);p.add_argument('--speed',type=float,default=1)
     p.add_argument('--auto-run',action='store_true');p.add_argument('--samples',type=int,default=131)
     p.add_argument('--duration',type=float,help='Cierro el ensayo al alcanzar estos segundos reales; no acelera el emisor')
+    p.add_argument('--start-minimized',action='store_true',help='Mantengo el ensayo activo sin tapar el chat')
     a=p.parse_args();source=a.source or ('usb' if a.port else 'pc')
     if source=='usb' and not a.port:p.error('USB requiere --port')
     if source=='replay' and not a.replay:p.error('Reproducción requiere --replay')
@@ -159,6 +160,9 @@ def main():
             if thread.is_alive():root.after(100,finish)
             else:store.close();root.destroy()
         finish()
-    root.protocol('WM_DELETE_WINDOW',close);update();root.mainloop()
+    root.protocol('WM_DELETE_WINDOW',close)
+    root.bind('<Control-m>',lambda event:root.iconify())
+    if a.start_minimized:root.after(750,root.iconify)
+    update();root.mainloop()
 
 if __name__=='__main__':main()

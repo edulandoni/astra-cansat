@@ -23,7 +23,7 @@ String send(cJSON* obj){
  if(data){Serial.print("@BENCH ");Serial.print(data);Serial.write('\r');cJSON_free(data);}
  cJSON_Delete(obj);return result;
 }
-void hello(){cJSON* obj=message("hello");cJSON_AddBoolToObject(obj,"synthetic",true);cJSON_AddStringToObject(obj,"scenario",scenario.c_str());cJSON_AddStringToObject(obj,"cadence","fixed-deadline-1000ms");send(obj);}
+void hello(){cJSON* obj=message("hello");cJSON_AddBoolToObject(obj,"synthetic",true);cJSON_AddStringToObject(obj,"scenario",scenario.c_str());cJSON_AddStringToObject(obj,"cadence","fixed-deadline-1000ms");cJSON_AddStringToObject(obj,"run_identity","client-sequence");send(obj);}
 String response(String id,const char* phase,const char* reason=""){
  cJSON* obj=message("result");cJSON_AddStringToObject(obj,"id",id.c_str());cJSON_AddStringToObject(obj,"phase",phase);
  cJSON_AddBoolToObject(obj,"synthetic",true);if(*reason)cJSON_AddStringToObject(obj,"reason",reason);return send(obj);
@@ -36,6 +36,7 @@ void process(String line){
  String id=txt(obj,"id"),who=txt(obj,"client"),op=txt(obj,"op");
  double sq=num(obj,"seq",-1);cJSON* args=cJSON_GetObjectItemCaseSensitive(obj,"args");
  if(who.length()<1||who.length()>64||id.length()>96||sq<1||sq>1000000000||sq!=floor(sq)){cJSON_Delete(obj);return;}
+ for(unsigned i=0;i<who.length();i++){char ch=who[i];if(!((ch>='A'&&ch<='Z')||(ch>='a'&&ch<='z')||(ch>='0'&&ch<='9')||ch=='_'||ch=='-')){response(id,"rejected","BAD_CLIENT");cJSON_Delete(obj);return;}}
  if(id!=who+":"+String((uint32_t)sq)){response(id,"rejected","BAD_ID");cJSON_Delete(obj);return;}
  if(client!=who){client=who;highSeq=0;for(int i=0;i<64;i++){memoId[i]="";memoInput[i]="";memoResult[i]="";}}
  for(int i=0;i<64;i++)if(memoId[i]==id){
@@ -52,7 +53,7 @@ void process(String line){
  else if(op!="RUN"&&op!="STOP"&&op!="CAL_ZERO"&&op!="SET_TIME"&&op!="POWER_STATUS")result=response(id,"rejected","UNKNOWN_OPERATION");
  else{
   response(id,"accepted");
-  if(op=="RUN"){runId=String(highSeq);scenario=sc;total=(uint32_t)requested;tick=0;active=true;nextSample=millis()+1000;hello();}
+  if(op=="RUN"){runId=client+"_"+String(highSeq);scenario=sc;total=(uint32_t)requested;tick=0;active=true;nextSample=millis()+1000;hello();}
   else if(op=="STOP")active=false;
   else if(op=="CAL_ZERO")altitudeOffset=0.;
   else if(op=="SET_TIME")baseSeconds=(uint32_t)num(args,"utc_seconds",46800);

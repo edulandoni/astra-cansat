@@ -30,7 +30,7 @@ class PCBench:
         self.send(kind='result',id=ident,phase='accepted')
         msg=dict(kind='result',id=ident,phase='executed',synthetic=True,op=op)
         if op=='RUN':
-            self.run=ident.rsplit(':',1)[-1];self.active=True;self.tick=0
+            self.run=obj['client']+'_'+str(seq);self.active=True;self.tick=0
             self.scenario=args.get('scenario','NOMINAL');self.samples=int(args.get('samples',131));self.hello()
         elif op=='STOP':self.active=False
         elif op=='CAL_ZERO':
@@ -107,7 +107,8 @@ def replay_loop(engine,path,speed=1):
             if kind=='segment':
                 engine.context(e.get('boot','replay'),e.get('run',e.get('segment','legacy')),'Registro reproducido');continue
             if kind=='packet':continue
-            stamp=datetime.fromisoformat(e['received_utc']).timestamp()
+            stamp=e.get('received_elapsed_seconds')
+            if stamp is None:stamp=datetime.fromisoformat(e['received_utc']).timestamp()
             if previous is not None:engine.stop.wait(max(0,stamp-previous)/speed)
             previous=stamp
             if kind=='wire':engine.feed(bytes.fromhex(e['raw_hex']))

@@ -180,4 +180,29 @@ class BenchTests(unittest.TestCase):
             self.assertEqual(e.latest.count,1);self.assertFalse(e.stop.is_set())
             s.close()
 
+    def test_run_identity_does_not_repeat_between_pc_sessions(self):
+        with tempfile.TemporaryDirectory() as d:
+            s,e,b=self.setup_engine(Path(d)/'first')
+            e.command('RUN',scenario='NOMINAL',samples=10);b.execute(e.outgoing.get_nowait());first=b.run;boot=b.boot
+            second=Store(Path(d)/'second');other=Engine(second,source='PC_BENCH');b.engine=other
+            other.command('RUN',scenario='NOMINAL',samples=10);b.execute(other.outgoing.get_nowait())
+            self.assertEqual(b.boot,boot);self.assertNotEqual(b.run,first)
+            self.assertTrue(b.run.startswith(second.session+'_'))
+            s.close();second.close()
+
+    def test_replay_prefers_monotonic_elapsed_over_a_wall_clock_step(self):
+        with tempfile.TemporaryDirectory() as d:
+            path=Path(d)/'clock-step.jsonl'
+            records=[dict(kind='segment',boot='recorded',run='one')]
+            for tick,elapsed,stamp in [(0,2.,'2026-10-24T03:00:10+00:00'),(1,4.,'2026-10-24T03:00:09+00:00')]:
+                records.append(dict(kind='wire',received_elapsed_seconds=elapsed,received_utc=stamp,raw_hex=sample(tick)[0].hex()))
+            path.write_text('\n'.join(json.dumps(e) for e in records)+'\n',encoding='utf-8')
+            store=Store(Path(d)/'out');engine=Engine(store,source='REPLAY')
+            with patch.object(engine.stop,'wait',return_value=False) as wait:replay_loop(engine,path,speed=2)
+            self.assertEqual(wait.call_args.args[0],1.)
+            self.assertEqual(engine.total_unique,2)
+            a=store.emit('check');b=store.emit('check')
+            self.assertGreaterEqual(b['received_elapsed_seconds'],a['received_elapsed_seconds'])
+            store.close()
+
 if __name__=='__main__':unittest.main(verbosity=2)
