@@ -30,3 +30,7 @@ La metodología y el respaldo de documentación se mantienen en [ASTRA-33](../te
 ## Incorporación del 23/10/2026
 
 [RSX: datos y calidad](2026-10-23-rsx-datos-y-calidad.md) · [Métricas agregadas](2026-10-23-rsx-metricas.json) · [Referencia visual F13](2026-10-23-catalogo-visual-rsx.csv).
+
+## Incorporaciones de tierra del 23 y 24/10/2026
+
+[Antecedentes convertidos en pruebas](2026-10-23-antecedentes-a-pruebas.md) · [Referencias visuales GCS](2026-10-23-catalogo-visual-gcs.csv) · [Criterios generales del premio Mark Walker y límites para DJS](2026-10-24-criterios-premio-groundstation.md).
