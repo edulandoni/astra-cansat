@@ -26,3 +26,7 @@ La metodología y el respaldo de documentación se mantienen en [ASTRA-33](../te
 ## Incorporación del 22/10/2026
 
 [RSX: PFR, fallas y contradicciones](2026-10-22-rsx-pfr-y-fallas.md) · [Estabilidad previa y evidencia para rotor](2026-10-22-rotor-estabilidad-y-evidencia.md) · [Suplemento visual F11/F12](2026-10-22-catalogo-visual-rsx.csv).
+
+## Incorporación del 23/10/2026
+
+[RSX: datos y calidad](2026-10-23-rsx-datos-y-calidad.md) · [Métricas agregadas](2026-10-23-rsx-metricas.json) · [Referencia visual F13](2026-10-23-catalogo-visual-rsx.csv).

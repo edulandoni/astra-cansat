@@ -1,0 +1,2 @@
+id,equipo_edicion,tipo,fuente,estado,que_muestra,utilidad,credito,permiso
+F13,RSX 3114 AAS 2025,Gráfico publicado de giro,https://raw.githubusercontent.com/adam-kabbara/RSX-CANSAT-2025/da327893982c1afd6e480e9cf3d89b43ebca273e/pfr_plots/png_plots/payload_auto-gyro_rotation_rate_plot.png,Imagen inspeccionada el 23/10/2026; fecha original desconocida,"Serie 0 y luego 0,6; bandas de estado; eje °/s",Comparar gráfico con datos; no certifica giro físico ni energía,Repositorio RSX; autor individual pendiente,Licencia no confirmada; enlace sin republicación

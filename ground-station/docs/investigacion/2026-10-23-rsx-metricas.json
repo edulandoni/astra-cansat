@@ -1,0 +1,221 @@
+{
+  "source": "https://github.com/adam-kabbara/RSX-CANSAT-2025/blob/da327893982c1afd6e480e9cf3d89b43ebca273e/competition_documentation/3114_mission_data_cansat_2025.csv.xlsx",
+  "sha256": "b5c99bd15782dc2428ad97f408d73ee5616a5c426ab3e4d40cbd7662ba20b87d",
+  "bytes": 21542,
+  "sheet": "cansat_data",
+  "data_range": "A2:AA108",
+  "rows": 93,
+  "columns": 27,
+  "formulas": 0,
+  "blank_rows": 0,
+  "states": {
+    "LAUNCH_PAD": 53,
+    "ASCENT": 11,
+    "APOGEE": 1,
+    "DESCENT": 7,
+    "PROBE_RELEASE": 21
+  },
+  "modes": {
+    "F": 93
+  },
+  "first": {
+    "MISSION_TIME": "18:03:50",
+    "PACKET_COUNT": 1,
+    "MODE": "F",
+    "STATE": "LAUNCH_PAD",
+    "ALTITUDE": 1.4,
+    "AUTO_GYRO_ROTATION_RATE": 0,
+    "GPS_SATS": 0,
+    "PACKET_RECV": 1
+  },
+  "last": {
+    "MISSION_TIME": "18:05:22",
+    "PACKET_COUNT": 93,
+    "MODE": "F",
+    "STATE": "PROBE_RELEASE",
+    "ALTITUDE": 50.2,
+    "AUTO_GYRO_ROTATION_RATE": 0.6,
+    "GPS_SATS": 0,
+    "PACKET_RECV": 93
+  },
+  "packet_gaps": [],
+  "missing_ids": 0,
+  "duplicate_ids": 0,
+  "non_increasing": [],
+  "transitions": [
+    {
+      "sheet_row": 15,
+      "MISSION_TIME": "18:03:50",
+      "PACKET_COUNT": 1,
+      "MODE": "F",
+      "STATE": "LAUNCH_PAD",
+      "ALTITUDE": 1.4,
+      "AUTO_GYRO_ROTATION_RATE": 0,
+      "GPS_SATS": 0,
+      "PACKET_RECV": 1
+    },
+    {
+      "sheet_row": 69,
+      "MISSION_TIME": "18:04:43",
+      "PACKET_COUNT": 54,
+      "MODE": "F",
+      "STATE": "ASCENT",
+      "ALTITUDE": 142.7,
+      "AUTO_GYRO_ROTATION_RATE": 0,
+      "GPS_SATS": 0,
+      "PACKET_RECV": 54
+    },
+    {
+      "sheet_row": 80,
+      "MISSION_TIME": "18:04:54",
+      "PACKET_COUNT": 65,
+      "MODE": "F",
+      "STATE": "APOGEE",
+      "ALTITUDE": 608.1,
+      "AUTO_GYRO_ROTATION_RATE": 0,
+      "GPS_SATS": 0,
+      "PACKET_RECV": 65
+    },
+    {
+      "sheet_row": 81,
+      "MISSION_TIME": "18:04:55",
+      "PACKET_COUNT": 66,
+      "MODE": "F",
+      "STATE": "DESCENT",
+      "ALTITUDE": 602.9,
+      "AUTO_GYRO_ROTATION_RATE": 0,
+      "GPS_SATS": 0,
+      "PACKET_RECV": 66
+    },
+    {
+      "sheet_row": 88,
+      "MISSION_TIME": "18:05:02",
+      "PACKET_COUNT": 73,
+      "MODE": "F",
+      "STATE": "PROBE_RELEASE",
+      "ALTITUDE": 441,
+      "AUTO_GYRO_ROTATION_RATE": 0.6,
+      "GPS_SATS": 0,
+      "PACKET_RECV": 73
+    }
+  ],
+  "maximum_altitude": 622.8,
+  "maximum_altitude_rows": [
+    78
+  ],
+  "gps_sats_counts": {
+    "0": 93
+  },
+  "gps_nonzero_coordinate_rows": 0,
+  "rotation_nonzero_rows": [
+    {
+      "sheet_row": 88,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 89,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 90,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 91,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 92,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 93,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 94,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 95,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 96,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 97,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 98,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 99,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 100,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 101,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 102,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 103,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 104,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 105,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 106,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 107,
+      "value": 0.6
+    },
+    {
+      "sheet_row": 108,
+      "value": 0.6
+    }
+  ],
+  "packet_recv_first": 1,
+  "packet_recv_last": 93,
+  "units_limit": "ALTITUDE y giro según cabeceras; unidades se interpretan con PFR, no se certifican físicamente. PACKET_RECV no se considera contador sin verificar su contenido.",
+  "method": "openpyxl read_only/data_only=False; filas no vacías, diferencias consecutivas PACKET_COUNT, transiciones STATE, máximo ALTITUDE y conteos GPS/giro. Sin editar/exportar libro ni ejecutar código del equipo.",
+  "source_nonempty_rows": 107,
+  "telemetry_rows": 93,
+  "diagnostic_rows": 14,
+  "diagnostic_sheet_rows": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    68
+  ],
+  "packet_recv_equals_packet_count": true,
+  "telemetry_selection": "PACKET_COUNT numérico; las otras 14 filas no vacías sólo contienen mensajes CMD_ECHO y se cuentan por separado."
+}
