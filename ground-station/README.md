@@ -6,6 +6,8 @@
 
 También preparé la [propuesta de interfaz para revisar con Edu](docs/interfaces/2026-10-23-propuesta-banco-y-vuelo.md), la [comparación preliminar de antenas y enlace](docs/interfaces/2026-10-23-antenas-y-link-budget-preliminar.md) y la [tabla de antecedentes a pruebas](docs/investigacion/2026-10-23-antecedentes-a-pruebas.md).
 
+La [actualización02 del módulo y los comandos](docs/interfaces/2026-10-23-modulo-radio-y-comandos-actualizacion-02.md) agrega la referencia informada por Edu, la discrepancia de pinout con la foto y un cálculo reproducible de tiempo de aire. No configura RF ni confirma aún la variante física.
+
 Me encargo de recibir, registrar y mostrar la telemetría en tierra. Esta carpeta reúne mi código, pruebas y decisiones. La rama `groundstation` es mi línea de trabajo del subsistema; no establece reglas para las otras áreas del equipo.
 
 ## Por dónde empezar
