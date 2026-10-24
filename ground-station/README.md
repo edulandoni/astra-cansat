@@ -10,6 +10,8 @@ La [actualización02 del módulo y los comandos](docs/interfaces/2026-10-23-modu
 
 La [actualización03 del ensayo RST](docs/2026-10-23-rst-fisico-actualizacion-03.md) conserva la incidencia de modo descarga, la recepción posterior1..131 y la corrección del receptor cuando no llega una identidad nueva.
 
+La [actualización04 del24/10](docs/2026-10-24-reconexion-y-doble-soporte-actualizacion-04.md) agrega reconexiónUSB, una anomalía de encuadre conservada, reproducción enC:+otro discoUSB y reconstrucción coincidente; las dos horas y la nueva carga siguen pendientes en ese corte.
+
 Me encargo de recibir, registrar y mostrar la telemetría en tierra. Esta carpeta reúne mi código, pruebas y decisiones. La rama `groundstation` es mi línea de trabajo del subsistema; no establece reglas para las otras áreas del equipo.
 
 ## Por dónde empezar

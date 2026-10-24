@@ -131,6 +131,7 @@ def main():
         if snap['clock_warning']:flags.append('Contador avanza pero hora de misión no avanza: revisar')
         if data and data['GPS_SATS']=='0':flags.append('GPS SIN FIX; posición retenida, edad '+str(round(snap['gps_age'],1) if snap['gps_age'] is not None else 'desconocida')+' s')
         if snap['done']:flags.append('Simulación terminada; no se esperan más muestras')
+        if snap['overflows']:flags.append(f"Tramas excesivas {snap['overflows']}: descartadas del parser; revisar bytes en registro bruto")
         for status in snap['storage']:
             flags.append(f"D{status['destination']} {status['kind']}: confirmados {status['saved']}, pendientes {status['pending']}, descartados {status['dropped']}"+(' ERROR '+status['error'] if status['error'] else ''))
         alert.set(' | '.join(flags))

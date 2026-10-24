@@ -23,7 +23,7 @@ String send(cJSON* obj){
  if(data){Serial.print("@BENCH ");Serial.print(data);Serial.write('\r');cJSON_free(data);}
  cJSON_Delete(obj);return result;
 }
-void hello(){cJSON* obj=message("hello");cJSON_AddBoolToObject(obj,"synthetic",true);cJSON_AddStringToObject(obj,"scenario",scenario.c_str());send(obj);}
+void hello(){cJSON* obj=message("hello");cJSON_AddBoolToObject(obj,"synthetic",true);cJSON_AddStringToObject(obj,"scenario",scenario.c_str());cJSON_AddStringToObject(obj,"cadence","fixed-deadline-1000ms");send(obj);}
 String response(String id,const char* phase,const char* reason=""){
  cJSON* obj=message("result");cJSON_AddStringToObject(obj,"id",id.c_str());cJSON_AddStringToObject(obj,"phase",phase);
  cJSON_AddBoolToObject(obj,"synthetic",true);if(*reason)cJSON_AddStringToObject(obj,"reason",reason);return send(obj);
@@ -98,7 +98,10 @@ void loop(){
    if(!discardInput&&input.length())process(input);input="";discardInput=false;
   }else if(ch!='\n'&&!discardInput){input+=ch;if(input.length()>1024){input="";discardInput=true;}}
  }
- if(active&&(int32_t)(millis()-nextSample)>=0){emitSample(tick++);nextSample=millis()+1000;
+ // Mantengo vencimientos absolutos: el tiempo de Serial.print no se suma
+ // a cada período. Si hay una demora extraordinaria, queda visible en las
+ // llegadas y no la confundo con una tasa físicamente exacta sin jitter.
+ if(active&&(int32_t)(millis()-nextSample)>=0){emitSample(tick++);nextSample+=1000;
   if(tick>=total){active=false;cJSON* obj=message("done");cJSON_AddNumberToObject(obj,"samples",total);cJSON_AddStringToObject(obj,"scenario",scenario.c_str());send(obj);}
  }
  delay(1);

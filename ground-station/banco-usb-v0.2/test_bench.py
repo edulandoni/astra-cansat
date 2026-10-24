@@ -170,4 +170,14 @@ class BenchTests(unittest.TestCase):
             self.assertEqual(e.commands[ident]['state'],'executed');self.assertIsNone(e.boot_probe_at)
             s.close()
 
+    def test_long_burst_and_foreign_team_recover_without_mixing_telemetry(self):
+        with tempfile.TemporaryDirectory() as d:
+            s,e,b=self.setup_engine(d)
+            stream=b'@BENCH '+b'x'*2400+b'\r'+sample(0,team='1234')[0]+b'log de prueba\r'+sample(0)[0]
+            for i in range(0,len(stream),13):e.feed(stream[i:i+13])
+            self.assertEqual(e.overflows,1);self.assertEqual(e.invalid,1)
+            self.assertEqual(e.diagnostics,1);self.assertEqual(e.total_unique,1)
+            self.assertEqual(e.latest.count,1);self.assertFalse(e.stop.is_set())
+            s.close()
+
 if __name__=='__main__':unittest.main(verbosity=2)
