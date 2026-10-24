@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Lectura vigente — 24/10/2026
+
+Desarrollo en [banco USB v0.2](banco-usb-v0.2/README.md). El [estado de mis 13 tareas y los avances de esta pasada](docs/historial/2026-10-24-revision-tareas-y-avances.md) enlaza implementación, pruebas y pendientes. La [aceptación prolongada previa](docs/2026-10-24-aceptacion-banco-usb-actualizacion-09.md) conserva sus versiones; no se atribuye a cambios posteriores. El banco v0.1 y las entradas iniciales siguen como referencia histórica.
+
 ## Incorporación del 23/10/2026 — banco experimental v0.2
 
 [Banco resistente a fallos y USB bidireccional](banco-usb-v0.2/README.md) · [Resultados y pendientes de aceptación](docs/2026-10-23-banco02-actualizacion-01.md). Conservo v0.1 y todas las entradas anteriores. La línea nueva distingue simulación, USB físico y pruebas aún pendientes; no aprueba RF ni el protocolo de vuelo.
@@ -32,10 +36,10 @@ La [actualización 10](docs/2026-10-24-control-reproduccion-actualizacion-10.md)
 
 | Necesidad | Ubicación |
 | --- | --- |
-| Probar sin placa ni antena | [Banco USB v0.1](banco-usb-v0.1/README.md) |
-| Saber qué funciona y qué falta | [Estado al 19/10/2026](docs/estado-2026-10-19.md) |
+| Probar sin placa ni antena | [Banco USB v0.2](banco-usb-v0.2/README.md) |
+| Saber qué funciona y qué falta | [Revisión vigente del 24/10](docs/historial/2026-10-24-revision-tareas-y-avances.md) |
 | Entender cómo guardo la historia | [Metodología](docs/metodologia-2026-10-19.md) |
-| Revisar las pruebas | [Resultados y límites](docs/pruebas-2026-10-19.md) |
+| Revisar las pruebas | [Matriz de aceptación y límites](docs/2026-10-24-aceptacion-banco-usb-actualizacion-09.md) |
 | Entender el cambio de reglamento | [Comparación v1/v2 para tierra](docs/requisitos/v1-v2-groundstation-2026-10-19.md) |
 | Entender qué necesito acordar con vuelo | [Ficha de interfaz pendiente](docs/interfaces/pendientes-groundstation-2026-10-19.md) |
 | Ir del código a su motivo en Jira | [Mapa de trazabilidad](docs/trazabilidad-2026-10-19.md) |
@@ -45,7 +49,7 @@ La [actualización 10](docs/2026-10-24-control-reproduccion-actualizacion-10.md)
 | Investigar mejoras sin hardware | [Prevención de fallas y oportunidades](docs/investigacion/2026-10-19-innovacion-y-prevencion.md) |
 | Revisar desconexiones y recuperación de archivos | [Ensayos de resiliencia](docs/investigacion/2026-10-19-resiliencia-y-recuperacion.md) |
 
-## Estado de esta incorporación
+## Estado histórico de la incorporación del 19/10 — conservado
 
 Conservo el banco Python y el sketch ESP32 del 17/10 sin alterar sus fuentes. El banco puede generar datos ficticios en la computadora. El sketch todavía no tiene compilación ni prueba física acreditadas. No hay validación de radio, antena, alcance, dos horas de autonomía ni persistencia ante corte real.
 

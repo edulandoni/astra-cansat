@@ -1,0 +1,21 @@
+{
+  "bench": {
+    "passed": true,
+    "tests": 22,
+    "seconds": 9.478
+  },
+  "tools": {
+    "passed": true,
+    "tests": 5,
+    "seconds": 0.001
+  },
+  "rotor": {
+    "passed": true,
+    "tests": 2,
+    "seconds": 0.0
+  },
+  "total_unit_tests": 29,
+  "policy_vectors": 11,
+  "quality_traces": 6,
+  "scope": "Resultados de las ejecuciones observadas; unit tests, vectores, trazas y comprobaciones físicas son categorías distintas, no se suman como ensayos de vuelo."
+}

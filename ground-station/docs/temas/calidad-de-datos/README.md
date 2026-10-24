@@ -10,3 +10,7 @@ Aquí continúo investigación, hipótesis y comparación de mejoras. El comenta
 - [Ensayos relacionados de recepción/CSV](../../investigacion/2026-10-19-resiliencia-y-recuperacion.md).
 
 Los documentos originales conservan sus referencias anteriores. Para la ubicación vigente consulto este índice y el [mapa general](../../trazabilidad-vigente-2026-10-19.md).
+
+## Actualización del 24/10/2026
+
+[Comparación medida y cierre técnico de la investigación](../../investigacion/2026-10-24-calidad-medida-y-cierre-investigacion.md). La referencia de monitor no implementado del 19/10 queda como estado histórico: ahora hay reglas en el banco y métricas de seis trazas, sin certificación de vuelo.

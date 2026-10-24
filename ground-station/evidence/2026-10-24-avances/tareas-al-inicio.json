@@ -1,0 +1,111 @@
+{
+  "scope": "ASTRA: tareas creadas por mí o asignadas a mi cuenta; sin correos ni IDs personales innecesarios",
+  "issues": [
+    {
+      "key": "ASTRA-18",
+      "title": "COMMS — Verificar SX1276 contra X1–X6 v2 y seleccionar modo RF",
+      "status_at_start": "En curso",
+      "ownership_verified": true,
+      "comments_total": 8,
+      "comments_complete": true
+    },
+    {
+      "key": "ASTRA-20",
+      "title": "GND — Implementar simulador de vuelo CONAE en ESP32 por USB",
+      "status_at_start": "En curso",
+      "ownership_verified": true,
+      "comments_total": 18,
+      "comments_complete": true
+    },
+    {
+      "key": "ASTRA-21",
+      "title": "GND — Implementar receptor serial, parser y logging CSV v0.1",
+      "status_at_start": "En curso",
+      "ownership_verified": true,
+      "comments_total": 21,
+      "comments_complete": true
+    },
+    {
+      "key": "ASTRA-22",
+      "title": "GND — Implementar GUI PDR mínima de telemetría en tiempo real",
+      "status_at_start": "En curso",
+      "ownership_verified": true,
+      "comments_total": 13,
+      "comments_complete": true
+    },
+    {
+      "key": "ASTRA-23",
+      "title": "COMMS — Integrar SX1276 con ESP32 Ground Radio",
+      "status_at_start": "Por hacer",
+      "ownership_verified": true,
+      "comments_total": 4,
+      "comments_complete": true
+    },
+    {
+      "key": "ASTRA-24",
+      "title": "COMMS — Ejecutar prueba de interoperabilidad STM32 ↔ ESP32/SX1276",
+      "status_at_start": "En curso",
+      "ownership_verified": true,
+      "comments_total": 6,
+      "comments_complete": true
+    },
+    {
+      "key": "ASTRA-25",
+      "title": "COMMS — Realizar link budget preliminar y plan de ensayo RF 915 MHz",
+      "status_at_start": "En curso",
+      "ownership_verified": true,
+      "comments_total": 7,
+      "comments_complete": true
+    },
+    {
+      "key": "ASTRA-33",
+      "title": "DOC — Mantener diario, trazabilidad y respaldo de groundstation",
+      "status_at_start": "En curso",
+      "ownership_verified": true,
+      "comments_total": 23,
+      "comments_complete": true
+    },
+    {
+      "key": "ASTRA-34",
+      "title": "GND — Investigar calidad de datos y prevención de fallas",
+      "status_at_start": "En curso",
+      "ownership_verified": true,
+      "comments_total": 12,
+      "comments_complete": true
+    },
+    {
+      "key": "ASTRA-35",
+      "title": "INV — Relevar antecedentes CanSat y resultados documentados",
+      "status_at_start": "En curso",
+      "ownership_verified": true,
+      "comments_total": 9,
+      "comments_complete": true
+    },
+    {
+      "key": "ASTRA-36",
+      "title": "INV — Evaluar autorrotación y generación eléctrica en descenso",
+      "status_at_start": "En curso",
+      "ownership_verified": true,
+      "comments_total": 5,
+      "comments_complete": true
+    },
+    {
+      "key": "ASTRA-37",
+      "title": "DOC — Revisar aula CONAE, materiales PDR y aclaraciones oficiales",
+      "status_at_start": "En curso",
+      "ownership_verified": true,
+      "comments_total": 7,
+      "comments_complete": true
+    },
+    {
+      "key": "ASTRA-38",
+      "title": "DOC — Análisis automatizado del aula CONAE y prioridades al corte",
+      "status_at_start": "En curso",
+      "ownership_verified": true,
+      "comments_total": 5,
+      "comments_complete": true
+    }
+  ],
+  "issues_complete": true,
+  "changelog_exported": false
+}
