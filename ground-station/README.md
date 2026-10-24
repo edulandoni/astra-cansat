@@ -16,6 +16,8 @@ La [actualización 05](docs/2026-10-24-cadencia-identidad-e-inicio-prolongado-ac
 
 Me encargo de recibir, registrar y mostrar la telemetría en tierra. Esta carpeta reúne mi código, pruebas y decisiones. La rama `groundstation` es mi línea de trabajo del subsistema; no establece reglas para las otras áreas del equipo.
 
+La [actualización de potencia y tiempo de aire del 24/10](docs/interfaces/2026-10-24-radio-potencia-y-airtime-actualizacion-03.md) contrasta la hoja Semtech de 2020 y explicita el riesgo de suponer máxima potencia y telemetría de un paquete por segundo sin evaluar el perfil conjunto.
+
 ## Por dónde empezar
 
 | Necesidad | Ubicación |
