@@ -70,3 +70,7 @@ Resultados, límites y evidencia: [primera actualización de esta etapa](../docs
 ## Conflictos de recuperación — 24/10/2026
 
 Además de comparar filas entre copias, bloqueo reconstrucción si un diario seleccionado conserva una marca de conflicto detectado durante adquisición. Un CSV aislado no revela marcas que sólo quedaron en un diario ausente. [Caso antes/después](../docs/2026-10-24-recuperacion-conflicto-interno-actualizacion-08.md).
+
+## Aceptación USB — 24/10/2026
+
+[Resultado prolongado y matriz de toda la etapa](../docs/2026-10-24-aceptacion-banco-usb-actualizacion-09.md): 7261 paquetes en 7260,328 s reales entre primera y última muestra, escritores drenados y reconstrucción idéntica. El informe conserva el intento interrumpido, las versiones y los pendientes de RF/autonomía/STM32 y copia externa simultánea.

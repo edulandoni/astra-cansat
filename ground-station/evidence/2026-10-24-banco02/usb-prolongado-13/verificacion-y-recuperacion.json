@@ -1,0 +1,56 @@
+{
+  "recorded_utc": "2026-10-24T06:11:08.828559+00:00",
+  "recovered_candidates": 7261,
+  "written": true,
+  "conflicts": 0,
+  "read_errors": 0,
+  "originals_unchanged": true,
+  "csv_sha256": "f62404025543b6391957352b5de0c081f91557d6c41f6d1e6fd83643f243e1c2",
+  "recovered_csv_sha256": "f62404025543b6391957352b5de0c081f91557d6c41f6d1e6fd83643f243e1c2",
+  "csv_identical": true,
+  "recovery_tool_sha256": "9d6b15114b7a542eb8121c0adf99b1b175406973aa13b772c0e9a550f152000d",
+  "active_modules_match_frozen_snapshot": {
+    "app.py": true,
+    "engine.py": true,
+    "journal.py": true,
+    "sources.py": true,
+    "mission.py": true,
+    "wire.py": true,
+    "firmware/AstraBench02/AstraBench02.ino": true
+  },
+  "maximum_total_pending_observed": 5,
+  "maximum_total_dropped_observed": 0,
+  "memory_MiB": {
+    "min": 36.2578125,
+    "max": 44.859375,
+    "first": 42.4296875,
+    "last": 36.76953125
+  },
+  "power_lease": [
+    {
+      "utc": "2026-10-24T04:09:00.571930+00:00",
+      "event": "started",
+      "idle_sleep_hold_acquired": true,
+      "persistent_settings_changed": false
+    },
+    {
+      "utc": "2026-10-24T06:10:21.395368+00:00",
+      "event": "application_returned"
+    },
+    {
+      "utc": "2026-10-24T06:10:21.401240+00:00",
+      "event": "released",
+      "idle_sleep_hold_release_call_succeeded": true
+    }
+  ],
+  "gui_visual_observation": {
+    "observed_after_120min": true,
+    "visible_counter": 7247,
+    "all_22_fields_visible": true,
+    "six_graphs_visible": true,
+    "source": "USB_BENCH",
+    "saved_image_file": false,
+    "reason": "Native tool displayed screenshots inline; exporting the screenshot object did not yield the expected PNG data URL. No image file or edited recreation claimed."
+  },
+  "limits": "Reconstruction used the later offline tool with internal-conflict blocking. It did not run inside the acquisition GUI. Original raw journal and recovery provenance stay private; public CSV and health series are synthetic."
+}

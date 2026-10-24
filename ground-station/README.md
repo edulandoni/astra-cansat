@@ -24,6 +24,8 @@ La [actualización 07](docs/2026-10-24-medidor-y-reinicio-prolongado-actualizaci
 
 La [actualización 08](docs/2026-10-24-recuperacion-conflicto-interno-actualizacion-08.md) evita declarar limpia una reconstrucción cuando el propio diario ya registra un conflicto entre mensajes del mismo contador.
 
+La [actualización 09: aceptación del banco USB](docs/2026-10-24-aceptacion-banco-usb-actualizacion-09.md) reúne el resultado prolongado de 7261 paquetes en 2 h 1 min reales, reconstrucción coincidente, matriz completa de la etapa y límites para el PDR.
+
 ## Por dónde empezar
 
 | Necesidad | Ubicación |
