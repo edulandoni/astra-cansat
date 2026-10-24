@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 from journal import Store
-from engine import Engine,display
+from engine import Engine,display,telemetry_view
 from wire import control,PROFILE,Demux,parse
 from mission import sample,model,expected
 from sources import PCBench,replay_loop
@@ -204,5 +204,27 @@ class BenchTests(unittest.TestCase):
             a=store.emit('check');b=store.emit('check')
             self.assertGreaterEqual(b['received_elapsed_seconds'],a['received_elapsed_seconds'])
             store.close()
+
+
+
+class GPSPresentationTests(unittest.TestCase):
+    def test_no_fix_never_promotes_untrusted_coordinates(self):
+        with tempfile.TemporaryDirectory() as d:
+            s=Store(d);e=Engine(s);b=PCBench(e);b.hello()
+            try:
+                raw=sample(50,'GPS_LOSS')[0]
+                fields=raw[:-1].decode().split(',');fields[17:20]=['0.0','0.0000','0.0000']
+                e.feed((','.join(fields)+'\r').encode())
+                view,retained=telemetry_view(e.snapshot())
+                self.assertIsNone(view['GPS_LATITUDE']);self.assertIsNone(view['GPS_TIME'])
+                self.assertEqual(view['GPS_SATS'],'0');self.assertIn('GPS_LONGITUDE',retained)
+                e.feed(sample(51)[0]);last=e.gps.copy()
+                fields[2]='54';e.feed((','.join(fields)+'\r').encode())
+                view,retained=telemetry_view(e.snapshot())
+                for key in retained:self.assertEqual(view[key],last[key])
+                self.assertEqual(e.latest.data['GPS_LATITUDE'],'0.0000')
+                e.feed(sample(54)[0]);view,retained=telemetry_view(e.snapshot())
+                self.assertFalse(retained);self.assertEqual(view['GPS_LATITUDE'],e.latest.data['GPS_LATITUDE'])
+            finally:s.close()
 
 if __name__=='__main__':unittest.main(verbosity=2)

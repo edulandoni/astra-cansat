@@ -18,6 +18,8 @@ Me encargo de recibir, registrar y mostrar la telemetría en tierra. Esta carpet
 
 La [actualización de potencia y tiempo de aire del 24/10](docs/interfaces/2026-10-24-radio-potencia-y-airtime-actualizacion-03.md) contrasta la hoja Semtech de 2020 y explicita el riesgo de suponer máxima potencia y telemetría de un paquete por segundo sin evaluar el perfil conjunto.
 
+La [actualización 06](docs/2026-10-24-gps-presentacion-actualizacion-06.md) corrige la presentación sin solución GPS y verifica que el dato original se conserve. Es posterior al snapshot del ensayo prolongado.
+
 ## Por dónde empezar
 
 | Necesidad | Ubicación |

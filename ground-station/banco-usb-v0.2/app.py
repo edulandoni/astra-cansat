@@ -11,7 +11,7 @@ from collections import deque
 from datetime import datetime,timezone
 from pathlib import Path
 from journal import Store
-from engine import Engine,display
+from engine import Engine,display,telemetry_view
 from sources import PCBench,serial_loop,replay_loop
 from wire import FIELDS,PROFILE,SCENARIOS
 
@@ -120,8 +120,12 @@ def main():
             try:segment,packet=e.updates.get_nowait()
             except queue.Empty:break
             if segment==current:history.append(display(packet.data))
-        data=display(snap['latest'])
-        for k,var in labels.items():var.set((data[k]+' '+UNITS.get(k,'')) if k in data else '—')
+        data,retained=telemetry_view(snap)
+        for k,var in labels.items():
+            if k not in data:text='—'
+            elif data[k] is None:text='— SIN FIX'
+            else:text=data[k]+' '+UNITS.get(k,'')+(' (última válida)' if k in retained else '')
+            var.set(text)
         age=snap['data_age'];fresh='SIN DATOS ACTUALES' if age is None else f'Edad del dato {age:.1f} s'+(' — ANTIGUO' if age>3 else '')
         link_age=snap['link_age'];link_text='sin mensaje válido' if link_age is None else f'último mensaje válido hace {link_age:.1f} s'
         header.set(f"{snap['source']} | {snap['status']} | {link_text} | {fresh} | TEAM {a.team} FICTICIO | segmento {current}")
@@ -130,7 +134,7 @@ def main():
         flags=[]
         if snap['ambiguous']:flags.append('Sesión ambigua; no muestro datos anteriores como actuales')
         if snap['clock_warning']:flags.append('Contador avanza pero hora de misión no avanza: revisar')
-        if data and data['GPS_SATS']=='0':flags.append('GPS SIN FIX; posición retenida, edad '+str(round(snap['gps_age'],1) if snap['gps_age'] is not None else 'desconocida')+' s')
+        if data and data['GPS_SATS']=='0':flags.append('GPS SIN FIX; '+('sin posición válida anterior' if snap['gps'] is None else 'posición retenida, edad '+str(round(snap['gps_age'],1) if snap['gps_age'] is not None else 'desconocida')+' s'))
         if snap['done']:flags.append('Simulación terminada; no se esperan más muestras')
         if snap['overflows']:flags.append(f"Tramas excesivas {snap['overflows']}: descartadas del parser; revisar bytes en registro bruto")
         for status in snap['storage']:

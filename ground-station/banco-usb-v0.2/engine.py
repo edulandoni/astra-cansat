@@ -243,3 +243,13 @@ def display(data):
     out=dict(data)
     for k in ['GYRO_R','GYRO_P','GYRO_Y']:out[k]=f'{math.radians(float(data[k])):.4f}'
     return out
+
+
+def telemetry_view(snapshot):
+    """ASTRA-22/34: una posición sin fix no se presenta como medición válida."""
+    values=display(snapshot.get('latest'));retained=set()
+    if values and values['GPS_SATS']=='0':
+        for key in ['GPS_TIME','GPS_ALTITUDE','GPS_LATITUDE','GPS_LONGITUDE']:
+            values[key]=(snapshot.get('gps') or {}).get(key)
+            retained.add(key)
+    return values,retained
