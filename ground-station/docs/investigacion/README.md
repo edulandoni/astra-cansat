@@ -38,3 +38,7 @@ La metodología y el respaldo de documentación se mantienen en [ASTRA-33](../te
 ## Avances del 24/10/2026
 
 [Calidad medida y cierre técnico de investigación](2026-10-24-calidad-medida-y-cierre-investigacion.md) · [Rotor: energía incremental y consumo propio](2026-10-24-rotor-energia-incremental.md).
+
+## Corte diario del 24/10/2026
+
+[Planillas internacionales de CSV y GCS: contexto 2027 y evidencia propia](2026-10-24-planillas-internacionales-csv-y-gcs.md) · [Referencias visuales, revisión pendiente](2026-10-24-catalogo-visual-planillas.csv).

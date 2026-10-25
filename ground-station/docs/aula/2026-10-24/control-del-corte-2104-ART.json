@@ -1,0 +1,46 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-10-25T00:00:10.321Z",
+  "cut_utc": "2026-10-25T00:04:03.565572+00:00",
+  "cut_argentina": "24/10/2026 21:04:03 ART",
+  "status": "PARCIAL — aula inaccesible",
+  "last_successful_cut": "20/10/2026 21:03:49 ART",
+  "attempts": [
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/course/view.php?id=106",
+      "result": "Consulta web agotada y navegación IAB de 30 s agotada; el runtime se reinició. No accedí al curso."
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/login/index.php",
+      "result": "Page.navigate agotó el tiempo de espera; no llegué al formulario ni ingresé credenciales."
+    }
+  ],
+  "pending": [
+    "Secciones y recursos actuales",
+    "Todos los mensajes y respuestas desde el 20/10, adjuntos y foros adicionales",
+    "Calendario y configuración de entrega",
+    "Archivos, versiones y huellas binarias actuales",
+    "Grabaciones y contenidos audiovisuales nuevos o modificados",
+    "Publicación eventual de documentación del vector y ensayos ambientales"
+  ],
+  "current_thread_count": null,
+  "current_message_count": null,
+  "new_messages": null,
+  "files_revalidated_today": [],
+  "public_pages_read": [
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/cronograma",
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/como-me-inscribo"
+  ],
+  "public_result": "Sin cambio sustantivo detectado en texto relevante frente al corte anterior; no comparé binarios públicos.",
+  "same_access_impediment_as_previous": true,
+  "source_issue_update": "No duplico el mismo impedimento en ASTRA-37; registro el corte diario obligatorio en ASTRA-38.",
+  "research_sources_new": 3,
+  "research_scope": "Página Mission vigente y dos planillas oficiales internacionales; referencia 2027, no requisitos CONAE ni puntajes históricos de ganadores.",
+  "visual_limit": "Solicité capturas web de las dos planillas, pero no recibí píxeles inspeccionables; lectura textual completa, revisión visual pendiente.",
+  "downloads": "Leí el instructivo. No guardé ni moví archivos de terceros en Descargas. Calculé huellas de dos PDF públicos en memoria; conservo sólo referencias, huellas y análisis propios. No republico sus binarios.",
+  "limits": [
+    "Un fallo de este acceso no demuestra caída global.",
+    "No puedo afirmar sin novedades ni 100% de cobertura.",
+    "Conteos y contenido del 20/10 son históricos.",
+    "No envié consultas, entregas ni formularios; no marqué actividades ni seleccioné parámetros RF."
+  ]
+}
