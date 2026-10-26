@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Guardado de fotos desde la cámara sin caída — 26/10/2026
+
+[Dos fotos nuevas con escritura y lectura desde la cámara](docs/camaras/2026-10-26-dos-fotos-sd-camara-sin-caida-05.md): el montaje y guardado funcionaron con MBR/FAT32, sin cambiar firmware. Falta lectura independiente con el lector, ensayo de la otra cámara, video y control de energía. Las entradas siguientes conservan los cortes anteriores.
+
 ## Dos cámaras con fotos USB y tarjeta preparada — 26/10/2026
 
 [Cámara sin caída: seis fotos válidas y diagnóstico del montaje SD](docs/camaras/2026-10-26-camara-sin-caida-sd-03.md) · [Preparación MBR/FAT32 y reposición verificada de los 24 archivos](docs/camaras/2026-10-26-microsd-mbr-restauracion-04.md). Ambas unidades ya produjeron fotos USB; el guardado desde la cámara, video y control de energía siguen pendientes. Las entradas siguientes conservan los cortes anteriores.

@@ -1,0 +1,81 @@
+{
+  "recorded_utc": "2026-10-26T04:28:34.838032+00:00",
+  "jira": "ASTRA-39",
+  "updates": [
+    "control.json",
+    "control-sd-mbr-actualizacion-01.json"
+  ],
+  "unit_label": "camara-sin-caida",
+  "attempts_after_mbr_fat32": [
+    {
+      "started_utc": "2026-10-26T04:27:45.516313+00:00",
+      "finished_utc": "2026-10-26T04:27:50.510475+00:00",
+      "result": "photo_and_sd_checked",
+      "reset_requested": true,
+      "frame": {
+        "v": 1,
+        "event": "frame",
+        "id": "1f06470029e81b9c",
+        "request_us": 1105547,
+        "capture_us": 1210128,
+        "length": 23862,
+        "crc32": "c4bc4edf",
+        "width": 640,
+        "height": 480,
+        "saved": true,
+        "sd_status": "READBACK_OK",
+        "path": "/ASTRA_CHECK_03dd0a3c1f975bb9_1f06470029e81b9c.jpg"
+      },
+      "validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "15121e243ef858f2c558ba3dec3667aaf98ec26bf56cc171373f813886605c2f",
+        "decoded": true,
+        "sd_readback_verified_by_device": true,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      },
+      "private_result_sha256": "aeff2ea06ec4345b5366eab89313e4fc4067d4058607735ebd3b79b11027a694",
+      "private_received_sha256": "b0c198684cad7c0d0a467d207c01543bd47c9d25c4e3d0c3c1c8ec05493cd2fb"
+    },
+    {
+      "started_utc": "2026-10-26T04:27:56.993774+00:00",
+      "finished_utc": "2026-10-26T04:27:59.898078+00:00",
+      "result": "photo_and_sd_checked",
+      "reset_requested": false,
+      "frame": {
+        "v": 1,
+        "event": "frame",
+        "id": "2f5e1dc2a255ae72",
+        "request_us": 10983541,
+        "capture_us": 11086170,
+        "length": 22935,
+        "crc32": "b70728f3",
+        "width": 640,
+        "height": 480,
+        "saved": true,
+        "sd_status": "READBACK_OK",
+        "path": "/ASTRA_CHECK_03dd0a3c1f975bb9_2f5e1dc2a255ae72.jpg"
+      },
+      "validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "f3b0794ee9816296623159a0b551508fb73de6a22a06b4ebcf15324767807a33",
+        "decoded": true,
+        "sd_readback_verified_by_device": true,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      },
+      "private_result_sha256": "4bd32d4155b273cde1bd0f9efa53e4c3ee3806956fdbdeba69f828a0b3932dab",
+      "private_received_sha256": "fcd866e864407bae11033590f4b0dd2f4c256405554a7d6818bea99aec47aca2"
+    }
+  ],
+  "reader_verification": "PENDING_PHYSICAL_RECONNECTION",
+  "sd_readback_by_camera_verified": true,
+  "sd_readback_by_independent_reader_verified": false,
+  "bootability_restored": false,
+  "video_verified": false,
+  "power_control_verified": false
+}
