@@ -4,6 +4,8 @@ Diario: [ASTRA-39](https://astrateam2026.atlassian.net/browse/ASTRA-39). Este ba
 
 ## Estado
 
+El [ensayo físico del panel con ambas unidades](../docs/camaras/2026-10-26-panel-ambas-camaras-11.md) comprobó captura y guardado/lectura SD por turnos, con resultados y antigüedad separados. La campaña conserva cinco intentos incompletos y tres capturas correctas. El arranque requirió recuperación; no está acreditada su estabilidad. La lectura externa de estas fotos nuevas, video y energía siguen pendientes.
+
 El [ensayo de ambas cámaras](../docs/camaras/2026-10-26-ambas-camaras-sd-y-lector-07.md) verifica dos fotos nuevas por unidad, guardado/lectura por cada cámara y comparación desde el lector después de desconectarlas. Los cuatro archivos coinciden y los 24 originales siguen intactos. Usé una tarjeta por turnos; no es una prueba simultánea ni de video. Las entradas siguientes conservan los cortes previos.
 
 La [lectura independiente posterior](../docs/camaras/2026-10-26-lectura-independiente-camara-2-06.md) verifica desde el lector USB las dos fotos de la cámara 2 después de desconectarla: bytes, huellas y decodificación coincidentes, con los 24 archivos anteriores intactos. El ensayo SD de la otra cámara sigue pendiente. Los párrafos siguientes conservan el alcance de cortes anteriores.

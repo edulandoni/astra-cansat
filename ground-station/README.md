@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Panel: ambas cámaras comprobadas por turnos — 26/10/2026
+
+[Captura y guardado de ambas unidades desde sus botones](docs/camaras/2026-10-26-panel-ambas-camaras-11.md): resumen de dos de dos observado, con cinco intentos incompletos y tres capturas correctas conservados. El arranque requirió recuperación; estabilidad, lectura externa de estas fotos nuevas, video y energía siguen pendientes.
+
 ## Captura desde el panel de cámara 1 — 26/10/2026
 
 [Ensayo físico del panel y límites de arranque](docs/camaras/2026-10-26-panel-camara1-capturas-y-limites-10.md): dos fotos nuevas guardadas y leídas después de recuperar el arranque; cuatro intentos incompletos conservados. Cámara 2 desde el panel y estabilidad del arranque siguen pendientes.
