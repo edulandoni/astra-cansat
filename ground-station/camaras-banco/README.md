@@ -4,7 +4,7 @@ Diario: [ASTRA-39](https://astrateam2026.atlassian.net/browse/ASTRA-39). Este ba
 
 ## Estado
 
-Firmware candidato compilado y receptor probado con imágenes generadas en PC. No cargado ni verificado en cámaras físicas. No usar un equipo con integridad o alimentación dudosas; los LED encendidos no prueban seguridad ni captura.
+El [ensayo de cámara A del 26/10](../docs/camaras/2026-10-26-camara-a-prueba-fisica-02.md) conserva respaldo previo, fallos iniciales y cinco fotos USB válidas VGA/RGB. La segunda unidad, microSD, grabación y control de energía siguen pendientes. La preparación anterior conserva su revisión propia. No usar un equipo con integridad o alimentación dudosas; los LED encendidos no prueban seguridad ni captura.
 
 El perfil `camera-usb-0.1` es exclusivo de mantenimiento local. No usa Wi-Fi/Bluetooth, no configura radio y no define los comandos de vuelo que desarrolla Edu. El firmware inicializa el sensor al encender y espera órdenes: todavía no implementa apagado de la placa, grabación continua ni disparo de misión.
 

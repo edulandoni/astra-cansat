@@ -27,11 +27,23 @@ void info(const char *id) {
 }
 void photo(const char *id,bool save) {
   if(!cameraReady){error(id,"CAMERA_INIT_FAILED");return;}
+  // Habilito diagnóstico sólo durante adquisición, nunca dentro del JPEG binario.
+  struct CaptureLog {
+    CaptureLog(){esp_log_level_set("*",ESP_LOG_WARN);}
+    ~CaptureLog(){esp_log_level_set("*",ESP_LOG_NONE);}
+  } captureLog;
   int64_t requestUs=esp_timer_get_time();
   // Descarto cuadros en espera; no uso una foto almacenada como chequeo nuevo.
-  for(int i=0;i<2;i++){camera_fb_t *old=esp_camera_fb_get();if(!old){error(id,"CAPTURE_FAILED");return;}esp_camera_fb_return(old);delay(80);}
+  for(int i=0;i<2;i++){
+    Serial.printf("#CAM warmup %d\n",i+1);
+    camera_fb_t *old=esp_camera_fb_get();
+    if(!old){error(id,i==0?"WARMUP_1_FAILED":"WARMUP_2_FAILED");return;}
+    esp_camera_fb_return(old);delay(80);
+  }
+  Serial.println("#CAM requested frame");
   camera_fb_t *fb=esp_camera_fb_get();
-  if(!fb){error(id,"CAPTURE_FAILED");return;}
+  if(!fb){error(id,"REQUESTED_FRAME_FAILED");return;}
+  esp_log_level_set("*",ESP_LOG_NONE);
   int64_t captureUs=(int64_t)fb->timestamp.tv_sec*1000000+fb->timestamp.tv_usec;
   if(captureUs<requestUs){esp_camera_fb_return(fb);error(id,"STALE_FRAME");return;}
   if(fb->format!=PIXFORMAT_JPEG || fb->len<4 || fb->len>512*1024 || fb->buf[0]!=0xff || fb->buf[1]!=0xd8 || fb->buf[fb->len-2]!=0xff || fb->buf[fb->len-1]!=0xd9){

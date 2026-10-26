@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Primeras fotos de cámara A — 26/10/2026
+
+[Ensayo físico, intentos fallidos y cinco fotos USB correctas](docs/camaras/2026-10-26-camara-a-prueba-fisica-02.md), con respaldo original conservado. Todavía no acredita segunda cámara, microSD, video ni control de energía.
+
 ## Preparación local de cámaras — 26/10/2026
 
 [Banco USB de cámaras](camaras-banco/README.md) y [control de preparación](docs/camaras/2026-10-26-banco-local-preparacion-01.md): firmware candidato compilado y receptor probado con JPEG de PC. La carga, fotos de ambas cámaras, SD, energía y grabación física siguen pendientes; el objetivo completo continúa en ASTRA-39.
