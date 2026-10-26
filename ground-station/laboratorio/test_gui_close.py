@@ -6,7 +6,7 @@ import time
 import unittest
 from unittest.mock import patch
 from PySide6.QtWidgets import QApplication
-from app import Laboratory
+from qt_app import Laboratory
 
 
 class CloseTests(unittest.TestCase):

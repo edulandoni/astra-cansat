@@ -33,7 +33,8 @@ class LaboratoryTests(unittest.TestCase):
         self.assertEqual(len(raw),124)
         self.assertTrue(raw.endswith(b'\r'))
         self.assertAlmostEqual(radio_rows(55)[0]['airtime_seconds'],.107776)
-        self.assertGreater(radio_rows(100)[2]['airtime_seconds'],1)
+        self.assertEqual([r['sf'] for r in radio_rows(100)],list(range(7,13)))
+        self.assertGreater(next(r for r in radio_rows(100) if r['sf']==10)['airtime_seconds'],1)
 
     def test_scenarios_saved_by_real_engine(self):
         def run(scenario):

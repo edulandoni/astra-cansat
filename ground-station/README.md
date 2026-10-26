@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Banco completo en Laboratorio — 26/10/2026
+
+[Telemetría con 22 campos, once gráficos, comandos, guardado, diagnóstico y tramas; fotos por unidad y ensayos integrados](docs/historial/2026-10-26-laboratorio-completo-04.md). El archivo de resultados y fuentes permite consultar toda la evidencia textual del área. La comprobación nueva es de software y renderizado Qt fuera de pantalla; fotos físicas desde estos botones, RF, video y energía mantienen sus pendientes.
+
 ## Laboratorio Qt: recorrido y origen explícito — 26/10/2026
 
 La entrada [laboratorio/app.py](laboratorio/README.md) abre la aplicación nativa Qt: recorrido de siete pasos, banco con placa USB/simulación/grabación separados y pruebas organizadas por tema. Sin fuente, no hay mediciones. La desconexión USB conserva valores históricos y no activa una simulación. La interfaz Tk queda archivada como referencia, manteniendo los bancos y los originales.

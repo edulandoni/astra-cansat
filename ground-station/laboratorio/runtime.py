@@ -42,7 +42,7 @@ def packet_at(t):
 
 
 def radio_rows(payload, bw=125000, cr=1):
-    return [airtime(payload, sf, bw, cr, 8, 1, 0) for sf in (7, 9, 10, 11, 12)]
+    return [airtime(payload, sf, bw, cr, 8, 1, 0) for sf in range(7,13)]
 
 
 def recovery_demo(output, mode='complementarias'):

@@ -18,6 +18,8 @@ from qt_model import Source,source_view
 from journey import STEPS
 from content import REPORTS
 from ui_model import controls,command_text,FIELDS_INFO,STATES
+from telemetry_workspace import TelemetryWorkspace
+from experiment_workspace import ExperimentWorkspace
 
 STYLE='''
 * {font-family: "Segoe UI"; font-size: 13px; color: #24334B;}
@@ -51,6 +53,9 @@ QScrollArea > QWidget > QWidget {background: transparent;}
 QToolButton {text-align: left; background: #F5F7FA; border: 0; border-radius: 6px; padding: 10px; color: #526781;}
 QTableWidget {background: white; alternate-background-color: #F5F7FA; border: 0; gridline-color: #EDF0F5; selection-background-color: #DCEFEA;}
 QHeaderView::section {background: #F1F4F8; border: 0; border-bottom: 1px solid #DBE3EE; padding: 9px; color: #52647D; font-weight: 600;}
+QTabWidget::pane {border: 1px solid #DDE3EC; background: white;}
+QTabBar::tab {background: #E8EDF5; padding: 10px 12px; border: 0; margin-right: 2px;}
+QTabBar::tab:selected {background: white; color: #087F73; border-bottom: 2px solid #087F73;}
 QTextBrowser {background: white; border: 1px solid #E1E7EF; border-radius: 9px; padding: 18px; font-size: 14px;}
 QScrollBar:vertical {background: transparent; width: 8px;}
 QScrollBar::handle:vertical {background: #CBD5E3; border-radius: 4px; min-height: 30px;}
@@ -131,6 +136,7 @@ class Laboratory(QMainWindow):
             Laboratory.fonts_ready=True
         self.config=config or {};self.source=None;self.step=0
         self.output=Path(self.config.get('output',Path.home()/'ASTRA-Laboratorio'/'ensayos'))/'qt'
+        self.backup_path=None
         self.pool=ThreadPoolExecutor(max_workers=2);self.jobs=[];self.closing=False;self.camera_results={}
         self.setWindowTitle('ASTRA · Laboratorio');self.resize(1280,850);self.setMinimumSize(1000,700)
         self.setStyleSheet(STYLE)
@@ -141,7 +147,7 @@ class Laboratory(QMainWindow):
         nav.addWidget(label('A S T R A','brand'));nav.addWidget(label('LABORATORIO DE TIERRA'));nav.addSpacing(35)
         nav.addWidget(label('EXPLORAR'))
         self.nav={};self.stack=QStackedWidget();self.pages={}
-        for key,title in [('recorrido','Avances del proyecto'),('datos','Telemetría'),('camaras','Cámaras'),('radio','Enlace RF'),('recuperacion','Recuperación de datos'),('evidencias','Documentación')]:
+        for key,title in [('recorrido','Avances del proyecto'),('datos','Telemetría'),('camaras','Cámaras'),('radio','Enlace RF'),('recuperacion','Recuperación de datos'),('ensayos','Ensayos y análisis'),('evidencias','Documentación')]:
             b=button(title,lambda checked=False,k=key:self.go(k));b.setCheckable(True);nav.addWidget(b);self.nav[key]=b
             scroll=QScrollArea();scroll.setWidgetResizable(True);page=QWidget();lay=QVBoxLayout(page)
             lay.setContentsMargins(32,28,32,28);lay.setSpacing(18);scroll.setWidget(page)
@@ -154,7 +160,7 @@ class Laboratory(QMainWindow):
         toplay.addWidget(top_title);toplay.addStretch()
         self.origin=label('SIN FUENTE DE DATOS','badge');self.origin.setWordWrap(False);toplay.addWidget(self.origin)
         body.addWidget(top);body.addWidget(self.stack);outer.addWidget(main)
-        self.build_journey();self.build_data();self.build_cameras();self.build_radio();self.build_recovery();self.build_evidence()
+        self.build_journey();self.build_data();self.build_cameras();self.build_radio();self.build_recovery();self.build_experiments();self.build_evidence()
         self.go('recorrido');self.timer=QTimer(self);self.timer.timeout.connect(self.refresh);self.timer.start(150);self.refresh()
 
     def heading(self,key,title,subtitle):
@@ -197,8 +203,14 @@ class Laboratory(QMainWindow):
         pc,p=card('Simulación PC','Emisor sintético ejecutado en la computadora. No requiere conexión con el ESP32.')
         self.scenario=QComboBox()
         for title,value in [('Misión normal','NOMINAL'),('Mensajes que no llegan','PACKET_LOSS'),('Mensajes dañados','CORRUPTED_PACKET'),('GPS sin posición','GPS_LOSS'),('Omisión lógica','RESET')]:self.scenario.addItem(title,value)
-        p.addWidget(self.scenario);self.pc_btn=button('Comenzar simulación',self.start_pc,True);p.addWidget(self.pc_btn);p.addWidget(label('Misión acelerada ×5 · valores ficticios','muted'));row.addWidget(pc)
+        p.addWidget(self.scenario);self.pc_speed=QComboBox()
+        for speed in (1,5,10):self.pc_speed.addItem(f'Velocidad ×{speed}',speed)
+        self.pc_speed.setCurrentIndex(1);p.addWidget(self.pc_speed)
+        self.pc_btn=button('Comenzar simulación',self.start_pc,True);p.addWidget(self.pc_btn);p.addWidget(label('Valores ficticios · no usa USB','muted'));row.addWidget(pc)
         replay,r=card('Reproducción','Lectura temporal de un registro guardado. No es adquisición en vivo.')
+        self.replay_speed=QComboBox()
+        for speed in (1,5,10):self.replay_speed.addItem(f'Velocidad ×{speed}',speed)
+        r.addWidget(self.replay_speed)
         self.replay_btn=button('Elegir grabación…',self.pick_replay);r.addWidget(self.replay_btn);r.addStretch();row.addWidget(replay)
         self.sources_panel=QWidget();self.sources_panel.setLayout(row);lay.addWidget(self.sources_panel)
         status,s=card();self.data_title=label('Sin fuente seleccionada','cardTitle');self.data_detail=label('Adquisición detenida.','sub')
@@ -214,6 +226,10 @@ class Laboratory(QMainWindow):
         c.addWidget(details('Definición de contadores','Recibidos: líneas de datos; excluye controles y diagnósticos reconocidos. Válidos: muestras que pudimos interpretar. Guardados: filas confirmadas del CSV principal. Por guardar: filas que ya llegaron y esperan escritura. Los mensajes que no llegaron durante un corte no están en esa cola. Huecos de contador requieren continuidad e identidad suficientes.'))
         self.packet_btn=button('Ver el paquete y todas las mediciones',self.packet_dialog);c.addWidget(self.packet_btn,alignment=Qt.AlignLeft);lay.addWidget(counters)
         lay.removeWidget(counters);lay.insertWidget(lay.indexOf(chart),counters)
+        lay.removeWidget(chart);chart.hide()
+        lay.removeItem(measures);measures.setParent(None);lay.removeWidget(counters)
+        overview=QWidget();overview_layout=QVBoxLayout(overview);overview_layout.addLayout(measures);overview_layout.addWidget(counters);overview_layout.addStretch()
+        self.telemetry=TelemetryWorkspace(self);self.telemetry.addTab(overview,'Estado');lay.addWidget(self.telemetry)
         self.refresh_ports()
 
     def refresh_ports(self):
@@ -226,13 +242,13 @@ class Laboratory(QMainWindow):
 
     def start_source(self,mode,**kwargs):
         if self.source and not self.source.closed:raise ValueError('Cerrá y conservá la fuente actual antes de elegir otra.')
-        self.source=Source(self.output,mode,**kwargs);self.plot.points.clear();self.refresh()
+        self.source=Source(self.output,mode,backup=self.backup_path,**kwargs);self.plot.points.clear();self.telemetry.reset();self.refresh()
 
     def connect_usb(self):self.guarded(lambda:self.start_source('usb',port=self.usb_ports.currentData()))
-    def start_pc(self):self.guarded(lambda:self.start_source('pc',scenario=self.scenario.currentData(),speed=5))
+    def start_pc(self):self.guarded(lambda:self.start_source('pc',scenario=self.scenario.currentData(),speed=self.pc_speed.currentData()))
     def pick_replay(self):
         path,_=QFileDialog.getOpenFileName(self,'Elegir diario de una prueba','','Registro JSONL (*.jsonl)')
-        if path:self.guarded(lambda:self.start_source('replay',replay=path,speed=1))
+        if path:self.guarded(lambda:self.start_source('replay',replay=path,speed=self.replay_speed.currentData()))
     def stop_source(self):
         if self.source:self.source.stop()
     def order(self,op,**args):
@@ -262,7 +278,13 @@ class Laboratory(QMainWindow):
             if pix.isNull():pic.setText('Sin foto local configurada')
             else:pic.setPixmap(pix.scaled(400,220,Qt.KeepAspectRatio,Qt.SmoothTransformation))
             l.addWidget(pic);note=label(entry.get('caption','No es una captura de esta sesión.'),'muted');l.addWidget(note)
-            b=button(f'Comprobar cámara {n}',lambda checked=False,number=n:self.capture_camera(number));l.addWidget(b);self.photo_widgets[n]=(pic,b);self.camera_notes[n]=note;cards.addWidget(c)
+            actions=QHBoxLayout()
+            b=button('Foto USB',lambda checked=False,number=n:self.capture_camera(number,False));actions.addWidget(b)
+            sd_button=button('Foto + microSD',lambda checked=False,number=n:self.capture_camera(number,True));actions.addWidget(sd_button)
+            l.addLayout(actions);self.photo_widgets[n]=(pic,b);self.camera_notes[n]=note
+            l.addWidget(button('Abrir secuencia guardada…',lambda checked=False,number=n:self.open_sequence(number)))
+            if not hasattr(self,'camera_action_buttons'):self.camera_action_buttons=[]
+            self.camera_action_buttons.extend((b,sd_button));cards.addWidget(c)
         lay.addLayout(cards)
         prep,p=card('Configuración del chequeo','Puerto de la cámara montada en su base USB. Foto + SD comprueba la lectura reportada por la cámara; la lectura independiente se realiza desde el lector.')
         self.camera_ports=QComboBox();self.camera_ports.addItem('Seleccioná el puerto de cámara…',None);p.addWidget(self.camera_ports)
@@ -275,7 +297,18 @@ class Laboratory(QMainWindow):
         self.camera_ports.clear();self.camera_ports.addItem('Seleccioná el puerto de cámara…',None)
         for p in list_ports.comports():self.camera_ports.addItem(f'{p.device} · {p.description}',p.device)
 
-    def capture_camera(self,n):
+    def open_sequence(self,n):
+        def show():
+            from camera_session import read_registry
+            from qt_sequence import SequenceDialog
+            identity=read_registry(self.config.get('camera_registry',''))[f'camera{n}']
+            folder=QFileDialog.getExistingDirectory(self,f'Secuencia conservada de cámara {n}')
+            if not folder:return
+            dialog=SequenceDialog(self,folder,identity,f'Cámara {n} · secuencia conservada')
+            dialog.setAttribute(Qt.WA_DeleteOnClose);dialog.show()
+        self.guarded(show)
+
+    def capture_camera(self,n,save_sd=False):
         def begin():
             sys.path.insert(0,str(AREA/'camaras-banco'))
             from camera_session import read_registry,capture
@@ -285,7 +318,7 @@ class Laboratory(QMainWindow):
             if any(kind=='camera' for _,kind,_ in self.jobs):raise ValueError('Ya hay una comprobación en curso. Esperá a que termine.')
             identity=read_registry(self.config.get('camera_registry',''))[f'camera{n}']
             self.camera_summary.setText('Comprobación en curso. No desconectes la cámara ni retires la tarjeta.')
-            self.submit(lambda:capture(f'camera{n}',identity,port,self.output/'camaras',True), 'camera',lambda r:self.camera_finished(n,r))
+            self.submit(lambda:capture(f'camera{n}',identity,port,self.output/'camaras',save_sd), 'camera',lambda r:self.camera_finished(n,r))
         self.guarded(begin)
 
     def camera_finished(self,n,r):
@@ -293,15 +326,17 @@ class Laboratory(QMainWindow):
         if r.get('photo'):
             pix=QPixmap(str(r['photo']));self.photo_widgets[n][0].setPixmap(pix.scaled(400,220,Qt.KeepAspectRatio,Qt.SmoothTransformation))
             self.photo_badges[n].setText('FOTO CAPTURADA EN ESTA SESIÓN')
-        ok=bool(r.get('operation_ok') and r.get('sd_ok'))
+        ok=bool(r.get('operation_ok'))
         if r.get('photo'):
             from datetime import datetime
             try:stamp=datetime.fromisoformat(r['finished_utc']).astimezone().strftime('%d/%m · %H:%M:%S')
             except (ValueError,KeyError,TypeError):stamp='fecha no confirmada'
-            self.camera_notes[n].setText(('Foto nueva y lectura SD reportada' if ok else 'Foto nueva · SD sin confirmar')+' · '+stamp)
+            result_text='Foto USB validada · SD no solicitada' if ok and not r.get('sd_requested') else ('Foto y lectura SD reportadas' if ok and r.get('sd_ok') else 'Foto recibida · chequeo incompleto')
+            self.camera_notes[n].setText(result_text+' · '+stamp)
         else:self.camera_notes[n].setText(self.camera_notes[n].text()+'\nNuevo chequeo incompleto. La foto mostrada sigue siendo la anterior.')
-        count=sum(bool(x.get('operation_ok') and x.get('sd_ok')) for x in self.camera_results.values())
-        self.camera_summary.setText(f'{count} de 2 cámaras comprobadas en esta sesión, por turnos. Lectura independiente del lector: ensayo aparte.')
+        count=sum(bool(x.get('operation_ok')) for x in self.camera_results.values())
+        sd_count=sum(bool(x.get('operation_ok') and x.get('sd_ok')) for x in self.camera_results.values())
+        self.camera_summary.setText(f'Fotos comprobadas: {count} de 2 · Lectura SD reportada: {sd_count} de 2 · por turnos. Lectura desde lector independiente: ensayo aparte.')
 
     def build_radio(self):
         lay=self.heading('radio','Enlace RF · cálculo LoRa','Tiempo de aire según tamaño de paquete y configuración. Sin emisión ni ensayo RF.')
@@ -309,15 +344,17 @@ class Laboratory(QMainWindow):
         self.payload=QSpinBox();self.payload.setRange(1,255);self.payload.setValue(55);self.payload.setSuffix(' bytes');row.addWidget(self.payload)
         row.addWidget(label('Ancho de banda'));self.bw=QComboBox()
         for value in (125,250,500):self.bw.addItem(f'{value} kHz',value*1000)
-        row.addWidget(self.bw);l.addLayout(row);self.radio_table=table(['Perfil','Tiempo transmitiendo','De cada segundo ocupa','Margen antes de otros mensajes']);self.radio_table.setMinimumHeight(230);l.addWidget(self.radio_table)
+        row.addWidget(self.bw);self.cr=QComboBox()
+        for cr in range(1,5):self.cr.addItem(f'CR 4/{cr+4}',cr)
+        row.addWidget(self.cr);l.addLayout(row);self.radio_table=table(['Perfil','Tiempo transmitiendo','De cada segundo ocupa','Margen antes de otros mensajes']);self.radio_table.setMinimumHeight(230);l.addWidget(self.radio_table)
         self.radio_summary=label();l.addWidget(self.radio_summary);lay.addWidget(c)
         c,l=card('Criterios de selección','Tamaño de paquete, SF, margen para telecomandos y reintentos. La selección final requiere ensayos de pérdidas, alcance, antenas y consumo.')
-        l.addWidget(details('Hipótesis y fórmula','Fórmula SX1276 de Semtech. CRC activo, cabecera explícita, preámbulo 8 y CR 4/5. Optimización de baja tasa automática. La ocupación a 1 Hz es aritmética: no incluye ACK, comandos, guardas o reintentos, ni autoriza potencia/régimen de emisión.'))
+        l.addWidget(details('Hipótesis y fórmula','Fórmula SX1276 de Semtech. CRC activo, cabecera explícita y preámbulo 8; CR según selector. Optimización de baja tasa automática. La ocupación a 1 Hz es aritmética: no incluye ACK, comandos, guardas o reintentos, ni autoriza potencia/régimen de emisión.'))
         l.addWidget(button('Consultar fuente de Semtech',lambda:QDesktopServices.openUrl(QUrl('https://www.semtech.com/design-support/faq/faq-lora'))),alignment=Qt.AlignLeft);lay.addWidget(c);lay.addStretch()
-        self.payload.valueChanged.connect(self.update_radio);self.bw.currentIndexChanged.connect(self.update_radio);self.update_radio()
+        self.payload.valueChanged.connect(self.update_radio);self.bw.currentIndexChanged.connect(self.update_radio);self.cr.currentIndexChanged.connect(self.update_radio);self.update_radio()
 
     def update_radio(self):
-        rows=radio_rows(self.payload.value(),self.bw.currentData(),1);self.radio_table.setRowCount(len(rows))
+        rows=radio_rows(self.payload.value(),self.bw.currentData(),self.cr.currentData());self.radio_table.setRowCount(len(rows))
         for i,r in enumerate(rows):
             sec=r['airtime_seconds'];texts=(f"SF{r['sf']}",f'{1000*sec:.1f} ms',f'{sec*100:.1f} %',f'{1000*(1-sec):.1f} ms' if sec<1 else 'No entra a 1 Hz')
             for j,text in enumerate(texts):
@@ -340,11 +377,16 @@ class Laboratory(QMainWindow):
         def done(r):self.recovery_result.setText(('Reconstrucción completada' if r['written'] else 'Reconstrucción bloqueada')+f"\nDatos presentes: {r['candidates']} de 10 · conflictos: {r['conflicts']} · originales intactos: {'sí' if r['originals_unchanged'] else 'no'}.\n"+('No hay información para recuperar lo que falta en ambas fuentes.' if r['candidates']<10 else 'El resultado queda conservado con sus fuentes.'))
         self.submit(lambda:recovery_demo(self.output,mode),'recovery',done)
 
+    def build_experiments(self):
+        lay=self.heading('ensayos','Ensayos y análisis','Cálculos reproducibles y archivo de resultados, parámetros y fuentes.')
+        self.experiments=ExperimentWorkspace(self);lay.addWidget(self.experiments)
+
     def build_evidence(self):
         lay=self.heading('evidencias','Documentación','Informes de ensayo, requisitos, decisiones de diseño y antecedentes.')
         c,l=card('Informes y decisiones');self.documents=QComboBox()
         for title,path in REPORTS:self.documents.addItem(title,path)
-        l.addWidget(self.documents);l.addWidget(button('Leer informe',self.open_report,True),alignment=Qt.AlignLeft);lay.addWidget(c)
+        l.addWidget(self.documents);l.addWidget(button('Leer informe',self.open_report,True),alignment=Qt.AlignLeft)
+        l.addWidget(button('Archivo completo de resultados y documentos',lambda:(self.go('ensayos'),self.experiments.setCurrentIndex(2))),alignment=Qt.AlignLeft);lay.addWidget(c)
         c,l=card('Pendientes de validación','Radio y antenas en condiciones reales; interfaz de vuelo acordada; energía y autonomía; arranque estable, secuencias reales y grabación prolongada de cámaras.')
         l.addWidget(label('Los cálculos, la simulación y las fotos previas tienen alcances diferentes. Ninguno acredita por sí solo el cumplimiento completo del PDR.','muted'));lay.addWidget(c)
         c,l=card('Investigación y antecedentes','Revisión de otras estaciones: buffers, datos inválidos, conservación y recuperación. Comparación de antenas y evaluación de rotor con parámetros y ensayos pendientes.')
@@ -393,7 +435,7 @@ class Laboratory(QMainWindow):
         if self.source:
             while True:
                 try:
-                    segment,p=self.source.engine.updates.get_nowait();self.plot.points.append((segment,p.count,float(p.data['ALTITUDE'])))
+                    segment,p=self.source.engine.updates.get_nowait();self.plot.points.append((segment,p.count,float(p.data['ALTITUDE'])));self.telemetry.add_packet(segment,p)
                 except queue.Empty:break
         self.plot.update();s=v['snapshot']
         sample_data=(s.get('latest') or s.get('last_sample') or {}) if s else {}
@@ -409,6 +451,7 @@ class Laboratory(QMainWindow):
             if errors:self.freshness.setText(self.freshness.text()+' · Problema de guardado: '+'; '.join(errors))
             if s['commands']:self.freshness.setToolTip(command_text(s['commands'][-1],s['epoch']))
         self.packet_btn.setEnabled(bool(s and (s.get('latest') or s.get('last_sample'))))
+        self.telemetry.refresh(v)
         for job in list(self.jobs):
             future,kind,done=job
             if future.done():
@@ -416,8 +459,10 @@ class Laboratory(QMainWindow):
                 try:done(future.result())
                 except Exception as exc:
                     if kind=='camera':self.camera_summary.setText('No pude confirmar la comprobación: '+str(exc))
+                    elif kind=='experiment':
+                        self.experiments.campaign_status.setText('Campaña incompleta: '+str(exc));self.experiments.campaign_button.setEnabled(True)
                     else:self.recovery_result.setText('No pude completar la prueba: '+str(exc))
-        for _,b in self.photo_widgets.values():b.setEnabled(not any(kind=='camera' for _,kind,_ in self.jobs))
+        for b in self.camera_action_buttons:b.setEnabled(not any(kind=='camera' for _,kind,_ in self.jobs))
         if self.closing and not self.jobs and (not self.source or self.source.closed):self.close()
 
     def closeEvent(self,event):

@@ -1,5 +1,13 @@
 # ASTRA — Laboratorio
 
+## Banco integrado — actualización del 26/10/2026
+
+Telemetría contiene Variables (22), Gráficos (11), Comandos, Guardado, Diagnóstico, Tramas y Estado. Los gráficos incluyen los quince canales numéricos; el giro se presenta en rad/s sin alterar el paquete original. USB, simulación PC y reproducción son selecciones explícitas; PC y reproducción permiten velocidades ×1/×5/×10. Sin fuente no hay mediciones. El archivo completo conserva el flujo aunque la pantalla sólo mantenga las últimas 180 muestras y 300 eventos.
+
+Cámaras ofrece **Foto USB** y **Foto + microSD** por unidad, con identidad y puerto explícitos, más el visor Qt de secuencias guardadas. Foto USB no requiere una tarjeta; Foto + microSD solicita el chequeo de escritura/lectura reportado por la cámara. Los botones están conectados al capturador existente y comprobados con sustituto de hardware; su campaña física Qt sigue pendiente.
+
+Ensayos y análisis reúne presupuesto de enlace, rotor/energía, campaña ejecutable de calidad/direccionamiento y archivo filtrable de todos los resultados, configuraciones y documentos textuales del proyecto. Los cálculos guardan archivos nuevos e identifican sus hipótesis. Enlace RF permite comparar los seis SF7–SF12 y cuatro CR; no configura radio. El [informe de cobertura y pruebas](../docs/historial/2026-10-26-laboratorio-completo-04.md) documenta funciones, evidencia y pendientes.
+
 ## Entrada vigente: aplicación nativa Qt
 
 Uso `app.py`, que abre la interfaz Qt Widgets (PySide6). La copia Tk queda en `archive/DEPRECATED/laboratorio-tk-20261026/` como referencia histórica. Los bancos y registros anteriores se conservan.

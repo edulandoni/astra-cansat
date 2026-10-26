@@ -1,5 +1,6 @@
 """ASTRA-41/22: origen explícito; USB nunca se sustituye por simulación."""
 import threading
+from collections import deque
 from pathlib import Path
 from runtime import Engine, Store
 from sources import PCBench, serial_loop, replay_loop
@@ -7,14 +8,21 @@ from ui_model import presentation
 
 
 class Source:
-    def __init__(self,output,mode,port=None,scenario='NOMINAL',speed=1,replay=None):
+    def __init__(self,output,mode,port=None,scenario='NOMINAL',speed=1,replay=None,backup=None):
         if mode not in ('usb','pc','replay'):raise ValueError('Elegir placa, simulación o grabación')
         if mode=='usb' and not port:raise ValueError('Seleccioná explícitamente el puerto de la placa')
         if mode=='replay' and (not replay or not Path(replay).is_file()):raise ValueError('Elegí un registro existente')
         if speed not in (1,5,10):raise ValueError('Velocidad no admitida')
         self.mode=mode;self.port=port;self.error='';self.stopping=False;self.closed=False
-        self.store=Store(output)
+        self.store=Store(output,backup)
         self.engine=Engine(self.store,source={'usb':'USB_BENCH','pc':'PC_BENCH','replay':'REPLAY'}[mode])
+        self.events=deque(maxlen=300);self.event_lock=threading.Lock()
+        original_event=self.engine.event
+        def trace(kind,**data):
+            event=original_event(kind,**data)
+            with self.event_lock:self.events.append(event)
+            return event
+        self.engine.event=trace
         def work():
             try:
                 if mode=='usb':serial_loop(self.engine,port,reset_once=False)
@@ -24,6 +32,9 @@ class Source:
                 self.error=str(exc);self.engine.disconnected(self.error)
         self.worker=threading.Thread(target=work,daemon=True);self.worker.start()
         if mode=='pc':self.engine.command('RUN',scenario=scenario,samples=131)
+
+    def event_snapshot(self):
+        with self.event_lock:return list(self.events)
 
     def stop(self):
         if self.stopping or self.closed:return
