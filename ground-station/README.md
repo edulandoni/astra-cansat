@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Preparación local de cámaras — 26/10/2026
+
+[Banco USB de cámaras](camaras-banco/README.md) y [control de preparación](docs/camaras/2026-10-26-banco-local-preparacion-01.md): firmware candidato compilado y receptor probado con JPEG de PC. La carga, fotos de ambas cámaras, SD, energía y grabación física siguen pendientes; el objetivo completo continúa en ASTRA-39.
+
 ## Cámaras y definición de comandos — 25/10/2026
 
 Inicié [el estudio de apagado en espera, grabación y chequeo dual de ESP32-CAM](docs/camaras/2026-10-25-energia-chequeo-dual.md) en [ASTRA-39](https://astrateam2026.atlassian.net/browse/ASTRA-39), con fuentes y ensayos pendientes. La [decisión de coordinación de comandos](docs/interfaces/2026-10-25-comandos-definidos-desde-vuelo.md) establece que Edu define vuelo y adapto groundstation; el banco USB conserva su perfil experimental.

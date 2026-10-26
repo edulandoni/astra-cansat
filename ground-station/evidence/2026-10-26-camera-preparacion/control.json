@@ -1,0 +1,54 @@
+{
+  "recorded_utc": "2026-10-26T03:24:03.150554+00:00",
+  "jira": "ASTRA-39",
+  "scope": "Preparación de software; sin carga ni ensayo físico de cámaras",
+  "tests": {
+    "run": 9,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 0.10999999999967258,
+    "output": "test_crc_corruption (test_camera_check.CameraTests.test_crc_corruption) ... ok\ntest_diagnostics_and_stale_response_ignored (test_camera_check.CameraTests.test_diagnostics_and_stale_response_ignored) ... ok\ntest_fragmentation_and_burst_decode (test_camera_check.CameraTests.test_fragmentation_and_burst_decode) ... ok\ntest_freshness_identity_and_sd (test_camera_check.CameraTests.test_freshness_identity_and_sd) ... ok\ntest_image_geometry_and_color (test_camera_check.CameraTests.test_image_geometry_and_color) ... ok\ntest_matching_crc_does_not_prove_jpeg (test_camera_check.CameraTests.test_matching_crc_does_not_prove_jpeg) ... ok\ntest_no_automatic_retry_on_timeout (test_camera_check.CameraTests.test_no_automatic_retry_on_timeout) ... ok\ntest_oversize_header_and_payload_limits (test_camera_check.CameraTests.test_oversize_header_and_payload_limits) ... ok\ntest_truncation_reset_and_wrong_order (test_camera_check.CameraTests.test_truncation_reset_and_wrong_order) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.091s\n\nOK\n"
+  },
+  "source_sha256": {
+    "camera_check.py": "9e4549764d755913e3a82774d473f0597ee24db621cd016e27af52b0bd187a3f",
+    "test_camera_check.py": "13590e9dac134c42d6f96783285e262294191af60a710b9095e57fb475b57db3",
+    "firmware/AstraCameraBench/AstraCameraBench.ino": "2387dba96ac6c198bb7b56be20d82ce62a8690e9102b4f92d7327f25a838062c"
+  },
+  "firmware": {
+    "compiled": true,
+    "uploaded": false,
+    "cli": "1.5.1",
+    "arduino_esp32": "3.3.12",
+    "fqbn": "esp32:esp32:esp32cam:FlashMode=dio",
+    "short_path_alias_used": true,
+    "compiler_sdk_and_build_paths_shortened": true,
+    "flash_program_bytes": 453491,
+    "static_ram_bytes": 35016,
+    "bin_sha256": {
+      "AstraCameraBench.ino.bin": "4c964eb032de88b9e39bbfd9346554a2bc33c79b446cad1fd0e33e981f6d303a",
+      "AstraCameraBench.ino.bootloader.bin": "7c5e6c42dcd3b658a81374d51e42aa839559b936df3ec181e94e864880b29fc2",
+      "AstraCameraBench.ino.merged.bin": "07e70679616071a91e55b0ecb3dc163e344d8e374d518b77bfdbddfe6286f38d",
+      "AstraCameraBench.ino.partitions.bin": "aaae2888c5a6a348004b5b436f47abb25ae32e72d9003902955a998eda723edd",
+      "boot_app0.bin": "f94c5d786a7a8fab06ac5d10e33bf37711a6697636dc037559ea19cc410a17f0"
+    }
+  },
+  "dependencies": {
+    "python": "3.12.10",
+    "Pillow": "12.3.0",
+    "pyserial": "3.5"
+  },
+  "hardware": {
+    "ports_opened_for_camera": false,
+    "photo_received": false,
+    "sd_tested": false,
+    "power_tested": false,
+    "recording_tested": false
+  },
+  "limits": [
+    "Pinout candidato sin confirmar físicamente",
+    "Sin deduplicación persistente de órdenes",
+    "Sin apagado de placa ni grabación continua",
+    "Sin ensayo eléctrico ni garantía de exposición/enfoque",
+    "Visor preparado sin inspección visual de foto real"
+  ]
+}
