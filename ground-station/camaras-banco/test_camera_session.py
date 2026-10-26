@@ -25,6 +25,13 @@ def evidence(folder, sd=True):
 
 
 class SessionTests(unittest.TestCase):
+    def test_boot_failure_preserves_explanation_instead_of_missing_info_key(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            (folder / 'resultado.json').write_text(json.dumps({'result': 'incomplete', 'error': 'La placa está en modo programación; hace falta un arranque normal.'}))
+            with self.assertRaisesRegex(ProtocolError, 'modo programación'):
+                read_evidence(folder, DEVICE)
+
     def test_distinct_registry_required(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / 'registry.json'

@@ -29,6 +29,8 @@ def read_evidence(folder, expected_device):
     if (folder / 'resultado.json').stat().st_size > 64 * 1024:
         raise ProtocolError('El resultado supera el límite permitido.')
     result = json.loads((folder / 'resultado.json').read_text(encoding='utf-8'))
+    if not isinstance(result.get('info'), dict) or not isinstance(result.get('frame'), dict):
+        raise ProtocolError(result.get('error') or 'No llegó una foto completa; conservo el resultado del intento.')
     validate_peer(result['info'], expected_device)
     frame = result['frame']
     if frame.get('id') != result.get('request_id'):

@@ -1,0 +1,37 @@
+{
+  "recorded_utc": "2026-10-26T05:00:29.759974+00:00",
+  "jira": "ASTRA-39",
+  "first_panel_attempts": [
+    {
+      "started_utc": "2026-10-26T04:57:26.909440+00:00",
+      "finished_utc": "2026-10-26T04:57:27.161068+00:00",
+      "result": "incomplete",
+      "reason": "La placa está en modo programación; no está ejecutando la cámara. Hace falta un arranque normal, sin BOOT/IO0 pulsado.",
+      "capture_requested": false,
+      "sd_write_requested": false,
+      "private_result_sha256": "bc2f0efe9ce7c521ab17d9d5c2600371fb0f1a08b765fd210b0163775ede9a0d"
+    },
+    {
+      "started_utc": "2026-10-26T04:57:35.928035+00:00",
+      "finished_utc": "2026-10-26T04:58:06.027471+00:00",
+      "result": "incomplete",
+      "reason": "Sin resultado completo en el tiempo de espera; no reenvío la orden",
+      "capture_requested": false,
+      "sd_write_requested": false,
+      "private_result_sha256": "01969a676fb158eff163a59d8e53d11d41345fade239b4708dc8159304b106ea"
+    }
+  ],
+  "ui_before_fix": "Fallo explicado como clave info ausente, sin causa legible.",
+  "fix": "Propago el error registrado por el receptor cuando no llegó identificación o foto; no busco campos ausentes.",
+  "tests": {
+    "run": 20,
+    "failures": 0,
+    "errors": 0,
+    "output": "test_crc_corruption (test_camera_check.CameraTests.test_crc_corruption) ... ok\ntest_diagnostics_and_stale_response_ignored (test_camera_check.CameraTests.test_diagnostics_and_stale_response_ignored) ... ok\ntest_download_mode_reports_boot_instead_of_generic_timeout (test_camera_check.CameraTests.test_download_mode_reports_boot_instead_of_generic_timeout) ... ok\ntest_expected_camera_is_checked_before_capture_or_sd_request (test_camera_check.CameraTests.test_expected_camera_is_checked_before_capture_or_sd_request) ... ok\ntest_explicit_reset_keeps_old_boot_bytes_and_never_resends_order (test_camera_check.CameraTests.test_explicit_reset_keeps_old_boot_bytes_and_never_resends_order) ... ok\ntest_fragmentation_and_burst_decode (test_camera_check.CameraTests.test_fragmentation_and_burst_decode) ... ok\ntest_freshness_identity_and_sd (test_camera_check.CameraTests.test_freshness_identity_and_sd) ... ok\ntest_image_geometry_and_color (test_camera_check.CameraTests.test_image_geometry_and_color) ... ok\ntest_matching_crc_does_not_prove_jpeg (test_camera_check.CameraTests.test_matching_crc_does_not_prove_jpeg) ... ok\ntest_no_automatic_retry_on_timeout (test_camera_check.CameraTests.test_no_automatic_retry_on_timeout) ... ok\ntest_oversize_header_and_payload_limits (test_camera_check.CameraTests.test_oversize_header_and_payload_limits) ... ok\ntest_truncation_reset_and_wrong_order (test_camera_check.CameraTests.test_truncation_reset_and_wrong_order) ... ok\ntest_boot_failure_preserves_explanation_instead_of_missing_info_key (test_camera_session.SessionTests.test_boot_failure_preserves_explanation_instead_of_missing_info_key) ... ok\ntest_distinct_registry_required (test_camera_session.SessionTests.test_distinct_registry_required) ... ok\ntest_missing_result_never_retries_and_diagnostics_are_conserved (test_camera_session.SessionTests.test_missing_result_never_retries_and_diagnostics_are_conserved) ... ok\ntest_one_failure_cannot_approve_two_cameras_and_rounds_do_not_reuse_success (test_camera_session.SessionTests.test_one_failure_cannot_approve_two_cameras_and_rounds_do_not_reuse_success) ... ok\ntest_saved_photo_rechecked_not_trusted_from_cached_success (test_camera_session.SessionTests.test_saved_photo_rechecked_not_trusted_from_cached_success) ... ok\ntest_sd_failure_keeps_valid_photo_without_approving_operation (test_camera_session.SessionTests.test_sd_failure_keeps_valid_photo_without_approving_operation) ... ok\ntest_single_operation_owner_and_wrong_camera_result_rejected (test_camera_session.SessionTests.test_single_operation_owner_and_wrong_camera_result_rejected) ... ok\ntest_wrong_unit_and_wrong_request_rejected (test_camera_session.SessionTests.test_wrong_unit_and_wrong_request_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 0.257s\n\nOK\n"
+  },
+  "source_sha256": {
+    "camera_session.py": "65c5abc4bedf98d3d77ef98c62a864f0125436412122ef6be06d616ac027b024",
+    "test_camera_session.py": "7476409826448aa53cb637c7ff39974a4a9cbe7008ca4fa833ff2a6edfd669e7"
+  },
+  "physical_retry_after_fix": "PENDING_MANUAL_RST"
+}
