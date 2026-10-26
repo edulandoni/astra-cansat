@@ -1,0 +1,63 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-10-26T23:55:25.845Z",
+  "cut_utc": "2026-10-26T23:59:08.699487+00:00",
+  "cut_argentina": "26/10/2026 20:59:08 ART",
+  "status": "PARCIAL — acceso al aula agotado",
+  "last_successful_cut": "20/10/2026 21:03 ART",
+  "previous_documented_cut": "24/10/2026 21:04 ART",
+  "attempts": [
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/course/view.php?id=106",
+      "channel": "consulta web sin escritorio",
+      "result": "Timeout fetching; no llegó contenido del curso"
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/login/index.php",
+      "channel": "consulta web sin escritorio",
+      "result": "Timeout fetching; no llegó formulario ni se ingresaron credenciales"
+    }
+  ],
+  "pending": [
+    "Secciones y recursos actuales",
+    "Mensajes, respuestas, foros y adjuntos posteriores al último acceso válido",
+    "Calendario y configuración de entrega",
+    "Archivos y versiones/huellas actuales",
+    "Audiovisuales completos nuevos o modificados",
+    "Disponibilidad actual de vector y ensayos ambientales"
+  ],
+  "current_thread_count": null,
+  "current_message_count": null,
+  "new_messages": null,
+  "files_revalidated_today": [],
+  "public_pages_read": [
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/cronograma",
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/como-me-inscribo"
+  ],
+  "public_result": "Texto relevante sin cambio sustantivo detectado respecto del corte previo; no comparé binarios",
+  "same_access_impediment_as_previous": true,
+  "source_issue_update": "Sin aviso repetido en ASTRA-37; informe diario explícito en ASTRA-38",
+  "research": {
+    "team": "Peralta según README",
+    "commit": "4b57c9679da1f1aecef90cb16ace9b5d8ac1044f",
+    "files_read": [
+      "README.md",
+      "ground_station/földi_lora_gui.py",
+      "ground_station/sd_feldolgoz.py"
+    ],
+    "tree_complete": true,
+    "code_executed": false,
+    "images_located": 3,
+    "images_pixels_inspected": 0,
+    "unresolved": [
+      "PFR/dataset nuevo de Daedalus",
+      "Puntuaciones técnicas aplicadas a DJS Arya"
+    ]
+  },
+  "downloads": "No guardé binarios de terceros ni moví archivos de Descargas; conservo enlaces y análisis propio",
+  "limits": [
+    "El timeout no demuestra caída global del sitio",
+    "No afirmo ausencia de novedades del aula ni 100% de cobertura",
+    "Los 22 temas son antecedentes, no respuestas nuevas",
+    "Sin control del escritorio, cambios de hardware, mensajes, entregas o decisiones RF"
+  ]
+}

@@ -1,5 +1,9 @@
 # Índice de investigaciones — ubicación vigente al 19/10/2026
 
+## Incorporación del 26/10/2026
+
+[Peralta: recepción, historial y análisis posterior](2026-10-26-peralta-recepcion-y-analisis.md) · [Referencias visuales localizadas, sin inspección de píxeles](2026-10-26-catalogo-visual-peralta.csv). Lectura de tres archivos fijados a commit; no es una prueba de vuelo ni una auditoría completa del equipo.
+
 Los originales fechados se conservan. Uso estas tareas para continuar cada tema:
 
 | Investigación | Tarea y guía |
