@@ -7,6 +7,7 @@ Desde esta carpeta, con Python 3.12, Tk y las dependencias del banco (`pyserial`
 ```powershell
 python app.py
 python -m unittest test_laboratory -v
+python -m unittest test_gui_close -v
 ```
 
 ## Recorrido
@@ -16,6 +17,7 @@ python -m unittest test_laboratory -v
 3. Mover el instante en Paquete: muestra texto ASCII, bytes y los 22 campos originales. Seleccionar un campo abre su explicación.
 4. Cámaras muestra evidencia local conservada; no es video ni captura nueva. Abrir el chequeo físico sólo con unidades preparadas.
 5. Radio LoRa compara tamaño/SF/BW/CR mediante cálculo, sin configurar hardware ni medir confiabilidad. Evidencias contiene informes locales y pendientes.
+6. Recuperación crea dos fuentes sintéticas complementarias, incompletas o contradictorias. Ejecuta el recuperador real, conserva originales y genera resultados nuevos. No prueba soportes independientes: ambas fuentes están en este disco.
 
 La estación completa se abre por demanda en modo PC. «Preparar recepción USB…» exige elegir explícitamente el puerto de telemetría antes de abrirlo; no pide reset ni carga firmware. El panel de cámaras se abre por demanda con registro privado. Evitar abrir dos bancos sobre el mismo puerto. Las ventanas de bancos son independientes y se cierran desde su propia interfaz; cerrar Laboratorio conserva su propia simulación y no termina capturas ajenas.
 

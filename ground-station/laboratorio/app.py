@@ -5,13 +5,14 @@ import os
 import subprocess
 import sys
 import threading
+import queue
 import tkinter as tk
 import webbrowser
 from collections import deque
 from pathlib import Path
 from tkinter import ttk, messagebox
 from content import CHAPTERS, REPORTS
-from runtime import AREA, Simulation, packet_at, radio_rows
+from runtime import AREA, Simulation, packet_at, radio_rows, recovery_demo, chart_runs
 from ui_model import FIELDS_INFO, STATES
 
 
@@ -26,6 +27,8 @@ class Laboratory:
         self.points = deque(maxlen=180)
         self.last_point = None
         self.images = []
+        self.recovery_busy=False
+        self.recovery_result=None
         root.title('ASTRA — Laboratorio')
         root.geometry('1180x850')
         root.minsize(1020, 720)
@@ -59,6 +62,7 @@ class Laboratory:
         self.build_cameras()
         self.build_radio()
         self.build_evidence()
+        self.build_recovery()
         self.footer = ttk.Label(root, text='Elegí una sección. Los botones de hardware abren bancos separados bajo demanda.')
         self.footer.pack(anchor='w', padx=22, pady=9)
         root.protocol('WM_DELETE_WINDOW', self.close)
@@ -88,7 +92,7 @@ class Laboratory:
     def build_tour(self):
         f = self.frames['Recorrido']
         row = ttk.Frame(f); row.pack(fill='x', pady=10)
-        for key in ('Telemetría', 'Paquete', 'Cámaras', 'Radio LoRa', 'Evidencias'):
+        for key in ('Telemetría', 'Paquete', 'Cámaras', 'Radio LoRa', 'Recuperación', 'Evidencias'):
             ttk.Button(row, text=key, command=lambda k=key: self.book.select(self.frames[k])).pack(side='left', padx=3)
         ttk.Label(f, text='Las explicaciones y cálculos funcionan sin Internet. Las fotos requieren la evidencia local configurada.', wraplength=1000).pack(anchor='w')
 
@@ -217,6 +221,27 @@ class Laboratory:
             ttk.Button(f,text=label+' — abrir informe',command=lambda p=path:self.open_report(p)).pack(anchor='w',pady=2)
         ttk.Button(f,text='Abrir carpeta de ensayos del Laboratorio',command=self.open_output).pack(anchor='w',pady=5)
 
+    def build_recovery(self):
+        f=self.frames['Recuperación']; row=ttk.Frame(f); row.pack(fill='x',pady=8)
+        self.recovery_mode=tk.StringVar(value='complementarias')
+        ttk.Combobox(row,textvariable=self.recovery_mode,values=('complementarias','ausente_en_ambas','conflicto'),state='readonly',width=24).pack(side='left',padx=(0,10))
+        self.recovery_button=ttk.Button(row,text='Probar reconstrucción',command=self.run_recovery)
+        self.recovery_button.pack(side='left')
+        self.recovery_status=tk.StringVar(value='SIMULACIÓN DE ARCHIVOS • Cada prueba crea dos fuentes ficticias nuevas en este disco.')
+        ttk.Label(f,textvariable=self.recovery_status,wraplength=1000,font=('Segoe UI',11)).pack(anchor='w',pady=12)
+        ttk.Button(f,text='Ver carpetas y originales de las pruebas',command=self.open_output).pack(anchor='w')
+
+    def run_recovery(self):
+        if self.recovery_busy:return
+        self.recovery_busy=True; self.recovery_result=None
+        self.recovery_button.configure(state='disabled')
+        self.recovery_status.set('Creando fuentes sintéticas y ejecutando el recuperador…')
+        mode=self.recovery_mode.get()
+        def work():
+            try:self.recovery_result=(True,recovery_demo(self.output,mode))
+            except Exception as exc:self.recovery_result=(False,str(exc))
+        threading.Thread(target=work,daemon=True).start()
+
     def open_report(self, relative):
         path=AREA/relative
         try: content=path.read_text(encoding='utf-8')
@@ -267,14 +292,23 @@ class Laboratory:
             if values:
                 gps='sin solución; última posición retenida' if values['GPS_SATS']=='0' else values['GPS_SATS']+' satélites declarados'
                 self.measurements.set(f"{STATES.get(values['STATE'],values['STATE'])}  •  Altura: {values['ALTITUDE']} m  •  Temperatura: {values['TEMPERATURE']} °C  •  Batería ficticia: {values['VOLTAGE']} V  •  GPS: {gps}")
-                key=(s['segment'],values['PACKET_COUNT'])
-                if key!=self.last_point: self.points.append(float(values['ALTITUDE'])); self.last_point=key
+                # Consumo todas las muestras de la cola; una actualización de GUI
+                # puede incluir varias cuando la simulación está acelerada.
+                while True:
+                    try:
+                        segment,packet=self.sim.engine.updates.get_nowait()
+                        self.points.append((segment,packet.count,float(packet.data['ALTITUDE'])))
+                    except queue.Empty:break
                 self.graph.delete('all'); width=max(self.graph.winfo_width(),300)
-                self.graph.create_text(10,12,text='Altura sobre el inicio (m) • últimas 180 muestras',anchor='w',fill='#425873')
+                self.graph.create_text(10,12,text='Altura (m) • eje horizontal: contador • huecos sin unir',anchor='w',fill='#425873')
                 self.graph.create_text(10,34,text='500',anchor='w'); self.graph.create_text(10,140,text='0',anchor='w')
-                coords=[]
-                for i,h in enumerate(self.points): coords += [45+i*(width-65)/max(len(self.points)-1,1),140-h/550*110]
-                if len(coords)>=4:self.graph.create_line(*coords,fill='#2379bd',width=3)
+                if self.points:
+                    low=min(p[1] for p in self.points); high=max(p[1] for p in self.points)
+                    for run in chart_runs(self.points):
+                        coords=[]
+                        for _,count,h in run:coords += [45+(count-low)*(width-65)/max(high-low,1),140-h/550*110]
+                        if len(coords)>=4:self.graph.create_line(*coords,fill='#2379bd',width=3)
+                        elif coords:self.graph.create_oval(coords[0]-2,coords[1]-2,coords[0]+2,coords[1]+2,fill='#2379bd',outline='')
             if s['done']: self.telemetry_note.set('Misión terminada. Los registros se conservan. Pulsá Detener y conservar para preparar otro escenario.')
             errors=[w['error'] for w in storage if w['error']]
             if errors:self.telemetry_note.set('Problema de escritura: '+'; '.join(errors))
@@ -282,13 +316,22 @@ class Laboratory:
             self.sim=None; self.stopping=False; self.start_button.configure(state='normal')
             self.speed_box.configure(state='readonly')
             self.telemetry_note.set('Registros conservados.' if not self.stop_error else 'Cierre con error: '+self.stop_error)
-        if self.closing and not self.sim: self.root.destroy(); return
+        if self.recovery_busy and self.recovery_result is not None:
+            ok,result=self.recovery_result
+            self.recovery_busy=False; self.recovery_button.configure(state='normal')
+            if ok:
+                written='CSV nuevo creado' if result['written'] else 'RECONSTRUCCIÓN BLOQUEADA'
+                missing=10-result['candidates']
+                self.recovery_status.set(f"{written}. Datos presentes: {result['candidates']}/10. Ausentes en ambas fuentes: {missing}. Conflictos: {result['conflicts']}. Originales intactos: {'sí' if result['originals_unchanged'] else 'NO'}.\nSon archivos sintéticos en el mismo disco; no acredita respaldo independiente.")
+                self.footer.configure(text='Resultado conservado en: '+result['root'])
+            else:self.recovery_status.set('No pude completar la prueba: '+result)
+        if self.closing and not self.sim and not self.recovery_busy: self.root.destroy(); return
         self.timer=self.root.after(200,self.refresh)
 
     def close(self):
         self.closing=True
         if self.sim:self.stop_sim()
-        else:
+        elif not self.recovery_busy:
             self.root.after_cancel(self.timer); self.root.destroy()
 
 

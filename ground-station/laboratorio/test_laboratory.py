@@ -5,10 +5,28 @@ import time
 import unittest
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from runtime import Simulation, packet_at, radio_rows
+from runtime import Simulation, packet_at, radio_rows, recovery_demo, chart_runs
 
 
 class LaboratoryTests(unittest.TestCase):
+    def test_recovery_and_conflicts(self):
+        with tempfile.TemporaryDirectory() as folder:
+            complete=recovery_demo(folder)
+            partial=recovery_demo(folder,'ausente_en_ambas')
+            conflict=recovery_demo(folder,'conflicto')
+            self.assertTrue(complete['written']); self.assertEqual(complete['candidates'],10)
+            self.assertTrue(partial['written']); self.assertEqual(partial['candidates'],9)
+            self.assertFalse(conflict['written']); self.assertEqual(conflict['conflicts'],1)
+            self.assertFalse(list(Path(conflict['root']).rglob('*.csv')))
+            for result in (complete,partial,conflict):self.assertTrue(result['originals_unchanged'])
+            csv_file=next(Path(complete['root']).rglob('*.csv'))
+            self.assertEqual(len(csv_file.read_text().splitlines()),11)
+            self.assertEqual(len((csv_file.parents[2]/'provenance.jsonl').read_text().splitlines()),10)
+
+    def test_graph_does_not_join_gaps_or_sessions(self):
+        points=[('a',1,0),('a',2,5),('a',4,10),('b',5,15)]
+        self.assertEqual([len(run) for run in chart_runs(points)],[2,1,1])
+
     def test_packet_and_airtime(self):
         raw, rows=packet_at(0)
         self.assertEqual(len(rows),22)

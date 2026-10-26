@@ -9,7 +9,8 @@ Recorrido sugerido de 8–10 minutos:
 3. Paquete: mostrar la línea que recibe la aplicación y sus 22 campos.
 4. Cámaras: mostrar fotos conservadas y explicar cómo verificamos la tarjeta.
 5. Radio LoRa: comparar 55, 100 y 255 bytes a distintos SF.
-6. Evidencias: cerrar con lo comprobado y los próximos ensayos.
+6. Recuperación: probar copias complementarias y después un conflicto.
+7. Evidencias: cerrar con lo comprobado y los próximos ensayos. Diseño y PDR reúne el fundamento de los avances teóricos.
 
 Cada prueba indica su origen. La simulación de PC sirve para probar el programa; los ensayos físicos anteriores conservan sus informes. No hace falta conectar placas para este recorrido.''',
 '''Organización: el Laboratorio coordina módulos; el banco USB conserva receptor, parser, almacenamiento y GUI. La interfaz de vuelo y sus comandos los define Edu; adaptamos tierra al acuerdo compartido. ASTRA-41 registra esta integración. Las tareas técnicas y sus originales siguen en Jira.
@@ -87,6 +88,18 @@ Antenas candidatas documentadas: Taoglas OMB.915.B05F21 y Digi A09-Y11NF. Gananc
 Rotor: modelo limitado E=η·m·g·h; tiempo h/v; consumo adicional Pextra·(tiempo+espera). Con masa hipotética 0,5 kg, tramo 400 m y eficiencia 10 %, la escala eléctrica es 0,054481 Wh. No es medición: faltan aerodinámica, despliegue, generador y carga. La espera de electrónica adicional puede volver negativo el balance. No sustituye recuperación ni autonomía antes del descenso.
 
 Referencia histórica de requisitos: análisis del 19/10 sobre anexo v2, G1–G15 para estación y X4 para 1 Hz. El emisor acelerado del Laboratorio no acredita cadencia física. Debemos revalidar cualquier aclaración oficial posterior y conservar contradicciones sin resolverlas por intuición.'''))
+
+CHAPTERS.insert(5,('Recuperación','Recuperar lo que existe, sin inventar lo que falta',
+'''Guardar dos copias puede ayudarnos cuando una queda incompleta. Esta demostración crea dos archivos ficticios con partes de diez mediciones y usa nuestro recuperador para compararlos.
+
+Complementarias: a cada archivo le faltan datos distintos; entre ambos podemos reconstruir las diez mediciones.
+Ausente en ambas: una medición no aparece en ninguna fuente. Recuperamos nueve y mostramos que falta una; no la inventamos.
+Conflicto: dos versiones del mismo contador dicen cosas distintas. Bloqueamos la reconstrucción automática para que nadie tome una elección silenciosa como dato verdadero.
+
+Cada clic conserva fuentes nuevas, resultado y procedencia. Son carpetas en el mismo disco: esto prueba el algoritmo, no la independencia de dos soportes. Nos aporta una demostración del criterio de recuperación para el PDR; el respaldo físico necesita su propia evidencia.''',
+'''Reutilizo recover.py del banco USB. La identidad incluye sesión de PC, segmento, equipo y contador; no mezclo vuelos diferentes. Verifico las huellas de las fuentes antes y después, y genero CSV y provenance.jsonl únicamente cuando no hay conflictos ni errores de lectura.
+
+El número esperado de diez muestras lo conocemos porque construimos este escenario sintético. En una captura real no siempre sabemos cuántas se emitieron: no inferimos pérdidas durante un corte sin identidad/contador suficientes. La reconstrucción no calcula valores faltantes ni sobrescribe las fuentes. El caso ausente en ambas permite crear un CSV parcial; eso no significa que la misión esté completa.'''))
 
 REPORTS = [
 ('Ensayo USB prolongado', 'docs/2026-10-24-aceptacion-banco-usb-actualizacion-09.md'),
