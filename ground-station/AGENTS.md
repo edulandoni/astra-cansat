@@ -1,5 +1,11 @@
 # Alcance: groundstation y manejo de datos
 
+## Identificación pública de cámaras — 26/10/2026
+
+- Uso «cámara 1» y «cámara 2» en la aplicación, GitHub, Drive y Jira. Mantengo la correspondencia física en el registro privado del banco.
+- Publico configuración, pruebas, fallos observados y límites técnicos. La información interna de manipulación no se incorpora a entregables ni etiquetas públicas.
+- La corrección expresamente solicitada de denominaciones alcanza documentos y comentarios existentes; conservo resultados, fechas y evidencias técnicas. Las nuevas capturas de Jira parten de los comentarios corregidos.
+
 ## Interacción con ventanas — actualización del24/10/2026
 
 - Después de revisar u operar la interfaz del banco, vuelvo al chat actual en la app deGPT/Codex antes de pedir una maniobra o esperar respuesta. No dejo otra ventana tapando las preguntas.

@@ -5,7 +5,7 @@
     "control.json",
     "control-sd-mbr-actualizacion-01.json"
   ],
-  "unit_label": "camara-sin-caida",
+  "unit_label": "camara-2",
   "attempts_after_mbr_fat32": [
     {
       "started_utc": "2026-10-26T04:27:45.516313+00:00",

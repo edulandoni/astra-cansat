@@ -8,7 +8,7 @@ Identifiqué COM7 como CH340 de la base USB, diferente del CP210x/COM5 usado ant
 
 Antes de escribir leí los 4194304 bytes de flash, conservé el original privado y calculé su huella. La lectura informó 103,4 s a 460800 baud. No probé restauración. Cargué bootloader, particiones, boot_app0 y aplicación en los offsets previstos; esptool verificó la huella escrita. No volví a leer toda la flash al cambiar después el diagnóstico.
 
-Trabajé con la notebook informada en batería y sin tarjeta microSD en esta cámara. Esto describe las condiciones del ensayo, no una medición de seguridad eléctrica o autonomía. La caída de esta unidad queda como antecedente para inspección; no atribuyo una falla ni descarto daños a partir de que consiga una foto.
+Trabajé con la notebook informada en batería y sin tarjeta microSD en esta cámara. Esto describe las condiciones del ensayo, no una medición de seguridad eléctrica o autonomía.
 
 ## Resultados completos, sin ocultar los intentos fallidos
 
@@ -22,7 +22,7 @@ Trabajé con la notebook informada en batería y sin tarjeta microSD en esta cá
 
 El [control normalizado](../../evidence/2026-10-26-camera-a/control.json) conserva tiempos, tamaños, CRC, validación y huellas por intento. No publico fotos del entorno ni la flash original; sus huellas permiten vincular el resultado con los originales privados. Las cinco fotos correctas pertenecen a solicitudes distintas y tienen marca de captura posterior al pedido. No presento una foto retenida como respuesta nueva.
 
-Agregué mensajes de fase para distinguir primer cuadro de calentamiento, segundo y cuadro solicitado. Habilité avisos del controlador únicamente durante adquisición y los deshabilité antes de transmitir el JPEG binario. La nueva compilación ocupa 453895 bytes de programa y 35016 bytes estáticos. Después de esa carga y nuevo arranque obtuve cinco capturas válidas, pero no aislé la causa de los dos fallos iniciales: no atribuyo la mejora sólo a los mensajes, a un conector o a la caída. Sigue TBR.
+Agregué mensajes de fase para distinguir primer cuadro de calentamiento, segundo y cuadro solicitado. Habilité avisos del controlador únicamente durante adquisición y los deshabilité antes de transmitir el JPEG binario. La nueva compilación ocupa 453895 bytes de programa y 35016 bytes estáticos. Después de esa carga y nuevo arranque obtuve cinco capturas válidas, pero no aislé la causa de los dos fallos iniciales: no atribuyo la mejora sólo a los mensajes o a un conector. Sigue TBR.
 
 El modo de programación tras reconexión coincide con el [comportamiento de arranque documentado por Espressif](https://docs.espressif.com/projects/esptool/en/latest/esp32/advanced-topics/boot-mode-selection.html). Falta verificar arranque repetible después de desconexión real; una carga seguida de reinicio correcto no satisface ese caso.
 

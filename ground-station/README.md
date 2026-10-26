@@ -2,15 +2,15 @@
 
 ## Fotos verificadas desde el lector — 26/10/2026
 
-[Lectura independiente de las dos fotos de la cámara sin caída](docs/camaras/2026-10-26-lectura-independiente-camara-sin-caida-06.md): coinciden byte por byte con las recibidas por USB después de desconectar la cámara; los 24 archivos anteriores también permanecen intactos. Falta comprobar SD en la otra unidad, video y control de energía. Las entradas siguientes conservan los cortes anteriores.
+[Lectura independiente de las dos fotos de la cámara 2](docs/camaras/2026-10-26-lectura-independiente-camara-2-06.md): coinciden byte por byte con las recibidas por USB después de desconectar la cámara; los 24 archivos anteriores también permanecen intactos. Falta comprobar SD en la otra unidad, video y control de energía. Las entradas siguientes conservan los cortes anteriores.
 
-## Guardado de fotos desde la cámara sin caída — 26/10/2026
+## Guardado de fotos desde la cámara 2 — 26/10/2026
 
-[Dos fotos nuevas con escritura y lectura desde la cámara](docs/camaras/2026-10-26-dos-fotos-sd-camara-sin-caida-05.md): el montaje y guardado funcionaron con MBR/FAT32, sin cambiar firmware. Falta lectura independiente con el lector, ensayo de la otra cámara, video y control de energía. Las entradas siguientes conservan los cortes anteriores.
+[Dos fotos nuevas con escritura y lectura desde la cámara](docs/camaras/2026-10-26-dos-fotos-sd-camara-2-05.md): el montaje y guardado funcionaron con MBR/FAT32, sin cambiar firmware. Falta lectura independiente con el lector, ensayo de la otra cámara, video y control de energía. Las entradas siguientes conservan los cortes anteriores.
 
 ## Dos cámaras con fotos USB y tarjeta preparada — 26/10/2026
 
-[Cámara sin caída: seis fotos válidas y diagnóstico del montaje SD](docs/camaras/2026-10-26-camara-sin-caida-sd-03.md) · [Preparación MBR/FAT32 y reposición verificada de los 24 archivos](docs/camaras/2026-10-26-microsd-mbr-restauracion-04.md). Ambas unidades ya produjeron fotos USB; el guardado desde la cámara, video y control de energía siguen pendientes. Las entradas siguientes conservan los cortes anteriores.
+[Cámara 2: seis fotos válidas y diagnóstico del montaje SD](docs/camaras/2026-10-26-camara-2-sd-03.md) · [Preparación MBR/FAT32 y reposición verificada de los 24 archivos](docs/camaras/2026-10-26-microsd-mbr-restauracion-04.md). Ambas unidades ya produjeron fotos USB; el guardado desde la cámara, video y control de energía siguen pendientes. Las entradas siguientes conservan los cortes anteriores.
 
 ## Primeras fotos de cámara A — 26/10/2026
 
