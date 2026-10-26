@@ -1,5 +1,10 @@
 # Alcance: groundstation y manejo de datos
 
+## Prioridad vigente — Laboratorio, 26/10/2026
+
+- Objetivo primario: Laboratorio nativo para reuniones y demostraciones, en ASTRA-41. Leer docs/historial/2026-10-26-objetivo-laboratorio.md. Reunir pruebas interactivas y avances teóricos con explicación accesible primero, utilidad/PDR/evidencia/límites y detalle técnico después.
+- Cámaras en ASTRA-39/24 pasan a objetivo secundario; no se consideran terminadas. Conservar bancos existentes; no abrir puertos ni alterar hardware al abrir el Laboratorio. La presentación debe poder recorrerse sin placas ni Internet.
+
 ## Evaluación de trama y perfil LoRa — 26/10/2026
 
 - ASTRA-40 conserva el análisis específico de bytes, SF/BW/CR, tiempo de aire, confiabilidad y energía para justificar decisiones en el PDR. ASTRA-18/25/24 mantienen requisitos RF, link budget e interoperabilidad.

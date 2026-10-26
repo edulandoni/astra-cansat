@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Laboratorio para reuniones — 26/10/2026
+
+[Laboratorio nativo](laboratorio/README.md), [ASTRA-41](https://astrateam2026.atlassian.net/browse/ASTRA-41): recorrido integrado, misión simulada, inspección de paquetes, fotos conservadas, comparación LoRa y explicaciones de diseño/PDR. Funciona sin placas ni Internet; los bancos físicos se abren por demanda. El [objetivo vigente](docs/historial/2026-10-26-objetivo-laboratorio.md) prioriza esta integración y conserva cámaras como objetivo secundario.
+
 ## Paquete y perfil LoRa para el PDR — 26/10/2026
 
 [Comparación de 108 hipótesis de tamaño/SF/BW/CR](docs/interfaces/2026-10-26-payload-sf-confiabilidad-04.md), en [ASTRA-40](https://astrateam2026.atlassian.net/browse/ASTRA-40), sin configurar RF. El [objetivo ampliado](docs/historial/2026-10-26-objetivo-ampliado-camaras-radio.md) mantiene cámaras, agrega esta evaluación y deja sonido como extra sujeto a hardware.
