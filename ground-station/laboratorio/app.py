@@ -217,9 +217,21 @@ class Laboratory:
 
     def build_evidence(self):
         f=self.frames['Evidencias']
-        for label,path in REPORTS:
-            ttk.Button(f,text=label+' — abrir informe',command=lambda p=path:self.open_report(p)).pack(anchor='w',pady=2)
+        listing=ttk.Frame(f); listing.pack(fill='both',expand=True,pady=5)
+        self.reports=ttk.Treeview(listing,columns=('title',),show='headings',height=5,selectmode='browse')
+        self.reports.heading('title',text='Elegí un informe · doble clic para leerlo aquí')
+        self.reports.column('title',width=850)
+        scroll=ttk.Scrollbar(listing,command=self.reports.yview)
+        self.reports.configure(yscrollcommand=scroll.set)
+        scroll.pack(side='right',fill='y');self.reports.pack(fill='both',expand=True)
+        for index,(label,path) in enumerate(REPORTS):self.reports.insert('', 'end',iid=str(index),values=(label,))
+        self.reports.bind('<Double-1>',lambda event:self.open_selected_report())
+        ttk.Button(f,text='Leer informe seleccionado',command=self.open_selected_report).pack(anchor='w',pady=4)
         ttk.Button(f,text='Abrir carpeta de ensayos del Laboratorio',command=self.open_output).pack(anchor='w',pady=5)
+
+    def open_selected_report(self):
+        choice=self.reports.selection()
+        if choice:self.open_report(REPORTS[int(choice[0])][1])
 
     def build_recovery(self):
         f=self.frames['Recuperación']; row=ttk.Frame(f); row.pack(fill='x',pady=8)

@@ -20,7 +20,7 @@ El firmware candidato compila con Arduino CLI 1.5.1 y Arduino-ESP32 3.3.12. La p
 
 ## Qué sigue y qué no afirmo
 
-1. Revisar integridad de ambas placas, base y fuente antes de conectarlas para ensayo; identificar cuál recibió un golpe. No hacer pruebas de contacto corporal.
+1. Revisar integridad de ambas placas, base y fuente antes de conectarlas para ensayo; identificar cada unidad con el registro privado del banco. No hacer pruebas de contacto corporal.
 2. Confirmar una unidad y su puerto, identificar chip y flash sin confundir la placa de telemetría, y conservar el firmware original antes de la primera escritura.
 3. Probar PHOTO sin SD y revisar la imagen real; después identificar/preservar la tarjeta y probar SAVE. Repetir con la segunda unidad.
 4. Medir latencia, exposición, consumo y picos; desarrollar doble chequeo, grabación continua recuperable y circuito de apagado/retención acordado.

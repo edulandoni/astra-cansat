@@ -4,6 +4,8 @@ Diario: [ASTRA-39](https://astrateam2026.atlassian.net/browse/ASTRA-39). Este ba
 
 ## Estado
 
+[Preparación de grabación y energía](../docs/camaras/2026-10-26-preparacion-grabacion-13.md): incorporé `sequence_verify.py` para comprobar una secuencia JPEG desde archivos, con tiempos, integridad e identidad. El firmware instalado todavía no genera el perfil experimental `camera-sequence-0.1`; esta herramienta y sus pruebas preparan la aceptación, sin acreditar video físico. Uso: `python sequence_verify.py carpeta --expect-device IDENTIDAD_DEL_REGISTRO_PRIVADO` para origen cámara; las muestras de PC se identifican como `pc-fixture`. No escribe en la tarjeta.
+
 La [lectura externa de toda la campaña](../docs/camaras/2026-10-26-lector-campana-panel-12.md) verifica nueve fotos, tres de ellas solicitadas desde el panel, y los 24 archivos originales intactos. Las nueve coinciden y abren desde la tarjeta después de desconectar las cámaras. No es video ni prueba de corte durante escritura.
 
 El [ensayo físico del panel con ambas unidades](../docs/camaras/2026-10-26-panel-ambas-camaras-11.md) comprobó captura y guardado/lectura SD por turnos, con resultados y antigüedad separados. La campaña conserva cinco intentos incompletos y tres capturas correctas. El arranque requirió recuperación; no está acreditada su estabilidad. La lectura externa de estas fotos nuevas, video y energía siguen pendientes.

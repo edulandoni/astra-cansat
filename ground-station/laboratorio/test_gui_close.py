@@ -4,6 +4,8 @@ import time
 import tkinter as tk
 import unittest
 from app import Laboratory
+from runtime import AREA
+from content import REPORTS
 
 
 class Window(tk.Tk):
@@ -19,6 +21,8 @@ class CloseTests(unittest.TestCase):
             root=Window(); root.withdraw()
             app=Laboratory(root,{'output':folder})
             self.assertEqual(len(app.book.tabs()),8)
+            self.assertEqual(len(app.reports.get_children()),len(REPORTS))
+            self.assertTrue(all((AREA/path).is_file() for _,path in REPORTS))
             operation(app)
             sim=app.sim
             app.close()
