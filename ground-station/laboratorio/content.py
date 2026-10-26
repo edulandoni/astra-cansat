@@ -46,7 +46,7 @@ Nos aporta un procedimiento para confirmar imagen y almacenamiento. Para el PDR,
 
 La política de energía y el disparador de grabación deben coordinarse con vuelo. Arranque estable, video, medición de consumo y circuito de corte siguen pendientes. No asumo micrófono instalado. El panel no cuenta una imagen antigua como nueva captura de la ronda.
 
-La próxima campaña de grabación tiene un verificador offline y un candidato de firmware separado, compilado y todavía sin cargar: doce cuadros con tiempos, CRC e identidad esperada. Las pruebas del verificador usan imágenes de PC; el firmware instalado todavía no genera esa secuencia. El procedimiento y la aceptación están en Evidencias. Cadencia, reproducción como video, consumo y tolerancia a reset siguen sin demostrar.'''),
+La próxima campaña de grabación tiene un verificador offline y un candidato de firmware separado, compilado y todavía sin cargar: doce cuadros con tiempos, CRC e identidad esperada. Las pruebas del verificador usan imágenes de PC; el firmware instalado todavía no genera esa secuencia. Hay un visor de archivos con tiempos relativos preparado desde los botones de cada cámara: falta su revisión visual y la secuencia física. El procedimiento y la aceptación están en Evidencias. Cadencia real, exportación de video, consumo y tolerancia a reset siguen sin demostrar.'''),
 ('Radio LoRa', 'Más bytes ocupan el aire durante más tiempo',
 '''Una señal no tarda mucho más en recorrer la distancia por tener más bytes: lo que crece es el tiempo que la radio permanece transmitiendo. Ese tiempo afecta cuánto margen queda para órdenes, otras transmisiones y reintentos.
 
@@ -111,6 +111,7 @@ REPORTS = [
 ('Objetivo y prioridades', 'docs/historial/2026-10-26-objetivo-laboratorio.md'),
 ('Próxima prueba de grabación y energía', 'docs/camaras/2026-10-26-preparacion-grabacion-13.md'),
 ('Candidato de secuencia: compilación y límites', 'docs/camaras/2026-10-26-candidato-secuencia-14.md'),
+('Visor de secuencias: tiempos y pendientes', 'docs/camaras/2026-10-26-reproduccion-secuencia-15.md'),
 ('Requisitos v1/v2 de mi área', 'docs/requisitos/v1-v2-groundstation-2026-10-19.md'),
 ('Antecedentes convertidos en pruebas', 'docs/investigacion/2026-10-23-antecedentes-a-pruebas.md'),
 ('Antenas y presupuesto de enlace', 'docs/interfaces/2026-10-23-antenas-y-link-budget-preliminar.md'),

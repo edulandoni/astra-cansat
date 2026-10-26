@@ -10,7 +10,7 @@ import tkinter as tk
 import webbrowser
 from collections import deque
 from pathlib import Path
-from tkinter import ttk, messagebox
+from tkinter import ttk, messagebox, filedialog
 from content import CHAPTERS, REPORTS
 from runtime import AREA, Simulation, packet_at, radio_rows, recovery_demo, chart_runs
 from ui_model import FIELDS_INFO, STATES
@@ -193,6 +193,21 @@ class Laboratory:
                 ttk.Label(card,text=entry.get('caption','Foto local conservada; no es captura nueva.'),wraplength=430).pack(anchor='w',pady=6)
             except (OSError,ValueError,ImportError): ttk.Label(card,text='Sin fotografía local configurada.\nEl informe de verificación sigue disponible.',wraplength=430).pack(pady=25)
         ttk.Button(f,text='Abrir chequeo físico de cámaras',command=lambda:self.launch('camera')).pack(anchor='w',pady=6)
+        saved=ttk.Frame(f);saved.pack(anchor='w',pady=3)
+        ttk.Label(saved,text='Reproducir secuencia conservada de:').pack(side='left',padx=(0,5))
+        for number in (1,2):ttk.Button(saved,text=f'Cámara {number}',command=lambda n=number:self.play_saved_sequence(n)).pack(side='left',padx=4)
+
+    def play_saved_sequence(self,number):
+        try:
+            sys.path.insert(0,str(AREA/'camaras-banco'))
+            from camera_session import read_registry
+            from sequence_player import open_player
+            registry=self.config.get('camera_registry')
+            if not registry:raise ValueError('Falta el registro privado de cámaras. No puedo comprobar la unidad esperada.')
+            identity=read_registry(registry)[f'camera{number}']
+            folder=filedialog.askdirectory(parent=self.root,title=f'Secuencia conservada de cámara {number}')
+            if folder:open_player(self.root,folder,identity,f'Cámara {number}')
+        except (OSError,ValueError) as exc:messagebox.showerror('Secuencia no disponible',str(exc),parent=self.root)
 
     def build_radio(self):
         f=self.frames['Radio LoRa']; row=ttk.Frame(f); row.pack(fill='x',pady=6)

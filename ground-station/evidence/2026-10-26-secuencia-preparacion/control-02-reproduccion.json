@@ -1,0 +1,36 @@
+{
+  "recorded_utc": "2026-10-26T15:20:19.041578+00:00",
+  "jira": [
+    "ASTRA-39",
+    "ASTRA-41"
+  ],
+  "scope": "Verificacion por codigo; sin ventanas, puertos ni ensayo fisico nuevo",
+  "tests": {
+    "command": "python -m unittest discover -s ground-station/camaras-banco -p test_*.py -q",
+    "run": 34,
+    "failures": 0,
+    "errors": 0,
+    "passed": true
+  },
+  "syntax": {
+    "modules": [
+      "laboratorio/app.py",
+      "camaras-banco/sequence_player.py"
+    ],
+    "passed": true
+  },
+  "source_sha256": {
+    "camaras-banco/sequence_verify.py": "1a53b871676da29bcc77b0e45ebf34e61dc041558a58913f64b9f89e723f0cef",
+    "camaras-banco/sequence_player.py": "fcd2bb0f102a2d482ecaf1de64449f3c8c29ffe5532903fa061fceb4c598ae76",
+    "camaras-banco/test_sequence_player.py": "80281a2c25e9784fc0ead910be3a1fe3903b093d1d7d87b7715c95d6ff9dbe42",
+    "laboratorio/app.py": "d1e44ff0ed304c11c340648c80a5af9e62e958173947961a88b9be750645e8dd",
+    "laboratorio/content.py": "6fad4dab237af27fbeaa458e1ade55aaf041a97bfb631fce3b6d37f941ea8c4d"
+  },
+  "previous_compilation_control": "control-01.json",
+  "firmware_sources_unchanged": true,
+  "visual_review_completed": false,
+  "physical_sequence_captured": false,
+  "cadence_measured": null,
+  "energy_measured": null,
+  "audio_measured": null
+}

@@ -63,7 +63,7 @@ def verify(folder, expected_device=None):
             with Image.open(io.BytesIO(data)) as picture:
                 if picture.format!='JPEG' or picture.size!=(640,480) or picture.mode!='RGB':raise ValueError('Formato, dimensiones o color incompatibles')
                 picture.load()
-            checked.append(dict(index=index,capture_us=stamp,bytes=len(data),sha256=hashes[name]))
+            checked.append(dict(index=index,file=name,capture_us=stamp,bytes=len(data),sha256=hashes[name]))
         except (OSError,ValueError,TypeError,Image.DecompressionBombError) as exc:
             errors.append(dict(index=index,reason=str(exc)))
     if len(frames)!=obj['expected_frames']:errors.append(dict(reason='Cantidad declarada diferente de la esperada'))

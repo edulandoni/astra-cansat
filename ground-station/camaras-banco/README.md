@@ -4,6 +4,8 @@ Diario: [ASTRA-39](https://astrateam2026.atlassian.net/browse/ASTRA-39). Este ba
 
 ## Estado
 
+[Reproducción de secuencia conservada](../docs/camaras/2026-10-26-reproduccion-secuencia-15.md): visor nativo integrado al Laboratorio con identidad, tiempos relativos y controles de pausa/inicio. Hay 34 pruebas de software del banco; su cálculo temporal está probado con muestras de PC. No abrí el visor ni obtuve una secuencia física nueva: revisión visual, captura y lectura independiente siguen pendientes.
+
 [Candidato de secuencia compilado](../docs/camaras/2026-10-26-candidato-secuencia-14.md): sketch experimental separado `AstraCameraSequenceBench`, solicitud explícita `sequence_request.py` y 31 pruebas del banco. El candidato agrega CLIP para doce cuadros con tiempos, archivos nuevos y cierre completo/parcial. No se cargó ni probó físicamente. El firmware instalado y el sketch probado de fotos se conservan; no atribuyo a esta compilación video, consumo o estabilidad.
 
 [Preparación de grabación y energía](../docs/camaras/2026-10-26-preparacion-grabacion-13.md): incorporé `sequence_verify.py` para comprobar una secuencia JPEG desde archivos, con tiempos, integridad e identidad. El firmware instalado todavía no genera el perfil experimental `camera-sequence-0.1`; esta herramienta y sus pruebas preparan la aceptación, sin acreditar video físico. Uso: `python sequence_verify.py carpeta --expect-device IDENTIDAD_DEL_REGISTRO_PRIVADO` para origen cámara; las muestras de PC se identifican como `pc-fixture`. No escribe en la tarjeta.
