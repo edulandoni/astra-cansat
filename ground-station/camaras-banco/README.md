@@ -4,6 +4,8 @@ Diario: [ASTRA-39](https://astrateam2026.atlassian.net/browse/ASTRA-39). Este ba
 
 ## Estado
 
+La [lectura independiente posterior](../docs/camaras/2026-10-26-lectura-independiente-camara-sin-caida-06.md) verifica desde el lector USB las dos fotos de la cámara sin caída después de desconectarla: bytes, huellas y decodificación coincidentes, con los 24 archivos anteriores intactos. El ensayo SD de la otra cámara sigue pendiente. Los párrafos siguientes conservan el alcance de cortes anteriores.
+
 La [actualización de guardado](../docs/camaras/2026-10-26-dos-fotos-sd-camara-sin-caida-05.md) acredita dos fotos nuevas escritas y leídas desde la cámara sin caída con la tarjeta MBR/FAT32. La comparación independiente desde el lector USB y el ensayo SD de la otra cámara siguen pendientes. El párrafo siguiente describe el corte de diagnóstico previo.
 
 El [ensayo de la cámara que se cayó](../docs/camaras/2026-10-26-camara-a-prueba-fisica-02.md) conserva respaldo previo, fallos iniciales y cinco fotos USB válidas VGA/RGB. La [cámara sin caída](../docs/camaras/2026-10-26-camara-sin-caida-sd-03.md) entregó seis fotos válidas; dos intentos de guardado fallaron al montar una tarjeta GPT. La [preparación posterior](../docs/camaras/2026-10-26-microsd-mbr-restauracion-04.md) acredita MBR/FAT32 y 24 archivos repuestos/verificados, todavía sin nuevo ensayo de guardado. Grabación y control de energía siguen pendientes. Los LED encendidos no prueban captura.

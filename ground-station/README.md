@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Fotos verificadas desde el lector — 26/10/2026
+
+[Lectura independiente de las dos fotos de la cámara sin caída](docs/camaras/2026-10-26-lectura-independiente-camara-sin-caida-06.md): coinciden byte por byte con las recibidas por USB después de desconectar la cámara; los 24 archivos anteriores también permanecen intactos. Falta comprobar SD en la otra unidad, video y control de energía. Las entradas siguientes conservan los cortes anteriores.
+
 ## Guardado de fotos desde la cámara sin caída — 26/10/2026
 
 [Dos fotos nuevas con escritura y lectura desde la cámara](docs/camaras/2026-10-26-dos-fotos-sd-camara-sin-caida-05.md): el montaje y guardado funcionaron con MBR/FAT32, sin cambiar firmware. Falta lectura independiente con el lector, ensayo de la otra cámara, video y control de energía. Las entradas siguientes conservan los cortes anteriores.
