@@ -6,7 +6,7 @@ import re
 import threading
 import time
 import uuid
-from collections import OrderedDict
+from collections import OrderedDict,deque
 from datetime import datetime,timezone
 from wire import Demux, classify, control, PROFILE, OPERATIONS
 
@@ -54,6 +54,12 @@ class Engine:
         self.frames_received=0;self.control_received=0
         self.waiting_identity=False
         self.boot_probe_at=None
+        self.transport_connected=False;self.ever_connected=False
+        self.last_sample=None;self.last_sample_at=None;self.last_sample_epoch=None
+        self.interruptions=deque(maxlen=64);self.interruption_serial=0
+        self.active_interruption=None
+        self.paused=False
+        self.manual_closed=False
     def event(self,kind,**data):
         return self.store.emit(kind,source=self.source,profile=self.profile,team=self.team,segment=self.segment,**data)
     def context(self,boot,run,reason='metadata',preserve_command=None):
@@ -64,6 +70,11 @@ class Engine:
             self.ambiguous=False
             return
         old=self.epoch;self.epoch=epoch;self.segment_serial+=1
+        self.paused=False
+        cut=self.active_interruption
+        if cut and cut['result']=='awaiting_identity' and cut['before_epoch'] is not None and tuple(cut['before_epoch'])!=epoch:
+            cut['result']=('restarted' if cut['before_epoch'][0]!=epoch[0] else 'new_run') if self.profile==PROFILE else 'unknown'
+            cut['after_epoch']=epoch;self.event('interruption_resolved',interruption=dict(cut))
         self.segment=f'{self.segment_serial:04d}_'+uuid.uuid4().hex[:12]
         self.latest=None;self.value_at=None;self.gps=None;self.gps_at=None
         self.tracker=Tracker();self.ambiguous=False;self.previous_clock=None;self.clock_frozen=0;self.clock_warning=False
@@ -79,6 +90,12 @@ class Engine:
         with self.lock:self.context('operator',uuid.uuid4().hex,'Declaración explícita; no prueba de reinicio físico')
     def connected(self):
         with self.lock:
+            self.transport_connected=True;self.ever_connected=True
+            self.manual_closed=False
+            cut=self.active_interruption
+            if cut and cut['reconnected_at'] is None:
+                cut['reconnected_at']=self.now();cut['duration']=self.now()-cut['started_at']
+                self.event('interruption_reconnected',interruption=dict(cut))
             self.demux=Demux();self.status='Conectado';self.connection_serial+=1;self.peer={}
             self.latest=None;self.value_at=None;self.event('connected',connection=self.connection_serial)
             if self.profile==PROFILE and self.source!='REPLAY':
@@ -86,11 +103,20 @@ class Engine:
                 self.commands[self.handshake]['handshake_connection']=self.connection_serial
     def disconnected(self,reason):
         with self.lock:
+            was_connected=self.transport_connected;self.transport_connected=False
+            self.manual_closed=reason=='Cierre manual del puerto'
+            if was_connected:
+                self.interruption_serial+=1
+                cut=dict(number=self.interruption_serial,started_at=self.now(),reconnected_at=None,duration=None,
+                         before_epoch=self.epoch,before_count=self.tracker.high,result='awaiting_identity',
+                         first_count_after=None,gap_at_resume=None,reason=reason)
+                self.interruptions.append(cut);self.active_interruption=cut
+                self.event('interruption_started',interruption=dict(cut))
             self.demux=Demux();self.status='Desconectado: '+reason
             self.latest=None;self.value_at=None;self.ambiguous=True
             self.peer={};self.handshake=None
             self.boot_probe_at=None
-            self.event('disconnected',reason=reason)
+            if was_connected or not self.ever_connected:self.event('disconnected',reason=reason)
             for c in self.commands.values():
                 if c['state'] in {'queued','sent','accepted'}:c['state']='unknown';c['reason']='Interrupción del transporte'
             while not self.outgoing.empty():
@@ -151,6 +177,8 @@ class Engine:
             # Un accepted tardío no degrada un resultado terminal.
             if phase=='accepted' and c['state'] in {'executed','rejected'}:return
             c['state']=phase;c['result']=obj
+            if phase=='executed' and self.epoch==(obj['boot'],obj['run']) and c['op'] in {'STOP','RUN'}:
+                self.paused=c['op']=='STOP'
             if c['op']=='POWER_STATUS' and phase=='executed' and self.epoch==(obj['boot'],obj['run']):
                 self.power=dict(voltage=obj.get('voltage'),solar_voltage=obj.get('solar_voltage'),at=self.now(),synthetic=True)
     def on_packet(self,packet,raw):
@@ -160,6 +188,13 @@ class Engine:
             self.context('legacy',uuid.uuid4().hex,'Contexto inicial no acreditado por el emisor')
         digest=hashlib.sha256(','.join(packet.values).encode('ascii')).hexdigest()
         result=self.tracker.add(packet.count,digest);self.total_valid+=1
+        cut=self.active_interruption
+        if cut and cut['reconnected_at'] is not None and cut['result']=='awaiting_identity':
+            if self.profile!=PROFILE or cut['before_epoch'] is None:
+                cut['result']='unknown';self.event('interruption_resolved',interruption=dict(cut))
+            elif tuple(cut['before_epoch'])==self.epoch and result=='new' and cut['before_count'] is not None and packet.count>cut['before_count']:
+                cut.update(result='same_run',first_count_after=packet.count,gap_at_resume=packet.count-cut['before_count']-1)
+                self.event('interruption_resolved',interruption=dict(cut))
         self.event('validated',count=packet.count,classification=result,raw_hex=raw.hex())
         if result=='conflict':self.total_conflicts+=1;return
         if self.profile!=PROFILE and result=='old_unverified' and self.tracker.high and packet.count<self.tracker.high:
@@ -169,6 +204,7 @@ class Engine:
         self.total_unique+=1;self.event('packet',values=packet.values,count=packet.count)
         if result=='late' or self.ambiguous:return
         self.latest=packet;self.value_at=self.now()
+        self.last_sample=dict(packet.data);self.last_sample_at=self.value_at;self.last_sample_epoch=self.epoch
         same=self.previous_clock==packet.data['MISSION_TIME']
         self.clock_frozen=self.clock_frozen+1 if same else 0
         self.clock_warning=self.clock_frozen>=3
@@ -229,6 +265,13 @@ class Engine:
         with self.lock:
             now=self.now();t=self.tracker
             return dict(status=self.status,source=self.source,profile=self.profile,segment=self.segment,epoch=self.epoch,
+                        transport_connected=self.transport_connected,ever_connected=self.ever_connected,paused=self.paused,
+                        peer=dict(self.peer),waiting_identity=self.waiting_identity,
+                        manual_closed=self.manual_closed,
+                        last_sample=self.last_sample,last_sample_epoch=self.last_sample_epoch,
+                        last_sample_age=None if self.last_sample_at is None else now-self.last_sample_at,
+                        interruptions=[dict(c,duration=(now-c['started_at'] if c['reconnected_at'] is None else c['duration'])) for c in self.interruptions],
+                        last_counter=t.high,session=self.store.session,
                         latest=self.latest.data if self.latest else None,link_age=None if self.link_at is None else now-self.link_at,
                         data_age=None if self.value_at is None else now-self.value_at,gps=self.gps,
                         gps_age=None if self.gps_at is None else now-self.gps_at,power=self.power,ambiguous=self.ambiguous,

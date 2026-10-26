@@ -1,5 +1,13 @@
 # Banco USB bidireccional v0.2 — experimental
 
+## Pantalla y operación
+
+La franja superior explica si recibo datos, espero identidad, terminé o tengo un corte. Vuelo, Energía, Ubicación GPS y Movimiento agrupan las mediciones; hago clic en un nombre con ⓘ para entender su significado y unidad. Los valores del banco son ficticios aunque los envíe el ESP32 físico.
+
+Esperando guardado cuenta muestras ya recibidas pendientes de escritura. Faltantes detectados cuenta huecos observados en la ejecución: durante un corte queda por determinar. Si vuelve otra identidad de arranque, desconozco cuántos mensajes faltaron. Conservo la última muestra como histórica y no la muestro como actual. Cerrar conexión USB no detiene necesariamente al emisor; Conectar USB reabre y comprueba identidad, sin volver a iniciar automáticamente la misión.
+
+[Pruebas de la interfaz y de ambos tipos de corte](../docs/2026-10-25-interfaz-y-cortes-usb.md). La historia de desarrollo está en el diario; las ayudas de la aplicación explican su uso actual. Para verificar software ejecuto `python -m unittest -q test_bench test_quality test_ui`.
+
 Desarrollo mi estación resistente a fallos en una carpeta nueva. Conservo intacto el banco v0.1 y su sketch probado. Uso TEAM `1000` ficticio y datos sintéticos: no activo radio, sensores, borneras ni mecanismos. Este banco no aprueba el ICD con vuelo.
 
 Diario: [ASTRA-20 firmware](https://astrateam2026.atlassian.net/browse/ASTRA-20), [ASTRA-21 adquisición y recuperación](https://astrateam2026.atlassian.net/browse/ASTRA-21), [ASTRA-22 pantalla](https://astrateam2026.atlassian.net/browse/ASTRA-22), [ASTRA-34 calidad](https://astrateam2026.atlassian.net/browse/ASTRA-34), [ASTRA-24 interfaz pendiente](https://astrateam2026.atlassian.net/browse/ASTRA-24).

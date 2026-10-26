@@ -1,0 +1,31 @@
+{
+  "tested_utc": "2026-10-26T02:25:59.373078+00:00",
+  "tests": 30,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 4.264999999999873,
+  "passed": true,
+  "modules": [
+    "test_bench",
+    "test_quality",
+    "test_ui"
+  ],
+  "source_sha256": {
+    "analyze.py": "446d825a0e869d432e5ef0f0aa3024ee597841b4ddfc02b609100325c591d218",
+    "app.py": "0e5490181f56fd66e623352b004545e7f1b342c90d2975f523de6c12df6da554",
+    "campaign.py": "ae39c2ef56210f97ee5368593d9f7d742ac22d546ad4692bf08f0e77aca3b2f6",
+    "desktop.py": "71abd22054373aca18573f2cdd37ab4470804bbc13efa12a90b4e621d96587ab",
+    "engine.py": "cdc8f1329672ee688162dbfd13acc109a81054c35b545470c41ff2ba74b9e90d",
+    "journal.py": "b2640d2af85c630b7df196ac2eb823543f2a70386b98c9739a6b50f4aace3d19",
+    "mission.py": "d66b5260961bd5628dd38b08882511d576c44ac11bbee79b3d61010c8e3b6b39",
+    "quality.py": "dd066c3259feb2ddcdf11622322524f51f6f6c0d78690d0b187ddad9b2832ef8",
+    "recover.py": "9d6b15114b7a542eb8121c0adf99b1b175406973aa13b772c0e9a550f152000d",
+    "sources.py": "49f2173007990b6beae4056ddb04b671cf21a173e423b795b7763f1c276738b1",
+    "test_bench.py": "4011731a7f0e8a9ff794516fc5a69cc1d7a82a7e2884987e20e39d2a2b3307a2",
+    "test_quality.py": "dae2595930d15769bea4ce63d062fb37b18cd5ab562ed2f0dcd2954bbcaf2e1a",
+    "test_ui.py": "ee2431e603851d89eb41a93f7a4aac6f863be923355987295cead2c4b4ec4bf9",
+    "ui_model.py": "cedbe8b2ebe09e5a96f9d2f8eabbb01b843323d40cc0e8438980e0fee06375e7",
+    "wire.py": "9968dfd8cea3575510bed93965c695b683d0cb1f6f0e1a30da62180a936f52a7"
+  }
+}

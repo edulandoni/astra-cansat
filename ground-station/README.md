@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Interfaz y cortes USB — 25/10/2026
+
+[Pantalla explicada, reconexión física y cierre manual del puerto](docs/2026-10-25-interfaz-y-cortes-usb.md): cuatro grupos de mediciones con ayuda, seis contadores con su alcance, datos históricos identificados y huecos visibles. El informe conserva resultados, capturas y límites de esta revisión nativa.
+
 ## Lectura vigente — 24/10/2026
 
 Desarrollo en [banco USB v0.2](banco-usb-v0.2/README.md). El [estado de mis 13 tareas y los avances de esta pasada](docs/historial/2026-10-24-revision-tareas-y-avances.md) enlaza implementación, pruebas y pendientes. La [aceptación prolongada previa](docs/2026-10-24-aceptacion-banco-usb-actualizacion-09.md) conserva sus versiones; no se atribuye a cambios posteriores. El banco v0.1 y las entradas iniciales siguen como referencia histórica.

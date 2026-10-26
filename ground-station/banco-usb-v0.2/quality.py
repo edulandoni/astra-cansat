@@ -7,7 +7,7 @@ def quality_flags(snapshot, telemetry_max_age=3., gps_max_age=3.):
         if not math.isfinite(limit) or limit <= 0:
             raise ValueError('Umbrales de antigüedad finitos y positivos requeridos')
     data = snapshot.get('latest')
-    expecting = not snapshot.get('done') and snapshot.get('status') != 'Reproducción terminada'
+    expecting = not snapshot.get('done') and not snapshot.get('paused') and snapshot.get('status') != 'Reproducción terminada'
     no_fix = bool(data and data['GPS_SATS'] == '0')
     age, gps_age = snapshot.get('data_age'), snapshot.get('gps_age')
     storage = snapshot.get('storage', [])

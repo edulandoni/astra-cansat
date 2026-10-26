@@ -1,0 +1,50 @@
+{
+  "created_utc": "2026-10-26T02:25:59.400380+00:00",
+  "files": [
+    {
+      "path": "01-en-vivo.jpg",
+      "bytes": 242987,
+      "sha256": "a07f961489b75c009235f7507af926bab406a0309bdd49c3dd966f61083c4170"
+    },
+    {
+      "path": "02-cierre-manual-antes-del-ajuste.jpg",
+      "bytes": 252271,
+      "sha256": "a9efe1b47cecb8519785100f5ca4e48bc5d807a8925ef69ee3ff41069d35a314"
+    },
+    {
+      "path": "03-reconexion-fisica-ayudas-iniciales.jpg",
+      "bytes": 258052,
+      "sha256": "cc900b66a2c702f4d3ed8ddec00ab9719540fce9d8ce7e05cd368b67922d0ddb"
+    },
+    {
+      "path": "04-interfaz-final.jpg",
+      "bytes": 232370,
+      "sha256": "527646cdfb9cfe8c70b21995bd885d35a738f18dd7876dad0dca27177700a31a"
+    },
+    {
+      "path": "05-ayuda-altura-final.jpg",
+      "bytes": 34780,
+      "sha256": "00a0365201ea2e85497039dbad03511b54d675ebd3cdbddb88d6724aac504eda"
+    },
+    {
+      "path": "06-cierre-manual-final.jpg",
+      "bytes": 246401,
+      "sha256": "3cbfcdfbd5e4d9347738088859ce5269c9a0d0ac0781606a5bf8a1a6955b8038"
+    },
+    {
+      "path": "07-reconexion-final.jpg",
+      "bytes": 243270,
+      "sha256": "227ac7bd658d91e5eb399b3a5b0d79b7ca145fb7b8b1d9c5b85648d468e31a66"
+    },
+    {
+      "path": "ensayos-usb.json",
+      "bytes": 12745,
+      "sha256": "480cc1d9b4bb0809f7b477235ce18e21411c6492ba3dfb73f1b6bfa9bcb2d202"
+    },
+    {
+      "path": "pruebas.json",
+      "bytes": 1596,
+      "sha256": "03feb40b62dd2f243a1fbad644d6ff702085678f7799f26775069e39c7faccc5"
+    }
+  ]
+}
