@@ -8,7 +8,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 from PIL import Image, ImageTk
 from serial.tools import list_ports
-from camera_session import Round, capture, read_evidence, read_registry
+from camera_session import Round, capture, read_evidence, read_registry, explain_error
 
 
 class CameraPanel:
@@ -120,7 +120,7 @@ class CameraPanel:
             elif result and result.get('operation_ok'):
                 status = 'Foto recibida y guardado/lectura en SD comprobados.' if result['sd_ok'] else 'Foto recibida. No solicité comprobar la SD.'
             elif result:
-                status = ('Foto recibida, pero la comprobación no terminó bien.\n' if result.get('photo') else 'No pude completar la comprobación.\n') + result.get('error', '')
+                status = ('Foto recibida, pero la comprobación no terminó bien.\n' if result.get('photo') else 'No pude completar la comprobación.\n') + explain_error(result.get('error', ''))
             else:
                 status = 'Sin comprobar en esta ronda.'
             row['state'].set(status)

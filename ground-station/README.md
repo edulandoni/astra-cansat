@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Captura desde el panel de cámara 1 — 26/10/2026
+
+[Ensayo físico del panel y límites de arranque](docs/camaras/2026-10-26-panel-camara1-capturas-y-limites-10.md): dos fotos nuevas guardadas y leídas después de recuperar el arranque; cuatro intentos incompletos conservados. Cámara 2 desde el panel y estabilidad del arranque siguen pendientes.
+
 ## Pantalla de comprobación de cámaras — 26/10/2026
 
 [Panel nativo por unidad, ronda y antigüedad](docs/camaras/2026-10-26-panel-chequeo-dual-08.md): software probado y revisión visual con fotos conservadas; captura física desde los nuevos botones pendiente. Mantengo este banco separado de telemetría hasta probar la integración.

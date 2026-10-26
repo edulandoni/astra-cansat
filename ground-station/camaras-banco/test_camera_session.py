@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from types import SimpleNamespace
 from camera_check import ProtocolError
-from camera_session import Round, capture, read_evidence, read_registry
+from camera_session import Round, capture, read_evidence, read_registry, explain_error
 from test_camera_check import fixture, DEVICE
 
 
@@ -25,6 +25,12 @@ def evidence(folder, sd=True):
 
 
 class SessionTests(unittest.TestCase):
+    def test_human_messages_keep_failure_scope_and_unknown_errors(self):
+        self.assertIn('No se llegó a comprobar la SD', explain_error('La cámara informó: WARMUP_1_FAILED'))
+        self.assertIn('no quedó confirmado', explain_error('MOUNT_FAILED'))
+        self.assertIn('no reenvié', explain_error('Sin resultado completo en el tiempo de espera'))
+        self.assertEqual(explain_error('Otra causa documentada'), 'Otra causa documentada')
+
     def test_boot_failure_preserves_explanation_instead_of_missing_info_key(self):
         with tempfile.TemporaryDirectory() as tmp:
             folder = Path(tmp)

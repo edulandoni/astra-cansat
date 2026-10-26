@@ -11,6 +11,19 @@ import zlib
 from camera_check import MAX_FRAME, ProtocolError, check_result, validate_peer
 
 
+def explain_error(error):
+    text = str(error)
+    if any(code in text for code in ('WARMUP_1_FAILED', 'WARMUP_2_FAILED', 'CAPTURE_FAILED')):
+        return 'El sensor responde, pero no entregó una foto nueva. No se llegó a comprobar la SD.'
+    if 'MOUNT_FAILED' in text:
+        return 'La foto llegó, pero no pude abrir la tarjeta. El guardado no quedó confirmado.'
+    if 'modo programación' in text:
+        return 'La cámara está esperando programación. Necesita arrancar su programa, sin BOOT/IO0 pulsado.'
+    if 'Sin resultado completo en el tiempo de espera' in text:
+        return 'La cámara no respondió a tiempo. No pude confirmar el resultado y no reenvié la orden.'
+    return text
+
+
 def read_registry(path):
     data = json.loads(Path(path).read_text(encoding='utf-8'))
     cameras = data.get('cameras')

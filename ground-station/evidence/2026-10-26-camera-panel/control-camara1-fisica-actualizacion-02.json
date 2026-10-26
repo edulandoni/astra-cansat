@@ -1,0 +1,127 @@
+{
+  "recorded_utc": "2026-10-26T05:06:22.729388+00:00",
+  "jira": "ASTRA-39",
+  "updates": "control-error-arranque-actualizacion-01.json",
+  "camera": "camara-1",
+  "panel_attempts": [
+    {
+      "started_utc": "2026-10-26T04:57:26.909440+00:00",
+      "finished_utc": "2026-10-26T04:57:27.161068+00:00",
+      "result": "incomplete",
+      "error": "La placa está en modo programación; no está ejecutando la cámara. Hace falta un arranque normal, sin BOOT/IO0 pulsado.",
+      "private_result_sha256": "bc2f0efe9ce7c521ab17d9d5c2600371fb0f1a08b765fd210b0163775ede9a0d"
+    },
+    {
+      "started_utc": "2026-10-26T04:57:35.928035+00:00",
+      "finished_utc": "2026-10-26T04:58:06.027471+00:00",
+      "result": "incomplete",
+      "error": "Sin resultado completo en el tiempo de espera; no reenvío la orden",
+      "private_result_sha256": "01969a676fb158eff163a59d8e53d11d41345fade239b4708dc8159304b106ea"
+    },
+    {
+      "started_utc": "2026-10-26T05:00:52.575463+00:00",
+      "finished_utc": "2026-10-26T05:00:57.071678+00:00",
+      "result": "incomplete",
+      "error": "La cámara informó: WARMUP_1_FAILED",
+      "private_result_sha256": "5aa8fe6b743cbfdeff3bf1cd38279cc4131fd68139857902b5a00e1dbb713f96"
+    },
+    {
+      "started_utc": "2026-10-26T05:01:41.381666+00:00",
+      "finished_utc": "2026-10-26T05:01:45.862912+00:00",
+      "result": "incomplete",
+      "error": "La cámara informó: WARMUP_1_FAILED",
+      "private_result_sha256": "e74f8dd7661f969bf5e15194a0fc55d1728fc1a3e9c41becec15f3f98ca618d3"
+    },
+    {
+      "started_utc": "2026-10-26T05:03:50.212418+00:00",
+      "finished_utc": "2026-10-26T05:03:51.985656+00:00",
+      "result": "photo_and_sd_checked",
+      "error": null,
+      "private_result_sha256": "542ebe3080f309194c3a25dd532b2d8206b256f2437565bb9ac10db9e5015be6",
+      "validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "bee27afa41532415059568e11a62cff06f672d6d244f77e2c4072d04fcaa2c3a",
+        "decoded": true,
+        "sd_readback_verified_by_device": true,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      },
+      "frame": {
+        "v": 1,
+        "event": "frame",
+        "id": "757f6f927582b8c0",
+        "request_us": 64889483,
+        "capture_us": 64983551,
+        "length": 9599,
+        "crc32": "6bc792ae",
+        "width": 640,
+        "height": 480,
+        "saved": true,
+        "sd_status": "READBACK_OK",
+        "path": "/ASTRA_CHECK_1e5d86b9c724f74d_757f6f927582b8c0.jpg"
+      }
+    },
+    {
+      "started_utc": "2026-10-26T05:04:16.029341+00:00",
+      "finished_utc": "2026-10-26T05:04:18.250936+00:00",
+      "result": "photo_and_sd_checked",
+      "error": null,
+      "private_result_sha256": "326348fc8b7820e9a27fc0ed22f0556794a3ae75281b1e0e7bd38daf6d81c858",
+      "validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "7da347b200b6d97eae09a3fcdf5ff4bbd0d29cf6478acd8061fc96f6825be15e",
+        "decoded": true,
+        "sd_readback_verified_by_device": true,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      },
+      "frame": {
+        "v": 1,
+        "event": "frame",
+        "id": "0c8085e33008bd05",
+        "request_us": 90703481,
+        "capture_us": 90813216,
+        "length": 14379,
+        "crc32": "da3a85a9",
+        "width": 640,
+        "height": 480,
+        "saved": true,
+        "sd_status": "READBACK_OK",
+        "path": "/ASTRA_CHECK_1e5d86b9c724f74d_0c8085e33008bd05.jpg"
+      }
+    }
+  ],
+  "summary": {
+    "attempts": 6,
+    "incomplete": 4,
+    "new_photos_and_device_readback": 2,
+    "fresh_panel_photos_verified_in_external_reader": false,
+    "camera2_live_panel_tested": false,
+    "wrong_identity_live_panel_tested": false,
+    "repeatable_boot_verified": false,
+    "recording_verified": false,
+    "power_measured": false
+  },
+  "recovery_console_capture": {
+    "started_utc": "2026-10-26T05:02:44.823796+00:00",
+    "reset_once": true,
+    "result": "photo_and_sd_checked",
+    "bytes": 12066,
+    "sha256": "b4b9dd6e221cdc39e30fce47de244780a9625dcba4f104aee7baa02b75d2df32"
+  },
+  "tests": {
+    "run": 21,
+    "failures": 0,
+    "errors": 0,
+    "output": "test_crc_corruption (test_camera_check.CameraTests.test_crc_corruption) ... ok\ntest_diagnostics_and_stale_response_ignored (test_camera_check.CameraTests.test_diagnostics_and_stale_response_ignored) ... ok\ntest_download_mode_reports_boot_instead_of_generic_timeout (test_camera_check.CameraTests.test_download_mode_reports_boot_instead_of_generic_timeout) ... ok\ntest_expected_camera_is_checked_before_capture_or_sd_request (test_camera_check.CameraTests.test_expected_camera_is_checked_before_capture_or_sd_request) ... ok\ntest_explicit_reset_keeps_old_boot_bytes_and_never_resends_order (test_camera_check.CameraTests.test_explicit_reset_keeps_old_boot_bytes_and_never_resends_order) ... ok\ntest_fragmentation_and_burst_decode (test_camera_check.CameraTests.test_fragmentation_and_burst_decode) ... ok\ntest_freshness_identity_and_sd (test_camera_check.CameraTests.test_freshness_identity_and_sd) ... ok\ntest_image_geometry_and_color (test_camera_check.CameraTests.test_image_geometry_and_color) ... ok\ntest_matching_crc_does_not_prove_jpeg (test_camera_check.CameraTests.test_matching_crc_does_not_prove_jpeg) ... ok\ntest_no_automatic_retry_on_timeout (test_camera_check.CameraTests.test_no_automatic_retry_on_timeout) ... ok\ntest_oversize_header_and_payload_limits (test_camera_check.CameraTests.test_oversize_header_and_payload_limits) ... ok\ntest_truncation_reset_and_wrong_order (test_camera_check.CameraTests.test_truncation_reset_and_wrong_order) ... ok\ntest_boot_failure_preserves_explanation_instead_of_missing_info_key (test_camera_session.SessionTests.test_boot_failure_preserves_explanation_instead_of_missing_info_key) ... ok\ntest_distinct_registry_required (test_camera_session.SessionTests.test_distinct_registry_required) ... ok\ntest_human_messages_keep_failure_scope_and_unknown_errors (test_camera_session.SessionTests.test_human_messages_keep_failure_scope_and_unknown_errors) ... ok\ntest_missing_result_never_retries_and_diagnostics_are_conserved (test_camera_session.SessionTests.test_missing_result_never_retries_and_diagnostics_are_conserved) ... ok\ntest_one_failure_cannot_approve_two_cameras_and_rounds_do_not_reuse_success (test_camera_session.SessionTests.test_one_failure_cannot_approve_two_cameras_and_rounds_do_not_reuse_success) ... ok\ntest_saved_photo_rechecked_not_trusted_from_cached_success (test_camera_session.SessionTests.test_saved_photo_rechecked_not_trusted_from_cached_success) ... ok\ntest_sd_failure_keeps_valid_photo_without_approving_operation (test_camera_session.SessionTests.test_sd_failure_keeps_valid_photo_without_approving_operation) ... ok\ntest_single_operation_owner_and_wrong_camera_result_rejected (test_camera_session.SessionTests.test_single_operation_owner_and_wrong_camera_result_rejected) ... ok\ntest_wrong_unit_and_wrong_request_rejected (test_camera_session.SessionTests.test_wrong_unit_and_wrong_request_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 21 tests in 0.257s\n\nOK\n"
+  },
+  "source_sha256": {
+    "camera_panel.py": "178eb6dac734b4435a2410a84b883cec9ddf1e2563e831140d97ea7c4550fcee",
+    "camera_session.py": "e5402371cefaf122f8f7e1a2e2a235879b2aa7dbd7a371a0731fd19331120e29",
+    "test_camera_session.py": "dd131b2e62094f7c3a1a0b91205f99c2b15ea8bd239b1030ba70d2bfc7aa3709"
+  }
+}
