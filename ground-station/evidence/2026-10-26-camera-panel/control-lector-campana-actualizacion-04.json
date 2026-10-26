@@ -1,0 +1,98 @@
+{
+  "recorded_utc": "2026-10-26T05:12:46.222385+00:00",
+  "jira": "ASTRA-39",
+  "photos": [
+    {
+      "camera": "camara-2",
+      "name": "ASTRA_CHECK_03dd0a3c1f975bb9_1f06470029e81b9c.jpg",
+      "bytes": 23862,
+      "sha256": "15121e243ef858f2c558ba3dec3667aaf98ec26bf56cc171373f813886605c2f",
+      "matches_received_bytes": true,
+      "reader_decoded": true,
+      "source": "console"
+    },
+    {
+      "camera": "camara-2",
+      "name": "ASTRA_CHECK_03dd0a3c1f975bb9_2f5e1dc2a255ae72.jpg",
+      "bytes": 22935,
+      "sha256": "f3b0794ee9816296623159a0b551508fb73de6a22a06b4ebcf15324767807a33",
+      "matches_received_bytes": true,
+      "reader_decoded": true,
+      "source": "console"
+    },
+    {
+      "camera": "camara-1",
+      "name": "ASTRA_CHECK_1e5d86b9c724f74d_0c8085e33008bd05.jpg",
+      "bytes": 14379,
+      "sha256": "7da347b200b6d97eae09a3fcdf5ff4bbd0d29cf6478acd8061fc96f6825be15e",
+      "matches_received_bytes": true,
+      "reader_decoded": true,
+      "source": "panel"
+    },
+    {
+      "camera": "camara-1",
+      "name": "ASTRA_CHECK_1e5d86b9c724f74d_757f6f927582b8c0.jpg",
+      "bytes": 9599,
+      "sha256": "bee27afa41532415059568e11a62cff06f672d6d244f77e2c4072d04fcaa2c3a",
+      "matches_received_bytes": true,
+      "reader_decoded": true,
+      "source": "panel"
+    },
+    {
+      "camera": "camara-1",
+      "name": "ASTRA_CHECK_1e5d86b9c724f74d_be4a88a8605e878a.jpg",
+      "bytes": 12066,
+      "sha256": "b4b9dd6e221cdc39e30fce47de244780a9625dcba4f104aee7baa02b75d2df32",
+      "matches_received_bytes": true,
+      "reader_decoded": true,
+      "source": "console"
+    },
+    {
+      "camera": "camara-2",
+      "name": "ASTRA_CHECK_91aca1f86184acf2_91e890022cd778c3.jpg",
+      "bytes": 17481,
+      "sha256": "69dd1c66aab12cd5e8665dc88e05ab0e60d4d5f1c8db63bd9d3648ebcd509812",
+      "matches_received_bytes": true,
+      "reader_decoded": true,
+      "source": "console"
+    },
+    {
+      "camera": "camara-2",
+      "name": "ASTRA_CHECK_91aca1f86184acf2_9ad3a5d3f24bffdc.jpg",
+      "bytes": 22497,
+      "sha256": "09d3928a369515dfe2fa13298a736beecab37953d39e0070efe2e2ac3aa3081d",
+      "matches_received_bytes": true,
+      "reader_decoded": true,
+      "source": "panel"
+    },
+    {
+      "camera": "camara-1",
+      "name": "ASTRA_CHECK_ca61e4d71df498af_18a2a054d54fd3fe.jpg",
+      "bytes": 27951,
+      "sha256": "f7518bfb8ca1bb1b88596fb13f79aa6300bae1a6724a6369aa88d20e64b5c1db",
+      "matches_received_bytes": true,
+      "reader_decoded": true,
+      "source": "console"
+    },
+    {
+      "camera": "camara-1",
+      "name": "ASTRA_CHECK_ca61e4d71df498af_ca57aa157422f7a8.jpg",
+      "bytes": 21420,
+      "sha256": "361da2a925f42d988299ad3f39dc1093220999ec7ff63ba9c9c1c7c8c25a44ee",
+      "matches_received_bytes": true,
+      "reader_decoded": true,
+      "source": "console"
+    }
+  ],
+  "photos_checked": 9,
+  "all_match_and_decode": true,
+  "panel_photos_checked": 3,
+  "original_files_checked": 24,
+  "originals_all_match": true,
+  "unknown_astra_photo_names": [],
+  "after_camera_disconnection": true,
+  "read_only_verification": true,
+  "power_cut_during_write_tested": false,
+  "video_verified": false,
+  "power_measured": false
+}

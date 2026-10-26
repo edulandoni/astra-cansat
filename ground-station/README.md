@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Lectura externa de la campaña de cámaras — 26/10/2026
+
+[Nueve fotos verificadas desde el lector, incluidas tres del panel](docs/camaras/2026-10-26-lector-campana-panel-12.md): todos los archivos coinciden y abren correctamente; los 24 originales siguen intactos. Fotos y chequeo por turnos comprobados, con arranque, video y energía todavía pendientes.
+
 ## Panel: ambas cámaras comprobadas por turnos — 26/10/2026
 
 [Captura y guardado de ambas unidades desde sus botones](docs/camaras/2026-10-26-panel-ambas-camaras-11.md): resumen de dos de dos observado, con cinco intentos incompletos y tres capturas correctas conservados. El arranque requirió recuperación; estabilidad, lectura externa de estas fotos nuevas, video y energía siguen pendientes.
