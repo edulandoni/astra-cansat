@@ -7,6 +7,7 @@
 #include "SD_MMC.h"
 
 static bool cameraReady=false;
+static esp_err_t cameraError=ESP_FAIL;
 static char bootId[17];
 static char deviceId[17];
 static char input[81];
@@ -22,9 +23,10 @@ void error(const char *id,const char *reason) {
 }
 void info(const char *id) {
   sensor_t *s=cameraReady?esp_camera_sensor_get():nullptr;
-  Serial.printf("@CAM {\"v\":1,\"event\":\"info\",\"id\":\"%s\",\"boot\":\"%s\",\"device\":\"%s\",\"profile\":\"camera-usb-0.1\",\"camera_ready\":%s,\"sensor_pid\":%u,\"psram_bytes\":%u,\"flash_bytes\":%u,\"wifi_started\":false,\"sd_checked\":false}\n",
-    id,bootId,deviceId,cameraReady?"true":"false",s?s->id.PID:0,ESP.getPsramSize(),ESP.getFlashChipSize());
+  Serial.printf("@CAM {\"v\":1,\"event\":\"info\",\"id\":\"%s\",\"boot\":\"%s\",\"device\":\"%s\",\"profile\":\"camera-usb-0.1\",\"commands\":[\"INFO\",\"INIT\",\"PHOTO\",\"SAVE\"],\"camera_ready\":%s,\"camera_init_error\":\"%s\",\"sensor_pid\":%u,\"psram_bytes\":%u,\"flash_bytes\":%u,\"wifi_started\":false,\"sd_checked\":false}\n",
+    id,bootId,deviceId,cameraReady?"true":"false",esp_err_to_name(cameraError),s?s->id.PID:0,ESP.getPsramSize(),ESP.getFlashChipSize());
 }
+void initializeCamera();
 void photo(const char *id,bool save) {
   if(!cameraReady){error(id,"CAMERA_INIT_FAILED");return;}
   // Habilito diagnóstico sólo durante adquisición, nunca dentro del JPEG binario.
@@ -53,7 +55,10 @@ void photo(const char *id,bool save) {
   bool saved=false;const char *sdStatus="NOT_REQUESTED";char path[80]="";
   if(save){
     // Nunca formateo ni borro. Monto en un bit para no usar GPIO4 del flash LED.
-    if(!SD_MMC.begin("/sdcard",true,false)){sdStatus="MOUNT_FAILED";}
+    esp_log_level_set("*",ESP_LOG_WARN);
+    bool mounted=SD_MMC.begin("/sdcard",true,false);
+    esp_log_level_set("*",ESP_LOG_NONE);
+    if(!mounted){sdStatus="MOUNT_FAILED";}
     else {
       snprintf(path,sizeof(path),"/ASTRA_CHECK_%s_%s.jpg",bootId,id);
       if(SD_MMC.exists(path)){sdStatus="EXISTS_REFUSED";}
@@ -93,6 +98,7 @@ void command(char *line) {
   if(strlen(id)!=16){error("","BAD_ID");return;}
   for(int i=0;i<16;i++)if(!isxdigit((unsigned char)id[i])){error("","BAD_ID");return;}
   if(!strcmp(line,"INFO"))info(id);
+  else if(!strcmp(line,"INIT")){initializeCamera();info(id);}
   else if(!strcmp(line,"PHOTO"))photo(id,false);
   else if(!strcmp(line,"SAVE"))photo(id,true);
   else error(id,"UNKNOWN_COMMAND");
@@ -101,6 +107,11 @@ void setup() {
   Serial.begin(115200);Serial.setDebugOutput(false);esp_log_level_set("*",ESP_LOG_NONE);
   snprintf(bootId,sizeof(bootId),"%08lx%08lx",(unsigned long)esp_random(),(unsigned long)esp_random());
   snprintf(deviceId,sizeof(deviceId),"%016llx",(unsigned long long)ESP.getEfuseMac());
+  initializeCamera();delay(200);info("");
+}
+void initializeCamera() {
+  if(cameraReady)esp_camera_deinit();
+  cameraReady=false;
   // Perfil candidato AI-Thinker de Espressif: verifico la placa antes de cargar.
   pinMode(4,OUTPUT);digitalWrite(4,LOW);
   camera_config_t c={};c.ledc_channel=LEDC_CHANNEL_0;c.ledc_timer=LEDC_TIMER_0;
@@ -108,8 +119,10 @@ void setup() {
   c.pin_xclk=0;c.pin_pclk=22;c.pin_vsync=25;c.pin_href=23;c.pin_sccb_sda=26;c.pin_sccb_scl=27;c.pin_pwdn=32;c.pin_reset=-1;
   c.xclk_freq_hz=20000000;c.pixel_format=PIXFORMAT_JPEG;c.frame_size=FRAMESIZE_VGA;
   c.jpeg_quality=12;c.fb_count=1;c.grab_mode=CAMERA_GRAB_WHEN_EMPTY;c.fb_location=CAMERA_FB_IN_PSRAM;
-  if(psramFound())cameraReady=esp_camera_init(&c)==ESP_OK;
-  delay(200);info("");
+  esp_log_level_set("*",ESP_LOG_WARN);
+  cameraError=psramFound()?esp_camera_init(&c):ESP_ERR_NO_MEM;
+  esp_log_level_set("*",ESP_LOG_NONE);
+  cameraReady=cameraError==ESP_OK;
 }
 void loop() {
   while(Serial.available()){

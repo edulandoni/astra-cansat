@@ -1,0 +1,25 @@
+# 26/10/2026 — ACTUALIZACIÓN: cámara sin caída y compatibilidad de microSD
+
+Diario: [ASTRA-39](https://astrateam2026.atlassian.net/browse/ASTRA-39). Continúo el [ensayo de la cámara que se cayó](2026-10-26-camara-a-prueba-fisica-02.md). Identifico la segunda unidad como «cámara sin caída» para evitar confusiones al intercambiarlas en la misma base USB.
+
+## Qué comprobé
+
+Conservé los 4194304 bytes originales de flash antes de cargar el banco; no probé su restauración. Identifiqué ESP32-D0WD-V3, revisión 3.1, OV2640 y 4 MB de PSRAM. Trabajé con la notebook en batería. Mantuve apagado el LED blanco; esto no equivale a apagar la cámara ni a medir su consumo.
+
+Conservo siete intentos: cuatro capturas USB iniciales válidas, un arranque donde el sensor no quedó listo y dos capturas adicionales válidas cuyo guardado en SD falló. Las seis imágenes son JPEG 640×480 RGB decodificables. La comprobación de identidad, CRC y tiempo de adquisición evita presentar una respuesta vieja como una captura nueva. No afirmo todavía enfoque cuantificado, video continuo ni funcionamiento prolongado.
+
+Las dos órdenes de guardado devolvieron `MOUNT_FAILED`, sin ruta creada ni confirmación de escritura. El diagnóstico del controlador fue `mount_to_vfs failed (0xffffffff)`. Conservo la foto recibida aunque falle el almacenamiento. El [control inicial del corte](../../evidence/2026-10-26-camera-b/control.json) conserva intentos, huellas y doce pruebas de software correctas; sus campos pendientes describen ese momento anterior a volver a conectar el lector.
+
+## Archivos originales y diagnóstico de la tarjeta
+
+Antes de solicitar escritura conservé y verifiqué los archivos de ambas particiones: cinco archivos en la primera y diecinueve en la segunda, 8617345 bytes en total. Después de los intentos de montaje volví a verificar los 24 archivos desde el lector: todos coinciden con sus copias por SHA-256. No aparecieron archivos nuevos `ASTRA_CHECK_*`. Excluí únicamente metadatos del sistema; las copias y los nombres de archivos ajenos al ensayo permanecen privados.
+
+La tarjeta de 15552479232 bytes usa tabla de particiones GPT, con un volumen FAT32 y otro FAT. El SDK instalado define `FF_LBA64=0`. La [documentación primaria de FatFs](https://elm-chan.org/fsw/ff/doc/config.html#FF_LBA64) indica que esa opción habilita también la gestión GPT: tener un volumen FAT32 no basta si su tabla de particiones no está soportada. Es una incompatibilidad concreta que explica el montaje fallido; falta demostrar que preparar una tarjeta compatible resuelve el ensayo físico. No atribuyo el fallo a una tarjeta rota ni al sensor.
+
+Autoricé preparar esta microSD como MBR/FAT32 y reponer los archivos conservados. Esa operación cambia la estructura de arranque anterior; el respaldo de archivos no es una imagen integral ni acredita restauración de arranque. El primer intento fue bloqueado por permisos de Windows antes de completar cambios. Preparé una ejecución con permisos de administrador que comprueba bus USB, capacidad, número de serie, ausencia de condición de disco de sistema y verificación previa del respaldo. Su resultado y la prueba posterior se registrarán en una actualización nueva; esta entrada no afirma formateo, reposición ni guardado exitosos.
+
+## Mejoras del banco y límites
+
+Agregué selección de identidad esperada, reinicio explícito opcional, diagnóstico de modo de programación y reinicialización explícita del sensor sólo cuando el firmware anuncia esa capacidad. No hay reenvíos automáticos de órdenes. Los bytes anteriores al reinicio se conservan separados. El banco distingue foto válida de almacenamiento fallido.
+
+El firmware instalado en esta segunda unidad ocupa 473015 bytes de programa y 35144 bytes estáticos. Las doce pruebas de software del control no sustituyen ensayos físicos de alimentación, SD o grabación. Las dos cámaras ya produjeron fotos USB; continúan pendientes guardado verificado, grabación, chequeo dual en la aplicación, circuito de alimentación y adaptación a los comandos que define Edu. No modifiqué RF ni el programa de vuelo.

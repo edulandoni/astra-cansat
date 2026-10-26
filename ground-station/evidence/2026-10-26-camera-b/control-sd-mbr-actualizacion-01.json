@@ -1,0 +1,33 @@
+{
+  "recorded_utc": "2026-10-26T04:25:35.249513+00:00",
+  "jira": "ASTRA-39",
+  "updates": "control.json",
+  "before": {
+    "partition_style": "GPT",
+    "partitions": 2,
+    "files_reverified": 24,
+    "all_originals_match": true,
+    "FF_LBA64": 0
+  },
+  "after": {
+    "partition_style": "MBR",
+    "filesystem": "FAT32",
+    "label": "ASTRA_CAM",
+    "files_restored": 24,
+    "all_restored_hashes_match": true,
+    "second_partition_destination": "Original_particion_E",
+    "bootability_restored": false,
+    "camera_write_readback_verified": false
+  },
+  "private_evidence_sha256": {
+    "preparar_sd_camara_20261026_01_resultado.json": "9b6e54063aab67537fb7c754e055800ea69bbd13b10188a4970883f944f00ff4",
+    "preparar_sd_camara_20261026_02_resultado.json": "685eef8b02b463c0ba8f4d3df7ead00fe81f6a67e0654ccb98045901706d97a5",
+    "reponer_sd_camara_20261026_01_resultado.json": "0cc5d17562ce9d6983123bb134c6f5f7742b70eb16a86e85ab6fdb80f0050b9b",
+    "camera-sd-original-20261026-02/verificacion-posterior-01.json": "af11117dec74a6e6e7a1d247039edffc5fe324c8a7460e6ed1fa2739d7061506"
+  },
+  "limits": [
+    "No publico nombres ni contenido de archivos originales ajenos.",
+    "La prueba física tras preparación de tarjeta sigue pendiente.",
+    "El respaldo conserva archivos; no es una imagen de disco."
+  ]
+}

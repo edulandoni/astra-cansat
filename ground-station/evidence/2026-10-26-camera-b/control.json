@@ -1,0 +1,333 @@
+{
+  "recorded_utc": "2026-10-26T04:16:14.869701+00:00",
+  "jira": "ASTRA-39",
+  "unit_label": "camara-sin-caida (B)",
+  "flash_backup": {
+    "bytes": 4194304,
+    "sha256": "de219eca6224fbdfd4866760d1a2aeb617956e53857e6cdc6178fa6eea6839ca",
+    "restore_tested": false,
+    "private": true
+  },
+  "firmware": {
+    "source_sha256": "95e86baa2939caaf3ff59b1c939df365696b3c0f07310ddcd5b1da79b4fe51ab",
+    "fqbn": "esp32:esp32:esp32cam:FlashMode=dio,DebugLevel=warn",
+    "bin_sha256": {
+      "AstraCameraBench.ino.bin": "ee2ef7d8d28c49f5e19a0cc7a166ef1a224523269b856d697fc82095f87f6128",
+      "AstraCameraBench.ino.bootloader.bin": "7c5e6c42dcd3b658a81374d51e42aa839559b936df3ec181e94e864880b29fc2",
+      "AstraCameraBench.ino.merged.bin": "55cba0a5c710fd033dee3c2b52f52f49a5b6fe5cea8beb759b9e6f8437f79123",
+      "AstraCameraBench.ino.partitions.bin": "aaae2888c5a6a348004b5b436f47abb25ae32e72d9003902955a998eda723edd",
+      "boot_app0.bin": "f94c5d786a7a8fab06ac5d10e33bf37711a6697636dc037559ea19cc410a17f0"
+    },
+    "compiled": true,
+    "uploaded": true,
+    "write_hash_verified": true
+  },
+  "host_source_sha256": {
+    "camera_check.py": "f30a1ad01c74a6bd0b1306bb9d1e38185f06de523ed85571b22eef4d5edc7907",
+    "test_camera_check.py": "e47131ee6843aab8367a127382dcbf54de4d164ca6c31096f0d63fba165c32ad"
+  },
+  "tests": {
+    "run": 12,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 0.23400000000037835,
+    "output": "test_crc_corruption (test_camera_check.CameraTests.test_crc_corruption) ... ok\ntest_diagnostics_and_stale_response_ignored (test_camera_check.CameraTests.test_diagnostics_and_stale_response_ignored) ... ok\ntest_download_mode_reports_boot_instead_of_generic_timeout (test_camera_check.CameraTests.test_download_mode_reports_boot_instead_of_generic_timeout) ... ok\ntest_expected_camera_is_checked_before_capture_or_sd_request (test_camera_check.CameraTests.test_expected_camera_is_checked_before_capture_or_sd_request) ... ok\ntest_explicit_reset_keeps_old_boot_bytes_and_never_resends_order (test_camera_check.CameraTests.test_explicit_reset_keeps_old_boot_bytes_and_never_resends_order) ... ok\ntest_fragmentation_and_burst_decode (test_camera_check.CameraTests.test_fragmentation_and_burst_decode) ... ok\ntest_freshness_identity_and_sd (test_camera_check.CameraTests.test_freshness_identity_and_sd) ... ok\ntest_image_geometry_and_color (test_camera_check.CameraTests.test_image_geometry_and_color) ... ok\ntest_matching_crc_does_not_prove_jpeg (test_camera_check.CameraTests.test_matching_crc_does_not_prove_jpeg) ... ok\ntest_no_automatic_retry_on_timeout (test_camera_check.CameraTests.test_no_automatic_retry_on_timeout) ... ok\ntest_oversize_header_and_payload_limits (test_camera_check.CameraTests.test_oversize_header_and_payload_limits) ... ok\ntest_truncation_reset_and_wrong_order (test_camera_check.CameraTests.test_truncation_reset_and_wrong_order) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.143s\n\nOK\n"
+  },
+  "attempts": [
+    {
+      "started_utc": "2026-10-26T03:47:22.276311+00:00",
+      "finished_utc": "2026-10-26T03:47:23.971839+00:00",
+      "result": "photo_checked_sd_not_tested",
+      "sd_requested": false,
+      "reset_requested": null,
+      "initialization_requested": null,
+      "error": null,
+      "receiver_sha256": null,
+      "attempt": 1,
+      "raw_sha256": "41b29e7d065fa3a889bdeb0ba5cf5a8228d43f290c77489820ead33cfb7b6d06",
+      "identified": {
+        "camera_ready": true,
+        "sensor_pid": 38,
+        "psram_bytes": 4194304,
+        "flash_bytes": 4194304
+      },
+      "frame": {
+        "length": 9451,
+        "crc32": "712593f3",
+        "width": 640,
+        "height": 480,
+        "request_us": 16460527,
+        "capture_us": 16562934,
+        "saved": false,
+        "sd_status": "NOT_REQUESTED"
+      },
+      "photo_sha256": "b2b1677dab7a3e7331b960a03017efb0dee40d0de7313b8c3d15d82ae1f34735",
+      "offline_validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "b2b1677dab7a3e7331b960a03017efb0dee40d0de7313b8c3d15d82ae1f34735",
+        "decoded": true,
+        "sd_readback_verified_by_device": false,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      }
+    },
+    {
+      "started_utc": "2026-10-26T03:49:32.333289+00:00",
+      "finished_utc": "2026-10-26T03:49:34.699536+00:00",
+      "result": "photo_checked_sd_not_tested",
+      "sd_requested": false,
+      "reset_requested": null,
+      "initialization_requested": null,
+      "error": null,
+      "receiver_sha256": null,
+      "attempt": 2,
+      "raw_sha256": "6eaaf2d5ac108574f09e461d08ca22eb5fa70e57c48cb117d43d8ef2d73c1704",
+      "identified": {
+        "camera_ready": true,
+        "sensor_pid": 38,
+        "psram_bytes": 4194304,
+        "flash_bytes": 4194304
+      },
+      "frame": {
+        "length": 17085,
+        "crc32": "e35c4a4a",
+        "width": 640,
+        "height": 480,
+        "request_us": 146498506,
+        "capture_us": 146590904,
+        "saved": false,
+        "sd_status": "NOT_REQUESTED"
+      },
+      "photo_sha256": "b7b25d50e5242cb10e0c843dbb32d896fa79bf2dcbb633715a15d7dc610b8cc1",
+      "offline_validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "b7b25d50e5242cb10e0c843dbb32d896fa79bf2dcbb633715a15d7dc610b8cc1",
+        "decoded": true,
+        "sd_readback_verified_by_device": false,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      }
+    },
+    {
+      "started_utc": "2026-10-26T03:49:35.113127+00:00",
+      "finished_utc": "2026-10-26T03:49:37.447636+00:00",
+      "result": "photo_checked_sd_not_tested",
+      "sd_requested": false,
+      "reset_requested": null,
+      "initialization_requested": null,
+      "error": null,
+      "receiver_sha256": null,
+      "attempt": 3,
+      "raw_sha256": "7c2eacdb1e25d24814b8567d15435cf8c146db0c39494723a62de882401a053d",
+      "identified": {
+        "camera_ready": true,
+        "sensor_pid": 38,
+        "psram_bytes": 4194304,
+        "flash_bytes": 4194304
+      },
+      "frame": {
+        "length": 17044,
+        "crc32": "d8835a99",
+        "width": 640,
+        "height": 480,
+        "request_us": 149289506,
+        "capture_us": 149389784,
+        "saved": false,
+        "sd_status": "NOT_REQUESTED"
+      },
+      "photo_sha256": "7721ad850117a6c2c071cc9ff6f85387638adc7d84af7bd34f45d59b79e0be45",
+      "offline_validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "7721ad850117a6c2c071cc9ff6f85387638adc7d84af7bd34f45d59b79e0be45",
+        "decoded": true,
+        "sd_readback_verified_by_device": false,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      }
+    },
+    {
+      "started_utc": "2026-10-26T03:49:37.846544+00:00",
+      "finished_utc": "2026-10-26T03:49:40.187259+00:00",
+      "result": "photo_checked_sd_not_tested",
+      "sd_requested": false,
+      "reset_requested": null,
+      "initialization_requested": null,
+      "error": null,
+      "receiver_sha256": null,
+      "attempt": 4,
+      "raw_sha256": "5b88d9f9c7b20e3571030d88543eda393997443a7fcba3bd0d7af3ea9c1e1c2e",
+      "identified": {
+        "camera_ready": true,
+        "sensor_pid": 38,
+        "psram_bytes": 4194304,
+        "flash_bytes": 4194304
+      },
+      "frame": {
+        "length": 17137,
+        "crc32": "e134d99e",
+        "width": 640,
+        "height": 480,
+        "request_us": 152024506,
+        "capture_us": 152108695,
+        "saved": false,
+        "sd_status": "NOT_REQUESTED"
+      },
+      "photo_sha256": "1329fb64b8936db14d1f104e04a613f07c5c40e14c384a14d1c27c2e62b5e708",
+      "offline_validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "1329fb64b8936db14d1f104e04a613f07c5c40e14c384a14d1c27c2e62b5e708",
+        "decoded": true,
+        "sd_readback_verified_by_device": false,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      }
+    },
+    {
+      "started_utc": "2026-10-26T03:59:21.294291+00:00",
+      "finished_utc": "2026-10-26T03:59:23.156559+00:00",
+      "result": "incomplete",
+      "sd_requested": true,
+      "reset_requested": true,
+      "initialization_requested": null,
+      "error": "Cámara/perfil no preparado",
+      "receiver_sha256": "38acd8bdbdc36a57f01d4d4da6eee0d0f52544764b4edccc08b4a3facc9c8ae7",
+      "attempt": 5,
+      "raw_sha256": "05e85ef8696fbfd108383bf93162bc7348b6a58150ade3b4d2b13962bd7e8a99",
+      "identified": {
+        "camera_ready": false,
+        "sensor_pid": 0,
+        "psram_bytes": 4194304,
+        "flash_bytes": 4194304
+      }
+    },
+    {
+      "started_utc": "2026-10-26T04:05:40.553164+00:00",
+      "finished_utc": "2026-10-26T04:05:43.394264+00:00",
+      "result": "incomplete",
+      "sd_requested": true,
+      "reset_requested": false,
+      "initialization_requested": false,
+      "error": "Foto recibida, pero guardado/lectura SD sin comprobar: MOUNT_FAILED",
+      "receiver_sha256": "07104458685742f1c41fbf4d13d2fa56e61e5e2af64045d88cf25f79ca75ca26",
+      "attempt": 6,
+      "raw_sha256": "57acf53a326270130c854fe7e39aec8172483314c640beee0dae31e484abeb3d",
+      "identified": {
+        "camera_ready": true,
+        "sensor_pid": 38,
+        "psram_bytes": 4194304,
+        "flash_bytes": 4194304,
+        "camera_init_error": "ESP_OK"
+      },
+      "frame": {
+        "length": 21154,
+        "crc32": "675c7bca",
+        "width": 640,
+        "height": 480,
+        "request_us": 16859518,
+        "capture_us": 16963810,
+        "saved": false,
+        "sd_status": "MOUNT_FAILED"
+      },
+      "photo_sha256": "6ee55b3ff497c52e01ce9e3f30c8b5bef0b3f99b49736038c80d63055c662efd",
+      "offline_validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "6ee55b3ff497c52e01ce9e3f30c8b5bef0b3f99b49736038c80d63055c662efd",
+        "decoded": true,
+        "sd_readback_verified_by_device": false,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      }
+    },
+    {
+      "started_utc": "2026-10-26T04:10:47.755040+00:00",
+      "finished_utc": "2026-10-26T04:10:50.544944+00:00",
+      "result": "photo_checked_sd_failed",
+      "sd_requested": true,
+      "reset_requested": false,
+      "initialization_requested": false,
+      "error": "Foto comprobada, pero guardado/lectura SD sin comprobar: MOUNT_FAILED",
+      "receiver_sha256": "f30a1ad01c74a6bd0b1306bb9d1e38185f06de523ed85571b22eef4d5edc7907",
+      "attempt": 7,
+      "raw_sha256": "49e884ac3dadf44a3e4db27e1623b75f0d143e998b1c0e854a8ba4018e6ea861",
+      "identified": {
+        "camera_ready": true,
+        "sensor_pid": 38,
+        "psram_bytes": 4194304,
+        "flash_bytes": 4194304,
+        "camera_init_error": "ESP_OK"
+      },
+      "frame": {
+        "length": 21409,
+        "crc32": "4cde2160",
+        "width": 640,
+        "height": 480,
+        "request_us": 19223551,
+        "capture_us": 19322876,
+        "saved": false,
+        "sd_status": "MOUNT_FAILED"
+      },
+      "photo_sha256": "8a40ed0d2c272934240269719ea7b1d3103cead1fb16fa6f4b47b9e5c3a4ae4f",
+      "offline_validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "8a40ed0d2c272934240269719ea7b1d3103cead1fb16fa6f4b47b9e5c3a4ae4f",
+        "decoded": true,
+        "sd_readback_verified_by_device": false,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      }
+    }
+  ],
+  "card_original_files_backup": [
+    {
+      "label": "D",
+      "files": 5,
+      "bytes": 7645719,
+      "manifest_sha256": "844d5480f8b25632954edc86cc70f19f08045967cc25ee3e3afd546b8f1ec2dd",
+      "verified_copy": true,
+      "excluded": [
+        "System Volume Information"
+      ]
+    },
+    {
+      "label": "E",
+      "files": 19,
+      "bytes": 971626,
+      "manifest_sha256": "9ee2e84fe5789488565b1ceb7d921589e90de3cb47010535fa33b56ea72df75f",
+      "verified_copy": true,
+      "excluded": [
+        "System Volume Information"
+      ]
+    }
+  ],
+  "card_structure_observed_before_test": {
+    "physical_usb_disk": true,
+    "partitions": 2,
+    "main_filesystem": "FAT32",
+    "secondary_filesystem": "FAT",
+    "partition_table_style": "PENDING_REVALIDATION"
+  },
+  "sd_diagnostic": "vfs_fat_sdmmc: mount_to_vfs failed (0xffffffff)",
+  "post_test_original_files_verification": "PENDING_READER_RECONNECTION",
+  "summary": {
+    "attempts": 7,
+    "decoded_photos_including_sd_failures": 6,
+    "sd_readback_verified": false,
+    "recording_verified": false,
+    "power_measured": false,
+    "flash_white_off_observed": true,
+    "cause_of_mount_failure": "TBR"
+  },
+  "privacy": "No publico flash original, fotos del entorno, identificadores físicos ni nombres/contenido de archivos ajenos de la tarjeta."
+}

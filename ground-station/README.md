@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Dos cámaras con fotos USB y tarjeta preparada — 26/10/2026
+
+[Cámara sin caída: seis fotos válidas y diagnóstico del montaje SD](docs/camaras/2026-10-26-camara-sin-caida-sd-03.md) · [Preparación MBR/FAT32 y reposición verificada de los 24 archivos](docs/camaras/2026-10-26-microsd-mbr-restauracion-04.md). Ambas unidades ya produjeron fotos USB; el guardado desde la cámara, video y control de energía siguen pendientes. Las entradas siguientes conservan los cortes anteriores.
+
 ## Primeras fotos de cámara A — 26/10/2026
 
 [Ensayo físico, intentos fallidos y cinco fotos USB correctas](docs/camaras/2026-10-26-camara-a-prueba-fisica-02.md), con respaldo original conservado. Todavía no acredita segunda cámara, microSD, video ni control de energía.

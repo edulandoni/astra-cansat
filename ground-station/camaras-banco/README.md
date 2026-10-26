@@ -4,7 +4,7 @@ Diario: [ASTRA-39](https://astrateam2026.atlassian.net/browse/ASTRA-39). Este ba
 
 ## Estado
 
-El [ensayo de cámara A del 26/10](../docs/camaras/2026-10-26-camara-a-prueba-fisica-02.md) conserva respaldo previo, fallos iniciales y cinco fotos USB válidas VGA/RGB. La segunda unidad, microSD, grabación y control de energía siguen pendientes. La preparación anterior conserva su revisión propia. No usar un equipo con integridad o alimentación dudosas; los LED encendidos no prueban seguridad ni captura.
+El [ensayo de la cámara que se cayó](../docs/camaras/2026-10-26-camara-a-prueba-fisica-02.md) conserva respaldo previo, fallos iniciales y cinco fotos USB válidas VGA/RGB. La [cámara sin caída](../docs/camaras/2026-10-26-camara-sin-caida-sd-03.md) entregó seis fotos válidas; dos intentos de guardado fallaron al montar una tarjeta GPT. La [preparación posterior](../docs/camaras/2026-10-26-microsd-mbr-restauracion-04.md) acredita MBR/FAT32 y 24 archivos repuestos/verificados, todavía sin nuevo ensayo de guardado. Grabación y control de energía siguen pendientes. Los LED encendidos no prueban captura.
 
 El perfil `camera-usb-0.1` es exclusivo de mantenimiento local. No usa Wi-Fi/Bluetooth, no configura radio y no define los comandos de vuelo que desarrolla Edu. El firmware inicializa el sensor al encender y espera órdenes: todavía no implementa apagado de la placa, grabación continua ni disparo de misión.
 
@@ -30,7 +30,9 @@ python -m unittest -v test_camera_check
 
 ## Contrato de banco
 
-Solicitudes ASCII terminadas en LF: `INFO <id>`, `PHOTO <id>` y `SAVE <id>`. El ID tiene 16 dígitos hexadecimales. El receptor no reenvía automáticamente. Es una herramienta de una petición por vez; no implementa todavía deduplicación persistente de órdenes ni grabación de misión.
+Solicitudes ASCII terminadas en LF: `INFO <id>`, `INIT <id>`, `PHOTO <id>` y `SAVE <id>`. El ID tiene 16 dígitos hexadecimales. INIT reinicializa el sensor una vez y sólo se utiliza si INFO anuncia esa capacidad. El receptor no reenvía automáticamente. Es una herramienta de una petición por vez; no implementa todavía deduplicación persistente de órdenes ni grabación de misión.
+
+`--expect-device` comprueba una identidad física previamente registrada antes de pedir foto o escritura. `--reset-once` solicita un reinicio RTS explícito y conserva los bytes previos en otro archivo; no corta alimentación ni carga firmware. `--init-once` solicita INIT una vez. Estas opciones son maniobras de diagnóstico, no recuperación automática ni comandos de vuelo. Un arranque en modo programación se informa con una explicación específica.
 
 Respuestas: línea `@CAM ` seguida de JSON de versión 1. INFO incluye unidad, arranque, sensor y PSRAM. Una captura usa cabecera `frame` con ID, arranque, unidad, longitud y CRC32, seguida de exactamente esos bytes JPEG, salto de línea y control `end` con el mismo ID/arranque. El cuerpo binario no se interpreta como líneas. Rechazo más de 512 KiB por imagen, controles de más de 1024 bytes y registro de recepción de más de 2 MiB. Espero hasta 30 segundos por operación.
 

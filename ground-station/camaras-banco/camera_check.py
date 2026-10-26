@@ -98,13 +98,18 @@ def check_image(frame):
         return {'width': im.width, 'height': im.height, 'mode': im.mode,
                 'sha256': hashlib.sha256(data).hexdigest(), 'decoded': True}
 
-def check_result(info, frame, require_sd=False):
-    if info.get('profile') != PROFILE or info.get('camera_ready') is not True:
+def validate_peer(info, expected_device=None, require_ready=True):
+    if info.get('profile') != PROFILE or (require_ready and info.get('camera_ready') is not True):
         raise ProtocolError('Cámara/perfil no preparado')
-    if frame.get('boot') != info.get('boot') or frame.get('device') != info.get('device'):
-        raise ProtocolError('La cámara reinició después de identificarla')
     if not re.fullmatch(r'[0-9a-fA-F]{16}', str(info.get('device',''))):
         raise ProtocolError('Identidad de unidad inválida')
+    if expected_device and info['device'].lower() != expected_device.lower():
+        raise ProtocolError('El puerto corresponde a otra cámara; no envío captura ni escritura SD')
+
+def check_result(info, frame, require_sd=False):
+    validate_peer(info)
+    if frame.get('boot') != info.get('boot') or frame.get('device') != info.get('device'):
+        raise ProtocolError('La cámara reinició después de identificarla')
     request_us, capture_us = frame.get('request_us'), frame.get('capture_us')
     if type(request_us) is not int or type(capture_us) is not int or not 0 <= request_us <= capture_us:
         raise ProtocolError('No se acredita captura posterior a la solicitud')
@@ -125,6 +130,10 @@ def receive(port, raw_file, decoder, request_id, expected, budget=30):
             raise ProtocolError('Límite del registro de recepción alcanzado')
         raw_file.write(data); raw_file.flush()
         for msg in decoder.feed(data):
+            if msg.get('event') == 'diagnostic':
+                diagnostic = bytes.fromhex(msg['hex']).decode('ascii',errors='replace')
+                if 'waiting for download' in diagnostic or 'DOWNLOAD_BOOT(' in diagnostic:
+                    raise ProtocolError('La placa está en modo programación; no está ejecutando la cámara. Hace falta un arranque normal, sin BOOT/IO0 pulsado.')
             if msg.get('id') != request_id:
                 continue
             if msg.get('event') == 'error':
@@ -133,6 +142,22 @@ def receive(port, raw_file, decoder, request_id, expected, budget=30):
                 return msg
     raise TimeoutError('Sin resultado completo en el tiempo de espera; no reenvío la orden')
 
+def restart_before_capture(port, previous_file, sleep=time.sleep):
+    """Reinicio RTS explícito; conservo los bytes previos en lugar de descartarlos."""
+    pending = port.in_waiting
+    if not 0 <= pending <= 4096:
+        raise ProtocolError('Demasiados bytes previos al reinicio; no descarto el registro')
+    prior = port.read(pending) if pending else b''
+    previous_file.write(prior); previous_file.flush()
+    if len(prior) != pending:
+        raise ProtocolError('Lectura previa al reinicio incompleta')
+    port.dtr = False
+    port.rts = True
+    sleep(.1)
+    port.rts = False
+    sleep(1.5)
+    return len(prior)
+
 def main():
     parser = argparse.ArgumentParser(description='Chequeo USB de una cámara; no es protocolo de vuelo.')
     parser.add_argument('--port', required=True)
@@ -140,9 +165,14 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--save-sd', action='store_true', help='Escribo un archivo nuevo; nunca formateo ni borro')
     parser.add_argument('--show', action='store_true')
+    parser.add_argument('--reset-once', action='store_true', help='Reinicio RTS explícito antes de identificar; no corta alimentación ni carga firmware')
+    parser.add_argument('--expect-device', help='Identidad física ya comprobada; rechazo otra unidad antes de pedir foto o guardar')
+    parser.add_argument('--init-once', action='store_true', help='Reinicializo el sensor una vez antes del chequeo; sólo si el firmware anuncia INIT')
     args = parser.parse_args()
     if not re.fullmatch(r'[a-zA-Z0-9_-]{1,32}', args.label):
         parser.error('Etiqueta: sólo letras, números, guion y guion bajo, hasta 32 caracteres')
+    if args.expect_device and not re.fullmatch(r'[0-9a-fA-F]{16}',args.expect_device):
+        parser.error('La identidad esperada debe tener 16 dígitos hexadecimales')
     import serial
     # Abro sin provocar un reset por DTR/RTS; la identidad se consulta explícitamente.
     run_id = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S_%fZ')+'_'+secrets.token_hex(4)
@@ -150,6 +180,9 @@ def main():
     out.mkdir(parents=True, exist_ok=False)
     result = {'started_utc': datetime.now(timezone.utc).isoformat(), 'label': args.label,
               'port': args.port, 'profile': PROFILE, 'sd_requested': args.save_sd,
+              'reset_requested': args.reset_once,
+              'initialization_requested': args.init_once,
+              'receiver_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               'result': 'incomplete', 'photos_are_private_by_default': True}
     image_path = out/'foto.jpg'
     try:
@@ -157,13 +190,25 @@ def main():
             port = serial.Serial(port=None, baudrate=115200, timeout=.2, write_timeout=3)
             port.dtr=False; port.rts=False; port.port=args.port
             with port:
+                if args.reset_once:
+                    with (out/'pre_reset.bin').open('xb') as prior:
+                        result['pre_reset_bytes'] = restart_before_capture(port,prior)
+                    result['reset_sequence_sent'] = True
                 decoder = Decoder()
                 request_id = secrets.token_hex(8)
                 port.write(f'INFO {request_id}\n'.encode('ascii')); port.flush()
                 info = receive(port, raw, decoder, request_id, 'info')
                 result['info'] = info
-                if info.get('profile') != PROFILE or info.get('camera_ready') is not True:
-                    raise ProtocolError('No es una cámara preparada con este firmware de banco')
+                if args.init_once:
+                    validate_peer(info,args.expect_device,require_ready=False)
+                    if 'INIT' not in info.get('commands',[]):
+                        raise ProtocolError('Este firmware no anuncia INIT; no envío una orden desconocida')
+                    result['info_before_init'] = info
+                    request_id = secrets.token_hex(8)
+                    port.write(f'INIT {request_id}\n'.encode('ascii')); port.flush()
+                    info = receive(port,raw,decoder,request_id,'info')
+                    result['info'] = info
+                validate_peer(info,args.expect_device)
                 request_id = secrets.token_hex(8)
                 command = 'SAVE' if args.save_sd else 'PHOTO'
                 result['request_id'] = request_id
@@ -173,7 +218,10 @@ def main():
                 with image_path.open('xb') as f:
                     f.write(frame['payload'])
                 result['frame'] = {k:v for k,v in frame.items() if k != 'payload'}
-                result['validation'] = check_result(info, frame, args.save_sd)
+                result['validation'] = check_result(info, frame, False)
+                if args.save_sd and not result['validation']['sd_readback_verified_by_device']:
+                    result['result'] = 'photo_checked_sd_failed'
+                    raise ProtocolError('Foto comprobada, pero guardado/lectura SD sin comprobar: '+str(frame.get('sd_status')))
                 result['result'] = 'photo_and_sd_checked' if args.save_sd else 'photo_checked_sd_not_tested'
     except Exception as exc:
         result['error'] = str(exc)

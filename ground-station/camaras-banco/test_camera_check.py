@@ -4,7 +4,7 @@ import json
 import unittest
 import zlib
 from PIL import Image
-from camera_check import Decoder,ProtocolError,check_result,PROFILE,receive
+from camera_check import Decoder,ProtocolError,check_result,PROFILE,receive,restart_before_capture,validate_peer
 
 ID='0123456789abcdef'
 BOOT='abcdef0123456789'
@@ -24,6 +24,17 @@ def fixture():
     return info,header,data,wire
 
 class CameraTests(unittest.TestCase):
+    def test_expected_camera_is_checked_before_capture_or_sd_request(self):
+        info,_,_,_=fixture()
+        validate_peer(info,DEVICE)
+        with self.assertRaisesRegex(ProtocolError,'otra cámara'):
+            validate_peer(info,'0000000000000022')
+        not_ready={**info,'camera_ready':False}
+        with self.assertRaisesRegex(ProtocolError,'no preparado'):validate_peer(not_ready,DEVICE)
+        validate_peer(not_ready,DEVICE,require_ready=False)
+        with self.assertRaisesRegex(ProtocolError,'otra cámara'):
+            validate_peer(not_ready,'0000000000000022',require_ready=False)
+
     def test_fragmentation_and_burst_decode(self):
         info,h,data,wire=fixture()
         for chunk in (1,7,1024,len(wire)):
@@ -87,5 +98,29 @@ class CameraTests(unittest.TestCase):
             def read(self,n):return b''
             def write(self,data):raise AssertionError('No debe reenviar')
         with self.assertRaises(TimeoutError):receive(Port(),io.BytesIO(),Decoder(),ID,'frame',.005)
+
+    def test_download_mode_reports_boot_instead_of_generic_timeout(self):
+        class Port:
+            def read(self,n):return b'waiting for download\r\n'
+            def write(self,data):raise AssertionError('No debe reenviar')
+        with self.assertRaisesRegex(ProtocolError,'modo programación'):
+            receive(Port(),io.BytesIO(),Decoder(),ID,'info',.1)
+
+    def test_explicit_reset_keeps_old_boot_bytes_and_never_resends_order(self):
+        class Port:
+            in_waiting=len(b'waiting for download\r\n')
+            def read(self,n):return b'waiting for download\r\n'[:n]
+            def write(self,data):raise AssertionError('No debe enviar órdenes')
+        port=Port();saved=io.BytesIO();delays=[]
+        count=restart_before_capture(port,saved,delays.append)
+        self.assertEqual(saved.getvalue(),b'waiting for download\r\n')
+        self.assertEqual(count,Port.in_waiting);self.assertEqual(delays,[.1,1.5])
+        self.assertFalse(port.rts);self.assertFalse(port.dtr)
+        class Short(Port):
+            def read(self,n):return b'partial'
+        saved=io.BytesIO()
+        with self.assertRaisesRegex(ProtocolError,'incompleta'):
+            restart_before_capture(Short(),saved,delays.append)
+        self.assertEqual(saved.getvalue(),b'partial')
 
 if __name__=='__main__':unittest.main()
