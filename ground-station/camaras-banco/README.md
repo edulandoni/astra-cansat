@@ -16,6 +16,9 @@ El perfil `camera-usb-0.1` es exclusivo de mantenimiento local. No usa Wi-Fi/Blu
 
 ## Componentes
 
+- `camera_panel.py`: pantalla nativa para dos unidades registradas, con puerto explícito, fotos y estado por ronda. [Resultados y límites de la revisión](../docs/camaras/2026-10-26-panel-chequeo-dual-08.md).
+- `camera_session.py`: conservación de cada petición, comprobación de evidencias y resultados independientes. `test_camera_session.py` verifica fallos y separación de rondas.
+
 - `firmware/AstraCameraBench/`: candidato para pinout AI-Thinker/ESP32 clásico, PSRAM requerida, JPEG 640×480. Hay que confirmar cada placa antes de cargarlo.
 - `camera_check.py`: identifica el firmware, solicita una foto nueva, conserva bytes y resultado, valida CRC y decodifica JPEG. Abre únicamente el puerto indicado, sin búsqueda ni carga automática.
 - `test_camera_check.py`: fragmentación, corrupción, truncamiento, identidad, frescura, imagen, SD y falta de respuesta sin reenvío.
@@ -33,6 +36,18 @@ python -m unittest -v test_camera_check
 `COM_CAMARA` es un marcador que reemplazo por el puerto comprobado. La primera orden pide una foto sin montar ni escribir la SD. Sólo uso `--save-sd` después de identificar la tarjeta y conservar su contenido. Nunca formateo ni borro archivos; cada captura usa otro directorio de PC y otro nombre en la tarjeta. La lectura después de escritura se compara por longitud y CRC; no acredita supervivencia a corte eléctrico. Un archivo parcial se conserva y se informa, no se reemplaza para aparentar éxito.
 
 `--show` abre una ventana nativa con la foto de ese chequeo y su fecha. No es video en vivo. Las fotos y el registro recibido son privados por defecto: pueden mostrar el entorno de trabajo, así que no los publico automáticamente en GitHub.
+
+## Pantalla de comprobación
+
+```powershell
+python camera_panel.py --registry C:/BancoASTRA/registro-camaras.json --output C:/BancoASTRA/chequeos
+```
+
+Las rutas de ese ejemplo son configurables. El registro privado tiene `version: 1` y un objeto `cameras` con claves `camera1` y `camera2`: cada valor es la identidad de 16 dígitos hexadecimales ya comprobada para esa unidad. No invento identidades ni las deduzco del puerto. No publico el registro privado.
+
+Elijo el puerto de la cámara conectada y pulso «Sólo foto» o «Foto + comprobar SD». No retiro la tarjeta ni desconecto durante una petición. «Ver un chequeo guardado» abre un `resultado.json` previo y vuelve a comprobar su foto; muestra evidencia histórica sin aprobar la ronda actual. «Nueva ronda» limpia confirmaciones, conservando fotos e historial. Una falla no aprueba la otra unidad. La fecha y antigüedad explican a qué momento pertenece la imagen.
+
+La pantalla no reinicia, carga firmware, graba video ni controla alimentación. Una foto con lectura SD correcta acredita esa petición. La lectura independiente con lector externo sigue siendo un ensayo adicional, como el ya documentado para las cuatro fotos originales.
 
 ## Contrato de banco
 

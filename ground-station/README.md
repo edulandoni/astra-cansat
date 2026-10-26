@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Pantalla de comprobación de cámaras — 26/10/2026
+
+[Panel nativo por unidad, ronda y antigüedad](docs/camaras/2026-10-26-panel-chequeo-dual-08.md): software probado y revisión visual con fotos conservadas; captura física desde los nuevos botones pendiente. Mantengo este banco separado de telemetría hasta probar la integración.
+
 ## Ambas cámaras: fotos y microSD verificadas — 26/10/2026
 
 [Ensayo de cámara 1 y cámara 2 con lectura independiente](docs/camaras/2026-10-26-ambas-camaras-sd-y-lector-07.md): cuatro fotos nuevas coinciden con sus recepciones USB y se abren desde la tarjeta; los 24 archivos anteriores siguen intactos. Usé una tarjeta por turnos. Video, chequeo dual en la app y control de energía continúan pendientes. Las entradas siguientes conservan los cortes anteriores.
