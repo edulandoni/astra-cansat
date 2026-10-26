@@ -1,5 +1,10 @@
 # Alcance: groundstation y manejo de datos
 
+## Comprobaciones sin ocupar el escritorio — 26/10/2026
+
+- Realizo las comprobaciones por código, archivos y API. No uso control de pantalla ni abro ventanas de prueba mientras utilizo la PC; una revisión visual nueva requiere un pedido posterior que la habilite.
+- No cambio el foco ni navego al chat por iniciativa propia durante este trabajo. Los controles visuales y las maniobras físicas pendientes permanecen identificados; no los sustituyo por una afirmación basada sólo en tests.
+
 ## Prioridad vigente — Laboratorio, 26/10/2026
 
 - Objetivo primario: Laboratorio nativo para reuniones y demostraciones, en ASTRA-41. Leer docs/historial/2026-10-26-objetivo-laboratorio.md. Reunir pruebas interactivas y avances teóricos con explicación accesible primero, utilidad/PDR/evidencia/límites y detalle técnico después.

@@ -36,11 +36,15 @@ class SequenceTests(unittest.TestCase):
         self.assertFalse(bad['complete'])
         missing=self.run_case(lambda o,p:(p/'frame_0002.jpg').unlink())
         self.assertFalse(missing['complete']);self.assertEqual(missing['checked_frames'],3)
+        self.assertIsNone(missing['originals_unchanged'])
+        self.assertTrue(bad['originals_unchanged'])
 
     def test_incomplete_and_reset(self):
         for mutate in (lambda o,p:o.update(closed=False),lambda o,p:o['frames'].pop(),
                        lambda o,p:o['frames'][2].update(boot='ffffffffffffffff')):
             self.assertFalse(self.run_case(mutate)['complete'])
+        empty=self.run_case(lambda o,p:o.update(frames=[],closed=False))
+        self.assertFalse(empty['complete']);self.assertEqual(empty['checked_frames'],0)
 
     def test_duplicate_and_time(self):
         for mutate in (lambda o,p:o['frames'][1].update(file='frame_0001.jpg'),
