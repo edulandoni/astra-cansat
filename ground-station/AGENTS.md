@@ -1,5 +1,11 @@
 # Alcance: groundstation y manejo de datos
 
+## Interfaz del Laboratorio — 26/10/2026
+
+- Utilizo Qt Widgets para la entrada vigente. Presentación sobria de laboratorio: títulos descriptivos de funciones, estados y subsistemas; sin hooks, eslóganes, frases publicitarias ni guiones de venta.
+- El recorrido organiza implementación, verificación y prueba disponible. Explico unidades, origen y límites cuando son necesarios para interpretar el dato; no infantilizo al equipo.
+- Al iniciar no hay mediciones ni fuente elegida. USB, simulación PC y reproducción son modos explícitos. Una desconexión no habilita simulación como reemplazo.
+
 ## Comprobaciones sin ocupar el escritorio — 26/10/2026
 
 - Realizo las comprobaciones por código, archivos y API. No uso control de pantalla ni abro ventanas de prueba mientras utilizo la PC; una revisión visual nueva requiere un pedido posterior que la habilite.

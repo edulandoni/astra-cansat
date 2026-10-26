@@ -1,5 +1,34 @@
 # ASTRA — Laboratorio
 
+## Entrada vigente: aplicación nativa Qt
+
+Uso `app.py`, que abre la interfaz Qt Widgets (PySide6). La copia Tk queda en `archive/DEPRECATED/laboratorio-tk-20261026/` como referencia histórica. Los bancos y registros anteriores se conservan.
+
+En esta notebook el acceso **ASTRA Laboratorio** del escritorio apunta al entorno dedicado de Qt. No se abre ni conecta hardware al actualizar el acceso. Si ya hay una ventana antigua abierta, cerrarla y volver a abrir el acceso permite entrar a la interfaz vigente.
+
+Para otra instalación, preparar un entorno Python de ruta corta en Windows e instalar `requirements-qt.txt`; luego:
+
+```powershell
+python app.py --config ruta/privada.json
+```
+
+### Cómo usarlo
+
+1. **Avances del proyecto**: siete subsistemas con implementación, estado de verificación y prueba disponible. El detalle técnico se despliega bajo demanda.
+2. **Telemetría**: elijo una fuente explícita. USB abre sólo el puerto elegido; simulación PC genera una misión ficticia a 5×; reproducción lee un diario anterior y genera registros nuevos.
+3. **Cámaras**: imágenes conservadas con procedencia y comprobación nueva bajo demanda, con puerto e identidad esperados. Ningún chequeo nuevo ocurre al abrir la pantalla.
+4. **Enlace RF**: cálculo LoRa, sin emisión. **Recuperación de datos**: tres casos sintéticos. **Documentación**: informes nativos y decisiones con límites.
+
+Sin fuente, las mediciones empiezan vacías. Desconectar el ESP32 no activa un simulador: los valores recibidos se marcan históricos, su edad sigue creciendo y el receptor intenta reconectar bajo sus reglas existentes. «Por guardar» cuenta filas recibidas pendientes de escritura, no paquetes ausentes durante el corte. El firmware de banco del ESP32 también genera valores ficticios; recibirlo físicamente por USB no transforma esos valores en sensores de vuelo.
+
+Las comprobaciones de esta interfaz utilizan `QT_QPA_PLATFORM=offscreen`: renderizado real de widgets en memoria sin ventanas en el escritorio. Los tests de USB usan un transporte simulado; la nueva interfaz no acredita una campaña física de desconexión. La tecnología y los módulos están documentados en [Qt for Python](https://doc.qt.io/qtforpython-6/gettingstarted.html).
+
+```powershell
+python -m unittest discover -s . -p "test_*.py" -v
+```
+
+Las siguientes secciones conservan el procedimiento de la primera entrega y sus conceptos; su presentación vigente está organizada en las páginas Qt anteriores.
+
 [ASTRA-41](https://astrateam2026.atlassian.net/browse/ASTRA-41). Aplicación nativa para presentar avances, experimentar y consultar evidencia sin recorrer el diario completo. Las explicaciones comienzan por utilidad y límites, seguidas del fundamento técnico. No abre puertos al iniciar.
 
 Desde esta carpeta, con Python 3.12, Tk y las dependencias del banco (`pyserial`, `Pillow`):

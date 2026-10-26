@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Laboratorio Qt: recorrido y origen explícito — 26/10/2026
+
+La entrada [laboratorio/app.py](laboratorio/README.md) abre la aplicación nativa Qt: recorrido de siete pasos, banco con placa USB/simulación/grabación separados y pruebas organizadas por tema. Sin fuente, no hay mediciones. La desconexión USB conserva valores históricos y no activa una simulación. La interfaz Tk queda archivada como referencia, manteniendo los bancos y los originales.
+
 ## Laboratorio para reuniones — 26/10/2026
 
 [Laboratorio nativo](laboratorio/README.md), [ASTRA-41](https://astrateam2026.atlassian.net/browse/ASTRA-41): recorrido integrado, misión simulada, inspección de paquetes, fotos conservadas, comparación LoRa y explicaciones de diseño/PDR. Funciona sin placas ni Internet; los bancos físicos se abren por demanda. El [objetivo vigente](docs/historial/2026-10-26-objetivo-laboratorio.md) prioriza esta integración y conserva cámaras como objetivo secundario.
