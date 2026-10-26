@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Paquete y perfil LoRa para el PDR — 26/10/2026
+
+[Comparación de 108 hipótesis de tamaño/SF/BW/CR](docs/interfaces/2026-10-26-payload-sf-confiabilidad-04.md), en [ASTRA-40](https://astrateam2026.atlassian.net/browse/ASTRA-40), sin configurar RF. El [objetivo ampliado](docs/historial/2026-10-26-objetivo-ampliado-camaras-radio.md) mantiene cámaras, agrega esta evaluación y deja sonido como extra sujeto a hardware.
+
 ## Lectura externa de la campaña de cámaras — 26/10/2026
 
 [Nueve fotos verificadas desde el lector, incluidas tres del panel](docs/camaras/2026-10-26-lector-campana-panel-12.md): todos los archivos coinciden y abren correctamente; los 24 originales siguen intactos. Fotos y chequeo por turnos comprobados, con arranque, video y energía todavía pendientes.

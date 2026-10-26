@@ -1,5 +1,10 @@
 # Alcance: groundstation y manejo de datos
 
+## Evaluación de trama y perfil LoRa — 26/10/2026
+
+- ASTRA-40 conserva el análisis específico de bytes, SF/BW/CR, tiempo de aire, confiabilidad y energía para justificar decisiones en el PDR. ASTRA-18/25/24 mantienen requisitos RF, link budget e interoperabilidad.
+- El objetivo ampliado está en docs/historial/2026-10-26-objetivo-ampliado-camaras-radio.md. Continúo cámaras y grabación en ASTRA-39; audio es un extra sujeto a hardware. Edu define empaquetado/comandos de vuelo y adapto tierra; los cálculos offline no aprueban un perfil compartido.
+
 ## Identificación pública de cámaras — 26/10/2026
 
 - Uso «cámara 1» y «cámara 2» en la aplicación, GitHub, Drive y Jira. Mantengo la correspondencia física en el registro privado del banco.
