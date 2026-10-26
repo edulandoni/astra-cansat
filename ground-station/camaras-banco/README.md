@@ -4,6 +4,8 @@ Diario: [ASTRA-39](https://astrateam2026.atlassian.net/browse/ASTRA-39). Este ba
 
 ## Estado
 
+El [ensayo de ambas cámaras](../docs/camaras/2026-10-26-ambas-camaras-sd-y-lector-07.md) verifica dos fotos nuevas por unidad, guardado/lectura por cada cámara y comparación desde el lector después de desconectarlas. Los cuatro archivos coinciden y los 24 originales siguen intactos. Usé una tarjeta por turnos; no es una prueba simultánea ni de video. Las entradas siguientes conservan los cortes previos.
+
 La [lectura independiente posterior](../docs/camaras/2026-10-26-lectura-independiente-camara-2-06.md) verifica desde el lector USB las dos fotos de la cámara 2 después de desconectarla: bytes, huellas y decodificación coincidentes, con los 24 archivos anteriores intactos. El ensayo SD de la otra cámara sigue pendiente. Los párrafos siguientes conservan el alcance de cortes anteriores.
 
 La [actualización de guardado](../docs/camaras/2026-10-26-dos-fotos-sd-camara-2-05.md) acredita dos fotos nuevas escritas y leídas desde la cámara 2 con la tarjeta MBR/FAT32. La comparación independiente desde el lector USB y el ensayo SD de la otra cámara siguen pendientes. El párrafo siguiente describe el corte de diagnóstico previo.

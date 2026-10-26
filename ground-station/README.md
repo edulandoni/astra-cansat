@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Ambas cámaras: fotos y microSD verificadas — 26/10/2026
+
+[Ensayo de cámara 1 y cámara 2 con lectura independiente](docs/camaras/2026-10-26-ambas-camaras-sd-y-lector-07.md): cuatro fotos nuevas coinciden con sus recepciones USB y se abren desde la tarjeta; los 24 archivos anteriores siguen intactos. Usé una tarjeta por turnos. Video, chequeo dual en la app y control de energía continúan pendientes. Las entradas siguientes conservan los cortes anteriores.
+
 ## Fotos verificadas desde el lector — 26/10/2026
 
 [Lectura independiente de las dos fotos de la cámara 2](docs/camaras/2026-10-26-lectura-independiente-camara-2-06.md): coinciden byte por byte con las recibidas por USB después de desconectar la cámara; los 24 archivos anteriores también permanecen intactos. Falta comprobar SD en la otra unidad, video y control de energía. Las entradas siguientes conservan los cortes anteriores.
