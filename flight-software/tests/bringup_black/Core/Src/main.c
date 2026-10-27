@@ -25,6 +25,7 @@
 #include "bmp280.h"
 #include "ds18b20.h"
 #include "mpu6500.h"
+#include "neo6m.h"
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -43,6 +44,7 @@
 #define ALTITUDE_CALIBRATION_SAMPLES  10U
 #define ALTITUDE_CALIBRATION_MIN_SAMPLES 5U
 #define ALTITUDE_CALIBRATION_DELAY_MS 100U
+#define GPS_DATA_MAX_AGE_MS            3000U
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -64,6 +66,7 @@ static BMP280_Data bmp280_data;
 static MPU6500_RawData mpu6500_data;
 static uint8_t bmp280_available;
 static uint8_t mpu6500_available;
+static char telemetry_line[320];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -124,6 +127,20 @@ static size_t AppendText(char *buffer, size_t capacity, size_t offset,
   }
 
   return offset + (size_t)written;
+}
+
+static size_t AppendCoordinate(char *buffer, size_t capacity, size_t offset,
+                               const char *label, int32_t coordinate_deg_e7)
+{
+  const int64_t signed_value = coordinate_deg_e7;
+  const uint64_t magnitude = (signed_value < 0) ?
+                             (uint64_t)(-signed_value) :
+                             (uint64_t)signed_value;
+
+  return AppendText(buffer, capacity, offset, " | %s %c%lu.%07lu", label,
+                    (signed_value < 0) ? '-' : '+',
+                    (unsigned long)(magnitude / 10000000ULL),
+                    (unsigned long)(magnitude % 10000000ULL));
 }
 
 static void RecoverI2cBus(void)
@@ -224,9 +241,12 @@ static void RunOneCycle(void)
   HAL_StatusTypeDef bmp280_status;
   HAL_StatusTypeDef mpu6500_status;
   HAL_StatusTypeDef altitude_status = HAL_ERROR;
+  NEO6M_Data gps_data;
+  bool gps_data_available;
+  bool gps_data_fresh;
+  bool gps_uart_active;
   float ds18b20_temperature_c = 0.0f;
   float altitude_m = 0.0f;
-  char line[320];
   size_t length = 0U;
 
   rtc_status = HAL_RTC_GetTime(&hrtc, &rtc_time, RTC_FORMAT_BIN);
@@ -273,47 +293,58 @@ static void RunOneCycle(void)
     mpu6500_available = 0U;
   }
 
+  NEO6M_Process();
+  gps_data_available = NEO6M_GetData(&gps_data);
+  gps_data_fresh = gps_data_available &&
+                   NEO6M_IsDataFresh(&gps_data, HAL_GetTick(),
+                                     GPS_DATA_MAX_AGE_MS);
+  gps_uart_active = NEO6M_IsUartActive(HAL_GetTick(), GPS_DATA_MAX_AGE_MS);
+
   if (rtc_status == HAL_OK)
   {
-    length = AppendText(line, sizeof(line), length, "TIME %02u:%02u:%02u",
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                        "TIME %02u:%02u:%02u",
                         rtc_time.Hours, rtc_time.Minutes, rtc_time.Seconds);
   }
   else
   {
-    length = AppendText(line, sizeof(line), length, "TIME FAIL");
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                        "TIME FAIL");
   }
 
   if (ds18b20_status == HAL_OK)
   {
     const int32_t centi_c = (int32_t)(ds18b20_temperature_c * 100.0f);
     const int32_t magnitude = (centi_c < 0) ? -centi_c : centi_c;
-    length = AppendText(line, sizeof(line), length,
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
                         " | DS18B20 %c%ld.%02ld C",
                         (centi_c < 0) ? '-' : '+',
                         (long)(magnitude / 100), (long)(magnitude % 100));
   }
   else
   {
-    length = AppendText(line, sizeof(line), length, " | DS18B20 FAIL");
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                        " | DS18B20 FAIL");
   }
 
   if (bmp280_status == HAL_OK)
   {
-    length = AppendText(line, sizeof(line), length,
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
                         " | BMP280 %lu.%02lu hPa",
                         (unsigned long)(bmp280_data.pressure_pa / 100U),
                         (unsigned long)(bmp280_data.pressure_pa % 100U));
   }
   else
   {
-    length = AppendText(line, sizeof(line), length, " | BMP280 FAIL");
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                        " | BMP280 FAIL");
   }
 
   if (altitude_status == HAL_OK)
   {
     const int32_t altitude_cm = (int32_t)(altitude_m * 100.0f);
     const int32_t magnitude = (altitude_cm < 0) ? -altitude_cm : altitude_cm;
-    length = AppendText(line, sizeof(line), length,
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
                         " | P0 %lu.%02lu hPa | ALT %c%ld.%02ld m",
                         (unsigned long)(altitude_reference.reference_pressure_pa / 100U),
                         (unsigned long)(altitude_reference.reference_pressure_pa % 100U),
@@ -322,16 +353,18 @@ static void RunOneCycle(void)
   }
   else if (altitude_reference.valid == 0U)
   {
-    length = AppendText(line, sizeof(line), length, " | ALT NOT CALIBRATED");
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                        " | ALT NOT CALIBRATED");
   }
   else
   {
-    length = AppendText(line, sizeof(line), length, " | ALT INVALID");
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                        " | ALT INVALID");
   }
 
   if (mpu6500_status == HAL_OK)
   {
-    length = AppendText(line, sizeof(line), length,
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
                         " | MPU RAW A[%d,%d,%d] G[%d,%d,%d]",
                         mpu6500_data.accel_x, mpu6500_data.accel_y,
                         mpu6500_data.accel_z, mpu6500_data.gyro_x,
@@ -339,11 +372,59 @@ static void RunOneCycle(void)
   }
   else
   {
-    length = AppendText(line, sizeof(line), length, " | MPU6500 FAIL");
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                        " | MPU6500 FAIL");
   }
 
-  length = AppendText(line, sizeof(line), length, "\r\n");
-  (void)HAL_UART_Transmit(&huart2, (const uint8_t *)line, (uint16_t)length,
+  if (!gps_uart_active)
+  {
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                        " | GPS NO DATA");
+  }
+  else if (!gps_data_fresh)
+  {
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                        " | GPS NMEA INVALID");
+  }
+  else if (!gps_data.fix_valid)
+  {
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                        " | GPS NO FIX | SATS %u", gps_data.satellites);
+    if (gps_data.utc_valid)
+    {
+      length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                          " | UTC %02u:%02u:%02u", gps_data.utc_hours,
+                          gps_data.utc_minutes, gps_data.utc_seconds);
+    }
+  }
+  else
+  {
+    const int64_t altitude_mm = gps_data.altitude_mm;
+    const uint64_t altitude_magnitude = (altitude_mm < 0) ?
+                                        (uint64_t)(-altitude_mm) :
+                                        (uint64_t)altitude_mm;
+
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                        " | GPS FIX | SATS %u",
+                        gps_data.satellites);
+    length = AppendCoordinate(telemetry_line, sizeof(telemetry_line), length,
+                              "LAT",
+                              gps_data.latitude_deg_e7);
+    length = AppendCoordinate(telemetry_line, sizeof(telemetry_line), length,
+                              "LON",
+                              gps_data.longitude_deg_e7);
+    length = AppendText(telemetry_line, sizeof(telemetry_line), length,
+                        " | ALT %c%lu.%01lu m | UTC %02u:%02u:%02u",
+                        (altitude_mm < 0) ? '-' : '+',
+                        (unsigned long)(altitude_magnitude / 1000ULL),
+                        (unsigned long)((altitude_magnitude % 1000ULL) / 100ULL),
+                        gps_data.utc_hours, gps_data.utc_minutes,
+                        gps_data.utc_seconds);
+  }
+
+  length = AppendText(telemetry_line, sizeof(telemetry_line), length, "\r\n");
+  (void)HAL_UART_Transmit(&huart2, (const uint8_t *)telemetry_line,
+                          (uint16_t)length,
                           CONSOLE_TIMEOUT_MS);
 }
 
@@ -381,6 +462,11 @@ int main(void) {
     MX_I2C1_Init();
     MX_USART2_UART_Init();
     /* USER CODE BEGIN 2 */
+    if (NEO6M_Init(&huart1) != HAL_OK)
+    {
+      Console_Write("GPS RX INIT FAIL\r\n");
+    }
+
     if (DS18B20_Init() != HAL_OK)
     {
       Console_Write("DWT INIT FAIL\r\n");
@@ -572,7 +658,7 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
+  huart1.Init.BaudRate = 9600;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
@@ -674,6 +760,22 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+  if (huart == &huart1)
+  {
+    NEO6M_UART_RxCpltCallback(huart);
+  }
+}
+
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+  if (huart == &huart1)
+  {
+    NEO6M_UART_ErrorCallback(huart);
+  }
+}
 
 /* USER CODE END 4 */
 

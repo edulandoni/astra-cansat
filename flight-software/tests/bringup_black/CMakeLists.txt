@@ -48,6 +48,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Core/Src/bmp280.c
     Core/Src/ds18b20.c
     Core/Src/mpu6500.c
+    Core/Src/neo6m.c
 )
 
 # Add include paths
