@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Primera grabación corta verificada — 27/10/2026
+
+[Cámara 1: doce cuadros leídos desde SD y MP4 con tiempos comprobados](docs/camaras/2026-10-27-primera-secuencia-y-mp4-18.md). Tramo de 6,077584 s, cadencia media 1,81 cuadros/s, sin audio. El Laboratorio reproduce y exporta; no acredita todavía video continuo de misión, energía o ambas cámaras.
+
 ## Foto física desde Laboratorio Qt — 27/10/2026
 
 [Cámara 1: foto nueva recibida, mostrada y reportada en SD; grabación breve preparada](docs/camaras/2026-10-27-foto-qt-fisica-y-secuencia-17.md). Operación medida en 3,172 s; la secuencia física y lectura externa nueva siguen pendientes. Fotografías y archivos originales permanecen conservados.

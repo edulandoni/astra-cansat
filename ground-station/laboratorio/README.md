@@ -1,5 +1,9 @@
 # ASTRA — Laboratorio
 
+## Grabación verificada y exportación — 27/10/2026
+
+Ver última grabación abre la secuencia privada configurada por unidad. El visor comprueba sus originales, reproduce por tiempos guardados y exporta un MP4 derivado, con verificación posterior de cuadros/marcas y sin alterar los JPEG. La exportación necesita PyAV 19.0.1, fijado en requirements-qt.txt. [Primer ensayo físico: doce cuadros y límites](../docs/camaras/2026-10-27-primera-secuencia-y-mp4-18.md). Clave privada opcional: `sequences: {"1": "carpeta de secuencia verificada"}`; no se publica con el repositorio.
+
 ## Foto física y secuencia — 27/10/2026
 
 Cámaras ofrece Sacar foto, Foto + microSD y ampliación nativa, con captura en curso y foto anterior identificadas. Grabar prueba solicita doce cuadros sólo si la unidad anuncia CLIP; su cierre reportado requiere verificación independiente. [Foto física de cámara 1, pruebas y pendientes](../docs/camaras/2026-10-27-foto-qt-fisica-y-secuencia-17.md). Entrada directa: `python app.py --config CONFIGURACION_PRIVADA --page camaras`.

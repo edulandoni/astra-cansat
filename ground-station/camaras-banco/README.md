@@ -1,5 +1,9 @@
 # Banco local de cámaras — experimental
 
+## Primera secuencia física y MP4 — 27/10/2026
+
+[Doce cuadros de cámara 1 verificados desde el lector y exportados con sus tiempos](../docs/camaras/2026-10-27-primera-secuencia-y-mp4-18.md). El candidato fue cargado sólo en cámara 1. Los JPEG se guardan en SD y el MP4 se genera en PC; no es grabación MP4 directa de la cámara. Tramo 6,077584 s a media 1,81 cuadros/s; ambas unidades, duración mayor, audio y energía siguen pendientes. Controles: 40 pruebas del banco y 16 del Laboratorio. Conservo todos los cortes previos.
+
 ## Foto Qt física y grabación preparada — 27/10/2026
 
 [Cámara 1: foto nueva recibida y mostrada por Qt, con SD reportada](../docs/camaras/2026-10-27-foto-qt-fisica-y-secuencia-17.md). Operación medida en 3,172 s, con widgets fuera de pantalla y hardware real. El candidato de secuencia conserva la compilación revisada; carga y secuencia física pendientes en este corte. Pasaron 38 pruebas del banco y 15 del Laboratorio. Las entradas siguientes conservan sus cortes anteriores.

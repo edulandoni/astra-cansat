@@ -146,5 +146,18 @@ class FullWorkspaceTests(unittest.TestCase):
                     self.assertIn('Falta verificar',w.camera_summary.text())
             finally:ready.set();self.close(w)
 
+    def test_video_export_in_dialog_waits_for_result(self):
+        from test_sequence_verify import fixture
+        from qt_sequence import SequenceDialog
+        with tempfile.TemporaryDirectory() as folder,patch('serial.tools.list_ports.comports',return_value=[]):
+            root=Path(folder);source=root/'source';source.mkdir();obj=fixture(source)
+            (source/'sequence.json').write_text(json.dumps(obj),encoding='utf-8')
+            w=Laboratory({'output':folder});dialog=SequenceDialog(w,source)
+            try:
+                dialog.start_export(root/'exportados');dialog.close();self.assertTrue(dialog.close_pending)
+                self.wait(lambda:not w.jobs,seconds=10)
+                self.assertFalse(dialog.exporting);self.assertTrue(dialog.open_export.isEnabled());self.assertIn('MP4 verificado',dialog.export_status.text())
+            finally:dialog.close();self.close(w)
+
 
 if __name__=='__main__':unittest.main()

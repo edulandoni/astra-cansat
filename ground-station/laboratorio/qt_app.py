@@ -286,6 +286,8 @@ class Laboratory(QMainWindow):
             sd_button=button('Foto + microSD',lambda checked=False,number=n:self.capture_camera(number,True));actions.addWidget(sd_button)
             l.addLayout(actions);self.photo_widgets[n]=(pic,b);self.camera_notes[n]=note
             l.addWidget(button('Abrir secuencia guardada…',lambda checked=False,number=n:self.open_sequence(number)))
+            last=button('Ver última grabación',lambda checked=False,number=n:self.open_sequence(number,latest=True))
+            last.setEnabled(bool(self.config.get('sequences',{}).get(str(n))));l.addWidget(last)
             seq=button('Grabar prueba · 12 cuadros en SD',lambda checked=False,number=n:self.record_sequence(number));self.sequence_buttons[n]=seq;l.addWidget(seq)
             l.addWidget(button('Ampliar foto',lambda checked=False,number=n:self.enlarge_camera(number)))
             if not hasattr(self,'camera_action_buttons'):self.camera_action_buttons=[]
@@ -321,13 +323,13 @@ class Laboratory(QMainWindow):
         pic.setPixmap(pix.scaled(850,620,Qt.KeepAspectRatio,Qt.SmoothTransformation));lay.addWidget(pic);lay.addWidget(label(self.camera_notes[n].text(),'muted'))
         dialog.setAttribute(Qt.WA_DeleteOnClose);dialog.show()
 
-    def open_sequence(self,n):
+    def open_sequence(self,n,latest=False):
         def show():
             sys.path.insert(0,str(AREA/'camaras-banco'))
             from camera_session import read_registry
             from qt_sequence import SequenceDialog
             identity=read_registry(self.config.get('camera_registry',''))[f'camera{n}']
-            folder=QFileDialog.getExistingDirectory(self,f'Secuencia conservada de cámara {n}')
+            folder=self.config.get('sequences',{}).get(str(n)) if latest else QFileDialog.getExistingDirectory(self,f'Secuencia conservada de cámara {n}')
             if not folder:return
             dialog=SequenceDialog(self,folder,identity,f'Cámara {n} · secuencia conservada')
             dialog.setAttribute(Qt.WA_DeleteOnClose);dialog.show()
