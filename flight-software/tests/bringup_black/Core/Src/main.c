@@ -19,10 +19,16 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stdio.h"
+#include "altitude.h"
+#include "bmp280.h"
+#include "ds18b20.h"
+#include "mpu6500.h"
+
+#include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -32,7 +38,11 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define MAIN_CYCLE_PERIOD_MS          1000U
+#define CONSOLE_TIMEOUT_MS            100U
+#define ALTITUDE_CALIBRATION_SAMPLES  10U
+#define ALTITUDE_CALIBRATION_MIN_SAMPLES 5U
+#define ALTITUDE_CALIBRATION_DELAY_MS 100U
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -42,48 +52,18 @@
 
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
-I2C_HandleTypeDef hi2c2;
 
 RTC_HandleTypeDef hrtc;
 
 UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
-RTC_TimeTypeDef rtcTime;
-RTC_DateTypeDef rtcDate;
-float temperature;
-char tx_buffer[160];
-HAL_StatusTypeDef bmp_status;
-uint8_t bmp_chip_id = 0;
-HAL_StatusTypeDef bmp_read_status;
-
-#define BMP280_ADDR (0x76U << 1)
-
-typedef struct
-{
-  uint16_t T1;
-  int16_t  T2;
-  int16_t  T3;
-
-  uint16_t P1;
-  int16_t  P2;
-  int16_t  P3;
-  int16_t  P4;
-  int16_t  P5;
-  int16_t  P6;
-  int16_t  P7;
-  int16_t  P8;
-  int16_t  P9;
-} BMP280_Calib_t;
-
-BMP280_Calib_t bmp_cal;
-
-int32_t bmp_t_fine;
-int32_t bmp_temperature_centi;
-uint32_t bmp_pressure_pa;
-HAL_StatusTypeDef bmp_data_status;
-
+static Altitude_Reference altitude_reference;
+static BMP280_Data bmp280_data;
+static MPU6500_RawData mpu6500_data;
+static uint8_t bmp280_available;
+static uint8_t mpu6500_available;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -92,232 +72,279 @@ static void MX_GPIO_Init(void);
 static void MX_RTC_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_I2C1_Init(void);
-static void MX_I2C2_Init(void);
+static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
-
 /* USER CODE BEGIN 0 */
-static void delay_us(uint32_t us){
-    uint32_t start = DWT->CYCCNT;
-    uint32_t ticks = us * (SystemCoreClock / 1000000U);
-    while ((DWT->CYCCNT - start) < ticks);
-}
-
-static void DWT_Delay_Init(void){
-    CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-    DWT->CYCCNT = 0;
-    DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-}
-
-static void DS18B20_Low(void){
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
-}
-
-static void DS18B20_Release(void){
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
-}
-
-static uint8_t DS18B20_Reset(void){
-    uint8_t presence;
-    DS18B20_Low();
-    delay_us(480);
-    DS18B20_Release();
-    delay_us(70);
-    presence = (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == GPIO_PIN_RESET);
-    delay_us(410);
-    return presence;
-}
-
-static void DS18B20_WriteBit(uint8_t bit){
-    DS18B20_Low();
-    if (bit){
-        delay_us(6);
-        DS18B20_Release();
-        delay_us(64);
-    }
-    else{
-        delay_us(60);
-        DS18B20_Release();
-        delay_us(10);
-    }
-}
-
-static uint8_t DS18B20_ReadBit(void){
-    uint8_t bit;
-    DS18B20_Low();
-    delay_us(3);
-    DS18B20_Release();
-    delay_us(10);
-    bit = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
-    delay_us(53);
-    return bit;
-}
-
-static void DS18B20_WriteByte(uint8_t data){
-    for (uint8_t i = 0; i < 8; i++){
-        DS18B20_WriteBit(data & 0x01);
-        data >>= 1;
-    }
-}
-
-static uint8_t DS18B20_ReadByte(void){
-    uint8_t data = 0;
-    for (uint8_t i = 0; i < 8; i++){
-        if (DS18B20_ReadBit())
-            data |= (1U << i);
-    }
-    return data;
-}
-
-static float DS18B20_ReadTemperature(void){
-    uint8_t lsb;
-    uint8_t msb;
-    int16_t raw;
-    if (!DS18B20_Reset())
-        return -1000.0f;
-    DS18B20_WriteByte(0xCC);   // Skip ROM
-    DS18B20_WriteByte(0x44);   // Convert T
-    HAL_Delay(750);
-    if (!DS18B20_Reset())
-        return -1000.0f;
-    DS18B20_WriteByte(0xCC);   // Skip ROM
-    DS18B20_WriteByte(0xBE);   // Read Scratchpad
-    lsb = DS18B20_ReadByte();
-    msb = DS18B20_ReadByte();
-    raw = (int16_t)((msb << 8) | lsb);
-    return (float)raw / 16.0f;
-}
-static HAL_StatusTypeDef BMP280_ReadCalibration(void)
+static void Console_Write(const char *message)
 {
-    uint8_t c[24];
+  size_t length;
 
-    if (HAL_I2C_Mem_Read(&hi2c1, BMP280_ADDR, 0x88,
-                         I2C_MEMADD_SIZE_8BIT, c, 24, 100) != HAL_OK)
-    {
-        return HAL_ERROR;
-    }
+  if (message == NULL)
+  {
+    return;
+  }
 
-    bmp_cal.T1 = (uint16_t)(c[0]  | (c[1]  << 8));
-    bmp_cal.T2 = (int16_t) (c[2]  | (c[3]  << 8));
-    bmp_cal.T3 = (int16_t) (c[4]  | (c[5]  << 8));
+  length = strlen(message);
+  if (length > UINT16_MAX)
+  {
+    length = UINT16_MAX;
+  }
 
-    bmp_cal.P1 = (uint16_t)(c[6]  | (c[7]  << 8));
-    bmp_cal.P2 = (int16_t) (c[8]  | (c[9]  << 8));
-    bmp_cal.P3 = (int16_t) (c[10] | (c[11] << 8));
-    bmp_cal.P4 = (int16_t) (c[12] | (c[13] << 8));
-    bmp_cal.P5 = (int16_t) (c[14] | (c[15] << 8));
-    bmp_cal.P6 = (int16_t) (c[16] | (c[17] << 8));
-    bmp_cal.P7 = (int16_t) (c[18] | (c[19] << 8));
-    bmp_cal.P8 = (int16_t) (c[20] | (c[21] << 8));
-    bmp_cal.P9 = (int16_t) (c[22] | (c[23] << 8));
-
-    return HAL_OK;
+  (void)HAL_UART_Transmit(&huart2, (const uint8_t *)message,
+                          (uint16_t)length, CONSOLE_TIMEOUT_MS);
 }
 
-static int32_t BMP280_CompensateTemperature(int32_t adc_T)
+static size_t AppendText(char *buffer, size_t capacity, size_t offset,
+                         const char *format, ...)
 {
-    int32_t var1;
-    int32_t var2;
+  int written;
+  va_list arguments;
 
-    var1 =
-        ((((adc_T >> 3) - ((int32_t)bmp_cal.T1 << 1))) *
-          ((int32_t)bmp_cal.T2)) >> 11;
+  if ((buffer == NULL) || (format == NULL) || (offset >= capacity))
+  {
+    return offset;
+  }
 
-    var2 =
-        (((((adc_T >> 4) - ((int32_t)bmp_cal.T1)) *
-           ((adc_T >> 4) - ((int32_t)bmp_cal.T1))) >> 12) *
-         ((int32_t)bmp_cal.T3)) >> 14;
+  va_start(arguments, format);
+  written = vsnprintf(&buffer[offset], capacity - offset, format, arguments);
+  va_end(arguments);
+  if (written < 0)
+  {
+    buffer[offset] = '\0';
+    return offset;
+  }
 
-    bmp_t_fine = var1 + var2;
+  if ((size_t)written >= (capacity - offset))
+  {
+    return capacity - 1U;
+  }
 
-    return (bmp_t_fine * 5 + 128) >> 8;
+  return offset + (size_t)written;
 }
 
-static uint32_t BMP280_CompensatePressure(int32_t adc_P){
-
-    int64_t var1;
-    int64_t var2;
-    int64_t p;
-
-    var1 = ((int64_t)bmp_t_fine) - 128000;
-    var2 = var1 * var1 * (int64_t)bmp_cal.P6;
-    var2 += (var1 * (int64_t)bmp_cal.P5) << 17;
-    var2 += ((int64_t)bmp_cal.P4) << 35;
-
-    var1 =
-        ((var1 * var1 * (int64_t)bmp_cal.P3) >> 8) +
-        ((var1 * (int64_t)bmp_cal.P2) << 12);
-
-    var1 =
-        (((((int64_t)1) << 47) + var1) *
-         (int64_t)bmp_cal.P1) >> 33;
-
-    if (var1 == 0)
-        return 0;
-
-    p = 1048576 - adc_P;
-    p = (((p << 31) - var2) * 3125) / var1;
-
-    var1 =
-        ((int64_t)bmp_cal.P9 * (p >> 13) * (p >> 13)) >> 25;
-
-    var2 =
-        ((int64_t)bmp_cal.P8 * p) >> 19;
-
-    p =
-        ((p + var1 + var2) >> 8) +
-        ((int64_t)bmp_cal.P7 << 4);
-
-    return (uint32_t)(p >> 8);   // Pa
+static void RecoverI2cBus(void)
+{
+  (void)HAL_I2C_DeInit(&hi2c1);
+  HAL_Delay(2U);
+  MX_I2C1_Init();
 }
 
-static HAL_StatusTypeDef BMP280_Init(void){
-    uint8_t config = 0x40;
-    uint8_t ctrl_meas = 0x2F;
+static void InitializeMpu6500(void)
+{
+  uint8_t who_am_i = 0U;
+  char message[64];
 
-    if (BMP280_ReadCalibration() != HAL_OK)
-        return HAL_ERROR;
+  mpu6500_available = 0U;
+  if (MPU6500_Detect(&hi2c1, &who_am_i) != HAL_OK)
+  {
+    (void)snprintf(message, sizeof(message),
+                   "MPU6500 FAIL | WHO_AM_I=0x%02X\r\n", who_am_i);
+    Console_Write(message);
+    return;
+  }
 
-    if (HAL_I2C_Mem_Write(&hi2c1, BMP280_ADDR, 0xF5,
-                          I2C_MEMADD_SIZE_8BIT,
-                          &config, 1, 100) != HAL_OK)
-        return HAL_ERROR;
+  if (MPU6500_Init(&hi2c1) != HAL_OK)
+  {
+    Console_Write("MPU6500 INIT FAIL\r\n");
+    return;
+  }
 
-    if (HAL_I2C_Mem_Write(&hi2c1, BMP280_ADDR, 0xF4,
-                          I2C_MEMADD_SIZE_8BIT,
-                          &ctrl_meas, 1, 100) != HAL_OK)
-        return HAL_ERROR;
-
-    return HAL_OK;
+  mpu6500_available = 1U;
+  (void)snprintf(message, sizeof(message),
+                 "MPU6500 OK | WHO_AM_I=0x%02X\r\n", who_am_i);
+  Console_Write(message);
 }
 
-static HAL_StatusTypeDef BMP280_ReadData(void){
-    uint8_t data[6];
+static HAL_StatusTypeDef CalibrateAltitude(void)
+{
+  uint64_t pressure_sum = 0U;
+  uint32_t valid_samples = 0U;
+  uint32_t sample_index;
 
-    if (HAL_I2C_Mem_Read(&hi2c1, BMP280_ADDR, 0xF7,
-                         I2C_MEMADD_SIZE_8BIT,
-                         data, 6, 100) != HAL_OK)
+  if (bmp280_available == 0U)
+  {
+    RecoverI2cBus();
+    bmp280_available = (BMP280_Init(&hi2c1) == HAL_OK);
+  }
+
+  for (sample_index = 0U;
+       sample_index < ALTITUDE_CALIBRATION_SAMPLES;
+       ++sample_index)
+  {
+    BMP280_Data sample;
+
+    if (BMP280_Read(&hi2c1, &sample) == HAL_OK)
     {
-        return HAL_ERROR;
+      pressure_sum += sample.pressure_pa;
+      ++valid_samples;
     }
 
-    int32_t adc_P =
-        ((int32_t)data[0] << 12) |
-        ((int32_t)data[1] << 4) |
-        ((int32_t)data[2] >> 4);
+    if ((sample_index + 1U) < ALTITUDE_CALIBRATION_SAMPLES)
+    {
+      HAL_Delay(ALTITUDE_CALIBRATION_DELAY_MS);
+    }
+  }
 
-    int32_t adc_T =
-        ((int32_t)data[3] << 12) |
-        ((int32_t)data[4] << 4) |
-        ((int32_t)data[5] >> 4);
+  if (valid_samples < ALTITUDE_CALIBRATION_MIN_SAMPLES)
+  {
+    bmp280_available = 0U;
+    return HAL_ERROR;
+  }
 
-    bmp_temperature_centi = BMP280_CompensateTemperature(adc_T);
-    bmp_pressure_pa = BMP280_CompensatePressure(adc_P);
+  return Altitude_SaveReference(&hrtc, &altitude_reference,
+                                (uint32_t)(pressure_sum / valid_samples));
+}
 
-    return HAL_OK;
+static void ProcessConsoleCommand(void)
+{
+  uint8_t character;
+
+  if (HAL_UART_Receive(&huart2, &character, 1U, 0U) != HAL_OK)
+  {
+    return;
+  }
+
+  if ((character == (uint8_t)'Z') || (character == (uint8_t)'z'))
+  {
+    Console_Write((CalibrateAltitude() == HAL_OK) ?
+                  "ALT ZERO OK\r\n" : "ALT ZERO FAIL\r\n");
+  }
+}
+
+static void RunOneCycle(void)
+{
+  RTC_TimeTypeDef rtc_time;
+  RTC_DateTypeDef rtc_date;
+  HAL_StatusTypeDef rtc_status;
+  HAL_StatusTypeDef ds18b20_status;
+  HAL_StatusTypeDef bmp280_status;
+  HAL_StatusTypeDef mpu6500_status;
+  HAL_StatusTypeDef altitude_status = HAL_ERROR;
+  float ds18b20_temperature_c = 0.0f;
+  float altitude_m = 0.0f;
+  char line[320];
+  size_t length = 0U;
+
+  rtc_status = HAL_RTC_GetTime(&hrtc, &rtc_time, RTC_FORMAT_BIN);
+  if (rtc_status == HAL_OK)
+  {
+    rtc_status = HAL_RTC_GetDate(&hrtc, &rtc_date, RTC_FORMAT_BIN);
+  }
+
+  ds18b20_status = DS18B20_ReadTemperature(&ds18b20_temperature_c);
+
+  bmp280_status = BMP280_Read(&hi2c1, &bmp280_data);
+  if (bmp280_status != HAL_OK)
+  {
+    bmp280_available = 0U;
+    RecoverI2cBus();
+    if (BMP280_Init(&hi2c1) == HAL_OK)
+    {
+      bmp280_available = 1U;
+      bmp280_status = BMP280_Read(&hi2c1, &bmp280_data);
+    }
+  }
+  bmp280_available = (bmp280_status == HAL_OK);
+
+  if (bmp280_status == HAL_OK)
+  {
+    altitude_status = Altitude_Calculate(&altitude_reference,
+                                         bmp280_data.pressure_pa,
+                                         &altitude_m);
+  }
+
+  if (mpu6500_available == 0U)
+  {
+    uint8_t who_am_i;
+    if ((MPU6500_Detect(&hi2c1, &who_am_i) == HAL_OK) &&
+        (MPU6500_Init(&hi2c1) == HAL_OK))
+    {
+      mpu6500_available = 1U;
+    }
+  }
+  mpu6500_status = (mpu6500_available != 0U) ?
+                   MPU6500_ReadRaw(&hi2c1, &mpu6500_data) : HAL_ERROR;
+  if (mpu6500_status != HAL_OK)
+  {
+    mpu6500_available = 0U;
+  }
+
+  if (rtc_status == HAL_OK)
+  {
+    length = AppendText(line, sizeof(line), length, "TIME %02u:%02u:%02u",
+                        rtc_time.Hours, rtc_time.Minutes, rtc_time.Seconds);
+  }
+  else
+  {
+    length = AppendText(line, sizeof(line), length, "TIME FAIL");
+  }
+
+  if (ds18b20_status == HAL_OK)
+  {
+    const int32_t centi_c = (int32_t)(ds18b20_temperature_c * 100.0f);
+    const int32_t magnitude = (centi_c < 0) ? -centi_c : centi_c;
+    length = AppendText(line, sizeof(line), length,
+                        " | DS18B20 %c%ld.%02ld C",
+                        (centi_c < 0) ? '-' : '+',
+                        (long)(magnitude / 100), (long)(magnitude % 100));
+  }
+  else
+  {
+    length = AppendText(line, sizeof(line), length, " | DS18B20 FAIL");
+  }
+
+  if (bmp280_status == HAL_OK)
+  {
+    length = AppendText(line, sizeof(line), length,
+                        " | BMP280 %lu.%02lu hPa",
+                        (unsigned long)(bmp280_data.pressure_pa / 100U),
+                        (unsigned long)(bmp280_data.pressure_pa % 100U));
+  }
+  else
+  {
+    length = AppendText(line, sizeof(line), length, " | BMP280 FAIL");
+  }
+
+  if (altitude_status == HAL_OK)
+  {
+    const int32_t altitude_cm = (int32_t)(altitude_m * 100.0f);
+    const int32_t magnitude = (altitude_cm < 0) ? -altitude_cm : altitude_cm;
+    length = AppendText(line, sizeof(line), length,
+                        " | P0 %lu.%02lu hPa | ALT %c%ld.%02ld m",
+                        (unsigned long)(altitude_reference.reference_pressure_pa / 100U),
+                        (unsigned long)(altitude_reference.reference_pressure_pa % 100U),
+                        (altitude_cm < 0) ? '-' : '+',
+                        (long)(magnitude / 100), (long)(magnitude % 100));
+  }
+  else if (altitude_reference.valid == 0U)
+  {
+    length = AppendText(line, sizeof(line), length, " | ALT NOT CALIBRATED");
+  }
+  else
+  {
+    length = AppendText(line, sizeof(line), length, " | ALT INVALID");
+  }
+
+  if (mpu6500_status == HAL_OK)
+  {
+    length = AppendText(line, sizeof(line), length,
+                        " | MPU RAW A[%d,%d,%d] G[%d,%d,%d]",
+                        mpu6500_data.accel_x, mpu6500_data.accel_y,
+                        mpu6500_data.accel_z, mpu6500_data.gyro_x,
+                        mpu6500_data.gyro_y, mpu6500_data.gyro_z);
+  }
+  else
+  {
+    length = AppendText(line, sizeof(line), length, " | MPU6500 FAIL");
+  }
+
+  length = AppendText(line, sizeof(line), length, "\r\n");
+  (void)HAL_UART_Transmit(&huart2, (const uint8_t *)line, (uint16_t)length,
+                          CONSOLE_TIMEOUT_MS);
 }
 
 /* USER CODE END 0 */
@@ -326,126 +353,68 @@ static HAL_StatusTypeDef BMP280_ReadData(void){
   * @brief  The application entry point.
   * @retval int
   */
-int main(void)
-{
+int main(void) {
+    /* USER CODE BEGIN 1 */
 
-  /* USER CODE BEGIN 1 */
+    /* USER CODE END 1 */
 
-  /* USER CODE END 1 */
+    /* MCU Configuration--------------------------------------------------------*/
 
-  /* MCU Configuration--------------------------------------------------------*/
+    /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+    HAL_Init();
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+    /* USER CODE BEGIN Init */
 
-  /* USER CODE BEGIN Init */
+    /* USER CODE END Init */
 
-  /* USER CODE END Init */
+    /* Configure the system clock */
+    SystemClock_Config();
 
-  /* Configure the system clock */
-  SystemClock_Config();
+    /* USER CODE BEGIN SysInit */
 
-  /* USER CODE BEGIN SysInit */
+    /* USER CODE END SysInit */
 
-  /* USER CODE END SysInit */
+    /* Initialize all configured peripherals */
+    MX_GPIO_Init();
+    MX_RTC_Init();
+    MX_USART1_UART_Init();
+    MX_I2C1_Init();
+    MX_USART2_UART_Init();
+    /* USER CODE BEGIN 2 */
+    if (DS18B20_Init() != HAL_OK)
+    {
+      Console_Write("DWT INIT FAIL\r\n");
+    }
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_RTC_Init();
-  MX_USART1_UART_Init();
-  MX_I2C1_Init();
-  MX_I2C2_Init();
-  /* USER CODE BEGIN 2 */
-  DWT_Delay_Init();
-  BMP280_Init();
-  /* USER CODE END 2 */
+    Altitude_LoadReference(&hrtc, &altitude_reference);
+    bmp280_available = (BMP280_Init(&hi2c1) == HAL_OK);
+    Console_Write((bmp280_available != 0U) ?
+                  "BMP280 OK\r\n" : "BMP280 INIT FAIL\r\n");
+    InitializeMpu6500();
 
+    /* USER CODE END 2 */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    const uint32_t cycle_start = HAL_GetTick();
 
-    while (1)
+    ProcessConsoleCommand();
+    RunOneCycle();
+    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+
+    const uint32_t elapsed = HAL_GetTick() - cycle_start;
+    if (elapsed < MAIN_CYCLE_PERIOD_MS)
     {
-        uint32_t cycle_start = HAL_GetTick();
-        HAL_RTC_GetTime(&hrtc, &rtcTime, RTC_FORMAT_BIN);
-        HAL_RTC_GetDate(&hrtc, &rtcDate, RTC_FORMAT_BIN);
-
-        temperature = DS18B20_ReadTemperature();
-
-        int32_t temp100 = (int32_t)(temperature * 100.0f);
-        int32_t temp_abs = (temp100 < 0) ? -temp100 : temp100;
-        char temp_sign = (temp100 < 0) ? '-' : '+';
-
-        bmp_status = HAL_I2C_IsDeviceReady(&hi2c1,
-          0x76 << 1, 3, 100);
-
-        if (bmp_status == HAL_OK) {
-            bmp_data_status = BMP280_ReadData();
-        }
-
-        if (bmp_status != HAL_OK) {
-          HAL_I2C_DeInit(&hi2c1);
-          HAL_Delay(2);
-          MX_I2C1_Init();
-          bmp_status = HAL_I2C_IsDeviceReady(&hi2c1,
-          0x76 << 1, 3, 100);
-        }
-
-        if (bmp_status == HAL_OK) {
-          bmp_read_status = HAL_I2C_Mem_Read(
-            &hi2c1, 0x76 <<1, 0xD0,
-            I2C_MEMADD_SIZE_8BIT, &bmp_chip_id,
-            1, 100);
-        }
-
-        const char *bmp_text =
-          (bmp_status == HAL_OK) ? "BMP280 I2C OK" : "BMP280 I2C FAIL";
-
-        int len = snprintf(
-            tx_buffer,
-            sizeof(tx_buffer),
-            "TIME %02u:%02u:%02u | TEMP_INT %c%ld.%02ld C | "
-            "PRESS %lu.%02lu hPa | BMP_TEMP %ld.%02ld C \r\n",
-            rtcTime.Hours,
-            rtcTime.Minutes,
-            rtcTime.Seconds,
-            temp_sign,
-            (long)(temp_abs / 100),
-            (long)(temp_abs % 100),
-            (unsigned long)(bmp_pressure_pa / 100),
-            (unsigned long)(bmp_pressure_pa % 100),
-            (long)(bmp_temperature_centi / 100),
-            (long)(bmp_temperature_centi % 100)
-        );
-
-        if (len > 0)
-        {
-            uint16_t tx_len =
-                (len < sizeof(tx_buffer))
-                ? (uint16_t)len
-                : (uint16_t)(sizeof(tx_buffer) - 1);
-
-            HAL_UART_Transmit(
-                &huart1,
-                (uint8_t *)tx_buffer,
-                tx_len,
-                HAL_MAX_DELAY
-            );
-        }
-
-        HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-
-        uint32_t elapsed = HAL_GetTick() - cycle_start;
-
-        if (elapsed < 1000U) {
-          HAL_Delay(1000U - elapsed);
+      HAL_Delay(MAIN_CYCLE_PERIOD_MS - elapsed);
     }
   }
+/* USER CODE END WHILE */
 
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-  /* USER CODE END 3 */
+/* USER CODE BEGIN 3 */
+/* USER CODE END 3 */
 }
+
 
 /**
   * @brief System Clock Configuration
@@ -524,40 +493,6 @@ static void MX_I2C1_Init(void)
 }
 
 /**
-  * @brief I2C2 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_I2C2_Init(void)
-{
-
-  /* USER CODE BEGIN I2C2_Init 0 */
-
-  /* USER CODE END I2C2_Init 0 */
-
-  /* USER CODE BEGIN I2C2_Init 1 */
-
-  /* USER CODE END I2C2_Init 1 */
-  hi2c2.Instance = I2C2;
-  hi2c2.Init.ClockSpeed = 100000;
-  hi2c2.Init.DutyCycle = I2C_DUTYCYCLE_2;
-  hi2c2.Init.OwnAddress1 = 0;
-  hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
-  hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
-  hi2c2.Init.OwnAddress2 = 0;
-  hi2c2.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-  hi2c2.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
-  if (HAL_I2C_Init(&hi2c2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN I2C2_Init 2 */
-
-  /* USER CODE END I2C2_Init 2 */
-
-}
-
-/**
   * @brief RTC Initialization Function
   * @param None
   * @retval None
@@ -586,7 +521,6 @@ static void MX_RTC_Init(void)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN RTC_Init 2 */
   /* USER CODE BEGIN RTC_Init 2 */
 
   if (HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR0) != 0xA5A5)
@@ -652,6 +586,39 @@ static void MX_USART1_UART_Init(void)
   /* USER CODE BEGIN USART1_Init 2 */
 
   /* USER CODE END USART1_Init 2 */
+
+}
+
+/**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 115200;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
 
 }
 
