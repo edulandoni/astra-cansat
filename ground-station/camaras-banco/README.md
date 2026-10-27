@@ -1,5 +1,9 @@
 # Banco local de cámaras — experimental
 
+## Foto Qt física y grabación preparada — 27/10/2026
+
+[Cámara 1: foto nueva recibida y mostrada por Qt, con SD reportada](../docs/camaras/2026-10-27-foto-qt-fisica-y-secuencia-17.md). Operación medida en 3,172 s, con widgets fuera de pantalla y hardware real. El candidato de secuencia conserva la compilación revisada; carga y secuencia física pendientes en este corte. Pasaron 38 pruebas del banco y 15 del Laboratorio. Las entradas siguientes conservan sus cortes anteriores.
+
 Diario: [ASTRA-39](https://astrateam2026.atlassian.net/browse/ASTRA-39). Este banco prepara la comprobación de una ESP32-CAM por USB, sin modificar la aplicación de telemetría. [Diseño y alternativas](../docs/camaras/2026-10-25-energia-chequeo-dual.md) · [Preparación y límites del 26/10](../docs/camaras/2026-10-26-banco-local-preparacion-01.md).
 
 ## Estado

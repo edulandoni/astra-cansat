@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Foto física desde Laboratorio Qt — 27/10/2026
+
+[Cámara 1: foto nueva recibida, mostrada y reportada en SD; grabación breve preparada](docs/camaras/2026-10-27-foto-qt-fisica-y-secuencia-17.md). Operación medida en 3,172 s; la secuencia física y lectura externa nueva siguen pendientes. Fotografías y archivos originales permanecen conservados.
+
 ## Banco completo en Laboratorio — 26/10/2026
 
 [Telemetría con 22 campos, once gráficos, comandos, guardado, diagnóstico y tramas; fotos por unidad y ensayos integrados](docs/historial/2026-10-26-laboratorio-completo-04.md). El archivo de resultados y fuentes permite consultar toda la evidencia textual del área. La comprobación nueva es de software y renderizado Qt fuera de pantalla; fotos físicas desde estos botones, RF, video y energía mantienen sus pendientes.

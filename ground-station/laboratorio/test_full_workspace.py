@@ -127,5 +127,24 @@ class FullWorkspaceTests(unittest.TestCase):
                 self.assertTrue(all(not b.isEnabled() for b in dialog.buttons))
             finally:dialog.close()
 
+    def test_sequence_button_preserves_photo_and_reports_scope(self):
+        import threading
+        with tempfile.TemporaryDirectory() as folder,patch('serial.tools.list_ports.comports',return_value=[]):
+            root=Path(folder);registry=root/'registry.json';registry.write_text(json.dumps({'version':1,'cameras':{'camera1':'1111111111111111','camera2':'2222222222222222'}}))
+            w=Laboratory({'output':folder,'camera_registry':str(registry)});w.camera_ports.addItem('Ensayo','COM7');w.camera_ports.setCurrentIndex(1)
+            ready=threading.Event()
+            def request(*args):
+                ready.wait(2);return dict(reported_closed=True,frames=12,path='/test',state='reported_closed')
+            try:
+                with patch('sequence_session.record',side_effect=request) as mocked:
+                    w.sequence_buttons[1].click();w.refresh()
+                    self.assertTrue(all(not b.isEnabled() for b in w.camera_action_buttons))
+                    self.assertIn('GRABANDO',w.photo_badges[1].text());w.close();self.assertTrue(w.closing)
+                    ready.set();self.wait(lambda:not w.jobs)
+                    self.assertEqual(mocked.call_args.args[:3],('camera1','1111111111111111','COM7'))
+                    self.assertIn('cierre reportado',w.camera_summary.text())
+                    self.assertIn('Falta verificar',w.camera_summary.text())
+            finally:ready.set();self.close(w)
+
 
 if __name__=='__main__':unittest.main()

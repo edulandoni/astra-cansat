@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import queue
+import time
 import sys
 from PySide6.QtCore import Qt,QTimer,QUrl,QPointF
 from PySide6.QtGui import QColor,QPainter,QPen,QPainterPath,QFont,QPixmap,QDesktopServices,QFontDatabase
@@ -137,7 +138,7 @@ class Laboratory(QMainWindow):
         self.config=config or {};self.source=None;self.step=0
         self.output=Path(self.config.get('output',Path.home()/'ASTRA-Laboratorio'/'ensayos'))/'qt'
         self.backup_path=None
-        self.pool=ThreadPoolExecutor(max_workers=2);self.jobs=[];self.closing=False;self.camera_results={}
+        self.pool=ThreadPoolExecutor(max_workers=2);self.jobs=[];self.closing=False;self.camera_results={};self.camera_busy=None;self.camera_started=None;self.camera_paths={};self.camera_operation='Foto'
         self.setWindowTitle('ASTRA · Laboratorio');self.resize(1280,850);self.setMinimumSize(1000,700)
         self.setStyleSheet(STYLE)
         shell=QWidget();shell.setObjectName('shell');self.setCentralWidget(shell)
@@ -162,6 +163,7 @@ class Laboratory(QMainWindow):
         body.addWidget(top);body.addWidget(self.stack);outer.addWidget(main)
         self.build_journey();self.build_data();self.build_cameras();self.build_radio();self.build_recovery();self.build_experiments();self.build_evidence()
         self.go('recorrido');self.timer=QTimer(self);self.timer.timeout.connect(self.refresh);self.timer.start(150);self.refresh()
+        self.port_timer=QTimer(self);self.port_timer.timeout.connect(self.refresh_camera_ports);self.port_timer.start(2000)
 
     def heading(self,key,title,subtitle):
         lay=self.pages[key][1];lay.addWidget(label(title,'heading'));lay.addWidget(label(subtitle,'sub'));return lay
@@ -270,19 +272,22 @@ class Laboratory(QMainWindow):
         lay.addWidget(t);lay.addWidget(label('Texto ASCII separado por comas. El empaquetado binario de vuelo sigue bajo definición de Edu.','muted'));w.setAttribute(Qt.WA_DeleteOnClose);w.show()
 
     def build_cameras(self):
-        lay=self.heading('camaras','Cámaras ESP32-CAM','Captura, almacenamiento y comprobación por unidad. Las pruebas se realizan por turnos.')
-        cards=QHBoxLayout();self.photo_widgets={};self.camera_notes={};self.photo_badges={}
+        lay=self.heading('camaras','Cámaras ESP32-CAM','Una foto nueva por solicitud. La imagen aparece aquí al terminar su recepción USB; no es video continuo.')
+        cards=QHBoxLayout();self.photo_widgets={};self.camera_notes={};self.photo_badges={};self.sequence_buttons={}
         for n in (1,2):
             c,l=card(f'Cámara {n}');badge=label('EVIDENCIA CONSERVADA','badge');self.photo_badges[n]=badge;l.addWidget(badge);pic=QLabel();pic.setAlignment(Qt.AlignCenter);pic.setMinimumHeight(170)
             entry=self.config.get('photos',{}).get(str(n),{});pix=QPixmap(entry.get('path',''))
             if pix.isNull():pic.setText('Sin foto local configurada')
-            else:pic.setPixmap(pix.scaled(400,220,Qt.KeepAspectRatio,Qt.SmoothTransformation))
+            else:
+                pic.setPixmap(pix.scaled(400,220,Qt.KeepAspectRatio,Qt.SmoothTransformation));self.camera_paths[n]=entry['path']
             l.addWidget(pic);note=label(entry.get('caption','No es una captura de esta sesión.'),'muted');l.addWidget(note)
             actions=QHBoxLayout()
-            b=button('Foto USB',lambda checked=False,number=n:self.capture_camera(number,False));actions.addWidget(b)
+            b=button('Sacar foto',lambda checked=False,number=n:self.capture_camera(number,False),True);actions.addWidget(b)
             sd_button=button('Foto + microSD',lambda checked=False,number=n:self.capture_camera(number,True));actions.addWidget(sd_button)
             l.addLayout(actions);self.photo_widgets[n]=(pic,b);self.camera_notes[n]=note
             l.addWidget(button('Abrir secuencia guardada…',lambda checked=False,number=n:self.open_sequence(number)))
+            seq=button('Grabar prueba · 12 cuadros en SD',lambda checked=False,number=n:self.record_sequence(number));self.sequence_buttons[n]=seq;l.addWidget(seq)
+            l.addWidget(button('Ampliar foto',lambda checked=False,number=n:self.enlarge_camera(number)))
             if not hasattr(self,'camera_action_buttons'):self.camera_action_buttons=[]
             self.camera_action_buttons.extend((b,sd_button));cards.addWidget(c)
         lay.addLayout(cards)
@@ -290,15 +295,35 @@ class Laboratory(QMainWindow):
         self.camera_ports=QComboBox();self.camera_ports.addItem('Seleccioná el puerto de cámara…',None);p.addWidget(self.camera_ports)
         p.addWidget(button('Actualizar puertos de cámara',self.refresh_camera_ports),alignment=Qt.AlignLeft)
         self.camera_summary=label('Esta sesión todavía no comprobó ninguna cámara.','muted');p.addWidget(self.camera_summary);lay.addWidget(prep)
+        self.refresh_camera_ports()
         lay.addWidget(details('Estado de validación','Ambas unidades produjeron fotos y guardaron en microSD. Nueve fotos se verificaron desde lector independiente. La campaña conserva fallos de arranque: no está demostrada su estabilidad. El candidato de secuencia está compilado sin cargar. Grabación prolongada, energía, audio y tolerancia a reset siguen pendientes. Edu define eventos y comandos de vuelo.'))
 
     def refresh_camera_ports(self):
+        if self.camera_busy is not None:return
         from serial.tools import list_ports
+        selected=self.camera_ports.currentData() or self.config.get('camera_port')
+        ports=[(p.device,p.description) for p in list_ports.comports()]
+        if getattr(self,'camera_port_list',None)==ports:return
+        self.camera_port_list=ports
         self.camera_ports.clear();self.camera_ports.addItem('Seleccioná el puerto de cámara…',None)
-        for p in list_ports.comports():self.camera_ports.addItem(f'{p.device} · {p.description}',p.device)
+        for device,description in ports:self.camera_ports.addItem(f'{device} · {description}',device)
+        if selected:
+            index=self.camera_ports.findData(selected)
+            if index>=0:self.camera_ports.setCurrentIndex(index)
+
+    def enlarge_camera(self,n):
+        path=self.camera_paths.get(n)
+        if not path:return self.notice('Sin imagen','Todavía no hay una foto para ampliar.')
+        pix=QPixmap(str(path))
+        if pix.isNull():return self.notice('Imagen no disponible','No pude abrir el archivo conservado.')
+        dialog=QDialog(self);dialog.setWindowTitle(f'ASTRA · Cámara {n}');dialog.resize(900,760)
+        lay=QVBoxLayout(dialog);lay.addWidget(label(self.photo_badges[n].text(),'badge'));pic=QLabel();pic.setAlignment(Qt.AlignCenter)
+        pic.setPixmap(pix.scaled(850,620,Qt.KeepAspectRatio,Qt.SmoothTransformation));lay.addWidget(pic);lay.addWidget(label(self.camera_notes[n].text(),'muted'))
+        dialog.setAttribute(Qt.WA_DeleteOnClose);dialog.show()
 
     def open_sequence(self,n):
         def show():
+            sys.path.insert(0,str(AREA/'camaras-banco'))
             from camera_session import read_registry
             from qt_sequence import SequenceDialog
             identity=read_registry(self.config.get('camera_registry',''))[f'camera{n}']
@@ -317,15 +342,20 @@ class Laboratory(QMainWindow):
             if self.source and not self.source.closed and self.source.mode=='usb' and self.source.port==port:raise ValueError('Ese puerto está siendo usado por telemetría. Elegí la cámara correcta o cerrá esa conexión.')
             if any(kind=='camera' for _,kind,_ in self.jobs):raise ValueError('Ya hay una comprobación en curso. Esperá a que termine.')
             identity=read_registry(self.config.get('camera_registry',''))[f'camera{n}']
-            self.camera_summary.setText('Comprobación en curso. No desconectes la cámara ni retires la tarjeta.')
+            self.camera_results.pop(n,None);self.camera_busy=n;self.camera_started=time.monotonic();self.camera_operation='Foto'
+            self.photo_badges[n].setText('CAPTURANDO FOTO NUEVA')
+            self.camera_summary.setText(f'Cámara {n} · solicitando foto por {port}…')
+            for b in self.camera_action_buttons:b.setEnabled(False)
             self.submit(lambda:capture(f'camera{n}',identity,port,self.output/'camaras',save_sd), 'camera',lambda r:self.camera_finished(n,r))
         self.guarded(begin)
 
     def camera_finished(self,n,r):
-        self.camera_results[n]=r
         if r.get('photo'):
-            pix=QPixmap(str(r['photo']));self.photo_widgets[n][0].setPixmap(pix.scaled(400,220,Qt.KeepAspectRatio,Qt.SmoothTransformation))
+            pix=QPixmap(str(r['photo']))
+            if pix.isNull():raise ValueError('La imagen recibida no se pudo abrir; no actualizo la vista con un archivo inválido.')
+            self.camera_paths[n]=str(r['photo']);self.photo_widgets[n][0].setPixmap(pix.scaled(400,220,Qt.KeepAspectRatio,Qt.SmoothTransformation))
             self.photo_badges[n].setText('FOTO CAPTURADA EN ESTA SESIÓN')
+        self.camera_busy=None;self.camera_started=None;self.camera_results[n]=r
         ok=bool(r.get('operation_ok'))
         if r.get('photo'):
             from datetime import datetime
@@ -333,10 +363,34 @@ class Laboratory(QMainWindow):
             except (ValueError,KeyError,TypeError):stamp='fecha no confirmada'
             result_text='Foto USB validada · SD no solicitada' if ok and not r.get('sd_requested') else ('Foto y lectura SD reportadas' if ok and r.get('sd_ok') else 'Foto recibida · chequeo incompleto')
             self.camera_notes[n].setText(result_text+' · '+stamp)
-        else:self.camera_notes[n].setText(self.camera_notes[n].text()+'\nNuevo chequeo incompleto. La foto mostrada sigue siendo la anterior.')
+        else:
+            self.photo_badges[n].setText('FOTO ANTERIOR · CAPTURA NO CONFIRMADA');self.camera_notes[n].setText('No llegó una foto nueva. La imagen conservada no corresponde a esta solicitud.')
         count=sum(bool(x.get('operation_ok')) for x in self.camera_results.values())
         sd_count=sum(bool(x.get('operation_ok') and x.get('sd_ok')) for x in self.camera_results.values())
         self.camera_summary.setText(f'Fotos comprobadas: {count} de 2 · Lectura SD reportada: {sd_count} de 2 · por turnos. Lectura desde lector independiente: ensayo aparte.')
+        if r.get('error'):self.camera_summary.setText(self.camera_summary.text()+'\n'+str(r['error']))
+
+    def record_sequence(self,n):
+        def begin():
+            sys.path.insert(0,str(AREA/'camaras-banco'))
+            from camera_session import read_registry
+            from sequence_session import record
+            port=self.camera_ports.currentData()
+            if not port:raise ValueError('Elegí el puerto de la cámara.')
+            if any(kind=='camera' for _,kind,_ in self.jobs):raise ValueError('Hay una captura en curso; espero su cierre.')
+            if self.source and not self.source.closed and self.source.mode=='usb' and self.source.port==port:raise ValueError('El puerto está ocupado por telemetría.')
+            identity=read_registry(self.config.get('camera_registry',''))[f'camera{n}']
+            self.camera_busy=n;self.camera_started=time.monotonic();self.camera_operation='Secuencia SD'
+            self.photo_badges[n].setText('GRABANDO SECUENCIA · FOTO ANTERIOR')
+            self.submit(lambda:record(f'camera{n}',identity,port,self.output/'camaras'), 'camera',lambda r:self.sequence_finished(n,r))
+        self.guarded(begin)
+
+    def sequence_finished(self,n,result):
+        self.camera_busy=None;self.camera_started=None;self.photo_badges[n].setText('FOTO CONSERVADA · NO ES VIDEO EN VIVO')
+        if result['reported_closed']:
+            message=f"Cámara {n} · {result['frames']} cuadros · cierre reportado.\nCarpeta SD: {result['path']}\nFalta verificar los archivos desde el lector; no retires la tarjeta con la cámara alimentada."
+        else:message=f"Grabación sin confirmar: {result.get('error') or result['state']}. No reenvío la orden automáticamente."
+        self.camera_summary.setText(message);self.camera_notes[n].setText(message)
 
     def build_radio(self):
         lay=self.heading('radio','Enlace RF · cálculo LoRa','Tiempo de aire según tamaño de paquete y configuración. Sin emisión ni ensayo RF.')
@@ -458,11 +512,18 @@ class Laboratory(QMainWindow):
                 self.jobs.remove(job)
                 try:done(future.result())
                 except Exception as exc:
-                    if kind=='camera':self.camera_summary.setText('No pude confirmar la comprobación: '+str(exc))
+                    if kind=='camera':
+                        n=self.camera_busy;self.camera_busy=None;self.camera_started=None
+                        if n:
+                            self.photo_badges[n].setText('FOTO ANTERIOR · CAPTURA NO CONFIRMADA');self.camera_notes[n].setText('La solicitud falló. La imagen mostrada no es una foto nueva.')
+                        self.camera_summary.setText('No pude confirmar la comprobación: '+str(exc))
                     elif kind=='experiment':
                         self.experiments.campaign_status.setText('Campaña incompleta: '+str(exc));self.experiments.campaign_button.setEnabled(True)
                     else:self.recovery_result.setText('No pude completar la prueba: '+str(exc))
-        for b in self.camera_action_buttons:b.setEnabled(not any(kind=='camera' for _,kind,_ in self.jobs))
+        for b in [*self.camera_action_buttons,*self.sequence_buttons.values()]:b.setEnabled(not any(kind=='camera' for _,kind,_ in self.jobs))
+        if self.camera_busy is not None and self.camera_started is not None:
+            elapsed=time.monotonic()-self.camera_started
+            self.camera_summary.setText(f'Cámara {self.camera_busy} · {self.camera_operation} en curso · {elapsed:.1f} s. No desconectes la placa ni retires la SD.')
         if self.closing and not self.jobs and (not self.source or self.source.closed):self.close()
 
     def closeEvent(self,event):
@@ -470,12 +531,12 @@ class Laboratory(QMainWindow):
             self.closing=True
             if self.source:self.source.stop()
             self.data_title.setText('Conservando el trabajo antes de cerrar…');event.ignore();return
-        self.timer.stop();self.pool.shutdown(wait=False);event.accept()
+        self.timer.stop();self.port_timer.stop();self.pool.shutdown(wait=False);event.accept()
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--config',type=Path);args=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--config',type=Path);p.add_argument('--page',choices=['recorrido','datos','camaras','radio','recuperacion','ensayos','evidencias'],default='recorrido');args=p.parse_args()
     config=json.loads(args.config.read_text(encoding='utf-8-sig')) if args.config else {}
-    app=QApplication(sys.argv);app.setFont(QFont('Segoe UI',10));w=Laboratory(config);w.show();sys.exit(app.exec())
+    app=QApplication(sys.argv);app.setFont(QFont('Segoe UI',10));w=Laboratory(config);w.go(args.page);w.show();sys.exit(app.exec())
 
 if __name__=='__main__':main()

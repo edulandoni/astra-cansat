@@ -1,5 +1,9 @@
 # ASTRA — Laboratorio
 
+## Foto física y secuencia — 27/10/2026
+
+Cámaras ofrece Sacar foto, Foto + microSD y ampliación nativa, con captura en curso y foto anterior identificadas. Grabar prueba solicita doce cuadros sólo si la unidad anuncia CLIP; su cierre reportado requiere verificación independiente. [Foto física de cámara 1, pruebas y pendientes](../docs/camaras/2026-10-27-foto-qt-fisica-y-secuencia-17.md). Entrada directa: `python app.py --config CONFIGURACION_PRIVADA --page camaras`.
+
 ## Banco integrado — actualización del 26/10/2026
 
 Telemetría contiene Variables (22), Gráficos (11), Comandos, Guardado, Diagnóstico, Tramas y Estado. Los gráficos incluyen los quince canales numéricos; el giro se presenta en rad/s sin alterar el paquete original. USB, simulación PC y reproducción son selecciones explícitas; PC y reproducción permiten velocidades ×1/×5/×10. Sin fuente no hay mediciones. El archivo completo conserva el flujo aunque la pantalla sólo mantenga las últimas 180 muestras y 300 eventos.
