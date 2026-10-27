@@ -297,8 +297,38 @@ class Laboratory(QMainWindow):
         self.camera_ports=QComboBox();self.camera_ports.addItem('Seleccioná el puerto de cámara…',None);p.addWidget(self.camera_ports)
         p.addWidget(button('Actualizar puertos de cámara',self.refresh_camera_ports),alignment=Qt.AlignLeft)
         self.camera_summary=label('Esta sesión todavía no comprobó ninguna cámara.','muted');p.addWidget(self.camera_summary);lay.addWidget(prep)
+        from qt_camera_live import CameraLive
+        def camera_identity(number):
+            sys.path.insert(0,str(AREA/'camaras-banco'))
+            from camera_session import read_registry
+            return read_registry(self.config.get('camera_registry',''))[f'camera{number}']
+        self.camera_live=CameraLive(camera_identity,self,control=self.control_camera_wifi)
+        lay.addWidget(self.camera_live)
         self.refresh_camera_ports()
-        lay.addWidget(details('Estado de validación','Ambas unidades produjeron fotos y guardaron en microSD. Nueve fotos se verificaron desde lector independiente. La campaña conserva fallos de arranque: no está demostrada su estabilidad. El candidato de secuencia está compilado sin cargar. Grabación prolongada, energía, audio y tolerancia a reset siguen pendientes. Edu define eventos y comandos de vuelo.'))
+        lay.addWidget(details('Alcance del banco','Foto USB y chequeo de escritura/lectura SD por unidad. La vista previa Wi-Fi requiere activar el modo de mantenimiento y conectar la PC a la red local de la cámara. Una imagen recibida no confirma grabación. Arranque autónomo, grabación prolongada, energía y continuidad ante reset requieren sus ensayos. Los comandos de vuelo los define Edu.'))
+
+    def control_camera_wifi(self,enabled,n):
+        def begin():
+            import secrets
+            sys.path.insert(0,str(AREA/'camaras-banco'))
+            from camera_session import read_registry
+            from preview_control import activate
+            port=self.camera_ports.currentData()
+            if not port:raise ValueError('Elegí el puerto USB de la cámara para activar o desactivar su red.')
+            if any(kind=='camera' for _,kind,_ in self.jobs):raise ValueError('Hay una operación de cámara en curso.')
+            if self.source and not self.source.closed and self.source.mode=='usb' and self.source.port==port:raise ValueError('El puerto está ocupado por telemetría.')
+            identity=read_registry(self.config.get('camera_registry',''))[f'camera{n}']
+            password=secrets.token_hex(8) if enabled else None
+            self.camera_live.stop()
+            self.camera_busy=n;self.camera_started=time.monotonic();self.camera_operation='Configuración Wi-Fi local'
+            def done(result):
+                self.camera_busy=None;self.camera_started=None
+                self.camera_summary.setText('Wi-Fi de mantenimiento activado; no se inició grabación.' if enabled else 'Wi-Fi desactivado según la cámara.')
+                if enabled:
+                    self.camera_live.address.setText('http://'+result['ip']+':81/stream')
+                    self.notice('Red local de cámara',f"Red: {result['ssid']}\nClave temporal: {password}\n\nConectá la PC a esta red desde Windows. Después pulsá Conectar vista previa. La clave sólo se muestra aquí; no se guarda en archivos.")
+            self.submit(lambda:activate(port,identity,enabled,password),'camera',done)
+        self.guarded(begin)
 
     def refresh_camera_ports(self):
         if self.camera_busy is not None:return
@@ -533,6 +563,7 @@ class Laboratory(QMainWindow):
             self.closing=True
             if self.source:self.source.stop()
             self.data_title.setText('Conservando el trabajo antes de cerrar…');event.ignore();return
+        self.camera_live.stop();self.camera_live.timer.stop()
         self.timer.stop();self.port_timer.stop();self.pool.shutdown(wait=False);event.accept()
 
 

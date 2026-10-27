@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Vista previa Wi-Fi de mantenimiento — 27/10/2026
+
+[Panel Qt, candidato cargado en cámara 1 y modelo de supervisión](docs/camaras/2026-10-27-vista-previa-wifi-banco.md). Wi-Fi se activa explícitamente por USB; abrir la app no conecta la cámara. Carga/INFO verificados, imagen física Wi-Fi y grabación autónoma todavía pendientes. Cada cámara cuenta con su propia SD; sonido queda fuera de esta etapa.
+
 ## Grabación autónoma y vista en vivo — propuesta del 27/10/2026
 
 [Video, vista previa y supervisión de escritura sin PC](docs/camaras/2026-10-27-video-vivo-y-grabacion-autonoma-19.md), con campaña pendiente y límites de la secuencia física. [Revisión de las cuatro fotos de estructura y la demostración de Edu](docs/camaras/2026-10-27-estructura-y-banco-de-vuelo-20.md). Son análisis y propuestas; no acreditan otra prueba física ni implementación de transmisión en vivo.

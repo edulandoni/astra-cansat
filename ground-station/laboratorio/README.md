@@ -1,5 +1,9 @@
 # ASTRA — Laboratorio
 
+## Vista previa Wi-Fi de mantenimiento — 27/10/2026
+
+[Panel Qt, candidato cargado en cámara 1 y modelo de supervisión](../docs/camaras/2026-10-27-vista-previa-wifi-banco.md). Wi-Fi se activa explícitamente por USB; abrir la app no conecta la cámara. Carga/INFO verificados, imagen física Wi-Fi y grabación autónoma todavía pendientes. Cada cámara cuenta con su propia SD; sonido queda fuera de esta etapa.
+
 ## Grabación verificada y exportación — 27/10/2026
 
 Ver última grabación abre la secuencia privada configurada por unidad. El visor comprueba sus originales, reproduce por tiempos guardados y exporta un MP4 derivado, con verificación posterior de cuadros/marcas y sin alterar los JPEG. La exportación necesita PyAV 19.0.1, fijado en requirements-qt.txt. [Primer ensayo físico: doce cuadros y límites](../docs/camaras/2026-10-27-primera-secuencia-y-mp4-18.md). Clave privada opcional: `sequences: {"1": "carpeta de secuencia verificada"}`; no se publica con el repositorio.
