@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Vista Wi-Fi física confirmada — 27/10/2026
+
+[Imagen de cámara 1 vista en el Laboratorio y secuencia posterior con cierre reportado](docs/camaras/2026-10-27-vista-wifi-confirmada-y-red-compartida.md). Wi-Fi desactivado al terminar; grabación autónoma continua, lectura independiente del nuevo CLIP y modo de red compartida siguen pendientes.
+
 ## Vista previa Wi-Fi de mantenimiento — 27/10/2026
 
 [Panel Qt, candidato cargado en cámara 1 y modelo de supervisión](docs/camaras/2026-10-27-vista-previa-wifi-banco.md). Wi-Fi se activa explícitamente por USB; abrir la app no conecta la cámara. Carga/INFO verificados, imagen física Wi-Fi y grabación autónoma todavía pendientes. Cada cámara cuenta con su propia SD; sonido queda fuera de esta etapa.
