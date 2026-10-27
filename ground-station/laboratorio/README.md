@@ -1,5 +1,9 @@
 # ASTRA — Laboratorio
 
+## Grabación segmentada y seguimiento USB — 27/10/2026
+
+[Inicio, parada, progreso de escritura y verificación de archivos](../docs/camaras/2026-10-27-grabacion-segmentada-y-supervision-usb.md). Cámara 1 reportó 123 cuadros en tres segmentos durante una prueba con límite de 30 s y continuó al cerrar el seguimiento. La ampliación permite copiar por USB sin extraer SD; lectura con otro lector, batería, vuelo y cámara 2 mantienen sus ensayos pendientes.
+
 ## Vista Wi-Fi física confirmada — 27/10/2026
 
 [Imagen de cámara 1 vista en el Laboratorio y secuencia posterior con cierre reportado](../docs/camaras/2026-10-27-vista-wifi-confirmada-y-red-compartida.md). Wi-Fi desactivado al terminar; grabación autónoma continua, lectura independiente del nuevo CLIP y modo de red compartida siguen pendientes.

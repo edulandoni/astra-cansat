@@ -1,0 +1,24 @@
+{
+  "created_utc": "2026-10-27T18:22:15.268509+00:00",
+  "jira": [
+    "ASTRA-39",
+    "ASTRA-41"
+  ],
+  "unit": "camera1",
+  "qt_platform": "offscreen",
+  "button_invocation": "QPushButton.click from code, not manual desktop observation",
+  "checks": {
+    "physical_start_button": true,
+    "writing_progress_seen": true,
+    "reported_frames": 24,
+    "copy_button_enabled": true,
+    "physical_copy_button": true,
+    "reader_independent": false,
+    "physical_archive_and_export": true
+  },
+  "firmware": "final candidate with recording and bounded USB read",
+  "video_exported_and_verified": true,
+  "reader_independent": false,
+  "sd_extracted": false,
+  "wifi_enabled": false
+}

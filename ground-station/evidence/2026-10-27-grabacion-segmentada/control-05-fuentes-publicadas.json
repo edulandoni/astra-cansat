@@ -1,0 +1,26 @@
+{
+  "created_utc": "2026-10-27T18:25:09.238847+00:00",
+  "note": "Final source snapshot for publication. Earlier numbered controls preserve earlier source/collection states.",
+  "sha256": {
+    "ground-station/camaras-banco/sequence_player.py": "35ecba5b2022cfdd37cbb1537fbfc12f3d655f121092ea4b7b5a902c1c7b42a2",
+    "ground-station/laboratorio/qt_app.py": "74ae2fb621db0a676ea01abea2eef360744c6d4d54fb83f540aac9bf3a60b0fe",
+    "ground-station/laboratorio/test_full_workspace.py": "dcdc91f72254081dd30bfea3d39e0459aca844d09e030d78c23b0ee5c70f31da",
+    "ground-station/laboratorio/test_gui_close.py": "b7d1c1722ec9b9e3228f188364bd830fd9b6641ad700511e57daaf65e362c437",
+    "ground-station/laboratorio/test_qt_camera_live.py": "456d5cabef446b94260e6ce1f9a1f472774dffd25e8950876e0ffc45319ddb85",
+    "ground-station/laboratorio/test_qt_lab.py": "25959ab084f8c1a60a05c750c4f36f1478a685beed96611c7205435e709fd282",
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/AstraCameraRecorderBench.ino": "cae44a6cda51aec684212c0db0f6d07c65aabb09007b0afe5630c2760380483f",
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/preview_wifi.h": "854631e76b26a1549423c6ba88437a5f21aaaaf2d1aadc2aa8dde0486d077ed3",
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/recording.h": "e846b536067a0be829fd3b5cb93f2e32b4cb4a80e52d7c7467fe85e35c468662",
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/recording_transfer.h": "7816d61c9e857c9519d95912f06e3654335ae8f5dbd2e8e96bcb1bb562c50859",
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/sequence_capture.h": "f98b91f025a3dd52cc42da6aa42903a5337238acd10638e4cc9657175bc2d9f9",
+    "ground-station/camaras-banco/recorder_client.py": "8ed78ae2ad5291916551cb5b567cc31273c7eb928f3abbbfffd105743b16fef5",
+    "ground-station/camaras-banco/recording_transfer.py": "253dd7c79d8d8ae454299c384eb98c090c957ea7ce9874640fb8d1ace2f4e81d",
+    "ground-station/camaras-banco/recording_verify.py": "a01b3be535e7961b1658124dee1617325117c1b5ee143f0ddf6bbcc893ac79e3",
+    "ground-station/camaras-banco/test_recorder_client.py": "b60f48097d0287af5077ea8c2e0b25af573b26c5d04f1c0496091d9844e283ea",
+    "ground-station/camaras-banco/test_recording_transfer.py": "f68bced24f20201f03b9d396f695d39a33018df4d81dccc57da49f5be965ba42",
+    "ground-station/camaras-banco/test_recording_verify.py": "7b917814d9b3739e451d28faf20eb53899ce8c997f1daab5df0901635d56a228",
+    "ground-station/laboratorio/qt_recorder.py": "fef0d2c2265d19f66ab4cdefb35a32a2b1f1cf91f83baeb6ed87fff8a8084584",
+    "ground-station/laboratorio/qt_test_cleanup.py": "c069d1740335c37a9e9d16a6db005d3547765c59ca478d0719973128bd20573f",
+    "ground-station/laboratorio/test_qt_recorder.py": "f49e75ec2bc8afba85965ac9e160a0eada824905a4d68d186aede1d73847c8b0"
+  }
+}

@@ -1,5 +1,9 @@
 # Banco local de cámaras — experimental
 
+## Grabación segmentada y seguimiento USB — 27/10/2026
+
+[Inicio, parada, progreso de escritura y verificación de archivos](../docs/camaras/2026-10-27-grabacion-segmentada-y-supervision-usb.md). Cámara 1 reportó 123 cuadros en tres segmentos durante una prueba con límite de 30 s y continuó al cerrar el seguimiento. La ampliación permite copiar por USB sin extraer SD; lectura con otro lector, batería, vuelo y cámara 2 mantienen sus ensayos pendientes.
+
 ## Primera secuencia física y MP4 — 27/10/2026
 
 [Doce cuadros de cámara 1 verificados desde el lector y exportados con sus tiempos](../docs/camaras/2026-10-27-primera-secuencia-y-mp4-18.md). El candidato fue cargado sólo en cámara 1. Los JPEG se guardan en SD y el MP4 se genera en PC; no es grabación MP4 directa de la cámara. Tramo 6,077584 s a media 1,81 cuadros/s; ambas unidades, duración mayor, audio y energía siguen pendientes. Controles: 40 pruebas del banco y 16 del Laboratorio. Conservo todos los cortes previos.

@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-10-27T18:20:52.979656+00:00",
+  "jira": [
+    "ASTRA-39",
+    "ASTRA-41",
+    "ASTRA-24"
+  ],
+  "firmware_for_transfer": {
+    "program_bytes": 1125171,
+    "static_bytes": 60132,
+    "identity_verified": true,
+    "recording_inactive_before_flash": true,
+    "application_only": true,
+    "same_partitions": true,
+    "binary_bytes": 1125312,
+    "binary_sha256": "87aef759d94e6c9fded0d5d21b8d34cdcad204dfcc78d6b0298c3b43080b221a",
+    "upload_exit": 0,
+    "hash_verified": true,
+    "manual_buttons_needed": false,
+    "sd_formatted": false
+  },
+  "recordings": [
+    {
+      "recording": 1,
+      "source_reason": "DURATION_LIMIT",
+      "copy_verified": true,
+      "transfer_bytes": 1780914,
+      "files": 251,
+      "frames": 123,
+      "segments": 3,
+      "first_to_last_seconds": 29.828024,
+      "mean_interval_fps": 4.090113377942837,
+      "maximum_interval_seconds": 0.479809,
+      "local_files_unchanged_during_verification": true,
+      "mp4_verified": true,
+      "mp4_frames": 123,
+      "timestamp_error_us": 0,
+      "mp4_sha256": "dc1292e37b2546419bac1e67f28210d94f5f5f8fa95ee27477fa4cd2e49245fc"
+    },
+    {
+      "recording": 2,
+      "source_reason": "STOP_REQUESTED",
+      "copy_verified": true,
+      "transfer_bytes": 231818,
+      "files": 35,
+      "frames": 16,
+      "segments": 1,
+      "first_to_last_seconds": 3.038722,
+      "mean_interval_fps": 4.936285714849862,
+      "maximum_interval_seconds": 0.239837,
+      "local_files_unchanged_during_verification": true,
+      "mp4_verified": true,
+      "mp4_frames": 16,
+      "timestamp_error_us": 0,
+      "mp4_sha256": "bd9d89150f77fa50c15c3c3b2df8e44002bc534278c539458c6e76038bcc8e9d"
+    }
+  ],
+  "via_usb_and_same_camera_sd_controller": true,
+  "independent_card_reader": false,
+  "sd_formatted_or_erased": false,
+  "software_checks": {
+    "camera_suite": 57,
+    "laboratory_suite": 29,
+    "latest_transfer_tests": 4
+  },
+  "final_source_sha256": {
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/AstraCameraRecorderBench.ino": "cae44a6cda51aec684212c0db0f6d07c65aabb09007b0afe5630c2760380483f",
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/preview_wifi.h": "854631e76b26a1549423c6ba88437a5f21aaaaf2d1aadc2aa8dde0486d077ed3",
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/recording.h": "e846b536067a0be829fd3b5cb93f2e32b4cb4a80e52d7c7467fe85e35c468662",
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/recording_transfer.h": "7816d61c9e857c9519d95912f06e3654335ae8f5dbd2e8e96bcb1bb562c50859",
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/sequence_capture.h": "f98b91f025a3dd52cc42da6aa42903a5337238acd10638e4cc9657175bc2d9f9",
+    "ground-station/camaras-banco/recorder_client.py": "8ed78ae2ad5291916551cb5b567cc31273c7eb928f3abbbfffd105743b16fef5",
+    "ground-station/camaras-banco/recording_transfer.py": "253dd7c79d8d8ae454299c384eb98c090c957ea7ce9874640fb8d1ace2f4e81d",
+    "ground-station/camaras-banco/recording_verify.py": "a01b3be535e7961b1658124dee1617325117c1b5ee143f0ddf6bbcc893ac79e3",
+    "ground-station/camaras-banco/sequence_player.py": "35ecba5b2022cfdd37cbb1537fbfc12f3d655f121092ea4b7b5a902c1c7b42a2",
+    "ground-station/laboratorio/qt_app.py": "7470aebbf094696ddf3553a50b41526b2f692598d0fc02a47307cd93f6c7110b",
+    "ground-station/laboratorio/qt_recorder.py": "fef0d2c2265d19f66ab4cdefb35a32a2b1f1cf91f83baeb6ed87fff8a8084584",
+    "ground-station/laboratorio/qt_test_cleanup.py": "c069d1740335c37a9e9d16a6db005d3547765c59ca478d0719973128bd20573f"
+  },
+  "capture_source_snapshot_note": "control-01 belongs to the capture iteration; final candidate adds bounded read-only file transfer. Original capture source snapshot and binaries are preserved privately."
+}

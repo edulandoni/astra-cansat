@@ -17,6 +17,10 @@ from PIL import Image
 
 
 class FullWorkspaceTests(unittest.TestCase):
+    def tearDown(self):
+        from qt_test_cleanup import cleanup_widgets
+        cleanup_widgets()
+
     @classmethod
     def setUpClass(cls):
         cls.app=QApplication.instance() or QApplication([])

@@ -12,9 +12,13 @@ from sequence_verify import verify,MAX_JPEG
 class Archive:
     def __init__(self,folder,expected_device=None):
         self.root=Path(folder).resolve(strict=True)
-        self.report=verify(self.root,expected_device)
+        self.segmented=(self.root/'session-start.json').exists()
+        if self.segmented:
+            from recording_verify import verify_recording
+            self.report=verify_recording(self.root,expected_device)
+        else:self.report=verify(self.root,expected_device)
         if expected_device and self.report['origin']!='camera':raise ValueError('Esta carpeta es una muestra de PC, no una secuencia de la cámara seleccionada')
-        if not self.report['complete']:raise ValueError('Secuencia incompleta o contradictoria: '+ '; '.join(e['reason'] for e in self.report['errors'][:5]))
+        if not self.report['complete']:raise ValueError('Secuencia incompleta o contradictoria: '+ '; '.join(e['reason'] if isinstance(e,dict) else str(e) for e in self.report['errors'][:5]))
         self.frames=self.report['frames']
         if not self.frames:raise ValueError('La secuencia no tiene imágenes comprobadas')
         first=self.frames[0]['capture_us']
@@ -27,7 +31,7 @@ class Archive:
 
     def image(self,index):
         frame=self.frames[index];path=self.root/frame['file']
-        if path.is_symlink() or path.resolve().parent!=self.root:raise ValueError('La ruta de imagen cambió')
+        if path.is_symlink() or path.parent.is_symlink() or self.root not in path.resolve().parents or (not self.segmented and path.resolve().parent!=self.root):raise ValueError('La ruta de imagen cambió')
         with path.open('rb') as h:data=h.read(MAX_JPEG+1)
         if len(data)!=frame['bytes'] or hashlib.sha256(data).hexdigest()!=frame['sha256']:raise ValueError('La imagen cambió después de verificarla; detengo la reproducción')
         with Image.open(io.BytesIO(data)) as picture:

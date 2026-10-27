@@ -1,0 +1,9 @@
+{
+  "created_utc": "2026-10-27T18:23:50.984974+00:00",
+  "camera_tests": 58,
+  "laboratory_tests": 29,
+  "camera_returncode": 0,
+  "cancellation_preserves_partial_and_source": true,
+  "qt_test_platform": "offscreen",
+  "note": "Updates final software count; earlier controls retain their collection dates."
+}

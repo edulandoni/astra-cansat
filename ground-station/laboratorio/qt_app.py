@@ -272,8 +272,8 @@ class Laboratory(QMainWindow):
         lay.addWidget(t);lay.addWidget(label('Texto ASCII separado por comas. El empaquetado binario de vuelo sigue bajo definición de Edu.','muted'));w.setAttribute(Qt.WA_DeleteOnClose);w.show()
 
     def build_cameras(self):
-        lay=self.heading('camaras','Cámaras ESP32-CAM','Una foto nueva por solicitud. La imagen aparece aquí al terminar su recepción USB; no es video continuo.')
-        cards=QHBoxLayout();self.photo_widgets={};self.camera_notes={};self.photo_badges={};self.sequence_buttons={}
+        lay=self.heading('camaras','Cámaras ESP32-CAM','Fotos, grabación local en microSD y vista previa de mantenimiento. Cada función informa su origen y estado de verificación.')
+        cards=QHBoxLayout();self.photo_widgets={};self.camera_notes={};self.photo_badges={};self.sequence_buttons={};self.sequence_last_buttons={}
         for n in (1,2):
             c,l=card(f'Cámara {n}');badge=label('EVIDENCIA CONSERVADA','badge');self.photo_badges[n]=badge;l.addWidget(badge);pic=QLabel();pic.setAlignment(Qt.AlignCenter);pic.setMinimumHeight(170)
             entry=self.config.get('photos',{}).get(str(n),{});pix=QPixmap(entry.get('path',''))
@@ -286,8 +286,8 @@ class Laboratory(QMainWindow):
             sd_button=button('Foto + microSD',lambda checked=False,number=n:self.capture_camera(number,True));actions.addWidget(sd_button)
             l.addLayout(actions);self.photo_widgets[n]=(pic,b);self.camera_notes[n]=note
             l.addWidget(button('Abrir secuencia guardada…',lambda checked=False,number=n:self.open_sequence(number)))
-            last=button('Ver última grabación',lambda checked=False,number=n:self.open_sequence(number,latest=True))
-            last.setEnabled(bool(self.config.get('sequences',{}).get(str(n))));l.addWidget(last)
+            last=button('Ver grabación conservada',lambda checked=False,number=n:self.open_sequence(number,latest=True))
+            last.setEnabled(bool(self.config.get('sequences',{}).get(str(n))));self.sequence_last_buttons[n]=last;l.addWidget(last)
             seq=button('Grabar prueba · 12 cuadros en SD',lambda checked=False,number=n:self.record_sequence(number));self.sequence_buttons[n]=seq;l.addWidget(seq)
             l.addWidget(button('Ampliar foto',lambda checked=False,number=n:self.enlarge_camera(number)))
             if not hasattr(self,'camera_action_buttons'):self.camera_action_buttons=[]
@@ -302,10 +302,57 @@ class Laboratory(QMainWindow):
             sys.path.insert(0,str(AREA/'camaras-banco'))
             from camera_session import read_registry
             return read_registry(self.config.get('camera_registry',''))[f'camera{number}']
+        from qt_recorder import RecorderPanel
+        self.recorder_panel=RecorderPanel(self.begin_camera_recording,self,copy=self.copy_camera_recording)
+        lay.addWidget(self.recorder_panel)
         self.camera_live=CameraLive(camera_identity,self,control=self.control_camera_wifi)
         lay.addWidget(self.camera_live)
         self.refresh_camera_ports()
         lay.addWidget(details('Alcance del banco','Foto USB y chequeo de escritura/lectura SD por unidad. La vista previa Wi-Fi requiere activar el modo de mantenimiento y conectar la PC a la red local de la cámara. Una imagen recibida no confirma grabación. Arranque autónomo, grabación prolongada, energía y continuidad ante reset requieren sus ensayos. Los comandos de vuelo los define Edu.'))
+
+    def copy_camera_recording(self,n,report):
+        def begin():
+            sys.path.insert(0,str(AREA/'camaras-banco'))
+            from camera_session import read_registry
+            from recording_transfer import copy_from_camera
+            port=self.camera_ports.currentData()
+            if not port:raise ValueError('Elegí el puerto USB de la cámara.')
+            if any(kind=='camera' for _,kind,_ in self.jobs):raise ValueError('Hay una operación de cámara en curso.')
+            if self.source and not self.source.closed and self.source.mode=='usb' and self.source.port==port:raise ValueError('El puerto está ocupado por telemetría.')
+            device=read_registry(self.config.get('camera_registry',''))[f'camera{n}']
+            if not report or report.get('device')!=device or report.get('state')!='COMPLETE':raise ValueError('Primero consultá una grabación cerrada de esta cámara.')
+            self.recorder_panel.detach_event.clear();self.recorder_panel.set_busy(True)
+            self.recorder_panel.stop_button.setEnabled(False);self.recorder_panel.detach_button.setEnabled(False);self.recorder_panel.copy_button.setEnabled(False)
+            self.recorder_panel.status.setText('Copiando archivos de SD por USB y comprobando imágenes en PC. Cerrar la app cancela la copia sin borrar los originales.')
+            self.camera_busy=n;self.camera_started=time.monotonic();self.camera_operation='Copia de grabación por USB'
+            def done(result):
+                self.camera_busy=None;self.camera_started=None;self.recorder_panel.set_busy(False);self.recorder_panel.copy_button.setEnabled(True)
+                if result['complete']:
+                    self.config.setdefault('sequences',{})[str(n)]=result['folder']
+                    self.sequence_last_buttons[n].setEnabled(True)
+                    self.recorder_panel.status.setText(f"Copia USB verificada en PC: {result['verification']['checked_frames']} cuadros. La SD se leyó mediante la cámara, no desde otro lector.\n{result['folder']}")
+                else:self.recorder_panel.status.setText('Copia sin verificar: '+str(result.get('error'))+' · originales conservados.')
+            self.submit(lambda:copy_from_camera(port,device,report['boot'],report['run'],self.output/'grabaciones-copiadas',self.recorder_panel.detach_event),'camera',done)
+        self.guarded(begin)
+
+    def begin_camera_recording(self,start,n,seconds):
+        def begin():
+            sys.path.insert(0,str(AREA/'camaras-banco'))
+            from camera_session import read_registry
+            from recorder_client import monitor
+            port=self.camera_ports.currentData()
+            if not port:raise ValueError('Elegí el puerto USB de la cámara.')
+            if any(kind=='camera' for _,kind,_ in self.jobs):raise ValueError('Ya hay una operación de cámara en curso.')
+            if self.source and not self.source.closed and self.source.mode=='usb' and self.source.port==port:raise ValueError('El puerto está ocupado por telemetría.')
+            device=read_registry(self.config.get('camera_registry',''))[f'camera{n}']
+            self.camera_live.stop();self.recorder_panel.prepare(device)
+            self.camera_busy=n;self.camera_started=time.monotonic();self.camera_operation='Grabación SD y seguimiento'
+            def done(result):
+                self.camera_busy=None;self.camera_started=None
+                self.recorder_panel.finished(result)
+                self.camera_summary.setText('Seguimiento de grabación finalizado. Consultá su estado y límites en el panel de grabación.')
+            self.submit(lambda:monitor(port,device,self.output/'grabaciones',seconds,start,self.recorder_panel.stop_event,self.recorder_panel.detach_event,self.recorder_panel.events),'camera',done)
+        self.guarded(begin)
 
     def control_camera_wifi(self,enabled,n):
         def begin():
@@ -545,6 +592,7 @@ class Laboratory(QMainWindow):
                 try:done(future.result())
                 except Exception as exc:
                     if kind=='camera':
+                        if self.recorder_panel.active:self.recorder_panel.finished(dict(state='UNKNOWN',error=str(exc),last=self.recorder_panel.last))
                         n=self.camera_busy;self.camera_busy=None;self.camera_started=None
                         if n:
                             self.photo_badges[n].setText('FOTO ANTERIOR · CAPTURA NO CONFIRMADA');self.camera_notes[n].setText('La solicitud falló. La imagen mostrada no es una foto nueva.')
@@ -559,11 +607,12 @@ class Laboratory(QMainWindow):
         if self.closing and not self.jobs and (not self.source or self.source.closed):self.close()
 
     def closeEvent(self,event):
+        self.recorder_panel.detach_event.set()
         if self.jobs or (self.source and not self.source.closed):
             self.closing=True
             if self.source:self.source.stop()
             self.data_title.setText('Conservando el trabajo antes de cerrar…');event.ignore();return
-        self.camera_live.stop();self.camera_live.timer.stop()
+        self.camera_live.stop();self.camera_live.timer.stop();self.recorder_panel.timer.stop()
         self.timer.stop();self.port_timer.stop();self.pool.shutdown(wait=False);event.accept()
 
 

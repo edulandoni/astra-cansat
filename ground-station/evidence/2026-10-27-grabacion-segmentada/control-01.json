@@ -1,0 +1,79 @@
+{
+  "created_utc": "2026-10-27T18:03:32.199798+00:00",
+  "jira": [
+    "ASTRA-39",
+    "ASTRA-41",
+    "ASTRA-24"
+  ],
+  "unit": "camera1",
+  "firmware": {
+    "program_bytes": 1123203,
+    "static_bytes": 60084,
+    "automatic_programming_connection": true,
+    "identity_verified": true,
+    "same_partitions": true,
+    "application_offset": "0x10000",
+    "binary_bytes": 1123344,
+    "binary_sha256": "2c4eef60d2de49497186d961e820b73d86a62989539c8c685aeb57e2814a707b",
+    "upload_exit": 0,
+    "hash_verified": true,
+    "sd_formatted": false
+  },
+  "software_tests": {
+    "camera_suite": 53,
+    "laboratory_suite": 29,
+    "qt_cleanup": "Explicit widget destruction between offscreen tests; final suite exits successfully"
+  },
+  "physical_checks": {
+    "normal_boot_after_automatic_flash": true,
+    "duplicate_start_same_run": true,
+    "conflicting_start_rejected": true,
+    "wrong_run_stop_rejected": true,
+    "same_boot_after_reopen": true,
+    "progress_while_port_closed": true,
+    "automatic_duration_close": true,
+    "segments_rotated": true,
+    "explicit_stop_closed": true,
+    "duplicate_stop_no_new_run": true
+  },
+  "runs_reported": [
+    {
+      "state": "COMPLETE",
+      "reason": "DURATION_LIMIT",
+      "frames_captured": 123,
+      "frames_written": 123,
+      "frames_readback": 123,
+      "bytes_written": 1753920,
+      "segments_closed": 3
+    },
+    {
+      "state": "COMPLETE",
+      "reason": "STOP_REQUESTED",
+      "frames_captured": 16,
+      "frames_written": 16,
+      "frames_readback": 16,
+      "bytes_written": 227713,
+      "segments_closed": 1
+    }
+  ],
+  "independent_sd_readback_verified": false,
+  "pc_closed_port_seconds": 8,
+  "frames_before_detach": 10,
+  "frames_after_reopen": 48,
+  "battery_autonomy_verified": false,
+  "power_loss_survival_verified": false,
+  "wifi_during_test": false,
+  "sources_sha256": {
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/AstraCameraRecorderBench.ino": "a4b3bb2c05e4dfc81b90adb2a6c456c7656534c36b5dce39f98652efcb544217",
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/preview_wifi.h": "854631e76b26a1549423c6ba88437a5f21aaaaf2d1aadc2aa8dde0486d077ed3",
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/recording.h": "e846b536067a0be829fd3b5cb93f2e32b4cb4a80e52d7c7467fe85e35c468662",
+    "ground-station/camaras-banco/firmware/AstraCameraRecorderBench/sequence_capture.h": "f98b91f025a3dd52cc42da6aa42903a5337238acd10638e4cc9657175bc2d9f9",
+    "ground-station/camaras-banco/recorder_client.py": "8ed78ae2ad5291916551cb5b567cc31273c7eb928f3abbbfffd105743b16fef5",
+    "ground-station/camaras-banco/recording_verify.py": "a01b3be535e7961b1658124dee1617325117c1b5ee143f0ddf6bbcc893ac79e3",
+    "ground-station/camaras-banco/sequence_player.py": "35ecba5b2022cfdd37cbb1537fbfc12f3d655f121092ea4b7b5a902c1c7b42a2",
+    "ground-station/laboratorio/qt_app.py": "9572d81b6131a99eceafea75dbea2c4c9d8d43bca6fb6d733c9f1f2300d46add",
+    "ground-station/laboratorio/qt_recorder.py": "7df28b285a29add923d91b1930a00fb4a3de1a9d1b754a8b3c22c0eb5698b22b",
+    "ground-station/laboratorio/qt_test_cleanup.py": "c069d1740335c37a9e9d16a6db005d3547765c59ca478d0719973128bd20573f"
+  },
+  "raw_campaign_sha256": "bd63a0dddf54779b246801b552abfd734d42e3c1a0b700b65ee25ba7cc2bf878"
+}
