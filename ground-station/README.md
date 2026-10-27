@@ -1,5 +1,9 @@
 # Groundstation y manejo de datos
 
+## Grabación autónoma y vista en vivo — propuesta del 27/10/2026
+
+[Video, vista previa y supervisión de escritura sin PC](docs/camaras/2026-10-27-video-vivo-y-grabacion-autonoma-19.md), con campaña pendiente y límites de la secuencia física. [Revisión de las cuatro fotos de estructura y la demostración de Edu](docs/camaras/2026-10-27-estructura-y-banco-de-vuelo-20.md). Son análisis y propuestas; no acreditan otra prueba física ni implementación de transmisión en vivo.
+
 ## Primera grabación corta verificada — 27/10/2026
 
 [Cámara 1: doce cuadros leídos desde SD y MP4 con tiempos comprobados](docs/camaras/2026-10-27-primera-secuencia-y-mp4-18.md). Tramo de 6,077584 s, cadencia media 1,81 cuadros/s, sin audio. El Laboratorio reproduce y exporta; no acredita todavía video continuo de misión, energía o ambas cámaras.

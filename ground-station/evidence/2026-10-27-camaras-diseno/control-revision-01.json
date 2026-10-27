@@ -1,0 +1,55 @@
+{
+  "created_utc": "2026-10-27T15:35:28.558755+00:00",
+  "source_media": [
+    {
+      "name": "WhatsApp Unknown 2026-10-27 at 12.23.46.zip",
+      "bytes": 849883,
+      "sha256": "1b24e8f50060f2e96b7695edc779741d8c9df3fa70695807a48fea76d8096d91"
+    },
+    {
+      "name": "WhatsApp Video 2026-10-27 at 09.44.29.mp4",
+      "bytes": 12491196,
+      "sha256": "96e2d9b8ce97af4ba7b1366c995befabdae202ddf1d769622c75400b98a65d39"
+    }
+  ],
+  "video_seconds": 119.233333,
+  "video_frames_decoded": 3574,
+  "visual_samples_seconds": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60,
+    65,
+    70,
+    75,
+    80,
+    85,
+    90,
+    95,
+    100,
+    105,
+    110,
+    115
+  ],
+  "audio_seconds_transcribed": 119.2273125,
+  "photos_inspected": 4,
+  "limitations": [
+    "Visual sampling, not frame-by-frame viewing",
+    "Local ASR may contain errors; not human listening",
+    "No physical camera or electrical tests in this review",
+    "No coordinates, transcript or team media published"
+  ],
+  "jira": [
+    "ASTRA-39",
+    "ASTRA-24"
+  ]
+}
