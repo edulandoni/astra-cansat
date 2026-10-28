@@ -1,0 +1,44 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-10-28T03:41:54.352Z",
+  "cut_utc": "2026-10-28T03:48:28.000Z",
+  "cut_argentina": "2026-10-28T00:48:28 ART",
+  "status": "PARCIAL",
+  "last_successful_cut": "20/10/2026 21:03 ART",
+  "previous_documented_cut": "26/10/2026 20:59 ART",
+  "attempts": [
+    "course/view.php?id=106: Timeout fetching",
+    "login/index.php: Timeout fetching"
+  ],
+  "credentials_entered": false,
+  "public_pages_read": [
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/cronograma",
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/como-me-inscribo"
+  ],
+  "public_result": "Texto relevante sin cambio sustantivo detectado; binarios no revalidados",
+  "entries_revalidated_today": false,
+  "pending": [
+    "Secciones y recursos actuales",
+    "Foros, mensajes completos, respuestas y adjuntos desde el último acceso válido",
+    "Calendario y configuración de entrega",
+    "Versiones y huellas de archivos",
+    "Audiovisuales nuevos o modificados",
+    "Documentación del vector y ensayos ambientales"
+  ],
+  "same_access_impediment_as_previous": true,
+  "research": {
+    "source": "https://github.com/aron-8/CanSat_peralta/blob/4b57c9679da1f1aecef90cb16ace9b5d8ac1044f/ground_station/kalman.py",
+    "entire_file_read": true,
+    "tree_truncated": false,
+    "code_executed": false,
+    "new_images_inspected": 0
+  },
+  "downloads": "Sin descarga de binarios, imágenes o movimientos de Descargas",
+  "desktop_used": false,
+  "source_issue_update": "Sin aviso repetido en ASTRA-37",
+  "limits": [
+    "Timeout no demuestra caída global",
+    "No afirmo ausencia de novedades ni 100% de cobertura",
+    "Las propuestas de pruebas no constituyen ensayos ejecutados"
+  ]
+}
+
