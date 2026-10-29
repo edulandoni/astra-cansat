@@ -5,10 +5,9 @@
 
 #include <stdint.h>
 
-typedef struct
-{
-  int32_t temperature_centi_c;
-  uint32_t pressure_pa;
+typedef struct {
+    int32_t temperature_centi_c;
+    uint32_t pressure_pa;
 } BMP280_Data;
 
 HAL_StatusTypeDef BMP280_Init(I2C_HandleTypeDef *i2c);

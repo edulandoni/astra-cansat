@@ -54,6 +54,8 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 
+HAL_StatusTypeDef SetMissionRtc(const RTC_TimeTypeDef *time, const RTC_DateTypeDef *date);
+
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

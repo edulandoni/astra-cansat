@@ -42,13 +42,24 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined library search paths
 )
 
-# Add sources to executable
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE
+set(ASTRA_APPLICATION_SOURCES
     Core/Src/altitude.c
     Core/Src/bmp280.c
     Core/Src/ds18b20.c
+    Core/Src/ina3221.c
     Core/Src/mpu6500.c
     Core/Src/neo6m.c
+)
+
+# Add sources to executable
+target_sources(${CMAKE_PROJECT_NAME} PRIVATE
+    ${ASTRA_APPLICATION_SOURCES}
+)
+
+# Keep strict warnings focused on code maintained by this project. CubeMX/HAL
+# sources are generated or third-party code and are intentionally excluded.
+set_source_files_properties(${ASTRA_APPLICATION_SOURCES} PROPERTIES
+    COMPILE_OPTIONS "-Wall;-Wextra;-Wshadow;-Wformat=2"
 )
 
 # Add include paths
