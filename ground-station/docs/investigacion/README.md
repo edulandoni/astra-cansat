@@ -1,5 +1,9 @@
 # Índice de investigaciones — ubicación vigente al 19/10/2026
 
+## Incorporación del 28/10/2026 — corte nocturno
+
+[KoNaR Can: cámaras y alcance de evidencia](2026-10-28-konar-camaras-y-evidencia.md) · [Láminas localizadas, sin inspección visual](2026-10-28-catalogo-visual-konar.csv). Lectura focal de CDR; sin auditoría completa, ejecución de software ajeno o prueba de vuelo.
+
 ## Incorporación del 28/10/2026
 
 [Peralta: filtrado, validez y tiempo](2026-10-28-peralta-filtrado-y-tiempo.md). Lectura estática de un módulo nuevo, con pruebas propuestas y límites; sin ejecución de código ajeno ni ensayo físico.
