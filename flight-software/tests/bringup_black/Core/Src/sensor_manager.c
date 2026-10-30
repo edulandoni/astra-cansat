@@ -2,7 +2,6 @@
 
 #include "altitude.h"
 #include "bmp280.h"
-#include "debug_console.h"
 #include "ds18b20.h"
 #include "flight_config.h"
 #include "i2c_bus_manager.h"
@@ -85,6 +84,7 @@ typedef struct {
 
 static I2C_HandleTypeDef *i2c_bus;
 static RTC_HandleTypeDef *rtc;
+static SensorManagerMessageSink report_message;
 static Altitude_Reference altitude_reference;
 static AltitudeCalibrationState altitude_calibration;
 static BMP280_Data bmp280_data;
@@ -100,6 +100,12 @@ static Mpu6500State mpu6500;
 static void IncrementUint16Saturated(uint16_t *counter) {
     if (*counter < UINT16_MAX) {
         ++(*counter);
+    }
+}
+
+static void ReportMessage(const char *message) {
+    if (report_message != NULL) {
+        report_message(message);
     }
 }
 
@@ -159,7 +165,7 @@ static bool InitializeBmp280(bool report_result, bool recovery_attempt, uint32_t
     }
 
     if (report_result) {
-        (void)DebugConsole_Write(bmp280_available ? "BMP280 OK\r\n" : "BMP280 INIT FAIL\r\n");
+        ReportMessage(bmp280_available ? "BMP280 OK\r\n" : "BMP280 INIT FAIL\r\n");
     }
     return bmp280_available;
 }
@@ -190,7 +196,7 @@ static bool InitializeMpu6500(bool report_result,
             IncrementUint16Saturated(&mpu6500.common.initialization_failures);
             if (report_result) {
                 (void)snprintf(message, sizeof(message), "MPU6500 FAIL | WHO_AM_I=0x%02X\r\n", who_am_i);
-                (void)DebugConsole_Write(message);
+                ReportMessage(message);
             }
             return false;
         }
@@ -236,7 +242,7 @@ static void ServiceMpu6500Initialization(uint32_t now_ms) {
                        mpu6500.available ? "MPU6500 OK | WHO_AM_I=0x%02X\r\n"
                                          : "MPU6500 FAIL | WHO_AM_I=0x%02X\r\n",
                        mpu6500.who_am_i);
-        (void)DebugConsole_Write(message);
+        ReportMessage(message);
         mpu6500.report_init_result = false;
     }
 }
@@ -258,7 +264,7 @@ static bool InitializeIna3221(bool report_result, bool recovery_attempt, uint32_
         SetLastError(&ina3221_health, SENSOR_ERROR_INIT, I2C_FAULT_SOURCE_INA3221, now_ms);
         IncrementUint16Saturated(&ina3221_health.initialization_failures);
         if (report_result) {
-            (void)DebugConsole_Write("INA3221 INIT FAIL\r\n");
+            ReportMessage("INA3221 INIT FAIL\r\n");
         }
         return false;
     }
@@ -267,7 +273,7 @@ static bool InitializeIna3221(bool report_result, bool recovery_attempt, uint32_
     ina3221_health.consecutive_errors = 0U;
     if (report_result) {
         (void)snprintf(message, sizeof(message), "INA3221 OK | ADDR=0x%02X\r\n", INA3221_GetAddress(&ina3221));
-        (void)DebugConsole_Write(message);
+        ReportMessage(message);
     }
     return true;
 }
@@ -307,19 +313,21 @@ static void CopyHealthSnapshot(const SensorState *source, SensorHealthSnapshot *
 void SensorManager_Init(I2C_HandleTypeDef *i2c,
                         RTC_HandleTypeDef *rtc_handle,
                         UART_HandleTypeDef *gps_uart,
+                        SensorManagerMessageSink message_sink,
                         uint32_t now_ms) {
     i2c_bus = i2c;
     rtc = rtc_handle;
+    report_message = message_sink;
 
     if (NEO6M_Init(gps_uart) != HAL_OK) {
-        (void)DebugConsole_Write("GPS RX INIT FAIL\r\n");
+        ReportMessage("GPS RX INIT FAIL\r\n");
     }
     if (DS18B20_Init() == HAL_OK) {
         ds18b20.initialized = true;
         ds18b20.conversion_state = DS18B20_STATE_IDLE;
     } else {
         ds18b20.available = false;
-        (void)DebugConsole_Write("DWT INIT FAIL\r\n");
+        ReportMessage("DWT INIT FAIL\r\n");
     }
 
     Altitude_LoadReference(rtc, &altitude_reference);
@@ -515,7 +523,7 @@ void SensorManager_ProcessAltitudeCalibrationSample(uint32_t now_ms, bool sample
             (uint32_t)(altitude_calibration.pressure_sum / altitude_calibration.valid_samples);
         save_status = Altitude_SaveReference(rtc, &altitude_reference, average_pressure_pa);
     }
-    (void)DebugConsole_Write(save_status == HAL_OK ? "ALT ZERO OK\r\n" : "ALT ZERO FAIL\r\n");
+    ReportMessage(save_status == HAL_OK ? "ALT ZERO OK\r\n" : "ALT ZERO FAIL\r\n");
 }
 
 void SensorManager_InvalidateI2cSensors(uint32_t now_ms) {

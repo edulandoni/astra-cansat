@@ -7,9 +7,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+typedef void (*SensorManagerMessageSink)(const char *message);
+
 void SensorManager_Init(I2C_HandleTypeDef *i2c,
                         RTC_HandleTypeDef *rtc,
                         UART_HandleTypeDef *gps_uart,
+                        SensorManagerMessageSink message_sink,
                         uint32_t now_ms);
 void SensorManager_ProcessContinuous(uint32_t now_ms);
 void SensorManager_UpdateMpu6500(uint32_t now_ms);

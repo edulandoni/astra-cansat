@@ -77,6 +77,10 @@ static void ProcessCommands(void) {
     }
 }
 
+static void ReportSensorMessage(const char *message) {
+    (void)DebugConsole_Write(message);
+}
+
 static void SendDebugTelemetry(uint32_t now_ms) {
     SensorManager_GetFlightData(now_ms, &debug_flight_data);
     I2cBusManager_GetStatus(&debug_i2c_status);
@@ -132,7 +136,7 @@ void App_Init(I2C_HandleTypeDef *i2c,
     HAL_NVIC_EnableIRQ(USART2_IRQn);
 
     I2cBusManager_Init(i2c, SensorManager_InvalidateI2cSensors);
-    SensorManager_Init(i2c, rtc, gps_uart, now_ms);
+    SensorManager_Init(i2c, rtc, gps_uart, ReportSensorMessage, now_ms);
     InitializeScheduler(now_ms);
 }
 
