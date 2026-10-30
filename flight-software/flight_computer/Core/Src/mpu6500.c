@@ -1,6 +1,5 @@
 #include "mpu6500.h"
 
-#include <stdbool.h>
 #include <stddef.h>
 
 #define MPU6500_I2C_ADDRESS        (0x68U << 1)
@@ -24,16 +23,6 @@
 
 static int16_t read_i16_be(const uint8_t *bytes) {
     return (int16_t) (((uint16_t) bytes[0] << 8) | (uint16_t) bytes[1]);
-}
-
-static bool bytes_are_all(const uint8_t *bytes, size_t length, uint8_t expected) {
-    for (size_t index = 0U; index < length; ++index) {
-        if (bytes[index] != expected) {
-            return false;
-        }
-    }
-
-    return true;
 }
 
 HAL_StatusTypeDef MPU6500_Detect(I2C_HandleTypeDef *i2c, uint8_t *who_am_i) {
@@ -160,11 +149,6 @@ HAL_StatusTypeDef MPU6500_ReadRaw(I2C_HandleTypeDef *i2c, MPU6500_RawData *data)
                           bytes,
                           sizeof(bytes),
                           MPU6500_I2C_TIMEOUT_MS) != HAL_OK)) {
-        return HAL_ERROR;
-    }
-
-    if (bytes_are_all(&bytes[0], 6U, 0x00U) || bytes_are_all(&bytes[0], 6U, 0xFFU) ||
-        bytes_are_all(&bytes[8], 6U, 0x00U) || bytes_are_all(&bytes[8], 6U, 0xFFU)) {
         return HAL_ERROR;
     }
 
