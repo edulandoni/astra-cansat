@@ -22,6 +22,8 @@ typedef struct {
 static RTC_HandleTypeDef *mission_rtc;
 static SchedulerState scheduler;
 static bool rtc_time_valid;
+static FlightDataSnapshot debug_flight_data;
+static I2cBusStatus debug_i2c_status;
 
 static bool IsLeapYear(uint16_t year) {
     return ((year % 4U) == 0U) && (((year % 100U) != 0U) || ((year % 400U) == 0U));
@@ -76,12 +78,9 @@ static void ProcessCommands(void) {
 }
 
 static void SendDebugTelemetry(uint32_t now_ms) {
-    FlightDataSnapshot flight_data;
-    I2cBusStatus i2c_status;
-
-    SensorManager_GetFlightData(now_ms, &flight_data);
-    I2cBusManager_GetStatus(&i2c_status);
-    DebugConsole_ShowDashboard(&flight_data, &i2c_status, rtc_time_valid, mission_rtc);
+    SensorManager_GetFlightData(now_ms, &debug_flight_data);
+    I2cBusManager_GetStatus(&debug_i2c_status);
+    DebugConsole_ShowDashboard(&debug_flight_data, &debug_i2c_status, rtc_time_valid, mission_rtc);
 }
 
 static void RunScheduledTasks(uint32_t now_ms) {
