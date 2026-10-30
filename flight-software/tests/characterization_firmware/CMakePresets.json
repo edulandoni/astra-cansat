@@ -1,0 +1,33 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Ninja",
+      "toolchainFile": "../../flight_computer/cmake/gcc-arm-none-eabi.cmake"
+    },
+    {
+      "name": "mpu",
+      "inherits": "base",
+      "binaryDir": "${sourceDir}/build/mpu",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CHARACTERIZATION_TARGET": "MPU"
+      }
+    },
+    {
+      "name": "solar",
+      "inherits": "base",
+      "binaryDir": "${sourceDir}/build/solar",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CHARACTERIZATION_TARGET": "SOLAR"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "mpu", "configurePreset": "mpu" },
+    { "name": "solar", "configurePreset": "solar" }
+  ]
+}
