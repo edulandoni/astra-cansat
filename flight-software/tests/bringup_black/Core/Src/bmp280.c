@@ -7,7 +7,8 @@
 #define BMP280_REGISTER_DATA    0xF7U
 #define BMP280_REGISTER_CONFIG  0xF5U
 #define BMP280_REGISTER_CONTROL 0xF4U
-#define BMP280_I2C_TIMEOUT_MS   100U
+#define BMP280_I2C_TIMEOUT_MS   10U
+#define BMP280_READY_TRIALS     1U
 
 typedef struct {
     uint16_t t1;
@@ -120,7 +121,8 @@ HAL_StatusTypeDef BMP280_Init(I2C_HandleTypeDef *i2c) {
     uint8_t control = 0x2FU;
 
     initialized = 0U;
-    if ((i2c == NULL) || (HAL_I2C_IsDeviceReady(i2c, BMP280_I2C_ADDRESS, 3U, BMP280_I2C_TIMEOUT_MS) != HAL_OK) ||
+    if ((i2c == NULL) ||
+        (HAL_I2C_IsDeviceReady(i2c, BMP280_I2C_ADDRESS, BMP280_READY_TRIALS, BMP280_I2C_TIMEOUT_MS) != HAL_OK) ||
         (HAL_I2C_Mem_Read(i2c,
                           BMP280_I2C_ADDRESS,
                           BMP280_REGISTER_CHIP_ID,
@@ -148,6 +150,10 @@ HAL_StatusTypeDef BMP280_Init(I2C_HandleTypeDef *i2c) {
 
     initialized = 1U;
     return HAL_OK;
+}
+
+void BMP280_Invalidate(void) {
+    initialized = 0U;
 }
 
 HAL_StatusTypeDef BMP280_Read(I2C_HandleTypeDef *i2c, BMP280_Data *data) {

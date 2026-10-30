@@ -27,10 +27,13 @@ typedef struct {
     I2C_HandleTypeDef *i2c;
     INA3221_Data data;
     uint8_t address_7bit;
+    uint8_t preferred_address_7bit;
     bool ready;
 } INA3221_Handle;
 
 HAL_StatusTypeDef INA3221_Init(INA3221_Handle *device, I2C_HandleTypeDef *i2c);
+HAL_StatusTypeDef INA3221_Reinitialize(INA3221_Handle *device, I2C_HandleTypeDef *i2c);
+void INA3221_Invalidate(INA3221_Handle *device);
 bool INA3221_IsReady(const INA3221_Handle *device);
 uint8_t INA3221_GetAddress(const INA3221_Handle *device);
 HAL_StatusTypeDef INA3221_Read(INA3221_Handle *device, uint32_t now_ms);

@@ -17,9 +17,19 @@ typedef struct {
     int16_t gyro_z;
 } MPU6500_RawData;
 
+typedef struct {
+    uint8_t who_am_i;
+    uint8_t config;
+    uint8_t sample_rate_divider;
+    uint8_t gyro_config;
+    uint8_t accel_config;
+    uint8_t accel_config2;
+} MPU6500_Configuration;
+
 HAL_StatusTypeDef MPU6500_Detect(I2C_HandleTypeDef *i2c, uint8_t *who_am_i);
 HAL_StatusTypeDef MPU6500_BeginInitialization(I2C_HandleTypeDef *i2c);
 HAL_StatusTypeDef MPU6500_FinishInitialization(I2C_HandleTypeDef *i2c);
+HAL_StatusTypeDef MPU6500_ReadConfiguration(I2C_HandleTypeDef *i2c, MPU6500_Configuration *configuration);
 HAL_StatusTypeDef MPU6500_ReadRaw(I2C_HandleTypeDef *i2c, MPU6500_RawData *data);
 
 #endif /* MPU6500_H */

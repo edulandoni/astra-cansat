@@ -13,7 +13,7 @@
 #define INA3221_MANUFACTURER_ID           0x5449U
 #define INA3221_DIE_ID                    0x3220U
 #define INA3221_CONFIG_CH1_CH2_CONTINUOUS 0x6127U
-#define INA3221_I2C_TIMEOUT_MS            20U
+#define INA3221_I2C_TIMEOUT_MS            10U
 #define INA3221_BUS_LSB_MV                8
 #define INA3221_SHUNT_LSB_UV              40
 #define INA3221_BUS_MAX_MV                26000
@@ -56,6 +56,28 @@ static HAL_StatusTypeDef WriteRegister(const INA3221_Handle *device, uint8_t reg
                              INA3221_I2C_TIMEOUT_MS);
 }
 
+static bool AddressIsInDiscoveryRange(uint8_t address) {
+    return (address >= INA3221_ADDRESS_FIRST) && (address <= INA3221_ADDRESS_LAST);
+}
+
+static HAL_StatusTypeDef TryInitializeAddress(INA3221_Handle *device, uint8_t address) {
+    uint16_t manufacturer_id;
+    uint16_t die_id;
+
+    device->address_7bit = address;
+    if ((HAL_I2C_IsDeviceReady(device->i2c, (uint16_t)(address << 1U), 1U, INA3221_I2C_TIMEOUT_MS) != HAL_OK) ||
+        (ReadRegister(device, INA3221_REGISTER_MANUFACTURER_ID, &manufacturer_id) != HAL_OK) ||
+        (ReadRegister(device, INA3221_REGISTER_DIE_ID, &die_id) != HAL_OK) ||
+        (manufacturer_id != INA3221_MANUFACTURER_ID) || (die_id != INA3221_DIE_ID) ||
+        (WriteRegister(device, INA3221_REGISTER_CONFIG, INA3221_CONFIG_CH1_CH2_CONTINUOUS) != HAL_OK)) {
+        return HAL_ERROR;
+    }
+
+    device->preferred_address_7bit = address;
+    device->ready = true;
+    return HAL_OK;
+}
+
 static int32_t DecodeBusMillivolts(uint16_t raw) {
     return (int32_t)((raw >> 3U) * INA3221_BUS_LSB_MV);
 }
@@ -66,28 +88,16 @@ static int32_t DecodeShuntMicrovolts(uint16_t raw) {
     return (signed_raw / 8) * INA3221_SHUNT_LSB_UV;
 }
 
-HAL_StatusTypeDef INA3221_Init(INA3221_Handle *device, I2C_HandleTypeDef *i2c) {
+static HAL_StatusTypeDef DiscoverAndInitialize(INA3221_Handle *device, uint8_t preferred_address) {
     uint8_t address;
 
-    if ((device == NULL) || (i2c == NULL)) {
-        return HAL_ERROR;
+    if (AddressIsInDiscoveryRange(preferred_address) &&
+        (TryInitializeAddress(device, preferred_address) == HAL_OK)) {
+        return HAL_OK;
     }
 
-    memset(device, 0, sizeof(*device));
-    device->i2c = i2c;
-    device->address_7bit = INA3221_ADDRESS_NOT_DETECTED;
-
     for (address = INA3221_ADDRESS_FIRST; address <= INA3221_ADDRESS_LAST; ++address) {
-        uint16_t manufacturer_id;
-        uint16_t die_id;
-
-        device->address_7bit = address;
-        if ((HAL_I2C_IsDeviceReady(i2c, (uint16_t)(address << 1U), 1U, INA3221_I2C_TIMEOUT_MS) == HAL_OK) &&
-            (ReadRegister(device, INA3221_REGISTER_MANUFACTURER_ID, &manufacturer_id) == HAL_OK) &&
-            (ReadRegister(device, INA3221_REGISTER_DIE_ID, &die_id) == HAL_OK) &&
-            (manufacturer_id == INA3221_MANUFACTURER_ID) && (die_id == INA3221_DIE_ID) &&
-            (WriteRegister(device, INA3221_REGISTER_CONFIG, INA3221_CONFIG_CH1_CH2_CONTINUOUS) == HAL_OK)) {
-            device->ready = true;
+        if ((address != preferred_address) && (TryInitializeAddress(device, address) == HAL_OK)) {
             return HAL_OK;
         }
     }
@@ -97,8 +107,42 @@ HAL_StatusTypeDef INA3221_Init(INA3221_Handle *device, I2C_HandleTypeDef *i2c) {
     return HAL_ERROR;
 }
 
+HAL_StatusTypeDef INA3221_Init(INA3221_Handle *device, I2C_HandleTypeDef *i2c) {
+    if ((device == NULL) || (i2c == NULL)) {
+        return HAL_ERROR;
+    }
+
+    memset(device, 0, sizeof(*device));
+    device->i2c = i2c;
+    device->address_7bit = INA3221_ADDRESS_NOT_DETECTED;
+    device->preferred_address_7bit = INA3221_ADDRESS_NOT_DETECTED;
+    return DiscoverAndInitialize(device, INA3221_ADDRESS_NOT_DETECTED);
+}
+
+HAL_StatusTypeDef INA3221_Reinitialize(INA3221_Handle *device, I2C_HandleTypeDef *i2c) {
+    uint8_t preferred_address;
+
+    if ((device == NULL) || (i2c == NULL)) {
+        return HAL_ERROR;
+    }
+
+    preferred_address = device->preferred_address_7bit;
+    device->i2c = i2c;
+    device->data.valid = false;
+    device->address_7bit = INA3221_ADDRESS_NOT_DETECTED;
+    device->ready = false;
+    return DiscoverAndInitialize(device, preferred_address);
+}
+
 bool INA3221_IsReady(const INA3221_Handle *device) {
     return (device != NULL) && device->ready;
+}
+
+void INA3221_Invalidate(INA3221_Handle *device) {
+    if (device != NULL) {
+        device->data.valid = false;
+        device->ready = false;
+    }
 }
 
 uint8_t INA3221_GetAddress(const INA3221_Handle *device) {
@@ -117,7 +161,6 @@ HAL_StatusTypeDef INA3221_Read(INA3221_Handle *device, uint32_t now_ms) {
         (ReadRegister(device, INA3221_REGISTER_BUS_CH2, &bus_ch2_raw) != HAL_OK)) {
         if (device != NULL) {
             device->data.valid = false;
-            device->ready = false;
         }
         return HAL_ERROR;
     }

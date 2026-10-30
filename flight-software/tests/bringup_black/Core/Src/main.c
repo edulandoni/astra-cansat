@@ -42,9 +42,90 @@ typedef struct {
     BMP280_Data data;
     bool available;
     bool valid;
+    uint8_t health;
+    uint8_t last_error;
+    uint8_t consecutive_errors;
+    bool recovery_pending;
+    uint16_t recovery_attempt_count;
+    uint16_t recovery_success_count;
+    uint16_t initialization_failures;
+    uint32_t total_read_errors;
     uint32_t last_update_ms;
+    uint32_t last_error_ms;
+    uint32_t last_hal_error;
     uint32_t last_init_attempt_ms;
 } Bmp280State;
+
+typedef enum {
+    I2C_SENSOR_HEALTH_OK,
+    I2C_SENSOR_HEALTH_DEGRADED,
+    I2C_SENSOR_HEALTH_RECOVERING,
+    I2C_SENSOR_HEALTH_UNAVAILABLE
+} I2cSensorHealth;
+
+typedef enum {
+    I2C_DEVICE_ERROR_NONE,
+    I2C_DEVICE_ERROR_READ,
+    I2C_DEVICE_ERROR_NACK,
+    I2C_DEVICE_ERROR_TIMEOUT,
+    I2C_DEVICE_ERROR_BUS,
+    I2C_DEVICE_ERROR_ARBITRATION_LOST,
+    I2C_DEVICE_ERROR_INIT
+} I2cDeviceError;
+
+typedef struct {
+    uint8_t health;
+    uint8_t last_error;
+    uint8_t consecutive_errors;
+    bool recovery_pending;
+    uint16_t recovery_attempt_count;
+    uint16_t recovery_success_count;
+    uint16_t initialization_failures;
+    uint32_t total_read_errors;
+    uint32_t last_update_ms;
+    uint32_t last_error_ms;
+    uint32_t last_hal_error;
+    uint32_t last_init_attempt_ms;
+} Ina3221Health;
+
+typedef enum {
+    I2C_BUS_HEALTH_OK,
+    I2C_BUS_HEALTH_DEGRADED,
+    I2C_BUS_HEALTH_RECOVERING
+} I2cBusHealth;
+
+typedef enum {
+    I2C_SOURCE_NONE = 0U,
+    I2C_SOURCE_MPU6500 = (1U << 0),
+    I2C_SOURCE_BMP280 = (1U << 1),
+    I2C_SOURCE_INA3221 = (1U << 2)
+} I2cFaultSource;
+
+typedef enum {
+    I2C_STUCK_NONE,
+    I2C_STUCK_SDA,
+    I2C_STUCK_SCL,
+    I2C_STUCK_BOTH
+} I2cStuckState;
+
+typedef struct {
+    uint8_t health;
+    uint8_t recent_fault_sources;
+    uint8_t recent_bus_error_count;
+    uint8_t observed_stuck_state;
+    uint8_t requested_stuck_state;
+    uint8_t last_stuck_state;
+    bool recovery_requested;
+    bool recovery_pending;
+    bool valid_transaction_since_fault;
+    uint16_t recovery_attempt_count;
+    uint16_t recovery_success_count;
+    uint32_t window_start_ms;
+    uint32_t stuck_since_ms;
+    uint32_t total_bus_errors;
+    uint32_t last_recovery_ms;
+    uint32_t last_hal_error;
+} I2cBusMonitor;
 
 typedef enum {
     DS18B20_STATE_IDLE,
@@ -89,12 +170,13 @@ typedef struct {
     bool available;
     bool valid;
     bool report_init_result;
-    bool recovery_attempt;
+    bool recovery_pending;
     uint8_t health;
     uint8_t last_error;
     uint8_t consecutive_errors;
     uint8_t who_am_i;
-    uint16_t recovery_count;
+    uint16_t recovery_attempt_count;
+    uint16_t recovery_success_count;
     uint16_t initialization_failures;
     uint32_t total_reads;
     uint32_t total_read_errors;
@@ -131,6 +213,7 @@ typedef struct {
     volatile uint16_t active_length;
     volatile bool busy;
     uint32_t dropped_messages;
+    volatile uint32_t tx_errors;
 } ConsoleTxState;
 
 typedef enum {
@@ -149,14 +232,20 @@ typedef struct {
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define SENSOR_RETRY_PERIOD_MS           5000U
 #define SENSOR_DATA_MAX_AGE_MS           2000U
 #define I2C_RECOVERY_COOLDOWN_MS         100U
+#define I2C_BUS_ERROR_WINDOW_MS           100U
+#define I2C_BUS_ERROR_SOURCE_THRESHOLD    2U
+#define I2C_STUCK_CONFIRMATION_MS         2U
 #define MPU6500_PERIOD_MS                 20U
 #define MPU6500_MAX_CONSECUTIVE_ERRORS    3U
 #define MPU6500_REINIT_RETRY_PERIOD_MS    100U
 #define BMP280_PERIOD_MS                  100U
+#define BMP280_MAX_CONSECUTIVE_ERRORS     3U
+#define BMP280_REINIT_RETRY_PERIOD_MS     100U
 #define INA3221_PERIOD_MS                 100U
+#define INA3221_MAX_CONSECUTIVE_ERRORS    3U
+#define INA3221_REINIT_RETRY_PERIOD_MS    100U
 #define DS18B20_PERIOD_MS                 1000U
 #define DEBUG_TELEMETRY_PERIOD_MS         1000U
 #define STATUS_LED_PERIOD_MS              1000U
@@ -188,11 +277,11 @@ static Bmp280State bmp280;
 static Ds18b20State ds18b20;
 static GpsState gps;
 static INA3221_Handle ina3221;
+static Ina3221Health ina3221_health;
+static I2cBusMonitor i2c_bus;
 static Mpu6500State mpu6500;
 static SchedulerState scheduler;
 static ConsoleTxState console_tx;
-static uint32_t ina3221_last_init_attempt_ms;
-static uint32_t last_i2c_recovery_ms;
 static bool rtc_time_valid;
 static char telemetry_line[320];
 /* USER CODE END PV */
@@ -253,7 +342,9 @@ static HAL_StatusTypeDef ConsoleWrite(const char *message) {
     }
 
     if (length > free_space) {
-        ++console_tx.dropped_messages;
+        if (console_tx.dropped_messages < UINT32_MAX) {
+            ++console_tx.dropped_messages;
+        }
         return HAL_BUSY;
     }
 
@@ -299,6 +390,18 @@ static bool SensorDataIsFresh(bool valid, uint32_t last_update_ms, uint32_t now_
     return (now_ms - last_update_ms) <= SENSOR_DATA_MAX_AGE_MS;
 }
 
+static void IncrementUint16Saturated(uint16_t *counter) {
+    if (*counter < UINT16_MAX) {
+        ++(*counter);
+    }
+}
+
+static void IncrementUint32Saturated(uint32_t *counter) {
+    if (*counter < UINT32_MAX) {
+        ++(*counter);
+    }
+}
+
 HAL_StatusTypeDef SetMissionRtc(const RTC_TimeTypeDef *time, const RTC_DateTypeDef *date) {
     RTC_TimeTypeDef rtc_time;
     RTC_DateTypeDef rtc_date;
@@ -332,18 +435,110 @@ HAL_StatusTypeDef SetMissionRtc(const RTC_TimeTypeDef *time, const RTC_DateTypeD
     return HAL_OK;
 }
 
-static bool I2cErrorRequiresRecovery(uint32_t error) {
-    const uint32_t recoverable_errors = HAL_I2C_ERROR_BERR | HAL_I2C_ERROR_ARLO | HAL_I2C_ERROR_TIMEOUT;
+static bool I2cErrorIsBusLevel(uint32_t error) {
+    const uint32_t bus_errors = HAL_I2C_ERROR_BERR | HAL_I2C_ERROR_ARLO | HAL_I2C_ERROR_TIMEOUT;
 
-    return (error & recoverable_errors) != 0U;
+    return (error & bus_errors) != 0U;
 }
 
-static bool I2cBusIsStuck(void) {
+static bool I2cSdaIsLow(void) {
     return HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_9) == GPIO_PIN_RESET;
 }
 
-static void RecoverI2cBusWithClockPulses(void) {
+static bool I2cSclIsLow(void) {
+    return HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_8) == GPIO_PIN_RESET;
+}
+
+static uint8_t GetI2cStuckState(void) {
+    const bool sda_low = I2cSdaIsLow();
+    const bool scl_low = I2cSclIsLow();
+
+    if (sda_low && scl_low) {
+        return I2C_STUCK_BOTH;
+    }
+    if (sda_low) {
+        return I2C_STUCK_SDA;
+    }
+    if (scl_low) {
+        return I2C_STUCK_SCL;
+    }
+    return I2C_STUCK_NONE;
+}
+
+static uint8_t CountI2cFaultSources(uint8_t sources) {
+    uint8_t count = 0U;
+
+    while (sources != 0U) {
+        count = (uint8_t)(count + (sources & 1U));
+        sources >>= 1U;
+    }
+
+    return count;
+}
+
+static void RecordI2cBusFault(uint8_t source, uint32_t error, uint32_t now_ms) {
+    if (!I2cErrorIsBusLevel(error)) {
+        return;
+    }
+
+    if ((i2c_bus.recent_bus_error_count == 0U) ||
+        ((now_ms - i2c_bus.window_start_ms) > I2C_BUS_ERROR_WINDOW_MS)) {
+        i2c_bus.window_start_ms = now_ms;
+        i2c_bus.recent_fault_sources = I2C_SOURCE_NONE;
+        i2c_bus.recent_bus_error_count = 0U;
+    }
+
+    if (!i2c_bus.recovery_pending) {
+        i2c_bus.health = I2C_BUS_HEALTH_DEGRADED;
+    }
+    i2c_bus.last_hal_error = error;
+    i2c_bus.last_stuck_state = I2C_STUCK_NONE;
+    i2c_bus.valid_transaction_since_fault = false;
+    IncrementUint32Saturated(&i2c_bus.total_bus_errors);
+    if (i2c_bus.recent_bus_error_count < UINT8_MAX) {
+        ++i2c_bus.recent_bus_error_count;
+    }
+    i2c_bus.recent_fault_sources |= source;
+
+    /* Repeated faults from only one device remain isolated to that device. */
+    if (CountI2cFaultSources(i2c_bus.recent_fault_sources) >= I2C_BUS_ERROR_SOURCE_THRESHOLD) {
+        if (!i2c_bus.recovery_requested) {
+            i2c_bus.requested_stuck_state = I2C_STUCK_NONE;
+        }
+        i2c_bus.recovery_requested = true;
+    }
+}
+
+static void RecordI2cValidTransaction(uint32_t now_ms) {
+    i2c_bus.valid_transaction_since_fault = true;
+    if (i2c_bus.recovery_pending) {
+        IncrementUint16Saturated(&i2c_bus.recovery_success_count);
+        i2c_bus.recovery_pending = false;
+        i2c_bus.health = I2C_BUS_HEALTH_DEGRADED;
+        i2c_bus.window_start_ms = now_ms;
+    }
+}
+
+static uint8_t InspectI2cGpioLinesPersistently(void) {
+    const uint8_t candidate = GetI2cStuckState();
+
+    if (candidate == I2C_STUCK_NONE) {
+        return I2C_STUCK_NONE;
+    }
+
+    for (uint32_t sample = 0U; sample < 2U; ++sample) {
+        HAL_Delay(1U);
+        if (GetI2cStuckState() != candidate) {
+            return I2C_STUCK_NONE;
+        }
+    }
+
+    return candidate;
+}
+
+static uint8_t RecoverStuckI2cBusWithClockPulses(void) {
     GPIO_InitTypeDef gpio = {0};
+    uint8_t stuck_state;
 
     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8 | GPIO_PIN_9, GPIO_PIN_SET);
     gpio.Pin = GPIO_PIN_8 | GPIO_PIN_9;
@@ -352,44 +547,128 @@ static void RecoverI2cBusWithClockPulses(void) {
     gpio.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(GPIOB, &gpio);
 
-    for (uint32_t pulse = 0U; (pulse < 9U) && I2cBusIsStuck(); ++pulse) {
-        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);
-        HAL_Delay(1U);
-        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
-        HAL_Delay(1U);
+    stuck_state = InspectI2cGpioLinesPersistently();
+    if (stuck_state == I2C_STUCK_SDA) {
+        for (uint32_t pulse = 0U; (pulse < 9U) && I2cSdaIsLow(); ++pulse) {
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);
+            HAL_Delay(1U);
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
+            HAL_Delay(1U);
+
+            if (I2cSclIsLow()) {
+                stuck_state = I2cSdaIsLow() ? I2C_STUCK_BOTH : I2C_STUCK_SCL;
+                break;
+            }
+        }
+
+        if (!I2cSclIsLow()) {
+            /* Generate STOP only when SCL can actually be released HIGH. */
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8 | GPIO_PIN_9, GPIO_PIN_RESET);
+            HAL_Delay(1U);
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
+            HAL_Delay(1U);
+            if (!I2cSclIsLow()) {
+                HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);
+                HAL_Delay(1U);
+            }
+        }
     }
 
-    // Generate a STOP while both pins are still open-drain outputs.
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8 | GPIO_PIN_9, GPIO_PIN_RESET);
-    HAL_Delay(1U);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
-    HAL_Delay(1U);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);
-    HAL_Delay(1U);
+    /* SCL_STUCK and BOTH are observable faults; clocking cannot release a line held physically LOW. */
     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_8 | GPIO_PIN_9);
+    return stuck_state;
 }
 
-static void RecoverI2cPeripheralIfNeeded(uint32_t now_ms) {
-    uint32_t error = HAL_I2C_GetError(&hi2c1);
-    bool bus_stuck = I2cBusIsStuck();
+static void InvalidateI2cSensorsAfterBusRecovery(uint32_t now_ms) {
+    BMP280_Invalidate();
+    bmp280.available = false;
+    bmp280.valid = false;
+    bmp280.health = I2C_SENSOR_HEALTH_RECOVERING;
+    bmp280.consecutive_errors = 0U;
+    bmp280.last_init_attempt_ms = now_ms;
 
-    if (!I2cErrorRequiresRecovery(error) && !bus_stuck) {
-        return;
-    }
+    mpu6500.available = false;
+    mpu6500.valid = false;
+    mpu6500.health = MPU_HEALTH_RECOVERING;
+    mpu6500.consecutive_errors = 0U;
+    mpu6500.initialization_state = MPU6500_INIT_IDLE;
+    mpu6500.last_init_attempt_ms = now_ms;
 
-    if ((last_i2c_recovery_ms != 0U) && ((now_ms - last_i2c_recovery_ms) < I2C_RECOVERY_COOLDOWN_MS)) {
-        return;
-    }
+    INA3221_Invalidate(&ina3221);
+    ina3221_health.health = I2C_SENSOR_HEALTH_RECOVERING;
+    ina3221_health.consecutive_errors = 0U;
+    ina3221_health.last_init_attempt_ms = now_ms;
+}
 
-    last_i2c_recovery_ms = now_ms;
+static void RecoverI2cBus(uint32_t now_ms) {
+    uint8_t inspected_stuck_state;
+
+    i2c_bus.health = I2C_BUS_HEALTH_RECOVERING;
+    i2c_bus.recovery_pending = true;
+    i2c_bus.valid_transaction_since_fault = false;
+    IncrementUint16Saturated(&i2c_bus.recovery_attempt_count);
     (void)HAL_I2C_DeInit(&hi2c1);
-    if (bus_stuck) {
-        RecoverI2cBusWithClockPulses();
-    } else {
-        // This exceptional 2 ms settle time is short and only follows a bus-level fault.
-        HAL_Delay(2U);
+    inspected_stuck_state = RecoverStuckI2cBusWithClockPulses();
+    if (inspected_stuck_state != I2C_STUCK_NONE) {
+        i2c_bus.last_stuck_state = inspected_stuck_state;
+    } else if (i2c_bus.requested_stuck_state != I2C_STUCK_NONE) {
+        i2c_bus.last_stuck_state = i2c_bus.requested_stuck_state;
     }
     MX_I2C1_Init();
+    InvalidateI2cSensorsAfterBusRecovery(now_ms);
+
+    i2c_bus.last_recovery_ms = now_ms;
+    i2c_bus.recovery_requested = false;
+    i2c_bus.observed_stuck_state = I2C_STUCK_NONE;
+    i2c_bus.requested_stuck_state = I2C_STUCK_NONE;
+    i2c_bus.recent_fault_sources = I2C_SOURCE_NONE;
+    i2c_bus.recent_bus_error_count = 0U;
+    i2c_bus.window_start_ms = now_ms;
+}
+
+static void ServiceI2cBusMonitor(uint32_t now_ms) {
+    uint8_t stuck_state;
+
+    if ((i2c_bus.health == I2C_BUS_HEALTH_DEGRADED) && i2c_bus.valid_transaction_since_fault &&
+        !i2c_bus.recovery_requested && !i2c_bus.recovery_pending &&
+        ((now_ms - i2c_bus.window_start_ms) > I2C_BUS_ERROR_WINDOW_MS)) {
+        i2c_bus.recent_fault_sources = I2C_SOURCE_NONE;
+        i2c_bus.recent_bus_error_count = 0U;
+        i2c_bus.health = I2C_BUS_HEALTH_OK;
+    }
+
+    /*
+     * All I2C1 drivers are synchronous/polling. This runs outside UpdateMpu/Bmp/Ina,
+     * so both lines should be idle HIGH. Revisit this check before adding I2C IT/DMA.
+     */
+    stuck_state = GetI2cStuckState();
+    if (stuck_state == I2C_STUCK_NONE) {
+        i2c_bus.observed_stuck_state = I2C_STUCK_NONE;
+    } else if (stuck_state != i2c_bus.observed_stuck_state) {
+        i2c_bus.observed_stuck_state = stuck_state;
+        i2c_bus.stuck_since_ms = now_ms;
+    } else if (((now_ms - i2c_bus.stuck_since_ms) >= I2C_STUCK_CONFIRMATION_MS) &&
+               !i2c_bus.recovery_requested) {
+        i2c_bus.last_stuck_state = stuck_state;
+        i2c_bus.requested_stuck_state = stuck_state;
+        i2c_bus.valid_transaction_since_fault = false;
+        IncrementUint32Saturated(&i2c_bus.total_bus_errors);
+        i2c_bus.recovery_requested = true;
+        if (!i2c_bus.recovery_pending) {
+            i2c_bus.health = I2C_BUS_HEALTH_DEGRADED;
+        }
+    }
+
+    if (!i2c_bus.recovery_requested) {
+        return;
+    }
+
+    if ((i2c_bus.last_recovery_ms != 0U) &&
+        ((now_ms - i2c_bus.last_recovery_ms) < I2C_RECOVERY_COOLDOWN_MS)) {
+        return;
+    }
+
+    RecoverI2cBus(now_ms);
 }
 
 static uint8_t ClassifyMpu6500Error(uint32_t hal_error, uint8_t fallback_error) {
@@ -413,18 +692,62 @@ static void SetMpu6500LastError(uint8_t fallback_error, uint32_t now_ms) {
     mpu6500.last_hal_error = HAL_I2C_GetError(&hi2c1);
     mpu6500.last_error = ClassifyMpu6500Error(mpu6500.last_hal_error, fallback_error);
     mpu6500.last_error_ms = now_ms;
+    RecordI2cBusFault(I2C_SOURCE_MPU6500, mpu6500.last_hal_error, now_ms);
+}
+
+static uint8_t ClassifyI2cDeviceError(uint32_t hal_error, uint8_t fallback_error) {
+    if ((hal_error & HAL_I2C_ERROR_TIMEOUT) != 0U) {
+        return I2C_DEVICE_ERROR_TIMEOUT;
+    }
+    if ((hal_error & HAL_I2C_ERROR_BERR) != 0U) {
+        return I2C_DEVICE_ERROR_BUS;
+    }
+    if ((hal_error & HAL_I2C_ERROR_ARLO) != 0U) {
+        return I2C_DEVICE_ERROR_ARBITRATION_LOST;
+    }
+    if ((hal_error & HAL_I2C_ERROR_AF) != 0U) {
+        return I2C_DEVICE_ERROR_NACK;
+    }
+
+    return fallback_error;
+}
+
+static void SetBmp280LastError(uint8_t fallback_error, uint32_t now_ms) {
+    bmp280.last_hal_error = HAL_I2C_GetError(&hi2c1);
+    bmp280.last_error = ClassifyI2cDeviceError(bmp280.last_hal_error, fallback_error);
+    bmp280.last_error_ms = now_ms;
+    RecordI2cBusFault(I2C_SOURCE_BMP280, bmp280.last_hal_error, now_ms);
+}
+
+static void SetIna3221LastError(uint8_t fallback_error, uint32_t now_ms) {
+    ina3221_health.last_hal_error = HAL_I2C_GetError(&hi2c1);
+    ina3221_health.last_error = ClassifyI2cDeviceError(ina3221_health.last_hal_error, fallback_error);
+    ina3221_health.last_error_ms = now_ms;
+    RecordI2cBusFault(I2C_SOURCE_INA3221, ina3221_health.last_hal_error, now_ms);
 }
 
 static void IncrementMpu6500InitializationFailures(void) {
-    if (mpu6500.initialization_failures < UINT16_MAX) {
-        ++mpu6500.initialization_failures;
-    }
+    IncrementUint16Saturated(&mpu6500.initialization_failures);
 }
 
-static bool InitializeBmp280(bool report_result) {
-    bmp280.last_init_attempt_ms = HAL_GetTick();
+static bool InitializeBmp280(bool report_result, bool recovery_attempt, uint32_t now_ms) {
+    bmp280.last_init_attempt_ms = now_ms;
     bmp280.valid = false;
+    if (recovery_attempt) {
+        IncrementUint16Saturated(&bmp280.recovery_attempt_count);
+        bmp280.recovery_pending = true;
+        bmp280.health = I2C_SENSOR_HEALTH_RECOVERING;
+    }
     bmp280.available = BMP280_Init(&hi2c1) == HAL_OK;
+
+    if (bmp280.available) {
+        bmp280.health = I2C_SENSOR_HEALTH_RECOVERING;
+        bmp280.consecutive_errors = 0U;
+    } else {
+        bmp280.health = I2C_SENSOR_HEALTH_UNAVAILABLE;
+        SetBmp280LastError(I2C_DEVICE_ERROR_INIT, now_ms);
+        IncrementUint16Saturated(&bmp280.initialization_failures);
+    }
 
     if (report_result) {
         if (bmp280.available) {
@@ -437,32 +760,40 @@ static bool InitializeBmp280(bool report_result) {
     return bmp280.available;
 }
 
-static bool InitializeMpu6500(bool report_result, bool recovery_attempt, uint32_t now_ms) {
+static bool InitializeMpu6500(bool report_result,
+                              bool recovery_attempt,
+                              bool perform_detection,
+                              uint32_t now_ms) {
     uint8_t who_am_i = 0U;
 
     mpu6500.last_init_attempt_ms = now_ms;
     mpu6500.valid = false;
     mpu6500.available = false;
     mpu6500.report_init_result = report_result;
-    mpu6500.recovery_attempt = recovery_attempt;
+    if (recovery_attempt) {
+        IncrementUint16Saturated(&mpu6500.recovery_attempt_count);
+        mpu6500.recovery_pending = true;
+    }
     mpu6500.health = MPU_HEALTH_RECOVERING;
     mpu6500.initialization_state = MPU6500_INIT_IDLE;
 
-    if (MPU6500_Detect(&hi2c1, &who_am_i) != HAL_OK) {
-        mpu6500.who_am_i = who_am_i;
-        mpu6500.health = MPU_HEALTH_UNAVAILABLE;
-        SetMpu6500LastError(MPU_ERROR_WHO_AM_I, now_ms);
-        IncrementMpu6500InitializationFailures();
-        if (report_result) {
-            char message[64];
+    if (perform_detection) {
+        if (MPU6500_Detect(&hi2c1, &who_am_i) != HAL_OK) {
+            mpu6500.who_am_i = who_am_i;
+            mpu6500.health = MPU_HEALTH_UNAVAILABLE;
+            SetMpu6500LastError(MPU_ERROR_WHO_AM_I, now_ms);
+            IncrementMpu6500InitializationFailures();
+            if (report_result) {
+                char message[64];
 
-            (void)snprintf(message, sizeof(message), "MPU6500 FAIL | WHO_AM_I=0x%02X\r\n", who_am_i);
-            (void)ConsoleWrite(message);
+                (void)snprintf(message, sizeof(message), "MPU6500 FAIL | WHO_AM_I=0x%02X\r\n", who_am_i);
+                (void)ConsoleWrite(message);
+            }
+            return false;
         }
-        return false;
+        mpu6500.who_am_i = who_am_i;
     }
 
-    mpu6500.who_am_i = who_am_i;
     if (MPU6500_BeginInitialization(&hi2c1) != HAL_OK) {
         mpu6500.health = MPU_HEALTH_UNAVAILABLE;
         SetMpu6500LastError(MPU_ERROR_INIT, now_ms);
@@ -493,13 +824,9 @@ static void ServiceMpu6500Initialization(uint32_t now_ms) {
         mpu6500.health = MPU_HEALTH_UNAVAILABLE;
         SetMpu6500LastError(MPU_ERROR_INIT, now_ms);
         IncrementMpu6500InitializationFailures();
-        RecoverI2cPeripheralIfNeeded(now_ms);
     } else {
         mpu6500.consecutive_errors = 0U;
-        mpu6500.health = MPU_HEALTH_DEGRADED;
-        if (mpu6500.recovery_attempt && (mpu6500.recovery_count < UINT16_MAX)) {
-            ++mpu6500.recovery_count;
-        }
+        mpu6500.health = mpu6500.recovery_pending ? MPU_HEALTH_RECOVERING : MPU_HEALTH_DEGRADED;
     }
 
     if (mpu6500.report_init_result) {
@@ -513,16 +840,29 @@ static void ServiceMpu6500Initialization(uint32_t now_ms) {
     }
 }
 
-static bool InitializeIna3221(bool report_result) {
+static bool InitializeIna3221(bool report_result, bool recovery_attempt, uint32_t now_ms) {
+    HAL_StatusTypeDef init_status;
     char message[48];
 
-    ina3221_last_init_attempt_ms = HAL_GetTick();
-    if (INA3221_Init(&ina3221, &hi2c1) != HAL_OK) {
+    ina3221_health.last_init_attempt_ms = now_ms;
+    if (recovery_attempt) {
+        IncrementUint16Saturated(&ina3221_health.recovery_attempt_count);
+        ina3221_health.recovery_pending = true;
+        ina3221_health.health = I2C_SENSOR_HEALTH_RECOVERING;
+    }
+    init_status = recovery_attempt ? INA3221_Reinitialize(&ina3221, &hi2c1) : INA3221_Init(&ina3221, &hi2c1);
+    if (init_status != HAL_OK) {
+        ina3221_health.health = I2C_SENSOR_HEALTH_UNAVAILABLE;
+        SetIna3221LastError(I2C_DEVICE_ERROR_INIT, now_ms);
+        IncrementUint16Saturated(&ina3221_health.initialization_failures);
         if (report_result) {
             (void)ConsoleWrite("INA3221 INIT FAIL\r\n");
         }
         return false;
     }
+
+    ina3221_health.health = I2C_SENSOR_HEALTH_RECOVERING;
+    ina3221_health.consecutive_errors = 0U;
 
     if (report_result) {
         (void)snprintf(message, sizeof(message), "INA3221 OK | ADDR=0x%02X\r\n", INA3221_GetAddress(&ina3221));
@@ -551,10 +891,10 @@ static void InitializeApplication(void) {
     }
 
     Altitude_LoadReference(&hrtc, &altitude_reference);
-    RecoverI2cPeripheralIfNeeded(HAL_GetTick());
-    (void)InitializeBmp280(true);
-    (void)InitializeMpu6500(true, false, HAL_GetTick());
-    (void)InitializeIna3221(true);
+    const uint32_t now_ms = HAL_GetTick();
+    (void)InitializeBmp280(true, false, now_ms);
+    (void)InitializeMpu6500(true, false, true, now_ms);
+    (void)InitializeIna3221(true, false, now_ms);
 }
 
 static void StartDs18b20Conversion(uint32_t now_ms) {
@@ -601,32 +941,44 @@ static bool UpdateBmp280(uint32_t now_ms) {
     BMP280_Data sample;
 
     if (!bmp280.available) {
-        if ((now_ms - bmp280.last_init_attempt_ms) < SENSOR_RETRY_PERIOD_MS) {
+        if ((now_ms - bmp280.last_init_attempt_ms) < BMP280_REINIT_RETRY_PERIOD_MS) {
             return false;
         }
 
-        if (!InitializeBmp280(false)) {
-            RecoverI2cPeripheralIfNeeded(now_ms);
+        if (!InitializeBmp280(false, true, now_ms)) {
             return false;
         }
+        return false;
     }
 
     if (BMP280_Read(&hi2c1, &sample) != HAL_OK) {
-        uint32_t error = HAL_I2C_GetError(&hi2c1);
-
         bmp280.valid = false;
-        if (error != HAL_I2C_ERROR_NONE) {
-            bmp280.available = false;
-            bmp280.last_init_attempt_ms = now_ms;
+        bmp280.health = bmp280.recovery_pending ? I2C_SENSOR_HEALTH_RECOVERING : I2C_SENSOR_HEALTH_DEGRADED;
+        IncrementUint32Saturated(&bmp280.total_read_errors);
+        if (bmp280.consecutive_errors < UINT8_MAX) {
+            ++bmp280.consecutive_errors;
         }
-        RecoverI2cPeripheralIfNeeded(now_ms);
+        SetBmp280LastError(I2C_DEVICE_ERROR_READ, now_ms);
+
+        if (bmp280.consecutive_errors >= BMP280_MAX_CONSECUTIVE_ERRORS) {
+            bmp280.health = I2C_SENSOR_HEALTH_RECOVERING;
+            bmp280.available = false;
+            (void)InitializeBmp280(false, true, now_ms);
+        }
         return false;
     }
 
     bmp280.data = sample;
     bmp280.available = true;
     bmp280.valid = true;
+    bmp280.health = I2C_SENSOR_HEALTH_OK;
+    bmp280.consecutive_errors = 0U;
     bmp280.last_update_ms = now_ms;
+    if (bmp280.recovery_pending) {
+        IncrementUint16Saturated(&bmp280.recovery_success_count);
+        bmp280.recovery_pending = false;
+    }
+    RecordI2cValidTransaction(now_ms);
     return true;
 }
 
@@ -643,15 +995,15 @@ static void UpdateMpu6500(uint32_t now_ms) {
             return;
         }
 
-        (void)InitializeMpu6500(false, true, now_ms);
+        (void)InitializeMpu6500(false, true, true, now_ms);
         return;
     }
 
-    ++mpu6500.total_reads;
+    IncrementUint32Saturated(&mpu6500.total_reads);
     if (MPU6500_ReadRaw(&hi2c1, &sample) != HAL_OK) {
         mpu6500.valid = false;
-        mpu6500.health = MPU_HEALTH_DEGRADED;
-        ++mpu6500.total_read_errors;
+        mpu6500.health = mpu6500.recovery_pending ? MPU_HEALTH_RECOVERING : MPU_HEALTH_DEGRADED;
+        IncrementUint32Saturated(&mpu6500.total_read_errors);
         if (mpu6500.consecutive_errors < UINT8_MAX) {
             ++mpu6500.consecutive_errors;
         }
@@ -674,8 +1026,8 @@ static void UpdateMpu6500(uint32_t now_ms) {
         mpu6500.who_am_i = who_am_i;
         mpu6500.health = MPU_HEALTH_RECOVERING;
         SetMpu6500LastError(MPU_ERROR_WHO_AM_I, now_ms);
-        RecoverI2cPeripheralIfNeeded(now_ms);
-        (void)InitializeMpu6500(false, true, now_ms);
+        /* WHO_AM_I was just attempted; do not repeat the same blocking probe. */
+        (void)InitializeMpu6500(false, true, false, now_ms);
         return;
     }
 
@@ -685,24 +1037,50 @@ static void UpdateMpu6500(uint32_t now_ms) {
     mpu6500.health = MPU_HEALTH_OK;
     mpu6500.consecutive_errors = 0U;
     mpu6500.last_update_ms = now_ms;
+    if (mpu6500.recovery_pending) {
+        IncrementUint16Saturated(&mpu6500.recovery_success_count);
+        mpu6500.recovery_pending = false;
+    }
+    RecordI2cValidTransaction(now_ms);
 }
 
 static void UpdateIna3221(uint32_t now_ms) {
     if (!INA3221_IsReady(&ina3221)) {
-        if ((now_ms - ina3221_last_init_attempt_ms) < SENSOR_RETRY_PERIOD_MS) {
+        if ((now_ms - ina3221_health.last_init_attempt_ms) < INA3221_REINIT_RETRY_PERIOD_MS) {
             return;
         }
 
-        if (!InitializeIna3221(false)) {
-            RecoverI2cPeripheralIfNeeded(now_ms);
+        if (!InitializeIna3221(false, true, now_ms)) {
             return;
         }
+        return;
     }
 
     if (INA3221_Read(&ina3221, now_ms) != HAL_OK) {
-        ina3221_last_init_attempt_ms = now_ms;
-        RecoverI2cPeripheralIfNeeded(now_ms);
+        ina3221_health.health =
+            ina3221_health.recovery_pending ? I2C_SENSOR_HEALTH_RECOVERING : I2C_SENSOR_HEALTH_DEGRADED;
+        IncrementUint32Saturated(&ina3221_health.total_read_errors);
+        if (ina3221_health.consecutive_errors < UINT8_MAX) {
+            ++ina3221_health.consecutive_errors;
+        }
+        SetIna3221LastError(I2C_DEVICE_ERROR_READ, now_ms);
+
+        if (ina3221_health.consecutive_errors >= INA3221_MAX_CONSECUTIVE_ERRORS) {
+            ina3221_health.health = I2C_SENSOR_HEALTH_RECOVERING;
+            INA3221_Invalidate(&ina3221);
+            (void)InitializeIna3221(false, true, now_ms);
+        }
+        return;
     }
+
+    ina3221_health.health = I2C_SENSOR_HEALTH_OK;
+    ina3221_health.consecutive_errors = 0U;
+    ina3221_health.last_update_ms = now_ms;
+    if (ina3221_health.recovery_pending) {
+        IncrementUint16Saturated(&ina3221_health.recovery_success_count);
+        ina3221_health.recovery_pending = false;
+    }
+    RecordI2cValidTransaction(now_ms);
 }
 
 static void UpdateNavigation(uint32_t now_ms) {
@@ -1042,6 +1420,20 @@ static const char *Mpu6500HealthText(uint8_t health) {
     }
 }
 
+static const char *I2cSensorHealthText(uint8_t health) {
+    switch (health) {
+        case I2C_SENSOR_HEALTH_OK:
+            return "OK";
+        case I2C_SENSOR_HEALTH_DEGRADED:
+            return "DEGRADED";
+        case I2C_SENSOR_HEALTH_RECOVERING:
+            return "RECOVERING";
+        case I2C_SENSOR_HEALTH_UNAVAILABLE:
+        default:
+            return "UNAVAILABLE";
+    }
+}
+
 static const char *Mpu6500ErrorText(uint8_t error) {
     switch (error) {
         case MPU_ERROR_NONE:
@@ -1061,6 +1453,48 @@ static const char *Mpu6500ErrorText(uint8_t error) {
         case MPU_ERROR_INIT:
         default:
             return "INIT";
+    }
+}
+
+static const char *I2cBusHealthText(uint8_t health) {
+    switch (health) {
+        case I2C_BUS_HEALTH_OK:
+            return "OK";
+        case I2C_BUS_HEALTH_DEGRADED:
+            return "DEGRADED";
+        case I2C_BUS_HEALTH_RECOVERING:
+        default:
+            return "RECOVERING";
+    }
+}
+
+static const char *I2cHalErrorText(uint32_t error) {
+    if ((error & HAL_I2C_ERROR_TIMEOUT) != 0U) {
+        return "TIMEOUT";
+    }
+    if ((error & HAL_I2C_ERROR_BERR) != 0U) {
+        return "BERR";
+    }
+    if ((error & HAL_I2C_ERROR_ARLO) != 0U) {
+        return "ARLO";
+    }
+    if ((error & HAL_I2C_ERROR_AF) != 0U) {
+        return "NACK";
+    }
+    return "NONE";
+}
+
+static const char *I2cBusLastErrorText(void) {
+    switch (i2c_bus.last_stuck_state) {
+        case I2C_STUCK_SDA:
+            return "SDA_STUCK";
+        case I2C_STUCK_SCL:
+            return "SCL_STUCK";
+        case I2C_STUCK_BOTH:
+            return "BOTH_STUCK";
+        case I2C_STUCK_NONE:
+        default:
+            return I2cHalErrorText(i2c_bus.last_hal_error);
     }
 }
 
@@ -1171,8 +1605,7 @@ static void SendDashboardTelemetry(uint32_t now_ms) {
         (void)snprintf(altitude_text, sizeof(altitude_text), "STALE");
     }
 
-    mpu6500_fresh =
-        (mpu6500.last_update_ms != 0U) && ((now_ms - mpu6500.last_update_ms) <= SENSOR_DATA_MAX_AGE_MS);
+    mpu6500_fresh = SensorDataIsFresh(mpu6500.valid, mpu6500.last_update_ms, now_ms);
 
     if (gps.uart_active) {
         if (!gps.data_fresh) {
@@ -1245,6 +1678,24 @@ static void SendDashboardTelemetry(uint32_t now_ms) {
     SendDashboardBorder();
     SendDashboardLine("SYSTEM");
     SendDashboardLine("RTC          %-20s STATUS       RUNNING", rtc_text);
+    SendDashboardLine("I2C %-10s ERR %-6lu ATT %-5u OK %-5u LAST %s",
+                      I2cBusHealthText(i2c_bus.health),
+                      (unsigned long)i2c_bus.total_bus_errors,
+                      i2c_bus.recovery_attempt_count,
+                      i2c_bus.recovery_success_count,
+                      I2cBusLastErrorText());
+    SendDashboardLine("BMP %-11s ERR %-10lu ATT %-5u OK %-5u INIT %-5u",
+                      I2cSensorHealthText(bmp280.health),
+                      (unsigned long)bmp280.total_read_errors,
+                      bmp280.recovery_attempt_count,
+                      bmp280.recovery_success_count,
+                      bmp280.initialization_failures);
+    SendDashboardLine("INA %-11s ERR %-10lu ATT %-5u OK %-5u INIT %-5u",
+                      I2cSensorHealthText(ina3221_health.health),
+                      (unsigned long)ina3221_health.total_read_errors,
+                      ina3221_health.recovery_attempt_count,
+                      ina3221_health.recovery_success_count,
+                      ina3221_health.initialization_failures);
     SendDashboardBorder();
     SendDashboardLine("ENVIRONMENT");
     SendDashboardLine("DS18B20      %-20s P0           %s", temperature_text, reference_text);
@@ -1264,11 +1715,12 @@ static void SendDashboardTelemetry(uint32_t now_ms) {
         SendDashboardLine("ACCEL        --");
         SendDashboardLine("GYRO         --");
     }
-    SendDashboardLine("READS %lu  ERR %lu  CONSEC %u  REC %u  INIT %u  LAST %s",
+    SendDashboardLine("READS %lu ERR %lu C %u ATT %u OK %u INIT %u LAST %s",
                       (unsigned long)mpu6500.total_reads,
                       (unsigned long)mpu6500.total_read_errors,
                       mpu6500.consecutive_errors,
-                      mpu6500.recovery_count,
+                      mpu6500.recovery_attempt_count,
+                      mpu6500.recovery_success_count,
                       mpu6500.initialization_failures,
                       Mpu6500ErrorText(mpu6500.last_error));
     SendDashboardBorder();
@@ -1320,6 +1772,7 @@ static void ProcessContinuousServices(uint32_t now_ms) {
     UpdateNavigation(now_ms);
     ServiceDs18b20Conversion(now_ms);
     ServiceMpu6500Initialization(now_ms);
+    ServiceI2cBusMonitor(now_ms);
 }
 
 static void UpdateStatusIndicator(void) {
@@ -1673,7 +2126,9 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart) {
         console_tx.tail = console_tx.head;
         console_tx.active_length = 0U;
         console_tx.busy = false;
-        ++console_tx.dropped_messages;
+        if (console_tx.tx_errors < UINT32_MAX) {
+            ++console_tx.tx_errors;
+        }
     }
 }
 

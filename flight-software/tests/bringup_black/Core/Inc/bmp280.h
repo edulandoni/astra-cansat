@@ -11,6 +11,7 @@ typedef struct {
 } BMP280_Data;
 
 HAL_StatusTypeDef BMP280_Init(I2C_HandleTypeDef *i2c);
+void BMP280_Invalidate(void);
 HAL_StatusTypeDef BMP280_Read(I2C_HandleTypeDef *i2c, BMP280_Data *data);
 
 #endif /* BMP280_H */
