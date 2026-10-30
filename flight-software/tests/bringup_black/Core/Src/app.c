@@ -23,6 +23,28 @@ static RTC_HandleTypeDef *mission_rtc;
 static SchedulerState scheduler;
 static bool rtc_time_valid;
 
+static bool IsLeapYear(uint16_t year) {
+    return ((year % 4U) == 0U) && (((year % 100U) != 0U) || ((year % 400U) == 0U));
+}
+
+static uint8_t DaysInMonth(uint8_t month, uint8_t rtc_year) {
+    static const uint8_t days_by_month[] = {
+        31U, 28U, 31U, 30U, 31U, 30U, 31U, 31U, 30U, 31U, 30U, 31U
+    };
+    uint8_t days;
+
+    if ((month < 1U) || (month > 12U)) {
+        return 0U;
+    }
+
+    days = days_by_month[month - 1U];
+    /* STM32 RTC years 00..99 represent 2000..2099 in this application. */
+    if ((month == 2U) && IsLeapYear((uint16_t)(2000U + rtc_year))) {
+        ++days;
+    }
+    return days;
+}
+
 static bool ScheduledTaskIsDue(uint32_t now_ms, uint32_t last_run_ms, uint32_t period_ms) {
     return (now_ms - last_run_ms) >= period_ms;
 }
@@ -136,7 +158,8 @@ HAL_StatusTypeDef App_SetMissionRtc(const RTC_TimeTypeDef *time, const RTC_DateT
     if ((time == NULL) || (date == NULL) || (time->Hours > 23U) || (time->Minutes > 59U) ||
         (time->Seconds > 59U) || (date->WeekDay < RTC_WEEKDAY_MONDAY) ||
         (date->WeekDay > RTC_WEEKDAY_SUNDAY) || (date->Month < 1U) || (date->Month > 12U) ||
-        (date->Date < 1U) || (date->Date > 31U) || (date->Year > 99U)) {
+        (date->Date < 1U) || (date->Year > 99U) ||
+        (date->Date > DaysInMonth(date->Month, date->Year))) {
         return HAL_ERROR;
     }
 
