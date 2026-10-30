@@ -2,7 +2,7 @@
 <project>
 	<fileVersion>3</fileVersion>
 	<configuration>
-		<name>bringup_black</name>
+		<name>flight_computer</name>
 		<toolchain>
 			<name>ARM</name>
 		</toolchain>
