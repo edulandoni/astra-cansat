@@ -19,7 +19,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # Set the project name
-set(CMAKE_PROJECT_NAME bringup_black)
+set(CMAKE_PROJECT_NAME flight_computer)
 
 # Enable compile command to ease indexing with e.g. clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
@@ -43,12 +43,17 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 )
 
 set(ASTRA_APPLICATION_SOURCES
+    Core/Src/app.c
     Core/Src/altitude.c
     Core/Src/bmp280.c
+    Core/Src/command_handler.c
+    Core/Src/debug_console.c
     Core/Src/ds18b20.c
+    Core/Src/i2c_bus_manager.c
     Core/Src/ina3221.c
     Core/Src/mpu6500.c
     Core/Src/neo6m.c
+    Core/Src/sensor_manager.c
 )
 
 # Add sources to executable
