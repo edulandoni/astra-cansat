@@ -1,0 +1,28 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-11-06T00:02:10.270Z",
+  "cut_utc": "2026-11-06T00:06:36Z",
+  "status": "PARCIAL",
+  "previous_cut": "04/11/2026 20:59 ART",
+  "last_successful_cut": "20/10/2026 21:03 ART",
+  "attempts": [
+    "Curso106: Timeout fetching",
+    "Ingreso oficial: Timeout fetching"
+  ],
+  "credentials_entered": false,
+  "public_pages": "Cronograma/inscripción: textos relevantes sin cambios sustantivos detectados; descargas binarias no revalidadas",
+  "pending": [
+    "Foros y mensajes completos desde última lectura válida",
+    "Adjuntos/versiones/huellas",
+    "Calendario y entrega",
+    "Audiovisuales",
+    "Vector y ensayos ambientales"
+  ],
+  "research": {
+    "source": "https://whitenoisentua.gr/daedalus.html",
+    "status": "Texto de la página leído; edición 2019 identificada, sin datos crudos nuevos",
+    "new_reproducible_results": false,
+    "images_pixels_inspected": 0
+  },
+  "desktop_used": false,
+  "downloads": false
+}
