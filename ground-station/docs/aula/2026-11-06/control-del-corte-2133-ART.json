@@ -1,0 +1,27 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-11-07T00:00:06.317Z",
+  "cut_utc": "2026-11-07T00:33:45Z",
+  "status": "PARCIAL",
+  "previous_cut": "05/11/2026 21:06 ART",
+  "last_successful_cut": "20/10/2026 21:03 ART",
+  "attempts": [
+    "Curso redirige al ingreso oficial",
+    "Formulario de ingreso accesible; sin sesión autenticada"
+  ],
+  "credentials_entered": false,
+  "pending": [
+    "Autenticación mediante interfaz disponible compatible con no ocupar escritorio",
+    "Foros/mensajes/adjuntos desde última lectura válida",
+    "Versiones y huellas",
+    "Calendario y entrega",
+    "Audiovisuales",
+    "Vector y ensayos ambientales"
+  ],
+  "public_pages": "Textos relevantes sin cambios sustantivos; binarios no revalidados",
+  "research": {
+    "candidate": "https://www.djsce.ac.in/docs/DJS%20Arya%20Article.pdf",
+    "status": "Localizado en búsqueda; PDF no leído; sin nuevos datos reproducibles",
+    "images_pixels_inspected": 0
+  },
+  "desktop_used": false
+}
