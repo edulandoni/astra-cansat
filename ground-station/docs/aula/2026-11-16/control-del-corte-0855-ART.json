@@ -1,0 +1,37 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-11-16T11:52:29.431Z",
+  "cut_utc": "2026-11-16T11:55:35Z",
+  "cut_art": "2026-11-16 08:55",
+  "status": "PARCIAL",
+  "previous_cut": "2026-11-14 22:45 ART",
+  "last_successful_cut": "2026-10-20 21:03 ART",
+  "access": "Redirect al ingreso; copia rastreada ayer, sin autenticación",
+  "credentials_entered": false,
+  "desktop_used": false,
+  "public_pages": "Textos cronograma e inscripción sin cambios sustantivos; binarios no revalidados",
+  "pending": [
+    "Secciones y foros completos",
+    "Mensajes y respuestas desde 20/10",
+    "Adjuntos/versiones/huellas",
+    "Calendario y vencimiento de entrega",
+    "Audiovisuales",
+    "Vector/ensayos ambientales"
+  ],
+  "priority": "Inicio público PDR mañana 17/11; verificar vencimiento concreto hoy",
+  "research": {
+    "pages_read": [
+      "https://github.com/official-vnt/Cansat2026-gcs-system",
+      "https://github.com/official-vnt/Cansat2026-gcs-system/blob/main/commands.md"
+    ],
+    "failed_directories": [
+      "src",
+      "datalogging"
+    ],
+    "new_measured_evidence": false,
+    "images_inspected": false,
+    "third_party_downloads": false,
+    "code_executed": false,
+    "jira35_comment": false
+  },
+  "changes_to_software_or_rf": false
+}
