@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="500" height="225" preserveAspectRatio="xMinYMin meet" viewBox="0 0 500 225" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="500" height="225"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-225)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="10" y="135" width="130" height="62" rx="5" ry="0" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(94%,96%,98%); fill-rule: evenodd;"/>
+			<text x="40.19531249999999" y="180" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,360) scale(1,-1)">Antena candidata</text>
+			<text x="31.439208984374993" y="167" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,334) scale(1,-1)">Mástil/trípode estable</text>
+			<text x="30.769042968749993" y="154" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,308) scale(1,-1)">Orientación registrada</text>
+			<rect x="190" y="135" width="130" height="62" rx="5" ry="0" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(94%,96%,98%); fill-rule: evenodd;"/>
+			<text x="220.0810546875" y="180" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,360) scale(1,-1)">Gateway terrestre</text>
+			<text x="208.573974609375" y="167" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,334) scale(1,-1)">Caja + alivio de tensión</text>
+			<text x="213.076171875" y="154" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,308) scale(1,-1)">Coaxial caracterizado</text>
+			<rect x="370" y="135" width="120" height="62" rx="5" ry="0" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(94%,96%,98%); fill-rule: evenodd;"/>
+			<text x="409.963134765625" y="180" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,360) scale(1,-1)">Notebook</text>
+			<text x="394.951416015625" y="167" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,334) scale(1,-1)">Batería / respaldo</text>
+			<text x="401.1015625" y="154" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,308) scale(1,-1)">USB + registro</text>
+			<path d="M 140,166 L 190,166 Z" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1.2; stroke-dasharray: 4, 3;"/>
+			<polygon points="190 166, 184 163, 184 169" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,54%); fill-rule: evenodd;"/>
+			<path d="M 320,166 L 370,166 Z" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1.2; stroke-dasharray: 4, 3;"/>
+			<polygon points="370 166, 364 163, 364 169" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,54%); fill-rule: evenodd;"/>
+			<rect x="75" y="30" width="350" height="63" rx="5" ry="0" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(94%,96%,98%); fill-rule: evenodd;"/>
+			<text x="152.16015625" y="76" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,152) scale(1,-1)">Propuesta de montaje, no construcción verificada</text>
+			<text x="141.20458984375" y="63" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,126) scale(1,-1)">Separar antena de personas/PC; conservar polarización</text>
+			<text x="149.191650390625" y="50" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,100) scale(1,-1)">Longitud/pérdida del cable y altura: definir y medir</text>
+		</g>
+	</g>
+</svg>

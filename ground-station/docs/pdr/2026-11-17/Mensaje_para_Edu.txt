@@ -1,0 +1,15 @@
+Edu, estoy cerrando nuestra entrega para que Rebe pueda armar el PDR. Ya tenemos documentados el banco USB, los registros, el Laboratorio, las pruebas de cámaras y los cálculos de radio. Para que la parte compartida quede consistente necesito tu definición actual, aunque sea preliminar, de esto:
+
+1. Paquete: formato completo, campos/tipos/unidades/escala, orden de bytes y tamaño máximo. ¿Los ~55 bytes incluyen versión, origen/destino, contador y validez? Pasame un ejemplo real de paquete y cómo se interpreta.
+
+2. Radio: módulo y revisión exactos, pinout y antenas que tenemos; frecuencia, modo, SF/BW/CR o bitrate, potencia, CRC/direcciones y cómo repartimos el tiempo entre telemetría a 1 Hz y órdenes. Si ya lo tenés implementado, pasame esa configuración y versión.
+
+3. Comandos: cómo pedimos cero de altura, ajuste UTC, batería/solar y espera/activación; argumentos, estados permitidos, respuesta de ejecución/error y qué pasa si repetimos una orden o no llega respuesta. Adapto tierra a lo que definas vos.
+
+4. Estados y reset: qué estados/eventos vas a enviar, cómo identificamos misión/arranque y qué pasa con contador, hora y configuración después de reiniciar. Confirmame también las referencias/unidades de altura, GPS e IMU y cómo marcás un sensor inválido.
+
+5. Cámaras: cuándo arrancan y terminan, si las manejás con START o por un bus, pines/niveles y alimentación; cómo evitamos que un reset del OBC corte la grabación. ¿Podemos devolver al OBC progreso real de guardado y errores de cada cámara? Con sólo START no podemos confirmar desde tierra que siguen escribiendo.
+
+6. Integración: qué antenas/conectores/cables y esquema de alimentación vamos a presentar, y qué distancia/recorrido tomamos para calcular el enlace. Pasame también cualquier prueba nueva que hayas hecho para no describir como pendiente algo que ya esté verificado.
+
+No hace falta tener todo construido para responder: separá qué ya está definido/probado, qué proponés para el PDR y qué queda pendiente. Con esa versión adapto lo nuestro y le dejamos a Rebe un diseño coherente con sus evidencias. Lo que falte lo registramos explícito, sin inventarlo.

@@ -1,0 +1,59 @@
+{
+  "status": "DRAFT_NOT_APPROVED",
+  "version": null,
+  "approved_by": [],
+  "telemetry": {
+    "encoding": null,
+    "application_max_bytes": null,
+    "byte_order": null,
+    "fields": [],
+    "valid_example_hex_or_text": null,
+    "decoded_example": null,
+    "invalid_examples": []
+  },
+  "radio": {
+    "module_revision": null,
+    "pinout_reference": null,
+    "carrier_hz": null,
+    "modulation": null,
+    "sf_or_bitrate": null,
+    "bandwidth_hz": null,
+    "coding_rate": null,
+    "tx_power_dbm": null,
+    "tx_duty_conditions": null,
+    "sync_word": null,
+    "phy_crc": null,
+    "application_integrity": null,
+    "source_address": null,
+    "destination_address": null,
+    "telemetry_period_ms": null,
+    "command_rx_window_ms": null,
+    "guard_ms": null,
+    "profile_sensitivity_dbm": null
+  },
+  "commands": [],
+  "mission": {
+    "states": [],
+    "separation_event": null,
+    "counter_reset_and_rollover": null,
+    "clock_persistence": null,
+    "measurement_validity": null
+  },
+  "cameras": {
+    "start_event": null,
+    "stop_condition": null,
+    "electrical_interface": null,
+    "power_switching": null,
+    "obc_reset_behavior": null,
+    "status_return_interface": null,
+    "status_fields": []
+  },
+  "ground": {
+    "antenna_model": null,
+    "connector_and_cable": null,
+    "mount": null,
+    "losses_db": null,
+    "slant_range_m": null,
+    "target_margin_db": null
+  }
+}

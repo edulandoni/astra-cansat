@@ -1,0 +1,9 @@
+id,objeto,configuracion,criterio,estado,trazabilidad
+V01,Trama y unidades,"Vectores de Edu válidos, extremos, inválidos, versión y destinatario ajenos",Comparar bytes y valores; rechazar inválidos sin actuación,Pendiente ICD / ensayo conjunto,X2/X5/X6; ASTRA-24
+V02,Órdenes,"Cero, UTC, alimentación; duplicados, expiración, corte y rechazo",Separar aceptación/ejecución; no repetir actuación por timeout,Banco probado; vuelo pendiente,G1/G15/F3/F4; ASTRA-24
+V03,RF a 1 Hz,"Perfil y trama máxima, órdenes/guardas, TX/RX y versiones registrados","Medir recepción única, ráfagas, RTT y presupuesto temporal; umbrales a acordar",Pendiente hardware/perfil,X4; ASTRA-23/24/25
+V04,Enlace y antenas,"Distancia oblicua, orientación, polarización, montaje/coaxial y entorno",Comparar modelos con mismas condiciones y margen objetivo acordado,Pendiente campaña RF,ASTRA-25
+V05,Registro y respaldo,Diario/CSV y soporte externo realmente independiente,"Conteos/huellas, recuperación y errores de cada destino; no rellenar huecos",USB prolongado previo; respaldo físico simultáneo pendiente,G2; ASTRA-21
+V06,Dos cámaras,"Cada unidad con su SD, alimentación y firmware identificados",Duración que cubra misión y margen acordados; cuadros/tiempos/errores; lectura externa,Cámara 1 breve probada; conjunto pendiente,C6/C7/SN6/SN7; ASTRA-39
+V07,Arranque y reset,"Energía representativa, sin botones/USB; reset OBC y cámara por separado","Propuesta: 20 ciclos por unidad y registrar primer guardado, fallos y archivos; cantidad no certifica fiabilidad",Pendiente circuito y ensayo,F5 / cámaras; ASTRA-39/24
+V08,Energía y SD,"Espera/arranque/grabación, SD ausente/llena/lenta y cierre incompleto",Medir tensión/corriente/picos y archivos recuperables; criterios EPS/tiempo a acordar,Pendiente banco físico,E4/E7 y cámaras; ASTRA-39

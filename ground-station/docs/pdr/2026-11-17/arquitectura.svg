@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="500" height="225" preserveAspectRatio="xMinYMin meet" viewBox="0 0 500 225" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="500" height="225"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-225)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="5" y="150" width="105" height="53" rx="5" ry="0" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(94%,96%,98%); fill-rule: evenodd;"/>
+			<text x="23.567626953124993" y="186" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,372) scale(1,-1)">STM32 + SX1276</text>
+			<text x="21.396728515624993" y="173" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,346) scale(1,-1)">Vuelo / propuesto</text>
+			<path d="M 110,176 L 155,176 Z" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1.2; stroke-dasharray: 4, 3;"/>
+			<polygon points="155 176, 149 173, 149 179" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,54%); fill-rule: evenodd;"/>
+			<rect x="155" y="150" width="120" height="53" rx="5" ry="0" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(94%,96%,98%); fill-rule: evenodd;"/>
+			<text x="182.66943359375" y="186" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,372) scale(1,-1)">SX1276 + ESP32</text>
+			<text x="173.744140625" y="173" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,346) scale(1,-1)">Gateway / pendiente</text>
+			<path d="M 275,176 L 315,176 Z" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1.2; stroke-dasharray: 4, 3;"/>
+			<polygon points="315 176, 309 173, 309 179" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,54%); fill-rule: evenodd;"/>
+			<rect x="315" y="150" width="175" height="53" rx="5" ry="0" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(94%,96%,98%); fill-rule: evenodd;"/>
+			<text x="363.828125" y="186" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,372) scale(1,-1)">PC / Laboratorio Qt</text>
+			<text x="353.850341796875" y="173" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,346) scale(1,-1)">Adquisición + validación</text>
+			<rect x="5" y="55" width="145" height="53" rx="5" ry="0" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(94%,96%,98%); fill-rule: evenodd;"/>
+			<text x="35.28173828124999" y="91" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,182) scale(1,-1)">ESP32 simulador USB</text>
+			<text x="25.877441406249993" y="78" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,156) scale(1,-1)">Datos sintéticos probados</text>
+			<path d="M 150,81 L 315,163 Z" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1.2;"/>
+			<polygon points="315 163, 310.9621 157.6432, 308.2918 163.0163" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,54%); fill-rule: evenodd;"/>
+			<rect x="315" y="55" width="83" height="53" rx="5" ry="0" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(94%,96%,98%); fill-rule: evenodd;"/>
+			<text x="344.67431640625" y="91" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,182) scale(1,-1)">Diario</text>
+			<text x="341.543212890625" y="78" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,156) scale(1,-1)">original</text>
+			<rect x="410" y="55" width="80" height="53" rx="5" ry="0" style="stroke: rgb(3%,49%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(94%,96%,98%); fill-rule: evenodd;"/>
+			<text x="442.0283203125" y="91" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,182) scale(1,-1)">CSV</text>
+			<text x="429.475341796875" y="78" style="font-family: Segoe; font-size: 9px;fill: rgb(9%,20%,29%); stroke:none;" transform="translate(0,156) scale(1,-1)">por sesión</text>
+			<path d="M 355,150 L 355,108 Z" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1.2;"/>
+			<polygon points="355 108, 352 114, 358 114" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,54%); fill-rule: evenodd;"/>
+			<path d="M 450,150 L 450,108 Z" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1.2;"/>
+			<polygon points="450 108, 447 114, 453 114" style="stroke: rgb(39%,45%,54%); stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,54%); fill-rule: evenodd;"/>
+			<text x="6" y="20" style="font-family: Segoe; font-size: 8px;fill: rgb(39%,45%,54%); stroke:none;" transform="translate(0,40) scale(1,-1)">Línea discontinua: integración RF futura. USB de banco no prueba enlace de vuelo.</text>
+		</g>
+	</g>
+</svg>
