@@ -1,0 +1,29 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-11-17T03:45:05.699Z",
+  "cut_utc": "2026-11-17T03:47:12Z",
+  "status": "PARCIAL",
+  "previous_cut": "2026-11-16 08:55 ART",
+  "last_successful_cut": "2026-10-20 21:03 ART",
+  "access": "Ingreso sin autenticar; copia rastreada hoy",
+  "public_pages": "Cronograma e inscripción sin cambios sustantivos; binarios no revalidados",
+  "pending": [
+    "Foros y secciones completas",
+    "Cuerpos y respuestas posteriores al 20/10",
+    "Adjuntos/versiones/huellas",
+    "Entrega/calendario",
+    "Audiovisuales",
+    "Vector y ensayos ambientales"
+  ],
+  "credentials_entered": false,
+  "desktop_used": false,
+  "research": {
+    "scope": "Una ficha VNT profundizada; tres archivos primarios leídos",
+    "commit": "5cfa0f87c2ef4f6a0f437f3b176b7e47179e3811",
+    "source_bodies_verified": true,
+    "code_executed": false,
+    "flight_data_verified": false,
+    "images_inspected": false,
+    "third_party_material_saved": false
+  },
+  "software_or_rf_changes": false
+}
