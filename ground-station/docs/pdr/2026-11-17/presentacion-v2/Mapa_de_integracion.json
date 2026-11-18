@@ -1,0 +1,282 @@
+[
+  {
+    "page": 1,
+    "item": "GS",
+    "title": "ASTRA ground segment — PDR contribution",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "O1",
+      "O2",
+      "D1"
+    ]
+  },
+  {
+    "page": 2,
+    "item": "69",
+    "title": "GCS overview",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E1",
+      "E3",
+      "E5",
+      "D1"
+    ]
+  },
+  {
+    "page": 3,
+    "item": "70",
+    "title": "GCS components and connections",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E1",
+      "E2",
+      "D1"
+    ]
+  },
+  {
+    "page": 4,
+    "item": "71",
+    "title": "Ground antenna trade",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "M1",
+      "M2"
+    ]
+  },
+  {
+    "page": 5,
+    "item": "71",
+    "title": "Antenna radiation patterns",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "M1",
+      "M2"
+    ]
+  },
+  {
+    "page": 6,
+    "item": "72",
+    "title": "Ground antenna mounting design",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "M1",
+      "M2",
+      "E7"
+    ]
+  },
+  {
+    "page": 7,
+    "item": "73",
+    "title": "Antenna selection and link-budget closure",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "M1",
+      "M2",
+      "E7"
+    ]
+  },
+  {
+    "page": 8,
+    "item": "74",
+    "title": "GCS software prototype",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E3",
+      "https://github.com/edulandoni/astra-cansat/blob/70b9f9d4e495f322b80ecd5bae16df3f8e3290f0/ground-station/laboratorio/qt_app.py"
+    ]
+  },
+  {
+    "page": 9,
+    "item": "74",
+    "title": "Acquisition, quality and recording",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E1",
+      "E2",
+      "E3"
+    ]
+  },
+  {
+    "page": 10,
+    "item": "56",
+    "title": "Command transmission and verification",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E3",
+      "D1",
+      "https://github.com/edulandoni/astra-cansat/blob/70b9f9d4e495f322b80ecd5bae16df3f8e3290f0/ground-station/banco-usb-v0.2/wire.py"
+    ]
+  },
+  {
+    "page": 11,
+    "item": "55",
+    "title": "Telemetry definition and working example",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "D1",
+      "https://github.com/edulandoni/astra-cansat/blob/70b9f9d4e495f322b80ecd5bae16df3f8e3290f0/ground-station/banco-usb-v0.1/protocol.py",
+      "https://github.com/edulandoni/astra-cansat/blob/70b9f9d4e495f322b80ecd5bae16df3f8e3290f0/ground-station/laboratorio/runtime.py"
+    ]
+  },
+  {
+    "page": 12,
+    "item": "54",
+    "title": "Radio timing and transmission control",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E6",
+      "M4",
+      "D1"
+    ]
+  },
+  {
+    "page": 13,
+    "item": "28",
+    "title": "Camera sensor trade — release and ground views",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "M3",
+      "E4",
+      "E5"
+    ]
+  },
+  {
+    "page": 14,
+    "item": "29",
+    "title": "Dual-camera recording architecture",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E4",
+      "E5",
+      "D1"
+    ]
+  },
+  {
+    "page": 15,
+    "item": "31",
+    "title": "Recording lifecycle and failure supervision",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E5",
+      "D1"
+    ]
+  },
+  {
+    "page": 16,
+    "item": "31",
+    "title": "Local preview and flight video are separate paths",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E5",
+      "D1"
+    ]
+  },
+  {
+    "page": 17,
+    "item": "76",
+    "title": "Physical USB bench evidence",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E1",
+      "E2"
+    ]
+  },
+  {
+    "page": 18,
+    "item": "76",
+    "title": "Camera bench evidence",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E4",
+      "E5"
+    ]
+  },
+  {
+    "page": 19,
+    "item": "79",
+    "title": "Simulation and fault-injection test plan",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E3",
+      "https://github.com/edulandoni/astra-cansat/blob/70b9f9d4e495f322b80ecd5bae16df3f8e3290f0/ground-station/laboratorio/test_laboratory.py",
+      "https://github.com/edulandoni/astra-cansat/blob/70b9f9d4e495f322b80ecd5bae16df3f8e3290f0/ground-station/laboratorio/runtime.py"
+    ]
+  },
+  {
+    "page": 20,
+    "item": "77",
+    "title": "Integrated mission verification plan",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E1",
+      "E5",
+      "D1"
+    ]
+  },
+  {
+    "page": 21,
+    "item": "74",
+    "title": "Requirement coverage and remaining risks",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "O2",
+      "E3",
+      "D1"
+    ]
+  },
+  {
+    "page": 22,
+    "item": "ICD",
+    "title": "Shared decisions required to close integration",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "D1",
+      "https://github.com/edulandoni/astra-cansat/blob/70b9f9d4e495f322b80ecd5bae16df3f8e3290f0/ground-station/docs/pdr/2026-11-17/decisiones_para_Edu.csv"
+    ]
+  },
+  {
+    "page": 23,
+    "item": "REF",
+    "title": "Evidence and source register",
+    "exemplar": 72,
+    "templateAction": "append independent editable copy; preserve chrome; replace logo placeholder with ASTRA wordmark; replace expectations with authored technical content",
+    "sources": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "E6",
+      "E7",
+      "D1",
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "O1",
+      "O2"
+    ]
+  }
+]
