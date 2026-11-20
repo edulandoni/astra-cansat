@@ -52,33 +52,80 @@ class SeriesPlot(QWidget):
             values.append(value if value is None or math.isfinite(value) else None)
         self.points.append((segment,count,values))
 
-    def paintEvent(self,event):
-        p=QPainter(self);p.setRenderHint(QPainter.Antialiasing);p.fillRect(self.rect(),QColor('white'))
-        p.setPen(QColor('#24334B'));p.drawText(12,22,self.title)
-        all_values=[v for _,_,values in self.points for v in values if v is not None]
-        if not all_values:p.setPen(QColor('#7D8BA0'));p.drawText(self.rect(),Qt.AlignCenter,'Sin muestras válidas');return
-        lo=min(all_values);hi=max(all_values);span=hi-lo
-        if span<1e-9:span=max(abs(hi)*.02,.01)
-        lo-=span*.08;hi+=span*.08
-        left=68;right=self.width()-18;top=42;bottom=self.height()-36
-        for i in range(3):
-            y=top+i*(bottom-top)/2;value=hi-i*(hi-lo)/2
-            p.setPen(QColor('#EDF0F5'));p.drawLine(left,int(y),right,int(y))
-            p.setPen(QColor('#65758D'));p.drawText(2,int(y)-8,60,20,Qt.AlignRight,f'{value:.4g}')
-        first=min(v[1] for v in self.points);last=max(v[1] for v in self.points)
-        p.drawText(left,bottom+22,f'contador {first}–{last}')
-        for series,key in enumerate(self.keys):
-            color=QColor('#9BA7B8' if self.old else self.COLORS[series%3]);p.setPen(QPen(color,2))
-            path=QPainterPath();previous=None
-            for segment,count,values in self.points:
-                value=values[series]
-                if value is None:previous=None;continue
-                point=QPointF(left+(count-first)/max(last-first,1)*(right-left),bottom-(value-lo)/(hi-lo)*(bottom-top))
-                if previous and previous==(segment,count-1):path.lineTo(point)
-                else:path.moveTo(point)
-                previous=(segment,count)
-            p.drawPath(path)
-            p.drawText(12+series*90,self.height()-4,key.split('_')[-1] if len(self.keys)>1 else ('histórico' if self.old else 'actual'))
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.Antialiasing)
+        painter.fillRect(self.rect(), QColor('white'))
+        metrics = painter.fontMetrics()
+        ascent = metrics.ascent()
+        line_height = metrics.height()
+        painter.setPen(QColor('#24334B'))
+        painter.drawText(12, 8 + ascent, self.title)
+
+        all_values = [value for _, _, values in self.points for value in values if value is not None]
+        if not all_values:
+            painter.setPen(QColor('#65758D'))
+            painter.drawText(self.rect(), Qt.AlignCenter, 'Sin muestras válidas')
+            return
+
+        low, high = min(all_values), max(all_values)
+        span = high - low
+        if span < 1e-9:
+            span = max(abs(high) * .02, .01)
+        low -= span * .08
+        high += span * .08
+        tick_labels = [f'{value:.4g}' for value in (high, (high + low) / 2, low)]
+        left = 18 + max(metrics.horizontalAdvance(label) for label in tick_labels)
+        right = self.width() - 18
+        top = line_height * 2
+        bottom = self.height() - line_height * 2 - 12
+        if right <= left or bottom <= top:
+            return
+
+        for index, label in enumerate(tick_labels):
+            y = top + index * (bottom - top) // 2
+            width = metrics.horizontalAdvance(label)
+            painter.setPen(QColor('#E5EBF2'))
+            painter.drawLine(left, y, right, y)
+            painter.setPen(QColor('#52647B'))
+            painter.drawText(left - 8 - width, y + ascent // 2, label)
+
+        first = min(point[1] for point in self.points)
+        last = max(point[1] for point in self.points)
+        counter_baseline = bottom + line_height
+        painter.drawText(left, counter_baseline, f'Contador {first}–{last}')
+        legend_baseline = self.height() - metrics.descent() - 5
+        legend_x = 12
+        for series, key in enumerate(self.keys):
+            color = QColor(self.COLORS[series % len(self.COLORS)])
+            pen = QPen(color, 2, Qt.DashLine if self.old else Qt.SolidLine)
+            painter.setPen(pen)
+            path = QPainterPath()
+            previous = None
+            for segment, count, values in self.points:
+                value = values[series]
+                if value is None:
+                    previous = None
+                    continue
+                point = QPointF(
+                    left + (count - first) / max(last - first, 1) * (right - left),
+                    bottom - (value - low) / (high - low) * (bottom - top),
+                )
+                if previous == (segment, count - 1):
+                    path.lineTo(point)
+                else:
+                    path.moveTo(point)
+                previous = (segment, count)
+            painter.drawPath(path)
+            label = key.split('_')[-1] if len(self.keys) > 1 else 'Serie'
+            marker_y = legend_baseline - ascent // 3
+            painter.drawLine(legend_x, marker_y, legend_x + 16, marker_y)
+            painter.setPen(QColor('#24334B'))
+            painter.drawText(legend_x + 22, legend_baseline, label)
+            legend_x += 34 + metrics.horizontalAdvance(label)
+        if self.old:
+            painter.setPen(QColor('#52647B'))
+            painter.drawText(legend_x, legend_baseline, 'Histórico')
 
 
 class TelemetryWorkspace(QTabWidget):
