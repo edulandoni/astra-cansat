@@ -90,6 +90,10 @@ class SeriesPlot(QWidget):
             painter.setPen(QColor('#52647B'))
             painter.drawText(left - 8 - width, y + ascent // 2, label)
 
+        painter.setPen(QPen(QColor('#52647B'), 2))
+        painter.drawLine(left, top, left, bottom)
+        painter.drawLine(left, bottom, right, bottom)
+        painter.setPen(QColor('#24334B'))
         first = min(point[1] for point in self.points)
         last = max(point[1] for point in self.points)
         counter_baseline = bottom + line_height
@@ -98,7 +102,7 @@ class SeriesPlot(QWidget):
         legend_x = 12
         for series, key in enumerate(self.keys):
             color = QColor(self.COLORS[series % len(self.COLORS)])
-            pen = QPen(color, 2, Qt.DashLine if self.old else Qt.SolidLine)
+            pen = QPen(color, 3, Qt.DashLine if self.old else Qt.SolidLine)
             painter.setPen(pen)
             path = QPainterPath()
             previous = None
