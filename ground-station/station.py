@@ -9,11 +9,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent / 'laboratorio'))
 from qt_model import Source, source_view
 from telemetry_workspace import SeriesPlot, TelemetryWorkspace, text
 from engine import display
+from ui_model import FIELDS_INFO
 from serial.tools.list_ports import comports
 from PySide6.QtCore import QTimer
 from PySide6.QtGui import QFont, QFontDatabase
 from PySide6.QtWidgets import (
-    QApplication, QComboBox, QFileDialog, QFrame, QHBoxLayout, QMainWindow,
+    QApplication, QComboBox, QFileDialog, QFrame, QGridLayout, QHBoxLayout, QMainWindow,
     QMessageBox, QPushButton, QTabWidget, QVBoxLayout, QWidget,
 )
 
@@ -23,8 +24,9 @@ def configure_font(app):
     for name in ('segoeui.ttf', 'segoeuib.ttf'):
         if (fonts / name).is_file():
             QFontDatabase.addApplicationFont(str(fonts / name))
-    if 'Segoe UI' in QFontDatabase.families():
-        app.setFont(QFont('Segoe UI', 10))
+    font = QFont('Segoe UI') if 'Segoe UI' in QFontDatabase.families() else app.font()
+    font.setPointSize(14)
+    app.setFont(font)
 
 
 class Station(QMainWindow):
@@ -34,10 +36,10 @@ class Station(QMainWindow):
         self.output = Path(output)
         self.backup_path = None
         self.setWindowTitle('ASTRA | Estación de tierra')
-        self.resize(1360, 850)
+        self.resize(1600, 1000)
         self.setStyleSheet("""
             QMainWindow, QWidget#shell {background:#edf2f6;color:#172c43}
-            QLabel {color:#172c43;font-size:15px}
+            QLabel {color:#172c43;font-size:14pt}
             QFrame#mast {background:#102b43;border-radius:8px}
             QLabel#brand {color:white;font-size:27px;font-weight:700}
             QLabel#signal {color:#acf2e5;font-weight:700;font-size:16px}
@@ -80,33 +82,46 @@ class Station(QMainWindow):
         operation.setSpacing(12)
         self.detail = text()
         operation.addWidget(self.detail)
-        metrics = QHBoxLayout()
-        self.metrics = {}
-        for key, title in [('STATE', 'Etapa'), ('ALTITUDE', 'Altura relativa · m'),
-                           ('VOLTAGE', 'Batería · V'), ('VALID', 'Muestras válidas'),
-                           ('GAPS', 'Huecos observados')]:
-            card = QFrame(objectName='card')
-            column = QVBoxLayout(card)
-            column.addWidget(text(title))
-            value = text('—')
-            value.setObjectName('metric')
-            column.addWidget(value)
-            metrics.addWidget(card, 1)
-            self.metrics[key] = value
-        operation.addLayout(metrics)
-        row = QHBoxLayout()
-        self.plot = SeriesPlot('Altura relativa · m', ('ALTITUDE',))
-        row.addWidget(self.plot, 3)
-        health = QFrame(objectName='card')
-        side = QVBoxLayout(health)
-        side.addWidget(text('REGISTRO DE SESIÓN'))
+        status = QHBoxLayout()
+        self.counts = text()
         self.primary = text()
         self.backup = text()
-        side.addWidget(self.primary)
-        side.addWidget(self.backup)
-        side.addStretch()
-        row.addWidget(health, 1)
-        operation.addLayout(row, 1)
+        for label in (self.counts, self.primary, self.backup):
+            status.addWidget(label, 1)
+        operation.addLayout(status)
+
+        readings = QGridLayout()
+        self.readings = {}
+        for index, (key, (title, _, description)) in enumerate(FIELDS_INFO.items()):
+            name = text(title)
+            value = text('—')
+            value.setToolTip(description)
+            value.setStyleSheet('color:#09524c;font-weight:700')
+            row, col = divmod(index, 4)
+            pair = QHBoxLayout()
+            pair.addWidget(name)
+            pair.addWidget(value, 1)
+            readings.addLayout(pair, row, col)
+            readings.setColumnStretch(col, 1)
+            self.readings[key] = value
+        operation.addLayout(readings)
+
+        charts = QGridLayout()
+        self.mission_plots = []
+        for index, (title, keys) in enumerate((
+            ('Altura relativa · m', ('ALTITUDE',)),
+            ('Batería · V', ('VOLTAGE',)),
+            ('Corriente · A', ('CURRENT',)),
+            ('Aceleración · m/s²', ('ACCEL_R', 'ACCEL_P', 'ACCEL_Y')),
+            ('Vel. angular · rad/s', ('GYRO_R', 'GYRO_P', 'GYRO_Y')),
+        )):
+            plot = SeriesPlot(title, keys)
+            plot.setMinimumHeight(166)
+            row, col = divmod(index, 3)
+            charts.addWidget(plot, row, col)
+            self.mission_plots.append(plot)
+        operation.addLayout(charts, 1)
+        self.mission_segment = None
         self.tabs.addTab(page, 'Operación')
         self.telemetry = TelemetryWorkspace(self)
         self.tabs.addTab(self.telemetry, 'Telemetría y registros')
@@ -154,7 +169,9 @@ class Station(QMainWindow):
             raise ValueError('Cerrá la sesión activa antes de abrir otra.')
         self.source = Source(self.output, mode, backup=self.backup_path, **options)
         self.telemetry.reset()
-        self.plot.points.clear()
+        self.mission_segment = None
+        for plot in self.mission_plots:
+            plot.points.clear()
         self.refresh()
 
     def stop(self):
@@ -167,12 +184,13 @@ class Station(QMainWindow):
         self.signal.setText(view['badge'])
         condition = 'Última muestra conservada' if view['old'] else 'Edad de la muestra'
         self.detail.setText(f"{view['title']}  ·  {condition}: {view['age']}")
-        for key, label in self.metrics.items():
+        valid = snapshot.get('total_valid', '—')
+        self.counts.setText(f"RX válidos: {valid} · Huecos: {view['gaps']}")
+        raw = snapshot.get('latest') or snapshot.get('last_sample') or {}
+        for key, label in self.readings.items():
             value = view['values'].get(key, '—')
-            if key == 'VALID':
-                value = snapshot.get('total_valid', '—')
-            elif key == 'GAPS':
-                value = view['gaps']
+            if raw.get('GPS_SATS') == '0' and key.startswith('GPS_') and key != 'GPS_SATS':
+                value = 'Sin solución'
             label.setText(str(value))
         active = bool(self.source and not self.source.closed)
         for widget in (self.port, self.scan, self.usb, self.replay):
@@ -184,10 +202,17 @@ class Station(QMainWindow):
                     segment, packet = self.source.engine.updates.get_nowait()
                 except queue.Empty:
                     break
-                self.plot.add(segment, packet.count, display(packet.data))
+                if segment != self.mission_segment:
+                    self.mission_segment = segment
+                    for plot in self.mission_plots:
+                        plot.points.clear()
+                values = display(packet.data)
+                for plot in self.mission_plots:
+                    plot.add(segment, packet.count, values)
                 self.telemetry.add_packet(segment, packet)
-        self.plot.old = view['old']
-        self.plot.update()
+        for plot in self.mission_plots:
+            plot.old = view['old'] or view['mode'] == 'replay'
+            plot.update()
         self.telemetry.refresh(view)
         for index, label, name in ((0, self.primary, 'Principal'), (1, self.backup, 'Segundo destino')):
             writers = [w for w in snapshot.get('storage', []) if w['destination'] == index]
