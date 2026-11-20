@@ -10,6 +10,7 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 import station
 from PySide6.QtCore import QPoint
+from PySide6.QtWidgets import QTabBar
 from ui_model import FIELDS_INFO
 
 
@@ -38,7 +39,8 @@ class MissionViewTest(unittest.TestCase):
             try:
                 APP.processEvents()
                 self.assertEqual(set(window.readings), set(FIELDS_INFO))
-                page = window.tabs.currentWidget()
+                page = window.operation_page
+                self.assertFalse(any(tabs.isVisible() for tabs in window.findChildren(QTabBar)))
                 for widget in (*window.readings.values(), *window.mission_plots):
                     self.assertTrue(widget.isVisible())
                     upper = widget.mapTo(page, QPoint(0, 0))
@@ -49,6 +51,8 @@ class MissionViewTest(unittest.TestCase):
                 window.start("replay", replay=FIXTURE, speed=10)
                 wait_for(lambda: all(len(plot.points) >= 2 for plot in window.mission_plots))
                 self.assertIn("REPRODUCCIÓN", window.signal.text())
+                for label in window.readings.values():
+                    self.assertLessEqual(label.heightForWidth(label.width()), label.height())
                 self.assertFalse(any(b.isEnabled() for b in window.telemetry.command_buttons.values()))
 
                 captured = station.source_view(window.source)
