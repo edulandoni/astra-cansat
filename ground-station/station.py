@@ -14,8 +14,8 @@ from serial.tools.list_ports import comports
 from PySide6.QtCore import QTimer
 from PySide6.QtGui import QFont, QFontDatabase
 from PySide6.QtWidgets import (
-    QApplication, QComboBox, QFileDialog, QFrame, QGridLayout, QHBoxLayout, QMainWindow,
-    QMessageBox, QPushButton, QTabWidget, QVBoxLayout, QWidget,
+    QApplication, QComboBox, QDialog, QFileDialog, QFrame, QGridLayout, QHBoxLayout,
+    QMainWindow, QMessageBox, QPushButton, QVBoxLayout, QWidget,
 )
 
 
@@ -41,14 +41,11 @@ class Station(QMainWindow):
             QMainWindow, QWidget#shell {background:#edf2f6;color:#172c43}
             QLabel {color:#172c43;font-size:14pt}
             QFrame#mast {background:#102b43;border-radius:8px}
-            QLabel#brand {color:white;font-size:27px;font-weight:700}
-            QLabel#signal {color:#acf2e5;font-weight:700;font-size:16px}
-            QLabel#metric {color:#0e574f;font-size:24px;font-weight:700}
+            QLabel#brand {color:white;font-size:22pt;font-weight:700}
+            QLabel#signal {color:#acf2e5;font-weight:700;font-size:14pt}
             QFrame#card {background:white;border:1px solid #d0dce5;border-radius:7px}
             QPushButton {padding:8px 13px;background:white;border:1px solid #a8bbc9;border-radius:4px}
             QPushButton:disabled {color:#6c7982;background:#e3e9ee}
-            QTabBar::tab {padding:10px 18px}
-            QTabBar::tab:selected {background:white;color:#086c60}
         """)
         shell = QWidget(objectName='shell')
         self.setCentralWidget(shell)
@@ -74,11 +71,12 @@ class Station(QMainWindow):
         self.replay = self.button(bar, 'Reproducir registro', self.open_replay)
         self.stop_button = self.button(bar, 'Cerrar sesión', self.stop)
         bar.addStretch()
+        self.button(bar, 'Herramientas de banco…', self.show_bench_tools)
         layout.addLayout(bar)
-        self.tabs = QTabWidget()
-        layout.addWidget(self.tabs, 1)
-        page = QWidget()
-        operation = QVBoxLayout(page)
+        self.operation_page = QFrame(objectName='card')
+        layout.addWidget(self.operation_page, 1)
+        operation = QVBoxLayout(self.operation_page)
+        operation.setContentsMargins(14, 12, 14, 12)
         operation.setSpacing(12)
         self.detail = text()
         operation.addWidget(self.detail)
@@ -122,14 +120,21 @@ class Station(QMainWindow):
             self.mission_plots.append(plot)
         operation.addLayout(charts, 1)
         self.mission_segment = None
-        self.tabs.addTab(page, 'Operación')
+        self.bench_tools = QDialog(self)
+        self.bench_tools.setWindowTitle('ASTRA | Herramientas de banco')
+        self.bench_tools.resize(1120, 740)
         self.telemetry = TelemetryWorkspace(self)
-        self.tabs.addTab(self.telemetry, 'Telemetría y registros')
+        QVBoxLayout(self.bench_tools).addWidget(self.telemetry)
         self.scan_ports()
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.refresh)
         self.timer.start(200)
         self.refresh()
+
+    def show_bench_tools(self):
+        self.bench_tools.show()
+        self.bench_tools.raise_()
+        self.bench_tools.activateWindow()
 
     def button(self, layout, title, action):
         button = QPushButton(title)
