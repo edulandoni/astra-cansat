@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASTRA · Estación terrena</title>
+<style>
+:root{color-scheme:light;--navy:#102a3e;--ink:#122e42;--mute:#4b6273;--line:#d5e0e7;--paper:#eef3f6;--white:#fff;--green:#006359;--greenbg:#e2f3ee;--amber:#774700;--amberbg:#fff1d1;--blue:#255ba4;--violet:#714897;--radius:12px;font:19px/1.26 Inter,"Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink)}button,input,select{font:inherit;color:inherit}button,select,input{min-height:42px;border:1px solid #aebfcb;border-radius:8px;background:white;padding:7px 12px}button,a,select{cursor:pointer}button{font-weight:690}button:disabled{background:#e9eff3;color:#546775;cursor:not-allowed}a{color:inherit}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #188a7b;outline-offset:2px}h1,h2,h3,p{margin:0}h1{font-size:29px;line-height:1.1;letter-spacing:-.035em}h2{font-size:22px;line-height:1.16;letter-spacing:-.025em}h3{font-size:19px}small,.muted{font-size:19px;color:var(--mute)}.strong{font-weight:750}.digits{font-variant-numeric:tabular-nums}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 32px;background:var(--navy);color:white}.identity,.state{display:flex;align-items:center;gap:16px}.wordmark{font-size:37px;font-weight:880;letter-spacing:.085em;line-height:1;border-right:1px solid #8195a2;padding-right:16px}.sub{margin-top:4px;color:#c8d8e0;font-size:19px}.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:7px;background:var(--greenbg);color:var(--green);font-weight:740;white-space:nowrap}.badge.alert,.notice.alert{background:var(--amberbg);color:var(--amber)}.state .dot{width:9px;height:9px;border-radius:50%;background:currentColor}.state button{background:transparent;color:white;border-color:#788f9f}
+.shell{max-width:1720px;margin:auto;padding:17px 30px 22px}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.tabs{display:flex;flex-wrap:wrap;gap:8px}.tabs a{text-decoration:none;display:inline-block;border:1px solid transparent;padding:7px 11px;border-radius:8px;font-weight:680}.tabs a[aria-current=page]{background:white;border-color:var(--line);color:var(--green)}.toolbar .muted{text-align:right}.layout{display:grid;grid-template-columns:minmax(0,1fr) 374px;gap:14px}.main{display:grid;gap:12px}.card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:14px 15px;min-width:0}.metric-grid,.field-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.metric label{color:var(--mute);font-weight:650}.metric output{display:block;font-size:31px;font-weight:800;letter-spacing:-.045em;margin-top:2px}.metric p{color:var(--mute)}.metric--accent{border-top:3px solid var(--green);padding-top:12px}.metric--warn{border-top:3px solid #ae6c16;padding-top:12px}.metric--warn output{color:var(--amber)}
+.field-grid .card{padding:12px}.field-grid h3{margin-bottom:6px}.field-grid dl{margin:0}.field-grid dl div{display:flex;justify-content:space-between;gap:4px;align-items:baseline;min-height:28px;border-top:1px solid #edf1f4;padding-top:3px}.field-grid dt{color:var(--mute);font-weight:480}.field-grid dd{margin:0;text-align:right;font-weight:740;white-space:nowrap;letter-spacing:-.035em}
+.charts{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}.chart{grid-column:span 2;padding:11px 12px 9px}.chart.wide{grid-column:span 3}.chart svg{display:block;width:100%;height:117px;overflow:visible}.chart figcaption{display:flex;justify-content:space-between;align-items:center;color:var(--mute);gap:8px}.chart figure{margin:3px 0 0}.chart text{font-family:inherit;font-size:19px;fill:var(--mute)}.key{display:inline-flex;gap:8px;align-items:center}.key i{width:14px;height:3px;display:inline-block;background:currentColor}.side h2{margin-bottom:10px}.side{align-self:stretch}.side section{padding-top:11px;margin-top:11px;border-top:1px solid var(--line)}.side label,.form label{display:block;font-size:19px;font-weight:690;margin:8px 0 4px}.side input,.side select,.form input,.form select{width:100%}.notice{padding:9px 11px;border-radius:8px;background:var(--greenbg);color:var(--green);margin:7px 0 10px}.notice p{margin-top:4px}.actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}.primary{background:var(--green);color:white;border-color:var(--green)}.kv{display:grid;gap:6px;margin-top:7px}.kv div{display:flex;justify-content:space-between;gap:8px}.kv b{text-align:right}.side .last{font-size:19px;line-height:1.25;margin-top:8px}.side button{flex:1}.panelgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.stack{display:grid;gap:14px}.wide-panel{grid-column:1/-1}.panelgrid .card{padding:19px 21px}.panelgrid h2{margin-bottom:9px}.textgroup{margin:12px 0}.textgroup .muted{margin-top:3px}.split{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}.split button{margin-bottom:0}.form .split+.split{margin-top:7px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;text-align:left;min-width:650px}th{background:#e9f0f5;font-size:19px;font-weight:750;color:var(--ink)}td,th{padding:9px 11px;border-bottom:1px solid var(--line)}tbody tr:nth-child(even){background:#f6f8fa}.front-status{font-weight:720;color:var(--green)}.front-status.warn{color:var(--amber)}.right-action{margin-left:auto}
+dialog{width:min(600px,calc(100% - 28px));border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 12px 40px #102a3e38;color:var(--ink)}dialog::backdrop{background:#102a3e80}dialog h2{margin-bottom:12px}dialog p{margin:8px 0}.sr-only{clip:rect(0,0,0,0);clip-path:inset(50%);height:1px;width:1px;position:absolute;overflow:hidden;white-space:nowrap}
+@media(max-width:1280px){.layout{grid-template-columns:minmax(0,1fr) 325px}.field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:960px){.layout,.panelgrid{grid-template-columns:1fr}.top,.toolbar{align-items:flex-start;flex-wrap:wrap}.shell{padding:12px}.state{flex-wrap:wrap}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.chart,.chart.wide{grid-column:span 3}.toolbar .muted{text-align:left}}
+@media(max-width:540px){.field-grid{grid-template-columns:1fr}.chart,.chart.wide{grid-column:span 6}}
+</style>
+</head>
+<body>
+<header class="top"><div class="identity"><span class="wordmark">ASTRA</span><div><h1>Estación terrena</h1><p class="sub">Telemetría y control de misión</p></div></div><div class="state" id="state"></div></header>
+<div class="shell">
+<div class="toolbar"><nav class="tabs" aria-label="Estación terrena"><a href="#operacion" data-route="operacion">Operación</a><a href="#comandos" data-route="comandos">Comandos</a><a href="#sesion" data-route="sesion">Sesión y archivos</a><a href="#diagnostico" data-route="diagnostico">Diagnóstico</a></nav><p class="muted digits" id="session-label"></p></div>
+<main id="view"></main>
+</div>
+<dialog id="confirm"><form method="dialog"><h2 id="dialog-title"></h2><div id="dialog-body"></div><div class="actions"><button value="cancel" autofocus>Cancelar</button><button class="primary" value="confirm" id="dialog-ok">Confirmar</button></div></form></dialog>
+<script>
+"use strict";
+const commands={CAL_ZERO:"Calibrar altura de referencia",SET_TIME:"Ajustar hora UTC",POWER_STATUS:"Consultar energía",RUN:"Iniciar emisión de banco",STOP:"Detener emisión de banco"};
+const fields=[
+["Misión",[["Equipo","1000"],["Etapa","Ascenso"],["Tipo","Simulación"],["Hora UTC","03:10:49"],["Contador TX","15"],["Eco","NONE"]]],
+["Ambiente y energía",[["Altura relativa","180.0 m"],["Presión","99.2 kPa"],["Temperatura","21.8 °C"],["Batería","4.10 V"],["Corriente","0.18 A"]]],
+["Posición GPS",[["Hora UTC","03:10:49"],["Latitud","−34.6000°"],["Longitud","−58.4000°"],["Altura GPS","210.0 m"],["Satélites","9"]]],
+["Movimiento",[["Acel. R","0.00 m/s²"],["Acel. P","0.00 m/s²"],["Acel. Y","10.01 m/s²"],["Giro R","0.0117 rad/s"],["Giro P","−0.0120 rad/s"],["Giro Y","0.0159 rad/s"]]]];
+const plots=[
+["Altura relativa · m",["200","100","0"],[[.02,.02,.02,.02,.17,.38,.56,.71,.90]]],
+["Batería · V",["4.2","4.1","4.0"],[[.50,.50,.50,.51,.49,.50]]],
+["Corriente · A",["0.20","0.18","0.16"],[[.48,.49,.49,.49,.51,.49]]],
+["Aceleración · m/s²",["12","6","0"],[[.03,.04,.03,.03,.04],[.04,.04,.04,.04,.04],[.85,.84,.85,.82,.85]]],
+["Velocidad angular · rad/s",["0.04","0","−0.04"],[[.43,.52,.67,.80,.75,.64],[.62,.55,.49,.39,.35,.35],[.49,.54,.58,.65,.61,.59]]]];
+const baseline=[
+["03:11:05","B-0042","CAL_ZERO","Envío registrado","Aceptada","Altura cerca de 0 m"],
+["03:10:58","B-0041","POWER_STATUS","Envío registrado","Sin respuesta","Resultado desconocido"],
+["03:10:50","B-0040","SET_TIME","Envío registrado","Rechazada","Hora anterior conservada"]];
+const events=[
+["03:14:21","Dato antiguo","Entrada USB","Última lectura conservada · 4.2 s"],
+["03:14:17","GPS","Telemetría","Cero satélites · posición sin solución"],
+["03:14:12","Secuencia","Contador TX","13 huecos observados"],
+["03:13:45","Guardado","CSV principal","Última escritura confirmada"]];
+const state={mode:"replay",active:true,code:"CAL_ZERO",time:"03:11:15",port:"COM4",primary:"Sesiones / ASTRA",secondary:"Unidad externa E: / ASTRA",preview:false,history:baseline.slice(),next:43,filter:"Todos",summary:false};
+let pending=null;
+const view=document.getElementById("view");
+const dialog=document.getElementById("confirm");
+const routes=["operacion","comandos","sesion","diagnostico"];
+const colors=["#006359","#255ba4","#714897"];
+const e=v=>String(v).replace(/[&<>"']/g,s=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[s]));
+const route=()=>routes.includes(location.hash.slice(1))?location.hash.slice(1):"operacion";
+const canRecordCommand=()=>state.active&&state.mode==="bank";
+const metrics=(name,value,label,cls="")=>'<article class="card metric '+cls+'"><label>'+e(name)+'</label><output class="digits">'+e(value)+'</output><p>'+e(label)+'</p></article>';
+function chart([title,ticks,series],i){
+ const left=54,right=333,top=17,bottom=104;
+ const grid=[0,1,2].map(j=>{const y=top+(bottom-top)*j/2;return '<text x="0" y="'+(y+6)+'">'+e(ticks[j])+'</text><path d="M'+left+' '+y+'H'+right+'" stroke="#d5e0e7"/>';}).join("");
+ const lines=state.active?series.map((s,j)=>'<polyline fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke="'+colors[j]+'" points="'+s.map((v,t)=>(left+(right-left)*t/(s.length-1))+','+(bottom-v*(bottom-top))).join(" ")+'"/>').join(""):"";
+ const legend=series.length===3?'<span class="key">'+colors.map((c,j)=>'<span><i style="color:'+c+'"></i> '+["R","P","Y"][j]+'</span>').join("")+'</span>':"";
+ return '<article class="card chart '+(i>2?"wide":"")+'"><h3>'+e(title)+'</h3><figure><svg viewBox="0 0 345 115" preserveAspectRatio="none" role="img" aria-label="'+e(title)+'">'+grid+'<path d="M'+left+' '+top+'V'+bottom+'H'+right+'" stroke="#4b6273" stroke-width="2" fill="none"/>'+lines+'</svg><figcaption><span>'+(state.active?"Paquetes 1–15":"Sin sesión activa")+'</span>'+legend+'</figcaption></figure></article>';
+}
+function table(head,rows){
+ return '<div class="table-wrap"><table><thead><tr>'+head.map(x=>'<th scope="col">'+e(x)+'</th>').join("")+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map(x=>'<td>'+e(x)+'</td>').join("")+'</tr>').join("")+'</tbody></table></div>';
+}
+function selectCommand(){
+ return '<label for="code">Comando</label><select id="code" name="code" '+(!canRecordCommand()?"disabled":"")+'>'+Object.entries(commands).map(([key,label])=>'<option value="'+key+'" '+(state.code===key?"selected":"")+'>'+key+' · '+e(label)+'</option>').join("")+'</select>'+
+ (state.code==="SET_TIME"?'<label for="command-time">Hora UTC</label><input id="command-time" name="command-time" type="text" inputmode="numeric" value="'+e(state.time)+'" placeholder="HH:MM:SS" '+(!canRecordCommand()?"disabled":"")+'/>':'<p class="muted textgroup">'+(state.code==="RUN"?"Se usa el escenario nominal del banco.":"Sin argumentos para esta orden.")+'</p>');
+}
+function sidebar(){
+ return '<aside class="card side" aria-label="Consola de comandos"><h2>Consola de comandos</h2><div class="notice '+(!canRecordCommand()?"alert":"")+'"><strong>'+(canRecordCommand()?"Control de banco":"TX bloqueado")+'</strong><p>'+(canRecordCommand()?"Destino 1000 · banco simulado":"La fuente actual no admite transmisión.")+'</p></div>'+selectCommand()+'<div class="actions"><button data-action="preview" '+(!canRecordCommand()?"disabled":"")+'>Previsualizar</button><button class="primary" data-action="confirm" '+(!canRecordCommand()||!state.preview?"disabled":"")+'>Enviar</button></div><section><h3>Historial</h3><p class="last muted">'+(state.mode==="replay"?"Sin órdenes emitidas en reproducción.":e(state.history[0][2]+" · "+state.history[0][4]))+'</p><p class="last"><a href="#comandos">Ver flujo e historial</a></p></section><section><h3>Sesión y archivos</h3><div class="kv"><div><span>CSV principal</span><b>'+(state.active?"15 guardadas":"—")+'</b></div><div><span>Segundo destino</span><b>'+(state.mode==="bank"?"Configurado":"Sin configurar")+'</b></div></div><p class="last"><a href="#sesion">Configurar sesión</a></p></section><section><h3>Tiempo de misión</h3><p class="last muted">— · Pendiente del ICD de vuelo</p></section></aside>';
+}
+function operation(){
+ const cards=fields.map(([title,values])=>'<section class="card"><h3>'+e(title)+'</h3><dl>'+values.map(([l,v])=>'<div><dt>'+e(l)+'</dt><dd class="digits">'+(state.active?e(v):"—")+'</dd></div>').join("")+'</dl></section>').join("");
+ return '<div class="layout"><div class="main"><div class="metric-grid">'+metrics("Paquetes RX",state.active?"15":"—","válidos","metric--accent")+metrics("Huecos",state.active?"0":"—","observados")+metrics("Última muestra",state.active?"0.2 s":"—","antigüedad")+metrics("CSV principal",state.active?"15":"—","filas guardadas","metric--accent")+'</div><div class="field-grid">'+cards+'</div><div class="charts">'+plots.map(chart).join("")+'</div></div>'+sidebar()+'</div>';
+}
+function commandsView(){
+ const id="B-"+String(state.next).padStart(4,"0");
+ return '<div class="panelgrid"><section class="card form"><h2>Preparar orden</h2><p class="muted">Destino 1000 · USB de banco simulado</p>'+selectCommand()+'<div class="actions"><button data-action="preview" '+(!canRecordCommand()?"disabled":"")+'>Previsualizar</button></div></section><section class="card"><h2>Confirmar y enviar</h2><div class="notice '+(state.preview?"alert":"")+'"><strong>'+(state.preview?"Confirmación requerida":"Sin orden preparada")+'</strong><p>'+(state.preview?e("Destino 1000 · "+state.code+" · "+id):"Validá el destino y los argumentos.")+'</p></div><p class="muted">'+(state.preview?e(effect()):"El historial registra por separado el envío, la respuesta y el efecto observado.")+'</p><div class="actions"><button data-action="cancel-preview" '+(!state.preview?"disabled":"")+'>Cancelar</button><button class="primary" data-action="confirm" '+(!canRecordCommand()||!state.preview?"disabled":"")+'>Confirmar envío</button></div></section><section class="card wide-panel"><h2>Historial de comandos</h2>'+table(["Hora UTC","ID","Orden","Envío","Respuesta","Efecto observado"],state.history)+'</section></div>';
+}
+function sessionView(){
+ return '<div class="panelgrid"><section class="card form"><h2>Configuración de sesión</h2><label for="source">Fuente</label><select id="source"><option value="replay" '+(state.mode==="replay"?"selected":"")+'>Reproducción de banco</option><option value="bank" '+(state.mode==="bank"?"selected":"")+'>USB de banco simulado</option></select><div class="split"><div><label for="port">Puerto de banco</label><input id="port" value="'+e(state.port)+'"></div><button data-action="ports">Actualizar</button></div><label for="primary-dir">Destino principal</label><input id="primary-dir" value="'+e(state.primary)+'"><label for="secondary-dir">Segundo destino</label><input id="secondary-dir" value="'+e(state.secondary)+'"><div class="actions"><button data-action="storage-check">Comprobar destinos</button><button class="primary" data-action="start">Iniciar sesión</button></div><p id="storage-status" aria-live="polite" class="last muted"></p></section><section class="card"><h2>Última sesión de banco · GS-041</h2><div class="notice alert"><strong>Destino secundario degradado</strong><p>CSV secundario · error de acceso</p></div><p class="textgroup"><b>Principal operativo</b><br><span class="muted">El destino principal continuó registrando durante el fallo del respaldo.</span></p><p class="textgroup"><b>Cierre de sesión</b><br><span class="muted">'+(state.summary?"Resumen disponible. Revisá el estado por escritor.":"El resumen informa guardadas, pendientes, descartadas y errores.")+'</span></p><div class="actions"><button data-action="summary">Ver resumen</button></div></section><section class="card wide-panel"><h2>Estado por escritor</h2>'+table(["Destino","Registro","Guardadas","Pendientes","Descartadas","Estado"],[["Principal","Diario","131","0","0","Operativo"],["Principal","CSV","131","0","0","Operativo"],["Secundario","Diario","118","13","0","En espera"],["Secundario","CSV","118","13","0","Error de acceso"]])+'</section></div>';
+}
+function diagnosis(){
+ const rows=state.filter==="Todos"?events:events.filter(r=>r[1]===state.filter);
+ return '<div class="stack"><p class="muted">Última sesión de banco · GS-041</p><div class="metric-grid">'+metrics("Paquetes RX","118","válidos","metric--accent")+metrics("Huecos observados","13","saltos de secuencia","metric--warn")+metrics("Tramas inválidas","0","rechazadas")+metrics("Última muestra","4.2 s","antigüedad","metric--warn")+'</div><div class="panelgrid"><section class="card"><h2>Fuente y calidad</h2><div class="notice alert"><strong>Datos desactualizados</strong><p>Última lectura conservada · 4.2 s</p></div><p class="textgroup"><b>GPS sin solución</b><br><span class="muted">Posición y altitud sin solución · 0 satélites.</span></p></section><section class="card"><h2>Archivos de evidencia</h2><p class="textgroup"><b>Diario de la sesión</b><br><span class="muted">Origen, hora y clasificación de tramas y eventos.</span></p><div class="actions"><button data-action="event-copy">Copiar eventos</button><a href="#sesion">Ver estado de guardado</a></div><p class="muted" id="copy-state" aria-live="polite"></p></section><section class="card wide-panel"><div class="toolbar"><h2>Eventos de diagnóstico</h2><label>Filtrar <select id="event-filter">'+["Todos","Dato antiguo","GPS","Secuencia","Guardado"].map(x=>'<option '+(state.filter===x?"selected":"")+'>'+e(x)+'</option>').join("")+'</select></label></div>'+table(["Hora UTC","Clase","Origen","Resultado"],rows)+'</section></div></div>';
+}
+function effect(){return state.code==="SET_TIME"?"Comparar la hora solicitada "+state.time+" UTC con la que reporta la telemetría.":state.code==="CAL_ZERO"?"Ver la respuesta correlacionada y contrastar la altura relativa con la referencia.":"Registrar la respuesta correlacionada y el efecto observable.";}
+function render(){
+ const page=route();document.querySelectorAll("[data-route]").forEach(a=>a.toggleAttribute("aria-current",a.dataset.route===page));document.querySelector('[data-route="'+page+'"]').setAttribute("aria-current","page");
+ document.getElementById("session-label").textContent="Sesión GS-042 · Perfil de banco · UTC";
+ document.getElementById("state").innerHTML='<span class="badge '+(!state.active?"alert":"")+'"><span class="dot"></span>'+(state.active?(state.mode==="replay"?"Reproducción de banco":"USB de banco simulado"):"Sesión cerrada")+'</span><button data-action="'+(state.active?"stop":"open-session")+'">'+(state.active?"Cerrar sesión":"Abrir sesión")+'</button>';
+ view.innerHTML=({operacion:operation,comandos:commandsView,sesion:sessionView,diagnostico:diagnosis})[page]();
+}
+function readConfig(){
+ const settings={};
+ for(const [id,key] of [["source","mode"],["port","port"],["primary-dir","primary"],["secondary-dir","secondary"]]){const z=document.getElementById(id);if(z)settings[key]=z.value.trim();}
+ return settings;
+}
+function ask(title,details,ok,action){document.getElementById("dialog-title").textContent=title;document.getElementById("dialog-body").innerHTML=details.map(x=>"<p>"+e(x)+"</p>").join("");document.getElementById("dialog-ok").textContent=ok;pending=action;dialog.showModal();}
+dialog.addEventListener("close",()=>{if(dialog.returnValue==="confirm"&&pending)pending();pending=null;dialog.returnValue="";render();});
+document.addEventListener("change",ev=>{
+ const {id,value}=ev.target;
+ if(id==="code"){state.code=value;state.preview=false;render();}
+ if(id==="event-filter"){state.filter=value;render();}
+});
+document.addEventListener("input",ev=>{if(ev.target.id==="command-time"){state.time=ev.target.value;ev.target.setCustomValidity("");state.preview=false;const b=document.querySelector('[data-action="confirm"]');if(b)b.disabled=true;}});
+document.addEventListener("click",async ev=>{
+ const a=ev.target.closest("[data-action]")?.dataset.action;
+ if(!a)return;
+ if(a==="preview"&&canRecordCommand()){
+  if(state.code==="SET_TIME"&&!/^([01]\d|2[0-3]):[0-5]\d:[0-5]\d$/.test(state.time)){document.getElementById("command-time").setCustomValidity("Usá HH:MM:SS en UTC.");document.getElementById("command-time").reportValidity();return;}
+  state.preview=true;if(route()==="operacion")location.hash="comandos";render();
+ }
+ if(a==="cancel-preview"){state.preview=false;render();}
+ if(a==="confirm"&&state.preview&&canRecordCommand())ask("Confirmar orden de banco",["Destino: equipo 1000 · USB de banco simulado",state.code+" · "+effect()],"Registrar envío",()=>{
+  if(!canRecordCommand()||!state.preview)return;
+  const id="B-"+String(state.next++).padStart(4,"0");state.history.unshift([new Date().toISOString().slice(11,19),id,state.code,"Registro de banco","Pendiente","Pendiente"]);state.preview=false;
+ });
+ if(a==="stop")ask("Cerrar sesión",["Guardar el estado de los escritores y cerrar la sesión GS-042."],"Cerrar sesión",()=>{state.active=false;state.preview=false;state.summary=true;});
+ if(a==="open-session")location.hash="sesion";
+ if(a==="start"){const settings=readConfig();if(!settings.primary||(settings.mode==="bank"&&!settings.port)){document.getElementById("storage-status").textContent="Indicá un destino principal y, para USB, el puerto de banco.";return;}Object.assign(state,settings);state.active=true;state.preview=false;state.summary=false;location.hash="operacion";render();}
+ if(a==="ports"){const port=document.getElementById("port");if(!port.value.trim())port.value="COM4";document.getElementById("storage-status").textContent="Lista de banco actualizada.";}
+ if(a==="storage-check"){const draft=readConfig();document.getElementById("storage-status").textContent=draft.primary&&draft.secondary&&draft.primary!==draft.secondary?"Dos destinos distintos configurados.":"Revisá los destinos configurados.";}
+ if(a==="summary"){state.summary=true;render();}
+ if(a==="event-copy"){try{await navigator.clipboard.writeText(events.map(r=>r.join("\t")).join("\n"));document.getElementById("copy-state").textContent="Eventos copiados.";}catch{document.getElementById("copy-state").textContent="El navegador no habilitó el portapapeles."}}
+});
+addEventListener("hashchange",render);
+render();
+</script>
+</body>
+</html>
