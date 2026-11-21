@@ -16,22 +16,21 @@
 <text x="48" y="239.88" fill="#112A40" font-size="24" font-weight="700">Equipo de banco 1000 · Perfil USB</text>
 <text x="48" y="282.53" fill="#40586D" font-size="19" font-weight="700">Comando</text>
 <rect x="48" y="298" width="733" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
-<text x="59" y="321.66" fill="#112A40" font-size="18" font-weight="700">CAL_ZERO · Calibrar referencia de altura   ▾</text>
+<text x="59" y="321.66" fill="#112A40" font-size="18" font-weight="700">SET_TIME · Ajustar hora UTC   ▾</text>
 <text x="48" y="373.53" fill="#40586D" font-size="19" font-weight="700">Argumentos</text>
-<text x="48" y="408.27" fill="#112A40" font-size="21" font-weight="400">Sin argumentos para esta orden de banco.</text>
 <text x="48" y="454.53" fill="#40586D" font-size="19" font-weight="700">Efecto esperado</text>
-<text x="48" y="486.40" fill="#112A40" font-size="20" font-weight="400">La siguiente lectura relativa se comprueba contra 0 m.</text>
+<text x="48" y="486.40" fill="#112A40" font-size="20" font-weight="400">Comparar la hora reportada con la UTC solicitada.</text>
 <rect x="48" y="511" width="218" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
 <text x="59" y="534.66" fill="#112A40" font-size="18" font-weight="700">Previsualizar</text>
 <rect x="835" y="132" width="735" height="436" fill="#FFFFFF" stroke="#CDD9E2"/>
 <text x="851" y="162.27" fill="#112A40" font-size="21" font-weight="700">02   CONFIRMAR Y ENVIAR</text>
 <rect x="853" y="183" width="699" height="63" fill="#FFF0CD"/>
 <text x="867" y="207.53" fill="#815000" font-size="19" font-weight="700">CONFIRMACIÓN REQUERIDA</text>
-<text x="867" y="231.79" fill="#112A40" font-size="17" font-weight="400">Equipo 1000 · USB · CAL_ZERO</text>
+<text x="867" y="231.79" fill="#112A40" font-size="17" font-weight="400">Equipo 1000 · USB · SET_TIME · 03:11:15 UTC</text>
 <text x="853" y="282.53" fill="#112A40" font-size="19" font-weight="700">ID asignado</text>
-<text x="853" y="305.66" fill="#40586D" font-size="18" font-weight="400">B-0042 · Ligado a esta sesión</text>
+<text x="853" y="305.66" fill="#40586D" font-size="18" font-weight="400">B-0043 · Ligado a esta sesión</text>
 <text x="853" y="334.53" fill="#112A40" font-size="19" font-weight="700">Resultado esperado</text>
-<text x="853" y="357.66" fill="#40586D" font-size="18" font-weight="400">Ver respuesta correlacionada. Contrastar altura posterior.</text>
+<text x="853" y="357.66" fill="#40586D" font-size="18" font-weight="400">Correlacionar respuesta y verificar la hora en telemetría.</text>
 <text x="853" y="386.53" fill="#112A40" font-size="19" font-weight="700">Al perder enlace</text>
 <text x="853" y="409.66" fill="#40586D" font-size="18" font-weight="400">El envío se bloquea y la orden preparada debe revisarse.</text>
 <rect x="853" y="499" width="210" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
@@ -68,4 +67,8 @@
 <text x="587" y="809.66" fill="#112A40" font-size="18" font-weight="400">Enviada por USB</text>
 <text x="817" y="809.66" fill="#112A40" font-size="18" font-weight="400">Rechazada</text>
 <text x="1067" y="809.66" fill="#112A40" font-size="18" font-weight="400">Hora anterior conservada</text>
+<rect x="48" y="380" width="255" height="43" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="62" y="410.14" fill="#112A40" font-size="22" font-weight="700">03:11:15</text>
+<text x="235" y="407.92" fill="#40586D" font-size="16" font-weight="700">UTC</text>
+<text x="319" y="406.79" fill="#08756A" font-size="17" font-weight="700">Formato HH:MM:SS válido</text>
 </g></svg>

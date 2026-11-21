@@ -13,13 +13,9 @@
 <rect x="30" y="132" width="740" height="335" fill="#FFFFFF" stroke="#CDD9E2"/>
 <text x="46" y="162.27" fill="#112A40" font-size="21" font-weight="700">ANTES DE INICIAR</text>
 <text x="48" y="204.53" fill="#112A40" font-size="19" font-weight="700">Fuente explícita</text>
-<text x="48" y="227.66" fill="#40586D" font-size="18" font-weight="400">USB de banco o diario de reproducción.</text>
 <text x="48" y="256.53" fill="#112A40" font-size="19" font-weight="700">Puerto y perfil</text>
-<text x="48" y="279.66" fill="#40586D" font-size="18" font-weight="400">Elegir puerto, actualizar lista y verificar el perfil disponible.</text>
 <text x="48" y="308.53" fill="#112A40" font-size="19" font-weight="700">Destino principal</text>
-<text x="48" y="331.66" fill="#40586D" font-size="18" font-weight="400">Elegir ubicación de salida. Cada sesión crea un directorio.</text>
 <text x="48" y="360.53" fill="#112A40" font-size="19" font-weight="700">Segundo destino</text>
-<text x="48" y="383.66" fill="#40586D" font-size="18" font-weight="400">Confirmar medio físico y acceso antes de iniciar.</text>
 <rect x="48" y="411" width="223" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
 <text x="59" y="434.66" fill="#112A40" font-size="18" font-weight="700">Comprobar destinos</text>
 <rect x="285" y="411" width="197" height="40" fill="#08756A" stroke="#08756A"/>
@@ -77,4 +73,18 @@
 <text x="48" y="849.53" fill="#40586D" font-size="19" font-weight="400">Esperar cierre de escritores y mostrar el resumen con guardadas, pendientes, descartadas y errores.</text>
 <rect x="48" y="868" width="231" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
 <text x="59" y="891.66" fill="#112A40" font-size="18" font-weight="700">Ver resumen</text>
+<rect x="48" y="207" width="561" height="27" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="59" y="225.79" fill="#112A40" font-size="17" font-weight="400">USB de banco   ▾</text>
+<rect x="48" y="259" width="561" height="27" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="59" y="277.79" fill="#112A40" font-size="17" font-weight="400">COM4 · Perfil USB de banco   ▾</text>
+<rect x="621" y="259" width="130" height="27" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="628" y="276.92" fill="#112A40" font-size="16" font-weight="700">Actualizar</text>
+<rect x="48" y="311" width="561" height="27" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="59" y="329.79" fill="#112A40" font-size="17" font-weight="400">Sesiones / ASTRA</text>
+<rect x="621" y="311" width="130" height="27" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="628" y="328.92" fill="#112A40" font-size="16" font-weight="700">Elegir carpeta</text>
+<rect x="48" y="363" width="561" height="27" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="59" y="381.79" fill="#112A40" font-size="17" font-weight="400">Unidad externa E: / ASTRA</text>
+<rect x="621" y="363" width="130" height="27" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="628" y="380.92" fill="#112A40" font-size="16" font-weight="700">Elegir carpeta</text>
 </g></svg>

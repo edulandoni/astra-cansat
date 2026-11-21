@@ -77,19 +77,19 @@
 <text x="881" y="255.27" fill="#112A40" font-size="21" font-weight="700">MOVIMIENTO</text>
 <rect x="873" y="264" width="254" height="29" fill="#F2F5F8"/>
 <text x="878" y="282.66" fill="#40586D" font-size="18" font-weight="400">Acel. R</text>
-<text x="1027" y="282.66" fill="#112A40" font-size="18" font-weight="700">0.00 m/s²</text>
+<text x="1010" y="282.66" fill="#112A40" font-size="18" font-weight="700">0.00 m/s²</text>
 <text x="878" y="312.66" fill="#40586D" font-size="18" font-weight="400">Acel. P</text>
-<text x="1027" y="312.66" fill="#112A40" font-size="18" font-weight="700">0.00 m/s²</text>
+<text x="1010" y="312.66" fill="#112A40" font-size="18" font-weight="700">0.00 m/s²</text>
 <rect x="873" y="324" width="254" height="29" fill="#F2F5F8"/>
 <text x="878" y="342.66" fill="#40586D" font-size="18" font-weight="400">Acel. Y</text>
-<text x="1027" y="342.66" fill="#112A40" font-size="18" font-weight="700">10.01 m/s²</text>
+<text x="1010" y="342.66" fill="#112A40" font-size="18" font-weight="700">10.01 m/s²</text>
 <text x="878" y="372.66" fill="#40586D" font-size="18" font-weight="400">Giro R</text>
-<text x="1027" y="372.66" fill="#112A40" font-size="18" font-weight="700">0.0117 rad/s</text>
+<text x="1010" y="372.66" fill="#112A40" font-size="18" font-weight="700">0.0117 rad/s</text>
 <rect x="873" y="384" width="254" height="29" fill="#F2F5F8"/>
 <text x="878" y="402.66" fill="#40586D" font-size="18" font-weight="400">Giro P</text>
-<text x="1027" y="402.66" fill="#112A40" font-size="18" font-weight="700">−0.0120 rad/s</text>
+<text x="1010" y="402.66" fill="#112A40" font-size="18" font-weight="700">−0.0120 rad/s</text>
 <text x="878" y="432.66" fill="#40586D" font-size="18" font-weight="400">Giro Y</text>
-<text x="1027" y="432.66" fill="#112A40" font-size="18" font-weight="700">0.0159 rad/s</text>
+<text x="1010" y="432.66" fill="#112A40" font-size="18" font-weight="700">0.0159 rad/s</text>
 <rect x="30" y="458" width="362" height="221" fill="#FFFFFF" stroke="#CDD9E2"/>
 <text x="46" y="488.27" fill="#112A40" font-size="21" font-weight="700">Altura relativa · m</text>
 <line x1="95" y1="505" x2="375" y2="505" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
@@ -160,7 +160,7 @@
 <line x1="211.25" y1="764.36" x2="327.5" y2="765.82" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
 <line x1="327.5" y1="765.82" x2="443.75" y2="761.44" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
 <line x1="443.75" y1="761.44" x2="560" y2="764.36" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
-<text x="95" y="910.79" fill="#40586D" font-size="17" font-weight="400">Paquetes 1–15    ·    R / P / Y</text>
+<text x="95" y="910.79" fill="#40586D" font-size="17" font-weight="400">Paquetes 1–15</text>
 <rect x="588" y="694" width="547" height="229" fill="#FFFFFF" stroke="#CDD9E2"/>
 <text x="604" y="724.27" fill="#112A40" font-size="21" font-weight="700">Velocidad angular · rad/s</text>
 <line x1="653" y1="741" x2="1118" y2="741" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
@@ -186,7 +186,7 @@
 <line x1="839" y1="797.94" x2="932" y2="795.02" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
 <line x1="932" y1="795.02" x2="1025" y2="797.94" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
 <line x1="1025" y1="797.94" x2="1118" y2="800.86" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
-<text x="653" y="910.79" fill="#40586D" font-size="17" font-weight="400">Paquetes 1–15    ·    R / P / Y</text>
+<text x="653" y="910.79" fill="#40586D" font-size="17" font-weight="400">Paquetes 1–15</text>
 <rect x="1150" y="122" width="420" height="801" fill="#FFFFFF" stroke="#CDD9E2"/>
 <text x="1166" y="152.27" fill="#112A40" font-size="21" font-weight="700">CONSOLA DE COMANDOS</text>
 <rect x="1165" y="164" width="389" height="63" fill="#FFF0CD"/>
@@ -217,4 +217,17 @@
 <text x="1375" y="819.66" fill="#112A40" font-size="18" font-weight="700">Cerrar sesión</text>
 <rect x="1166" y="847" width="384" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
 <text x="1177" y="870.66" fill="#112A40" font-size="18" font-weight="700">Configurar sesión y destinos</text>
+<text x="674" y="108.53" fill="#40586D" font-size="19" font-weight="400">Tiempo de misión · — (ICD de vuelo pendiente)</text>
+<line x1="326" y1="904" x2="345" y2="904" stroke="#08756A" stroke-width="4" stroke-linecap="round"/>
+<text x="351" y="906.79" fill="#40586D" font-size="17" font-weight="700">R</text>
+<line x1="384" y1="904" x2="403" y2="904" stroke="#2756A5" stroke-width="4" stroke-linecap="round"/>
+<text x="409" y="906.79" fill="#40586D" font-size="17" font-weight="700">P</text>
+<line x1="442" y1="904" x2="461" y2="904" stroke="#69418E" stroke-width="4" stroke-linecap="round"/>
+<text x="467" y="906.79" fill="#40586D" font-size="17" font-weight="700">Y</text>
+<line x1="884" y1="904" x2="903" y2="904" stroke="#08756A" stroke-width="4" stroke-linecap="round"/>
+<text x="909" y="906.79" fill="#40586D" font-size="17" font-weight="700">R</text>
+<line x1="942" y1="904" x2="961" y2="904" stroke="#2756A5" stroke-width="4" stroke-linecap="round"/>
+<text x="967" y="906.79" fill="#40586D" font-size="17" font-weight="700">P</text>
+<line x1="1000" y1="904" x2="1019" y2="904" stroke="#69418E" stroke-width="4" stroke-linecap="round"/>
+<text x="1025" y="906.79" fill="#40586D" font-size="17" font-weight="700">Y</text>
 </g></svg>

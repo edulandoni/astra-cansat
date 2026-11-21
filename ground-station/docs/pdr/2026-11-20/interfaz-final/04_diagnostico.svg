@@ -73,4 +73,6 @@
 <text x="60" y="871.66" fill="#112A40" font-size="18" font-weight="700">Abrir diario</text>
 <rect x="307" y="848" width="242" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
 <text x="318" y="871.66" fill="#112A40" font-size="18" font-weight="700">Abrir resumen</text>
+<rect x="49" y="891" width="335" height="28" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="58" y="907.92" fill="#112A40" font-size="16" font-weight="700">Filtro: todos los eventos   ▾</text>
 </g></svg>
