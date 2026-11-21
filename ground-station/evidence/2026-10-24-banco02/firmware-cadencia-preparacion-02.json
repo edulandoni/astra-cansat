@@ -1,0 +1,22 @@
+{
+  "recorded_utc": "2026-10-24T03:17:07.269375+00:00",
+  "state": "Compilación correcta; carga física pendiente en este corte",
+  "reason": "No sumo tiempo de emisión a cada período; agenda con vencimientos absolutos de1000ms y etiqueta dehello fixed-deadline-1000ms.",
+  "source_sha256": "c4707940c8178d8ae5edef38eb5ac4e9c75e3b36e6e4959bc0efd58630b1da87",
+  "build": {
+    "arduino_cli": "1.5.1",
+    "arduino_esp32": "3.3.12",
+    "flash": "4MB DIO40MHz",
+    "program_bytes": 311008,
+    "global_variables_bytes": 25324
+  },
+  "artifacts": {
+    "AstraBench02.ino.bin": "63e519a381ab64b435159cfcdbfb2efb50ebfe7f399a8f7834fd7ec5a523daf5",
+    "AstraBench02.ino.bootloader.bin": "f7ec7b7d9026e12dd3616bf79cee0e78974a2605afbc2863fcfb0ac9aeb159d4",
+    "AstraBench02.ino.elf": "c3b3b3fe328310c364b2cff7cd157060f3367a44400e4ff9be17d0dee10f7d6d",
+    "AstraBench02.ino.map": "eea3169846796a88ca55ed8a7799b30040dd71596263d406e145a6bea1ec2d01",
+    "AstraBench02.ino.merged.bin": "e3b23e55ee34da3c6f4e2f23fa4b870f4a352a56f5c5b529dd23888d7ff4c28f",
+    "AstraBench02.ino.partitions.bin": "148b959cbff1c38aa8e1d5c0ba9d612c54997b945e56a63f41223eef650653a1"
+  },
+  "limits": "Compilar no acredita temporización física, tasa exacta sin jitter, RF ni dos horas. Conservo artefactos y fuentes anteriores en su ubicación y Git."
+}

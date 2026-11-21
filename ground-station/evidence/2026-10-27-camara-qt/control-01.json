@@ -1,0 +1,53 @@
+{
+  "recorded_utc": "2026-10-27T14:56:15.201443+00:00",
+  "jira": [
+    "ASTRA-39",
+    "ASTRA-41"
+  ],
+  "physical": {
+    "unit": "camera1",
+    "photo_requested_through_qt_button": true,
+    "qt_platform": "offscreen",
+    "elapsed_seconds": 3.172000000005937,
+    "jpeg_bytes": 14733,
+    "photo_sha256": "df66b3da54b552e0490112bc43f8771aab0dc657ebcded9e79baca2c1ee8217b",
+    "validation": {
+      "width": 640,
+      "height": 480,
+      "mode": "RGB",
+      "sha256": "df66b3da54b552e0490112bc43f8771aab0dc657ebcded9e79baca2c1ee8217b",
+      "decoded": true,
+      "sd_readback_verified_by_device": true,
+      "power_loss_survival_verified": false,
+      "continuous_video_verified": false
+    },
+    "displayed_nonempty": true,
+    "independent_sd_readback": false,
+    "visible_window_repeat_confirmed": false,
+    "firmware_uploaded": false,
+    "sequence_physically_tested": false,
+    "source_result_finished_utc": "2026-10-27T14:46:23.670469+00:00"
+  },
+  "software_tests": {
+    "cameras": 38,
+    "laboratory": 15,
+    "failures": 0,
+    "errors": 0,
+    "camera_seconds": 1.214,
+    "laboratory_seconds": 24.409,
+    "scope": "Sustitutos de serial/proceso para UI; secuencias JPEG de prueba, sin grabación física"
+  },
+  "source_sha256": {
+    "laboratorio/qt_app.py": "b7876f91082f40660a4a027250d84a89bbaded2160384ace825cb9fd1cf44c86",
+    "laboratorio/test_full_workspace.py": "df7a24c9c167b0f99ef3a3e1d90bbc6a61f4f13de8f0feea16f26b9172f8da7d",
+    "camaras-banco/sequence_session.py": "66f18e7e3d34280a0816bbf52d118652021543d429a608ddb83774e983acd357",
+    "camaras-banco/test_sequence_session.py": "b85c5af635c883c161a4e58224c5fea7d9476891c502b23df82d6ab67154031d"
+  },
+  "candidate_firmware": {
+    "binary_sha256": "853d3f665d2ed0fb369e14f1cd8cc6ce59d307dd5893925bdb5f2aff2cbe00e5",
+    "source_match_verified": true,
+    "uploaded": false
+  },
+  "photos_private": true,
+  "note": "Widgets Qt del ensayo físico fuera de pantalla; apertura posterior de ventana solicitada, sin automatización del escritorio."
+}

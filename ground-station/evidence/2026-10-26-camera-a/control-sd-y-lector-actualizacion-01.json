@@ -1,0 +1,49 @@
+{
+  "recorded_utc": "2026-10-26T04:37:59.059754+00:00",
+  "jira": "ASTRA-39",
+  "photos": [
+    {
+      "camera": "camara-1",
+      "source_name": "ASTRA_CHECK_ca61e4d71df498af_18a2a054d54fd3fe.jpg",
+      "bytes": 27951,
+      "sha256": "f7518bfb8ca1bb1b88596fb13f79aa6300bae1a6724a6369aa88d20e64b5c1db",
+      "reader_decoded": true,
+      "matches_usb_bytes": true,
+      "capture_started_utc": "2026-10-26T04:35:11.770627+00:00"
+    },
+    {
+      "camera": "camara-1",
+      "source_name": "ASTRA_CHECK_ca61e4d71df498af_ca57aa157422f7a8.jpg",
+      "bytes": 21420,
+      "sha256": "361da2a925f42d988299ad3f39dc1093220999ec7ff63ba9c9c1c7c8c25a44ee",
+      "reader_decoded": true,
+      "matches_usb_bytes": true,
+      "capture_started_utc": "2026-10-26T04:36:02.475302+00:00"
+    },
+    {
+      "camera": "camara-2",
+      "source_name": "ASTRA_CHECK_03dd0a3c1f975bb9_1f06470029e81b9c.jpg",
+      "bytes": 23862,
+      "sha256": "15121e243ef858f2c558ba3dec3667aaf98ec26bf56cc171373f813886605c2f",
+      "reader_decoded": true,
+      "matches_usb_bytes": true,
+      "capture_started_utc": "2026-10-26T04:27:45.516313+00:00"
+    },
+    {
+      "camera": "camara-2",
+      "source_name": "ASTRA_CHECK_03dd0a3c1f975bb9_2f5e1dc2a255ae72.jpg",
+      "bytes": 22935,
+      "sha256": "f3b0794ee9816296623159a0b551508fb73de6a22a06b4ebcf15324767807a33",
+      "reader_decoded": true,
+      "matches_usb_bytes": true,
+      "capture_started_utc": "2026-10-26T04:27:56.993774+00:00"
+    }
+  ],
+  "original_files_checked": 24,
+  "all_originals_match": true,
+  "independent_reader_verified": true,
+  "after_camera_disconnection": true,
+  "video_verified": false,
+  "power_control_verified": false,
+  "interruption_during_write_tested": false
+}

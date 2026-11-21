@@ -1,0 +1,14 @@
+test_framing_all_chunk_sizes (test_ground.GroundTests.test_framing_all_chunk_sizes) ... ok
+test_full_nominal_and_states (test_ground.GroundTests.test_full_nominal_and_states) ... ok
+test_gaps_late_duplicates (test_ground.GroundTests.test_gaps_late_duplicates) ... ok
+test_gps_loss_retains_last_fix (test_ground.GroundTests.test_gps_loss_retains_last_fix) ... ok
+test_large_gap_is_bounded (test_ground.GroundTests.test_large_gap_is_bounded) ... ok
+test_overlong_recovers (test_ground.GroundTests.test_overlong_recovers) ... ok
+test_scenarios_and_recording (test_ground.GroundTests.test_scenarios_and_recording) ... ok
+test_sessions_do_not_overwrite (test_ground.GroundTests.test_sessions_do_not_overwrite) ... ok
+test_strict_validation (test_ground.GroundTests.test_strict_validation) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.168s
+
+OK

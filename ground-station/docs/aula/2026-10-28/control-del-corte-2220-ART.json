@@ -1,0 +1,69 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-10-29T01:17:45.248Z",
+  "cut_utc": "2026-10-29T01:20:34Z",
+  "cut_argentina": "2026-10-28T22:20:34 ART",
+  "status": "PARCIAL",
+  "last_successful_cut": "20/10/2026 21:03 ART",
+  "previous_cut": "28/10/2026 00:48 ART",
+  "attempts": [
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/course/view.php?id=106",
+      "result": "Timeout fetching"
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/login/index.php",
+      "result": "Timeout fetching"
+    }
+  ],
+  "credentials_entered": false,
+  "public_pages_read": [
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/cronograma",
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/como-me-inscribo"
+  ],
+  "public_result": "Texto relevante sin cambio sustantivo detectado; descargas binarias no revalidadas",
+  "current_message_count": null,
+  "entries_revalidated_today": false,
+  "pending": [
+    "Secciones y recursos",
+    "Mensajes completos y adjuntos posteriores al último acceso válido",
+    "Calendario y entrega",
+    "Versiones y huellas actuales",
+    "Audiovisuales nuevos/modificados",
+    "Documentos de vector y ensayos ambientales"
+  ],
+  "source_issue_update": "Sin aviso repetido en ASTRA-37",
+  "research": {
+    "source": "https://www.cansatcompetition.com/docs/teams/cansat2024_2050_cdr_v01.pdf",
+    "pages_total": 169,
+    "focused_text_pages": [
+      38,
+      39,
+      120,
+      121
+    ],
+    "surrounding_context_read": true,
+    "entire_document_read": false,
+    "visual_attempt_pages": [
+      38,
+      39,
+      121
+    ],
+    "visual_pixels_inspected": 0,
+    "screenshot_results": [
+      "Cache miss",
+      "Timeout fetching",
+      "Cache miss"
+    ],
+    "code_executed": false,
+    "hardware_used": false
+  },
+  "downloads": "Sin descargas binarias ni movimientos de Descargas",
+  "desktop_used": false,
+  "limits": [
+    "No afirmo ausencia de novedades del aula",
+    "Timeout no demuestra caída global",
+    "No declaro 100%",
+    "Las propuestas de pruebas no son resultados nuevos"
+  ]
+}
+

@@ -1,0 +1,24 @@
+{
+  "captured_utc": "2026-10-22 00:32:34 UTC",
+  "content_sha256": "4e66db07f3085cfbd62c2fe40875eaa8d37fefb08d0ca6667a1e2dd3caffe876",
+  "issues": 13,
+  "comments": 83,
+  "excluded_comments": 0,
+  "files": {
+    "captura.json": "c2ecf42f8379fd7c8b98e35ce121c23c1c03cf6a316bd9fb94412fc3ac0c3f2e",
+    "ASTRA-18.md": "4a3e1ca17eb12231a21fa24e6f4f2f94e62d7f4cb4d1ccee3fa9b999d8bfef74",
+    "ASTRA-20.md": "e9c879745269b1a5f0dbe36371b0b7fa424411013fab3eb5a945db1f65402edb",
+    "ASTRA-21.md": "7d15522f4434f2ce61f7cf1f01a89d16475d71d5159cde1033fd1700a95796c9",
+    "ASTRA-22.md": "88b85617c15a7feaeb4730f0ab415b19b9a5ebbf7546649e44a55f4c3339e766",
+    "ASTRA-23.md": "17549332d26ca040a08791978d2944423c7f91aa58bca52e58b74713d848ce7a",
+    "ASTRA-24.md": "ac8c7b32028b10208a6559d65688c951a5f7b84595b77b727aa2ca7962737d16",
+    "ASTRA-25.md": "30a3e3f679185d7b6f050a4f82c7fa540b346992b1d5960003c7039118122d4d",
+    "ASTRA-33.md": "6d90670d0a369c32edfb99356457ae379a9c7550fa6d82f1959a59a4e42aa834",
+    "ASTRA-34.md": "58b046d789aef5edec9002d0e8354ae12995d2aaacd253837787c9797adc0d4b",
+    "ASTRA-35.md": "2dde23cad6f3b6f6c788ad00c1167632fb6814561aa3fa3c004590995b4c6c02",
+    "ASTRA-36.md": "15eedc4e32ae9e1a70573f2940da6ad6b402200a3fd7d3f4f6e3f90390ed04cf",
+    "ASTRA-37.md": "27ae36556f562da50a10280d0dadbc6175ca640d2477056dba5369c34d9699fd",
+    "ASTRA-38.md": "b92bd60bd294cd1f48d274c604b11531cb9dde102ef86950351e6b6ef5ca438c",
+    "README.md": "539a9eb5d24c63adfa8b327ff07d76c1a2f01d0031dde665fbb4a3e7cc0f1054"
+  }
+}

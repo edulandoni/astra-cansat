@@ -1,0 +1,71 @@
+{
+  "created_utc": "2026-10-24T02:35:48.218179+00:00",
+  "frame_lengths": {
+    "rows": 629,
+    "min": 121,
+    "max": 134,
+    "includes_cr": true,
+    "csv_sha256": {
+      "usb-cinco-escenarios-01/segments/0002_47ba98ef0c31/Flight_1000.csv": "fc40bbcd907616fd8eea1e8727fa03b585a426312dd9e93159538c69f5641190",
+      "usb-cinco-escenarios-01/segments/0003_86f9798fa4ec/Flight_1000.csv": "c502ead062e195343ec16115fe0a5e5f6fd77fe731f13fd5fa9cb8c2be23000d",
+      "usb-cinco-escenarios-01/segments/0004_40b8d8cf95ae/Flight_1000.csv": "834399f952492b057518fcd97b59d8d4122e2c1e30e94fdfe1634c8a9b3a38cf",
+      "usb-cinco-escenarios-01/segments/0005_a732812d6888/Flight_1000.csv": "423fbb7d55172a28313491c34a34413e69a678d4998a8233a3ff6f6adedf38d0",
+      "usb-cinco-escenarios-01/segments/0006_b29c354787be/Flight_1000.csv": "318c933ae5a263467d99e8706d0338a0f79ef978a0d32bb5d7fb0177da010166"
+    }
+  },
+  "sweep": [
+    {
+      "payload_bytes": 134,
+      "sf": 7,
+      "bw_hz": 125000,
+      "cr_code": 1,
+      "preamble": 8,
+      "crc": 1,
+      "implicit": 0,
+      "de": 0,
+      "symbol_seconds": 0.001024,
+      "payload_symbols": 203,
+      "airtime_seconds": 0.220416,
+      "one_packet_per_second_air_fraction": 0.220416,
+      "fits_one_second_before_commands_and_guards": true,
+      "note": "Sólo cálculo. No incluye órdenes, ACK, guardas, reintentos ni restricciones de potencia/regulación. No configura RF."
+    },
+    {
+      "payload_bytes": 134,
+      "sf": 9,
+      "bw_hz": 125000,
+      "cr_code": 1,
+      "preamble": 8,
+      "crc": 1,
+      "implicit": 0,
+      "de": 0,
+      "symbol_seconds": 0.004096,
+      "payload_symbols": 158,
+      "airtime_seconds": 0.697344,
+      "one_packet_per_second_air_fraction": 0.697344,
+      "fits_one_second_before_commands_and_guards": true,
+      "note": "Sólo cálculo. No incluye órdenes, ACK, guardas, reintentos ni restricciones de potencia/regulación. No configura RF."
+    },
+    {
+      "payload_bytes": 134,
+      "sf": 12,
+      "bw_hz": 125000,
+      "cr_code": 1,
+      "preamble": 8,
+      "crc": 1,
+      "implicit": 0,
+      "de": 1,
+      "symbol_seconds": 0.032768,
+      "payload_symbols": 143,
+      "airtime_seconds": 5.087232,
+      "one_packet_per_second_air_fraction": 5.087232,
+      "fits_one_second_before_commands_and_guards": false,
+      "note": "Sólo cálculo. No incluye órdenes, ACK, guardas, reintentos ni restricciones de potencia/regulación. No configura RF."
+    }
+  ],
+  "tests": {
+    "exit_code": 0,
+    "output": "test_constraints_and_optimization (test_airtime_lora.AirtimeTests.test_constraints_and_optimization) ... ok\ntest_known_arithmetic (test_airtime_lora.AirtimeTests.test_known_arithmetic) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+  },
+  "limits": "Cálculo offline; parámetros ilustrativos y payload de banco. No mide radio ni elige perfil. Identidad de módulo/pinout pendiente."
+}

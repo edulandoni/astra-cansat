@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASTRA | Diseño final de la estación terrena</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f2f5f8;color:#112a40;font:16px/1.6 system-ui,sans-serif}header{background:#102c43;color:white;padding:28px max(18px,4vw)}h1{margin:0;font-size:clamp(1.8rem,4vw,3rem);line-height:1.15}header p{margin:.5rem 0 0}nav,main{max-width:1660px;margin:auto;padding:20px 24px}nav a{display:inline-block;color:#08675e;font-weight:650;margin-right:22px}figure{margin:0}section{margin-bottom:2.4rem}figcaption{padding:.5rem 0;font-size:1rem;color:#40586d}svg{display:block;width:100%;height:auto;border:1px solid #cdd9e2;background:#fff}a:focus-visible{outline:3px solid #08756a;outline-offset:3px}@media print{header,nav{display:none}main{padding:0}section{break-after:page}svg{border:0}}
+</style>
+<header><h1>Estación terrena ASTRA</h1><p>Diseño final de la interfaz · PDR</p></header>
+<nav aria-label="Pantallas"><a href="#01_operacion">01 · Operación</a><a href="#02_comandos">02 · Comandos</a><a href="#03_sesion_guardado">03 · Sesión y archivos</a><a href="#04_diagnostico">04 · Diagnóstico</a></nav>
+<main><section id="01_operacion"><h2>01 · Operación</h2><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-labelledby="01_operacion-title 01_operacion-desc">
+<title id="01_operacion-title">01 · Operación</title><desc id="01_operacion-desc">Pantalla principal con 22 campos, cinco gráficos, estado de la sesión y consola de comandos. Diseño final de la interfaz, datos de ejemplo.</desc>
+<g font-family="Inter, Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="1600" height="1000" fill="#F2F5F8"/>
+<rect x="0" y="0" width="1600" height="82" fill="#102C43"/>
+<text x="29" y="47.71" fill="#FFFFFF" font-size="33" font-weight="700">ASTRA</text>
+<text x="171" y="48.36" fill="#FFFFFF" font-size="28" font-weight="700">ESTACIÓN TERRENA</text>
+<rect x="1200" y="20" width="371" height="42" fill="#E3F3F0"/>
+<text x="1215" y="46.40" fill="#08756A" font-size="20" font-weight="700">REPRODUCCIÓN · TX BLOQUEADO</text>
+<text x="30" y="108.53" fill="#40586D" font-size="19" font-weight="400">OPERACIÓN  /  Perfil de banco · Vista de reproducción</text>
+<rect x="30" y="951" width="1540" height="1" fill="#CDD9E2"/>
+<text x="30" y="978.66" fill="#40586D" font-size="18" font-weight="400">Sesión de ejemplo · Datos de banco · Telemetría, gráficas y comandos en la misma pantalla</text>
+<rect x="30" y="122" width="265" height="87" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="152.27" fill="#112A40" font-size="21" font-weight="700">Paquetes RX</text>
+<text x="45" y="186.23" fill="#08756A" font-size="29" font-weight="700">15</text>
+<text x="146" y="183.79" fill="#40586D" font-size="17" font-weight="400">válidos</text>
+<rect x="305" y="122" width="265" height="87" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="321" y="152.27" fill="#112A40" font-size="21" font-weight="700">Huecos</text>
+<text x="320" y="186.23" fill="#08756A" font-size="29" font-weight="700">0</text>
+<text x="421" y="183.79" fill="#40586D" font-size="17" font-weight="400">observados</text>
+<rect x="580" y="122" width="265" height="87" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="596" y="152.27" fill="#112A40" font-size="21" font-weight="700">Muestra</text>
+<text x="595" y="186.23" fill="#08756A" font-size="29" font-weight="700">0.2 s</text>
+<text x="696" y="183.79" fill="#40586D" font-size="17" font-weight="400">edad</text>
+<rect x="855" y="122" width="280" height="87" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="871" y="152.27" fill="#112A40" font-size="21" font-weight="700">CSV principal</text>
+<text x="870" y="186.23" fill="#08756A" font-size="29" font-weight="700">15</text>
+<text x="971" y="183.79" fill="#40586D" font-size="17" font-weight="400">filas guardadas</text>
+<rect x="30" y="225" width="270" height="218" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="255.27" fill="#112A40" font-size="21" font-weight="700">MISIÓN</text>
+<rect x="38" y="264" width="254" height="29" fill="#F2F5F8"/>
+<text x="43" y="282.66" fill="#40586D" font-size="18" font-weight="400">Equipo</text>
+<text x="192" y="282.66" fill="#112A40" font-size="18" font-weight="700">1000</text>
+<text x="43" y="312.66" fill="#40586D" font-size="18" font-weight="400">Etapa</text>
+<text x="192" y="312.66" fill="#112A40" font-size="18" font-weight="700">Ascenso</text>
+<rect x="38" y="324" width="254" height="29" fill="#F2F5F8"/>
+<text x="43" y="342.66" fill="#40586D" font-size="18" font-weight="400">Tipo</text>
+<text x="192" y="342.66" fill="#112A40" font-size="18" font-weight="700">Simulación</text>
+<text x="43" y="372.66" fill="#40586D" font-size="18" font-weight="400">Hora UTC</text>
+<text x="192" y="372.66" fill="#112A40" font-size="18" font-weight="700">03:10:49</text>
+<rect x="38" y="384" width="254" height="29" fill="#F2F5F8"/>
+<text x="43" y="402.66" fill="#40586D" font-size="18" font-weight="400">Contador TX</text>
+<text x="192" y="402.66" fill="#112A40" font-size="18" font-weight="700">15</text>
+<text x="43" y="432.66" fill="#40586D" font-size="18" font-weight="400">Eco</text>
+<text x="192" y="432.66" fill="#112A40" font-size="18" font-weight="700">NONE</text>
+<rect x="310" y="225" width="270" height="188" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="326" y="255.27" fill="#112A40" font-size="21" font-weight="700">AMBIENTE Y ENERGÍA</text>
+<rect x="318" y="264" width="254" height="29" fill="#F2F5F8"/>
+<text x="323" y="282.66" fill="#40586D" font-size="18" font-weight="400">Altura relativa</text>
+<text x="472" y="282.66" fill="#112A40" font-size="18" font-weight="700">180.0 m</text>
+<text x="323" y="312.66" fill="#40586D" font-size="18" font-weight="400">Presión</text>
+<text x="472" y="312.66" fill="#112A40" font-size="18" font-weight="700">99.2 kPa</text>
+<rect x="318" y="324" width="254" height="29" fill="#F2F5F8"/>
+<text x="323" y="342.66" fill="#40586D" font-size="18" font-weight="400">Temperatura</text>
+<text x="472" y="342.66" fill="#112A40" font-size="18" font-weight="700">21.8 °C</text>
+<text x="323" y="372.66" fill="#40586D" font-size="18" font-weight="400">Batería</text>
+<text x="472" y="372.66" fill="#112A40" font-size="18" font-weight="700">4.10 V</text>
+<rect x="318" y="384" width="254" height="29" fill="#F2F5F8"/>
+<text x="323" y="402.66" fill="#40586D" font-size="18" font-weight="400">Corriente</text>
+<text x="472" y="402.66" fill="#112A40" font-size="18" font-weight="700">0.18 A</text>
+<rect x="590" y="225" width="265" height="188" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="606" y="255.27" fill="#112A40" font-size="21" font-weight="700">POSICIÓN GPS</text>
+<rect x="598" y="264" width="249" height="29" fill="#F2F5F8"/>
+<text x="603" y="282.66" fill="#40586D" font-size="18" font-weight="400">Hora UTC</text>
+<text x="749" y="282.66" fill="#112A40" font-size="18" font-weight="700">03:10:49</text>
+<text x="603" y="312.66" fill="#40586D" font-size="18" font-weight="400">Latitud</text>
+<text x="749" y="312.66" fill="#112A40" font-size="18" font-weight="700">−34.6000°</text>
+<rect x="598" y="324" width="249" height="29" fill="#F2F5F8"/>
+<text x="603" y="342.66" fill="#40586D" font-size="18" font-weight="400">Longitud</text>
+<text x="749" y="342.66" fill="#112A40" font-size="18" font-weight="700">−58.4000°</text>
+<text x="603" y="372.66" fill="#40586D" font-size="18" font-weight="400">Altura GPS</text>
+<text x="749" y="372.66" fill="#112A40" font-size="18" font-weight="700">210.0 m</text>
+<rect x="598" y="384" width="249" height="29" fill="#F2F5F8"/>
+<text x="603" y="402.66" fill="#40586D" font-size="18" font-weight="400">Satélites</text>
+<text x="749" y="402.66" fill="#112A40" font-size="18" font-weight="700">9</text>
+<rect x="865" y="225" width="270" height="218" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="881" y="255.27" fill="#112A40" font-size="21" font-weight="700">MOVIMIENTO</text>
+<rect x="873" y="264" width="254" height="29" fill="#F2F5F8"/>
+<text x="878" y="282.66" fill="#40586D" font-size="18" font-weight="400">Acel. R</text>
+<text x="1010" y="282.66" fill="#112A40" font-size="18" font-weight="700">0.00 m/s²</text>
+<text x="878" y="312.66" fill="#40586D" font-size="18" font-weight="400">Acel. P</text>
+<text x="1010" y="312.66" fill="#112A40" font-size="18" font-weight="700">0.00 m/s²</text>
+<rect x="873" y="324" width="254" height="29" fill="#F2F5F8"/>
+<text x="878" y="342.66" fill="#40586D" font-size="18" font-weight="400">Acel. Y</text>
+<text x="1010" y="342.66" fill="#112A40" font-size="18" font-weight="700">10.01 m/s²</text>
+<text x="878" y="372.66" fill="#40586D" font-size="18" font-weight="400">Giro R</text>
+<text x="1010" y="372.66" fill="#112A40" font-size="18" font-weight="700">0.0117 rad/s</text>
+<rect x="873" y="384" width="254" height="29" fill="#F2F5F8"/>
+<text x="878" y="402.66" fill="#40586D" font-size="18" font-weight="400">Giro P</text>
+<text x="1010" y="402.66" fill="#112A40" font-size="18" font-weight="700">−0.0120 rad/s</text>
+<text x="878" y="432.66" fill="#40586D" font-size="18" font-weight="400">Giro Y</text>
+<text x="1010" y="432.66" fill="#112A40" font-size="18" font-weight="700">0.0159 rad/s</text>
+<rect x="30" y="458" width="362" height="221" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="488.27" fill="#112A40" font-size="21" font-weight="700">Altura relativa · m</text>
+<line x1="95" y1="505" x2="375" y2="505" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="39" y="509.79" fill="#40586D" font-size="17" font-weight="400">200</text>
+<line x1="95" y1="574" x2="375" y2="574" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="39" y="578.79" fill="#40586D" font-size="17" font-weight="400">100</text>
+<line x1="95" y1="643" x2="375" y2="643" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="39" y="647.79" fill="#40586D" font-size="17" font-weight="400">0</text>
+<line x1="95" y1="505" x2="95" y2="643" stroke="#40586D" stroke-width="2" stroke-linecap="round"/>
+<line x1="95" y1="643" x2="375" y2="643" stroke="#40586D" stroke-width="2" stroke-linecap="round"/>
+<line x1="95" y1="638.86" x2="135" y2="638.86" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="135" y1="638.86" x2="175" y2="638.86" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="175" y1="638.86" x2="215" y2="638.86" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="215" y1="638.86" x2="255" y2="602.98" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="255" y1="602.98" x2="295" y2="565.72" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="295" y1="565.72" x2="335" y2="543.64" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="335" y1="543.64" x2="375" y2="518.8" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<text x="95" y="666.79" fill="#40586D" font-size="17" font-weight="400">Paquetes 1–15</text>
+<rect x="402" y="458" width="362" height="221" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="418" y="488.27" fill="#112A40" font-size="21" font-weight="700">Batería · V</text>
+<line x1="467" y1="505" x2="747" y2="505" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="411" y="509.79" fill="#40586D" font-size="17" font-weight="400">4.2</text>
+<line x1="467" y1="574" x2="747" y2="574" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="411" y="578.79" fill="#40586D" font-size="17" font-weight="400">4.1</text>
+<line x1="467" y1="643" x2="747" y2="643" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="411" y="647.79" fill="#40586D" font-size="17" font-weight="400">4.0</text>
+<line x1="467" y1="505" x2="467" y2="643" stroke="#40586D" stroke-width="2" stroke-linecap="round"/>
+<line x1="467" y1="643" x2="747" y2="643" stroke="#40586D" stroke-width="2" stroke-linecap="round"/>
+<line x1="467" y1="571.24" x2="537" y2="571.24" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="537" y1="571.24" x2="607" y2="571.24" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="607" y1="571.24" x2="677" y2="571.24" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="677" y1="571.24" x2="747" y2="571.24" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<text x="467" y="666.79" fill="#40586D" font-size="17" font-weight="400">Paquetes 1–15</text>
+<rect x="774" y="458" width="361" height="221" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="790" y="488.27" fill="#112A40" font-size="21" font-weight="700">Corriente · A</text>
+<line x1="839" y1="505" x2="1118" y2="505" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="783" y="509.79" fill="#40586D" font-size="17" font-weight="400">.20</text>
+<line x1="839" y1="574" x2="1118" y2="574" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="783" y="578.79" fill="#40586D" font-size="17" font-weight="400">.18</text>
+<line x1="839" y1="643" x2="1118" y2="643" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="783" y="647.79" fill="#40586D" font-size="17" font-weight="400">.16</text>
+<line x1="839" y1="505" x2="839" y2="643" stroke="#40586D" stroke-width="2" stroke-linecap="round"/>
+<line x1="839" y1="643" x2="1118" y2="643" stroke="#40586D" stroke-width="2" stroke-linecap="round"/>
+<line x1="839" y1="576.76" x2="908.75" y2="576.76" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="908.75" y1="576.76" x2="978.5" y2="576.76" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="978.5" y1="576.76" x2="1048.25" y2="576.76" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="1048.25" y1="576.76" x2="1118" y2="576.76" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<text x="839" y="666.79" fill="#40586D" font-size="17" font-weight="400">Paquetes 1–15</text>
+<rect x="30" y="694" width="547" height="229" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="724.27" fill="#112A40" font-size="21" font-weight="700">Aceleración · m/s²</text>
+<line x1="95" y1="741" x2="560" y2="741" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="39" y="745.79" fill="#40586D" font-size="17" font-weight="400">12</text>
+<line x1="95" y1="814" x2="560" y2="814" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="39" y="818.79" fill="#40586D" font-size="17" font-weight="400">6</text>
+<line x1="95" y1="887" x2="560" y2="887" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="39" y="891.79" fill="#40586D" font-size="17" font-weight="400">0</text>
+<line x1="95" y1="741" x2="95" y2="887" stroke="#40586D" stroke-width="2" stroke-linecap="round"/>
+<line x1="95" y1="887" x2="560" y2="887" stroke="#40586D" stroke-width="2" stroke-linecap="round"/>
+<line x1="95" y1="878.24" x2="211.25" y2="879.7" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="211.25" y1="879.7" x2="327.5" y2="876.78" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="327.5" y1="876.78" x2="443.75" y2="881.16" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="443.75" y1="881.16" x2="560" y2="879.7" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="95" y1="881.16" x2="211.25" y2="881.16" stroke="#2756A5" stroke-width="3" stroke-linecap="round"/>
+<line x1="211.25" y1="881.16" x2="327.5" y2="881.16" stroke="#2756A5" stroke-width="3" stroke-linecap="round"/>
+<line x1="327.5" y1="881.16" x2="443.75" y2="879.7" stroke="#2756A5" stroke-width="3" stroke-linecap="round"/>
+<line x1="443.75" y1="879.7" x2="560" y2="881.16" stroke="#2756A5" stroke-width="3" stroke-linecap="round"/>
+<line x1="95" y1="765.82" x2="211.25" y2="764.36" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
+<line x1="211.25" y1="764.36" x2="327.5" y2="765.82" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
+<line x1="327.5" y1="765.82" x2="443.75" y2="761.44" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
+<line x1="443.75" y1="761.44" x2="560" y2="764.36" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
+<text x="95" y="910.79" fill="#40586D" font-size="17" font-weight="400">Paquetes 1–15</text>
+<rect x="588" y="694" width="547" height="229" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="604" y="724.27" fill="#112A40" font-size="21" font-weight="700">Velocidad angular · rad/s</text>
+<line x1="653" y1="741" x2="1118" y2="741" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="597" y="745.79" fill="#40586D" font-size="17" font-weight="400">.04</text>
+<line x1="653" y1="814" x2="1118" y2="814" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="597" y="818.79" fill="#40586D" font-size="17" font-weight="400">0</text>
+<line x1="653" y1="887" x2="1118" y2="887" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="597" y="891.79" fill="#40586D" font-size="17" font-weight="400">−.04</text>
+<line x1="653" y1="741" x2="653" y2="887" stroke="#40586D" stroke-width="2" stroke-linecap="round"/>
+<line x1="653" y1="887" x2="1118" y2="887" stroke="#40586D" stroke-width="2" stroke-linecap="round"/>
+<line x1="653" y1="812.54" x2="746" y2="795.02" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="746" y1="795.02" x2="839" y2="777.5" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="839" y1="777.5" x2="932" y2="771.66" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="932" y1="771.66" x2="1025" y2="789.18" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="1025" y1="789.18" x2="1118" y2="795.02" stroke="#08756A" stroke-width="3" stroke-linecap="round"/>
+<line x1="653" y1="796.48" x2="746" y2="805.24" stroke="#2756A5" stroke-width="3" stroke-linecap="round"/>
+<line x1="746" y1="805.24" x2="839" y2="814" stroke="#2756A5" stroke-width="3" stroke-linecap="round"/>
+<line x1="839" y1="814" x2="932" y2="824.22" stroke="#2756A5" stroke-width="3" stroke-linecap="round"/>
+<line x1="932" y1="824.22" x2="1025" y2="828.6" stroke="#2756A5" stroke-width="3" stroke-linecap="round"/>
+<line x1="1025" y1="828.6" x2="1118" y2="837.36" stroke="#2756A5" stroke-width="3" stroke-linecap="round"/>
+<line x1="653" y1="811.08" x2="746" y2="806.7" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
+<line x1="746" y1="806.7" x2="839" y2="797.94" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
+<line x1="839" y1="797.94" x2="932" y2="795.02" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
+<line x1="932" y1="795.02" x2="1025" y2="797.94" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
+<line x1="1025" y1="797.94" x2="1118" y2="800.86" stroke="#69418E" stroke-width="3" stroke-linecap="round"/>
+<text x="653" y="910.79" fill="#40586D" font-size="17" font-weight="400">Paquetes 1–15</text>
+<rect x="1150" y="122" width="420" height="801" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="1166" y="152.27" fill="#112A40" font-size="21" font-weight="700">CONSOLA DE COMANDOS</text>
+<rect x="1165" y="164" width="389" height="63" fill="#FFF0CD"/>
+<text x="1179" y="188.53" fill="#815000" font-size="19" font-weight="700">TX BLOQUEADO</text>
+<text x="1179" y="212.79" fill="#112A40" font-size="17" font-weight="400">Fuente: reproducción de archivo</text>
+<text x="1166" y="259.66" fill="#40586D" font-size="18" font-weight="700">Destino</text>
+<text x="1166" y="289.40" fill="#112A40" font-size="20" font-weight="700">Sin enlace de transmisión</text>
+<text x="1166" y="332.66" fill="#40586D" font-size="18" font-weight="700">Comando</text>
+<rect x="1166" y="345" width="384" height="40" fill="#E8EEF2" stroke="#CDD9E2"/>
+<text x="1177" y="368.66" fill="#40586D" font-size="18" font-weight="700">Calibrar altura de referencia   ▾</text>
+<text x="1166" y="416.66" fill="#40586D" font-size="18" font-weight="700">Argumentos y validación</text>
+<rect x="1166" y="430" width="384" height="57" fill="#F2F5F8" stroke="#CDD9E2"/>
+<text x="1177" y="458.79" fill="#40586D" font-size="17" font-weight="400">Disponibles según el perfil activo</text>
+<rect x="1166" y="506" width="185" height="40" fill="#E8EEF2" stroke="#CDD9E2"/>
+<text x="1177" y="529.66" fill="#40586D" font-size="18" font-weight="700">Previsualizar</text>
+<rect x="1362" y="506" width="188" height="40" fill="#E8EEF2" stroke="#CDD9E2"/>
+<text x="1373" y="529.66" fill="#40586D" font-size="18" font-weight="700">Enviar</text>
+<line x1="1166" y1="569" x2="1553" y2="569" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="1166" y="601.53" fill="#112A40" font-size="19" font-weight="700">HISTORIAL DE COMANDOS</text>
+<text x="1166" y="634.79" fill="#40586D" font-size="17" font-weight="400">Sin órdenes emitidas en esta sesión.</text>
+<line x1="1166" y1="662" x2="1553" y2="662" stroke="#CDD9E2" stroke-width="1" stroke-linecap="round"/>
+<text x="1166" y="694.53" fill="#112A40" font-size="19" font-weight="700">SESIÓN Y ARCHIVOS</text>
+<text x="1166" y="727.79" fill="#112A40" font-size="17" font-weight="400">Principal: 15 guardadas · 0 pendientes</text>
+<text x="1166" y="760.79" fill="#40586D" font-size="17" font-weight="400">Segundo destino: sin configurar</text>
+<rect x="1166" y="796" width="187" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="1177" y="819.66" fill="#112A40" font-size="18" font-weight="700">Ver diagnóstico</text>
+<rect x="1364" y="796" width="186" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="1375" y="819.66" fill="#112A40" font-size="18" font-weight="700">Cerrar sesión</text>
+<rect x="1166" y="847" width="384" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="1177" y="870.66" fill="#112A40" font-size="18" font-weight="700">Configurar sesión y destinos</text>
+<text x="674" y="108.53" fill="#40586D" font-size="19" font-weight="400">Tiempo de misión · — (ICD de vuelo pendiente)</text>
+<line x1="326" y1="904" x2="345" y2="904" stroke="#08756A" stroke-width="4" stroke-linecap="round"/>
+<text x="351" y="906.79" fill="#40586D" font-size="17" font-weight="700">R</text>
+<line x1="384" y1="904" x2="403" y2="904" stroke="#2756A5" stroke-width="4" stroke-linecap="round"/>
+<text x="409" y="906.79" fill="#40586D" font-size="17" font-weight="700">P</text>
+<line x1="442" y1="904" x2="461" y2="904" stroke="#69418E" stroke-width="4" stroke-linecap="round"/>
+<text x="467" y="906.79" fill="#40586D" font-size="17" font-weight="700">Y</text>
+<line x1="884" y1="904" x2="903" y2="904" stroke="#08756A" stroke-width="4" stroke-linecap="round"/>
+<text x="909" y="906.79" fill="#40586D" font-size="17" font-weight="700">R</text>
+<line x1="942" y1="904" x2="961" y2="904" stroke="#2756A5" stroke-width="4" stroke-linecap="round"/>
+<text x="967" y="906.79" fill="#40586D" font-size="17" font-weight="700">P</text>
+<line x1="1000" y1="904" x2="1019" y2="904" stroke="#69418E" stroke-width="4" stroke-linecap="round"/>
+<text x="1025" y="906.79" fill="#40586D" font-size="17" font-weight="700">Y</text>
+</g></svg><figcaption>Pantalla principal con 22 campos, cinco gráficos, estado de la sesión y consola de comandos. Los valores ilustran estados de la interfaz.</figcaption></figure></section>
+<section id="02_comandos"><h2>02 · Comandos</h2><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-labelledby="02_comandos-title 02_comandos-desc">
+<title id="02_comandos-title">02 · Comandos</title><desc id="02_comandos-desc">Selección, confirmación y trazabilidad de una orden en un ejemplo USB de banco. Diseño final de la interfaz, datos de ejemplo.</desc>
+<g font-family="Inter, Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="1600" height="1000" fill="#F2F5F8"/>
+<rect x="0" y="0" width="1600" height="82" fill="#102C43"/>
+<text x="29" y="47.71" fill="#FFFFFF" font-size="33" font-weight="700">ASTRA</text>
+<text x="171" y="48.36" fill="#FFFFFF" font-size="28" font-weight="700">CONTROL DE COMANDOS</text>
+<rect x="1200" y="20" width="371" height="42" fill="#E3F3F0"/>
+<text x="1215" y="46.40" fill="#08756A" font-size="20" font-weight="700">USB DE BANCO · EJEMPLO</text>
+<text x="30" y="108.53" fill="#40586D" font-size="19" font-weight="400">COMANDOS  /  Flujo ampliado de la consola · Ejemplo USB de banco</text>
+<rect x="30" y="951" width="1540" height="1" fill="#CDD9E2"/>
+<text x="30" y="978.66" fill="#40586D" font-size="18" font-weight="400">La consola principal se mantiene en operación. Este diseño detalla el flujo de confirmación y sus estados.</text>
+<rect x="30" y="132" width="785" height="436" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="162.27" fill="#112A40" font-size="21" font-weight="700">01   PREPARAR ORDEN</text>
+<text x="48" y="202.53" fill="#40586D" font-size="19" font-weight="700">Destino verificado</text>
+<text x="48" y="239.88" fill="#112A40" font-size="24" font-weight="700">Equipo de banco 1000 · Perfil USB</text>
+<text x="48" y="282.53" fill="#40586D" font-size="19" font-weight="700">Comando</text>
+<rect x="48" y="298" width="733" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="59" y="321.66" fill="#112A40" font-size="18" font-weight="700">SET_TIME · Ajustar hora UTC   ▾</text>
+<text x="48" y="373.53" fill="#40586D" font-size="19" font-weight="700">Argumentos</text>
+<text x="48" y="454.53" fill="#40586D" font-size="19" font-weight="700">Efecto esperado</text>
+<text x="48" y="486.40" fill="#112A40" font-size="20" font-weight="400">Comparar la hora reportada con la UTC solicitada.</text>
+<rect x="48" y="511" width="218" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="59" y="534.66" fill="#112A40" font-size="18" font-weight="700">Previsualizar</text>
+<rect x="835" y="132" width="735" height="436" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="851" y="162.27" fill="#112A40" font-size="21" font-weight="700">02   CONFIRMAR Y ENVIAR</text>
+<rect x="853" y="183" width="699" height="63" fill="#FFF0CD"/>
+<text x="867" y="207.53" fill="#815000" font-size="19" font-weight="700">CONFIRMACIÓN REQUERIDA</text>
+<text x="867" y="231.79" fill="#112A40" font-size="17" font-weight="400">Equipo 1000 · USB · SET_TIME · 03:11:15 UTC</text>
+<text x="853" y="282.53" fill="#112A40" font-size="19" font-weight="700">ID asignado</text>
+<text x="853" y="305.66" fill="#40586D" font-size="18" font-weight="400">B-0043 · Ligado a esta sesión</text>
+<text x="853" y="334.53" fill="#112A40" font-size="19" font-weight="700">Resultado esperado</text>
+<text x="853" y="357.66" fill="#40586D" font-size="18" font-weight="400">Correlacionar respuesta y verificar la hora en telemetría.</text>
+<text x="853" y="386.53" fill="#112A40" font-size="19" font-weight="700">Al perder enlace</text>
+<text x="853" y="409.66" fill="#40586D" font-size="18" font-weight="400">El envío se bloquea y la orden preparada debe revisarse.</text>
+<rect x="853" y="499" width="210" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="864" y="522.66" fill="#112A40" font-size="18" font-weight="700">Cancelar</text>
+<rect x="1078" y="499" width="249" height="40" fill="#08756A" stroke="#08756A"/>
+<text x="1089" y="522.66" fill="#FFFFFF" font-size="18" font-weight="700">Confirmar envío</text>
+<rect x="30" y="590" width="1540" height="329" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="620.27" fill="#112A40" font-size="21" font-weight="700">HISTORIAL · EJEMPLO DE ESTADOS</text>
+<rect x="47" y="642" width="1507" height="192" fill="#FFFFFF" stroke="#CDD9E2"/>
+<rect x="47" y="642" width="1507" height="48" fill="#102C43"/>
+<text x="58" y="665.66" fill="#FFFFFF" font-size="18" font-weight="700">Hora UTC</text>
+<text x="210" y="665.66" fill="#FFFFFF" font-size="18" font-weight="700">ID</text>
+<text x="337" y="665.66" fill="#FFFFFF" font-size="18" font-weight="700">Orden</text>
+<text x="587" y="665.66" fill="#FFFFFF" font-size="18" font-weight="700">Envío</text>
+<text x="817" y="665.66" fill="#FFFFFF" font-size="18" font-weight="700">Respuesta</text>
+<text x="1067" y="665.66" fill="#FFFFFF" font-size="18" font-weight="700">Efecto observado</text>
+<rect x="47" y="690" width="1507" height="48" fill="#F2F5F8"/>
+<text x="58" y="713.66" fill="#112A40" font-size="18" font-weight="700">03:11:05</text>
+<text x="210" y="713.66" fill="#112A40" font-size="18" font-weight="400">B-0042</text>
+<text x="337" y="713.66" fill="#112A40" font-size="18" font-weight="400">CAL_ZERO</text>
+<text x="587" y="713.66" fill="#112A40" font-size="18" font-weight="400">Enviada por USB</text>
+<text x="817" y="713.66" fill="#112A40" font-size="18" font-weight="400">Aceptada</text>
+<text x="1067" y="713.66" fill="#112A40" font-size="18" font-weight="400">Altura cerca de 0 m</text>
+<text x="58" y="761.66" fill="#112A40" font-size="18" font-weight="700">03:10:58</text>
+<text x="210" y="761.66" fill="#112A40" font-size="18" font-weight="400">B-0041</text>
+<text x="337" y="761.66" fill="#112A40" font-size="18" font-weight="400">POWER_STATUS</text>
+<text x="587" y="761.66" fill="#112A40" font-size="18" font-weight="400">Enviada por USB</text>
+<text x="817" y="761.66" fill="#112A40" font-size="18" font-weight="400">Sin respuesta</text>
+<text x="1067" y="761.66" fill="#112A40" font-size="18" font-weight="400">Resultado desconocido</text>
+<rect x="47" y="786" width="1507" height="48" fill="#F2F5F8"/>
+<text x="58" y="809.66" fill="#112A40" font-size="18" font-weight="700">03:10:50</text>
+<text x="210" y="809.66" fill="#112A40" font-size="18" font-weight="400">B-0040</text>
+<text x="337" y="809.66" fill="#112A40" font-size="18" font-weight="400">SET_TIME</text>
+<text x="587" y="809.66" fill="#112A40" font-size="18" font-weight="400">Enviada por USB</text>
+<text x="817" y="809.66" fill="#112A40" font-size="18" font-weight="400">Rechazada</text>
+<text x="1067" y="809.66" fill="#112A40" font-size="18" font-weight="400">Hora anterior conservada</text>
+<rect x="48" y="380" width="255" height="43" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="62" y="410.14" fill="#112A40" font-size="22" font-weight="700">03:11:15</text>
+<text x="235" y="407.92" fill="#40586D" font-size="16" font-weight="700">UTC</text>
+<text x="319" y="406.79" fill="#08756A" font-size="17" font-weight="700">Formato HH:MM:SS válido</text>
+</g></svg><figcaption>Selección, confirmación y trazabilidad de una orden en un ejemplo USB de banco. Los valores ilustran estados de la interfaz.</figcaption></figure></section>
+<section id="03_sesion_guardado"><h2>03 · Sesión y archivos</h2><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-labelledby="03_sesion_guardado-title 03_sesion_guardado-desc">
+<title id="03_sesion_guardado-title">03 · Sesión y archivos</title><desc id="03_sesion_guardado-desc">Preparación de fuente y destino, estado por escritor y cierre con evidencia. Diseño final de la interfaz, datos de ejemplo.</desc>
+<g font-family="Inter, Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="1600" height="1000" fill="#F2F5F8"/>
+<rect x="0" y="0" width="1600" height="82" fill="#102C43"/>
+<text x="29" y="47.71" fill="#FFFFFF" font-size="33" font-weight="700">ASTRA</text>
+<text x="171" y="48.36" fill="#FFFFFF" font-size="28" font-weight="700">REGISTRO Y RESPALDO</text>
+<rect x="1200" y="20" width="371" height="42" fill="#E3F3F0"/>
+<text x="1215" y="46.40" fill="#08756A" font-size="20" font-weight="700">USB DE BANCO · EJEMPLO</text>
+<text x="30" y="108.53" fill="#40586D" font-size="19" font-weight="400">SESIÓN Y ARCHIVOS  /  Configuración antes de iniciar y seguimiento durante la sesión</text>
+<rect x="30" y="951" width="1540" height="1" fill="#CDD9E2"/>
+<text x="30" y="978.66" fill="#40586D" font-size="18" font-weight="400">La pérdida de un destino se presenta por separado. Los resultados de independencia requieren comprobar los soportes físicos.</text>
+<rect x="30" y="132" width="740" height="335" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="162.27" fill="#112A40" font-size="21" font-weight="700">ANTES DE INICIAR</text>
+<text x="48" y="204.53" fill="#112A40" font-size="19" font-weight="700">Fuente explícita</text>
+<text x="48" y="256.53" fill="#112A40" font-size="19" font-weight="700">Puerto y perfil</text>
+<text x="48" y="308.53" fill="#112A40" font-size="19" font-weight="700">Destino principal</text>
+<text x="48" y="360.53" fill="#112A40" font-size="19" font-weight="700">Segundo destino</text>
+<rect x="48" y="411" width="223" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="59" y="434.66" fill="#112A40" font-size="18" font-weight="700">Comprobar destinos</text>
+<rect x="285" y="411" width="197" height="40" fill="#08756A" stroke="#08756A"/>
+<text x="296" y="434.66" fill="#FFFFFF" font-size="18" font-weight="700">Iniciar sesión</text>
+<rect x="792" y="132" width="778" height="335" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="808" y="162.27" fill="#112A40" font-size="21" font-weight="700">DURANTE LA ADQUISICIÓN</text>
+<rect x="809" y="185" width="744" height="63" fill="#FFF0CD"/>
+<text x="823" y="209.53" fill="#815000" font-size="19" font-weight="700">DESTINO SECUNDARIO DEGRADADO</text>
+<text x="823" y="233.79" fill="#112A40" font-size="17" font-weight="400">CSV secundario: error de acceso · ejemplo</text>
+<text x="808" y="282.53" fill="#112A40" font-size="19" font-weight="700">Principal operativo</text>
+<text x="808" y="305.66" fill="#40586D" font-size="18" font-weight="400">La recepción sigue activa y el resultado del escritor queda visible.</text>
+<text x="808" y="334.53" fill="#112A40" font-size="19" font-weight="700">Pendientes y descartes</text>
+<text x="808" y="357.66" fill="#40586D" font-size="18" font-weight="400">Cada cola conserva su propio conteo y último error.</text>
+<rect x="808" y="411" width="234" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="819" y="434.66" fill="#112A40" font-size="18" font-weight="700">Ver evento</text>
+<rect x="1056" y="411" width="223" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="1067" y="434.66" fill="#112A40" font-size="18" font-weight="700">Abrir carpeta</text>
+<rect x="30" y="492" width="1540" height="425" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="522.27" fill="#112A40" font-size="21" font-weight="700">RESUMEN POR ESCRITOR Y CIERRE</text>
+<rect x="47" y="545" width="1507" height="235" fill="#FFFFFF" stroke="#CDD9E2"/>
+<rect x="47" y="545" width="1507" height="47" fill="#102C43"/>
+<text x="58" y="568.66" fill="#FFFFFF" font-size="18" font-weight="700">Destino</text>
+<text x="308" y="568.66" fill="#FFFFFF" font-size="18" font-weight="700">Registro</text>
+<text x="503" y="568.66" fill="#FFFFFF" font-size="18" font-weight="700">Guardadas</text>
+<text x="684" y="568.66" fill="#FFFFFF" font-size="18" font-weight="700">Pendientes</text>
+<text x="868" y="568.66" fill="#FFFFFF" font-size="18" font-weight="700">Descartadas</text>
+<text x="1055" y="568.66" fill="#FFFFFF" font-size="18" font-weight="700">Estado</text>
+<rect x="47" y="592" width="1507" height="47" fill="#F2F5F8"/>
+<text x="58" y="615.66" fill="#112A40" font-size="18" font-weight="700">Principal</text>
+<text x="308" y="615.66" fill="#112A40" font-size="18" font-weight="400">Diario</text>
+<text x="503" y="615.66" fill="#112A40" font-size="18" font-weight="400">131</text>
+<text x="684" y="615.66" fill="#112A40" font-size="18" font-weight="400">0</text>
+<text x="868" y="615.66" fill="#112A40" font-size="18" font-weight="400">0</text>
+<text x="1055" y="615.66" fill="#112A40" font-size="18" font-weight="400">Operativo</text>
+<text x="58" y="662.66" fill="#112A40" font-size="18" font-weight="700">Principal</text>
+<text x="308" y="662.66" fill="#112A40" font-size="18" font-weight="400">CSV</text>
+<text x="503" y="662.66" fill="#112A40" font-size="18" font-weight="400">131</text>
+<text x="684" y="662.66" fill="#112A40" font-size="18" font-weight="400">0</text>
+<text x="868" y="662.66" fill="#112A40" font-size="18" font-weight="400">0</text>
+<text x="1055" y="662.66" fill="#112A40" font-size="18" font-weight="400">Operativo</text>
+<rect x="47" y="686" width="1507" height="47" fill="#F2F5F8"/>
+<text x="58" y="709.66" fill="#112A40" font-size="18" font-weight="700">Secundario</text>
+<text x="308" y="709.66" fill="#112A40" font-size="18" font-weight="400">Diario</text>
+<text x="503" y="709.66" fill="#112A40" font-size="18" font-weight="400">118</text>
+<text x="684" y="709.66" fill="#112A40" font-size="18" font-weight="400">13</text>
+<text x="868" y="709.66" fill="#112A40" font-size="18" font-weight="400">0</text>
+<text x="1055" y="709.66" fill="#112A40" font-size="18" font-weight="400">Pendiente de escritura</text>
+<text x="58" y="756.66" fill="#112A40" font-size="18" font-weight="700">Secundario</text>
+<text x="308" y="756.66" fill="#112A40" font-size="18" font-weight="400">CSV</text>
+<text x="503" y="756.66" fill="#112A40" font-size="18" font-weight="400">118</text>
+<text x="684" y="756.66" fill="#112A40" font-size="18" font-weight="400">13</text>
+<text x="868" y="756.66" fill="#112A40" font-size="18" font-weight="400">0</text>
+<text x="1055" y="756.66" fill="#112A40" font-size="18" font-weight="400">Error de acceso</text>
+<text x="48" y="815.40" fill="#112A40" font-size="20" font-weight="700">Cerrar sesión</text>
+<text x="48" y="849.53" fill="#40586D" font-size="19" font-weight="400">Esperar cierre de escritores y mostrar el resumen con guardadas, pendientes, descartadas y errores.</text>
+<rect x="48" y="868" width="231" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="59" y="891.66" fill="#112A40" font-size="18" font-weight="700">Ver resumen</text>
+<rect x="48" y="207" width="561" height="27" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="59" y="225.79" fill="#112A40" font-size="17" font-weight="400">USB de banco   ▾</text>
+<rect x="48" y="259" width="561" height="27" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="59" y="277.79" fill="#112A40" font-size="17" font-weight="400">COM4 · Perfil USB de banco   ▾</text>
+<rect x="621" y="259" width="130" height="27" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="628" y="276.92" fill="#112A40" font-size="16" font-weight="700">Actualizar</text>
+<rect x="48" y="311" width="561" height="27" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="59" y="329.79" fill="#112A40" font-size="17" font-weight="400">Sesiones / ASTRA</text>
+<rect x="621" y="311" width="130" height="27" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="628" y="328.92" fill="#112A40" font-size="16" font-weight="700">Elegir carpeta</text>
+<rect x="48" y="363" width="561" height="27" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="59" y="381.79" fill="#112A40" font-size="17" font-weight="400">Unidad externa E: / ASTRA</text>
+<rect x="621" y="363" width="130" height="27" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="628" y="380.92" fill="#112A40" font-size="16" font-weight="700">Elegir carpeta</text>
+</g></svg><figcaption>Preparación de fuente y destino, estado por escritor y cierre con evidencia. Los valores ilustran estados de la interfaz.</figcaption></figure></section>
+<section id="04_diagnostico"><h2>04 · Diagnóstico</h2><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-labelledby="04_diagnostico-title 04_diagnostico-desc">
+<title id="04_diagnostico-title">04 · Diagnóstico</title><desc id="04_diagnostico-desc">Edad del dato, calidad, tramas e interrupciones desde herramientas separadas. Diseño final de la interfaz, datos de ejemplo.</desc>
+<g font-family="Inter, Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="1600" height="1000" fill="#F2F5F8"/>
+<rect x="0" y="0" width="1600" height="82" fill="#102C43"/>
+<text x="29" y="47.71" fill="#FFFFFF" font-size="33" font-weight="700">ASTRA</text>
+<text x="171" y="48.36" fill="#FFFFFF" font-size="28" font-weight="700">DIAGNÓSTICO DE INGESTA</text>
+<rect x="1200" y="20" width="371" height="42" fill="#E3F3F0"/>
+<text x="1215" y="46.40" fill="#08756A" font-size="20" font-weight="700">USB DE BANCO · EJEMPLO</text>
+<text x="30" y="108.53" fill="#40586D" font-size="19" font-weight="400">DIAGNÓSTICO  /  Acceso secundario desde operación</text>
+<rect x="30" y="951" width="1540" height="1" fill="#CDD9E2"/>
+<text x="30" y="978.66" fill="#40586D" font-size="18" font-weight="400">La consola conserva el origen y la edad de los datos. Los huecos de secuencia y las tramas inválidas son métricas distintas.</text>
+<rect x="30" y="132" width="368" height="87" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="162.27" fill="#112A40" font-size="21" font-weight="700">Paquetes RX</text>
+<text x="45" y="196.23" fill="#08756A" font-size="29" font-weight="700">118</text>
+<text x="146" y="193.79" fill="#40586D" font-size="17" font-weight="400">válidos</text>
+<rect x="409" y="132" width="368" height="87" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="425" y="162.27" fill="#112A40" font-size="21" font-weight="700">Huecos</text>
+<text x="424" y="196.23" fill="#815000" font-size="29" font-weight="700">13</text>
+<text x="525" y="193.79" fill="#40586D" font-size="17" font-weight="400">observados</text>
+<rect x="788" y="132" width="368" height="87" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="804" y="162.27" fill="#112A40" font-size="21" font-weight="700">Inválidos</text>
+<text x="803" y="196.23" fill="#08756A" font-size="29" font-weight="700">0</text>
+<text x="904" y="193.79" fill="#40586D" font-size="17" font-weight="400">rechazados</text>
+<rect x="1167" y="132" width="403" height="87" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="1183" y="162.27" fill="#112A40" font-size="21" font-weight="700">Muestra</text>
+<text x="1182" y="196.23" fill="#815000" font-size="29" font-weight="700">4.2 s</text>
+<text x="1283" y="193.79" fill="#40586D" font-size="17" font-weight="400">última lectura</text>
+<rect x="30" y="240" width="758" height="275" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="270.27" fill="#112A40" font-size="21" font-weight="700">ESTADO DE FUENTE</text>
+<rect x="47" y="289" width="723" height="63" fill="#FFF0CD"/>
+<text x="61" y="313.53" fill="#815000" font-size="19" font-weight="700">DATOS DESACTUALIZADOS</text>
+<text x="61" y="337.79" fill="#112A40" font-size="17" font-weight="400">Se conserva la última muestra con su edad.</text>
+<text x="48" y="389.53" fill="#112A40" font-size="19" font-weight="700">GPS sin solución</text>
+<text x="48" y="412.66" fill="#40586D" font-size="18" font-weight="400">Posición y altitud GPS sin solución, satélites en cero.</text>
+<text x="48" y="441.53" fill="#112A40" font-size="19" font-weight="700">Segmentos</text>
+<text x="48" y="464.66" fill="#40586D" font-size="18" font-weight="400">Los gráficos separan los reinicios y cortes de secuencia.</text>
+<rect x="807" y="240" width="763" height="275" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="823" y="270.27" fill="#112A40" font-size="21" font-weight="700">TRAMAS Y EVENTOS</text>
+<text x="825" y="307.53" fill="#112A40" font-size="19" font-weight="700">Diario de la sesión</text>
+<text x="825" y="330.66" fill="#40586D" font-size="18" font-weight="400">Tramas admitidas y rechazadas con hora, origen y clasificación.</text>
+<text x="825" y="359.53" fill="#112A40" font-size="19" font-weight="700">Registro de cambio de fuente</text>
+<text x="825" y="382.66" fill="#40586D" font-size="18" font-weight="400">USB, reproducción o desconexión, con identificación de sesión.</text>
+<text x="825" y="411.53" fill="#112A40" font-size="19" font-weight="700">Exportar evidencia</text>
+<text x="825" y="434.66" fill="#40586D" font-size="18" font-weight="400">Archivos de sesión y resumen de almacenamiento.</text>
+<rect x="30" y="539" width="1540" height="380" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="569.27" fill="#112A40" font-size="21" font-weight="700">EVENTOS DE DIAGNÓSTICO · EJEMPLO</text>
+<rect x="47" y="592" width="1507" height="240" fill="#FFFFFF" stroke="#CDD9E2"/>
+<rect x="47" y="592" width="1507" height="48" fill="#102C43"/>
+<text x="58" y="615.66" fill="#FFFFFF" font-size="18" font-weight="700">Hora UTC</text>
+<text x="234" y="615.66" fill="#FFFFFF" font-size="18" font-weight="700">Clase</text>
+<text x="454" y="615.66" fill="#FFFFFF" font-size="18" font-weight="700">Origen</text>
+<text x="664" y="615.66" fill="#FFFFFF" font-size="18" font-weight="700">Resultado</text>
+<rect x="47" y="640" width="1507" height="48" fill="#F2F5F8"/>
+<text x="58" y="663.66" fill="#112A40" font-size="18" font-weight="700">03:14:21</text>
+<text x="234" y="663.66" fill="#112A40" font-size="18" font-weight="400">Dato antiguo</text>
+<text x="454" y="663.66" fill="#112A40" font-size="18" font-weight="400">Entrada USB</text>
+<text x="664" y="663.66" fill="#112A40" font-size="18" font-weight="400">Última lectura conservada · 4.2 s</text>
+<text x="58" y="711.66" fill="#112A40" font-size="18" font-weight="700">03:14:17</text>
+<text x="234" y="711.66" fill="#112A40" font-size="18" font-weight="400">GPS</text>
+<text x="454" y="711.66" fill="#112A40" font-size="18" font-weight="400">Telemetría</text>
+<text x="664" y="711.66" fill="#112A40" font-size="18" font-weight="400">Cero satélites · posición sin solución</text>
+<rect x="47" y="736" width="1507" height="48" fill="#F2F5F8"/>
+<text x="58" y="759.66" fill="#112A40" font-size="18" font-weight="700">03:14:12</text>
+<text x="234" y="759.66" fill="#112A40" font-size="18" font-weight="400">Hueco observado</text>
+<text x="454" y="759.66" fill="#112A40" font-size="18" font-weight="400">Contador TX</text>
+<text x="664" y="759.66" fill="#112A40" font-size="18" font-weight="400">Saltos de secuencia acumulados: 13</text>
+<text x="58" y="807.66" fill="#112A40" font-size="18" font-weight="700">03:13:45</text>
+<text x="234" y="807.66" fill="#112A40" font-size="18" font-weight="400">Registro</text>
+<text x="454" y="807.66" fill="#112A40" font-size="18" font-weight="400">Escritor CSV</text>
+<text x="664" y="807.66" fill="#112A40" font-size="18" font-weight="400">Último guardado confirmado en el destino principal</text>
+<rect x="49" y="848" width="242" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="60" y="871.66" fill="#112A40" font-size="18" font-weight="700">Abrir diario</text>
+<rect x="307" y="848" width="242" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="318" y="871.66" fill="#112A40" font-size="18" font-weight="700">Abrir resumen</text>
+<rect x="49" y="891" width="335" height="28" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="58" y="907.92" fill="#112A40" font-size="16" font-weight="700">Filtro: todos los eventos   ▾</text>
+</g></svg><figcaption>Edad del dato, calidad, tramas e interrupciones desde herramientas separadas. Los valores ilustran estados de la interfaz.</figcaption></figure></section></main>
+</html>

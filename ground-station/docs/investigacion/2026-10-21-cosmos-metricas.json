@@ -1,0 +1,185 @@
+{
+  "rows": 525,
+  "fields": 26,
+  "states": {
+    "LAUNCH_PAD": 473,
+    "ASCENT": 3,
+    "APOGEE": 7,
+    "DESCENT": 14,
+    "PROBE_RELEASE": 24,
+    "LANDED": 4
+  },
+  "modes": {
+    "F": 525
+  },
+  "packet_count_first": 418,
+  "packet_count_last": 1031,
+  "forward_gaps": [
+    {
+      "row_before": 168,
+      "row_after": 169,
+      "from": 585,
+      "to": 587,
+      "missing_ids": 1
+    },
+    {
+      "row_before": 261,
+      "row_after": 262,
+      "from": 679,
+      "to": 682,
+      "missing_ids": 2
+    },
+    {
+      "row_before": 263,
+      "row_after": 264,
+      "from": 683,
+      "to": 686,
+      "missing_ids": 2
+    },
+    {
+      "row_before": 265,
+      "row_after": 266,
+      "from": 687,
+      "to": 691,
+      "missing_ids": 3
+    },
+    {
+      "row_before": 275,
+      "row_after": 276,
+      "from": 700,
+      "to": 703,
+      "missing_ids": 2
+    },
+    {
+      "row_before": 420,
+      "row_after": 421,
+      "from": 847,
+      "to": 849,
+      "missing_ids": 1
+    },
+    {
+      "row_before": 425,
+      "row_after": 426,
+      "from": 853,
+      "to": 855,
+      "missing_ids": 1
+    },
+    {
+      "row_before": 427,
+      "row_after": 428,
+      "from": 856,
+      "to": 863,
+      "missing_ids": 6
+    },
+    {
+      "row_before": 429,
+      "row_after": 430,
+      "from": 864,
+      "to": 867,
+      "missing_ids": 2
+    },
+    {
+      "row_before": 431,
+      "row_after": 432,
+      "from": 868,
+      "to": 874,
+      "missing_ids": 5
+    },
+    {
+      "row_before": 432,
+      "row_after": 433,
+      "from": 874,
+      "to": 878,
+      "missing_ids": 3
+    },
+    {
+      "row_before": 436,
+      "row_after": 437,
+      "from": 881,
+      "to": 885,
+      "missing_ids": 3
+    },
+    {
+      "row_before": 445,
+      "row_after": 446,
+      "from": 893,
+      "to": 895,
+      "missing_ids": 1
+    },
+    {
+      "row_before": 455,
+      "row_after": 456,
+      "from": 904,
+      "to": 906,
+      "missing_ids": 1
+    },
+    {
+      "row_before": 458,
+      "row_after": 459,
+      "from": 908,
+      "to": 911,
+      "missing_ids": 2
+    },
+    {
+      "row_before": 464,
+      "row_after": 465,
+      "from": 916,
+      "to": 929,
+      "missing_ids": 12
+    },
+    {
+      "row_before": 465,
+      "row_after": 466,
+      "from": 929,
+      "to": 933,
+      "missing_ids": 3
+    },
+    {
+      "row_before": 466,
+      "row_after": 467,
+      "from": 933,
+      "to": 965,
+      "missing_ids": 31
+    },
+    {
+      "row_before": 471,
+      "row_after": 472,
+      "from": 969,
+      "to": 972,
+      "missing_ids": 2
+    },
+    {
+      "row_before": 473,
+      "row_after": 474,
+      "from": 973,
+      "to": 978,
+      "missing_ids": 4
+    },
+    {
+      "row_before": 485,
+      "row_after": 486,
+      "from": 989,
+      "to": 991,
+      "missing_ids": 1
+    },
+    {
+      "row_before": 521,
+      "row_after": 522,
+      "from": 1026,
+      "to": 1028,
+      "missing_ids": 1
+    }
+  ],
+  "non_increasing": [],
+  "duplicate_packet_counts": 0,
+  "gps_sats_nonzero": 0,
+  "gps_coordinates_nonzero": 0,
+  "max_altitude": 616.2,
+  "rotation_nonzero": 0,
+  "sha256": "ef63242c60000adaeeec81f40d5ba03b1629907390191d38e13909e3e2f3a276",
+  "commit": "5f33675e6a7439da6f12d4411a9cb3b0d64353b9",
+  "source": "https://github.com/BarrettT123/CanSat-Team-Cosmos-Software/blob/5f33675e6a7439da6f12d4411a9cb3b0d64353b9/GCS/Flight_3195.csv",
+  "missing_count": 89,
+  "provenance": "Archivo publicado por autores; atribución a vuelo según repositorio, sin certificación independiente de captura completa.",
+  "method": "csv.DictReader; diferencias consecutivas de PACKET_COUNT; suma de max(siguiente-anterior-1,0); no se atribuye causa RF; conteos de campos numéricos tal como están publicados."
+}

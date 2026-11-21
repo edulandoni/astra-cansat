@@ -1,0 +1,11 @@
+Edu, ya armé nuestra parte del PDR en diapositivas, con tierra, radio, cámaras y pruebas. Necesito tu definición actual de estos puntos para cerrar la integración:
+
+1. Paquete completo: campos, tipos, unidades/escala, orden de bytes, IDs y tamaño total; pasame una trama real y cómo se interpreta.
+2. Radio: módulo/revisión y pinout, frecuencia, SF/BW/CR, potencia, CRC/direcciones y reparto entre telemetría y órdenes.
+3. Comandos y estados: argumentos, cuándo se permiten, respuesta de ejecución/error, repetición/timeout y qué conservamos al reiniciar (misión, contador, hora y calibración).
+4. Ambas cámaras: inicio/parada, pines y niveles, alimentación y cómo mantenemos la grabación si se reinicia el OBC. Necesitamos también retorno de cuadros/bytes guardados, última escritura y errores; START solo no confirma grabación.
+5. Hardware para presentar: antenas, conectores, cables, alimentación y geometría/distancia de enlace; sumá cualquier prueba nueva que ya tengas.
+
+Marcame qué está probado, qué proponés para el PDR y qué sigue abierto. Con esa versión adapto tierra. Ya dejé cada pendiente y el ensayo necesario identificado; no hace falta inventar que todo está validado para presentar un diseño preliminar coherente.
+
+Nuestra contribución: https://docs.google.com/presentation/d/1dv-g1evAmf3LArVfY4a5PJi2HuX7AskXARAF_BDuIpQ/edit

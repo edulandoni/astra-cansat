@@ -1,0 +1,207 @@
+# ASTRA-37 — DOC — Revisar aula CONAE, materiales PDR y aclaraciones oficiales
+
+[Abrir en Jira](https://astrateam2026.atlassian.net/browse/ASTRA-37)
+
+Estado observado: En curso. Asignación: Cristian Ponsone. Creación: Cristian Ponsone.
+
+## Descripción original consultada
+
+## Objetivo
+
+Revisar los materiales accesibles de CanSat Universitario 2026/2027 y registrar versiones, fuentes, aclaraciones, contradicciones y efectos sobre mi trabajo. Separar el texto del anexo, las respuestas oficiales y nuestras decisiones de implementación.
+
+## Alcance
+
+Curso oficial, bases/anexo, plantilla y planilla PDR, foro de consultas, avisos, grabación y entrega/calendario. Conservar originales y registrar cambios con entradas nuevas. No enviar mensajes ni entregar documentación desde esta revisión. No guardar credenciales, cookies ni enlaces de sesión en Jira o GitHub.
+
+## Estado real
+
+Ingreso correcto al curso. Cuatro archivos oficiales descargados y conservados; seis debates técnicos revisados. La grabación de apertura se localizó, pero no tiene transcripción accesible y no se da por analizada íntegramente. Detecté contradicciones de fecha de entrega, envolvente y fórmulas de la planilla que requieren aclaración.
+
+## Entregable y cierre
+
+Inventario verificable, informe de hallazgos y pendientes, selección de evidencias y efecto sobre mis tareas. Actualizaciones específicas en sus tareas técnicas. No modifica tareas ni decisiones de otros responsables. Una documentación futura del vector/ensayos, anunciada en el foro, requiere otra revisión cuando se publique.
+
+## Comentarios conservados
+
+### 2026-10-19T21:03:34.992-0300 — comentario 10066
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-37?focusedCommentId=10066). Última edición informada: 2026-10-19T21:03:34.992-0300.
+
+## 19/10/2026 — COMENTARIO 1 — Revisión inicial del aula oficial y materiales PDR
+
+### Motivo y alcance
+
+Ingresé al aula oficial y revisé los materiales visibles del curso CanSat Universitario 2026/2027 para contrastar nuestro trabajo con fuentes actuales. No publiqué mensajes ni entregué archivos; no guardo credenciales o datos de sesión en la documentación.
+
+Revisé las tres secciones del curso, cuatro archivos oficiales, seis debates técnicos (13 mensajes), avisos, presentación, entrega/calendario y vista de calificaciones. No exporté la nómina ni deduzco TEAM_ID del nombre de cuenta. La grabación de apertura dura 51:45; no tiene transcripción accesible y no doy por analizado todo su audio. El video institucional incrustado también queda inventariado sin revisión íntegra de audio.
+
+### Archivos y versión
+
+Conservé originales y registro de movimientos en la carpeta local de esta revisión. La plantilla tiene 89 diapositivas y 85 ítems numerados. El Scoresheet tiene una hoja PDR. El anexo v2 tiene SHA-256 27932c87654b64b443d41483c9b48adb06d7d1379dd7a01d54e4ea0035057bc7: coincide con el PDF revisado el 17/10; lo nuevo son plantillas y respuestas del foro.
+
+### Hallazgos principales
+
+La respuesta oficial del 19/10 admite formato de telemetría propio justificado, dirección de destino para X2 y transmisión durante ascenso. El CanSat comunica inicio cuando detecta separación real. STAND-BY es espera activada; las dos horas se aclaran como espera en rampa con consumo mínimo, sin exigir transmisión continua. No equivale a dos horas de consumo de misión completa.
+
+Contenedor y carga útil bajan juntos. Se acepta segundo paracaídas y, en general, un segundo sistema activo o pasivo. No se aprueba por eso un rotor específico. El panel solar puede cumplir con enviar su tensión; no se exige carga de batería. La misión secundaria se valoraría a igualdad de puntos.
+
+### Contradicciones y pendientes de aclaración
+
+1. Entrega: la descripción dice 17/11 a las 00:00 hasta 21/11 a las 23:59, pero la fecha configurada y el calendario indican 17/11 a las 00:00. Conservo ambas; trabajar con el 17 como límite preventivo es una recomendación interna, no una modificación oficial.
+2. Envolvente: bases 95×200 mm; anexo 90 mm y longitud 200–250; respuesta posterior máximo conjunto 90×200. Falta reconciliar documentos con el plano anunciado.
+3. Scoresheet: 86 criterios visibles y 41 ocultos. Los máximos visibles suman 180; H177 incluye ocultos y suma 262. G2 promedia sólo D177/E177 aunque hay tercera columna y total F177. H175 permite máximo 10, distinto de la mayoría 0–2. No modifiqué ni recalculé el original ni tomo esas fórmulas como confirmación del criterio efectivo del jurado.
+4. La respuesta sobre altitud indica ±2 m para apogeo y calibración barométrica a cero al lanzamiento. La repregunta por incertidumbres completas sigue sin respuesta visible; no generalizo esa tolerancia.
+5. Se anunciaron documentos de vector y ensayos ambientales para esta semana; no aparecen como recursos nuevos en el curso inspeccionado.
+6. El idioma obligatorio y duración máxima del video no quedaron confirmados en una instrucción escrita nueva de estas páginas. Conservo nuestras notas de reunión como antecedente, sin atribuirlas a una revisión íntegra del audio.
+
+### Efecto sobre mi área y evidencia
+
+Preparé un mapa entre ítems del PDR, diapositivas, filas y tareas. Tierra ocupa ítems 69–74 (diapositivas 72–77); faltan alternativas de antena/patrones, montaje y selección, comandos verificados, solar, unidades y pruebas físicas. El banco sintético no cierra esos criterios.
+
+Las actualizaciones técnicas se registran en ASTRA-18/20/21/22/24/25 y la investigación del rotor en ASTRA-36. ASTRA-33 conserva sólo el respaldo. Mantengo esta tarea En curso por las aclaraciones y materiales pendientes; esta entrada no modifica tareas ajenas.
+
+Informe, inventario y fuentes: https://github.com/edulandoni/astra-cansat/blob/5f9d8c310ecbecc9e1b7d0cc8d29d5d43df7b406/ground-station/docs/aula/2026-10-19/revision-aula.md  
+Mapa PDR: https://github.com/edulandoni/astra-cansat/blob/5f9d8c310ecbecc9e1b7d0cc8d29d5d43df7b406/ground-station/docs/aula/2026-10-19/mapa-pdr-groundstation.csv  
+Celdas y fórmulas inspeccionadas: https://github.com/edulandoni/astra-cansat/blob/5f9d8c310ecbecc9e1b7d0cc8d29d5d43df7b406/ground-station/docs/aula/2026-10-19/revision-scoresheet.json  
+Copia Drive verificada: https://drive.google.com/file/d/1FA0LB32ekpHXlosXWMAVkTuWswSj9gKC/view?usp=drivesdk  
+Las rutas relativas de la copia Markdown se navegan desde GitHub. No republico completos los archivos del aula en el repositorio público.
+
+### 2026-10-19T21:11:47.075-0300 — comentario 10076
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-37?focusedCommentId=10076). Última edición informada: 2026-10-19T21:11:47.075-0300.
+
+## 19/10/2026 — COMENTARIO 2 — Objetivo de cobertura total de la documentación oficial
+
+Amplío el objetivo de esta tarea: investigar el 100% de toda la documentación oficial disponible para nuestra cuenta, incluidos archivos, aclaraciones, plantillas, evaluación y audiovisuales. Conservo la revisión inicial y sus resultados; no la declaro cobertura total.
+
+Preparé un inventario inicial de 17 recursos ya identificados. La primera lectura de los cuatro archivos queda como revisión parcial hasta completar control exhaustivo por página/diapositiva/criterio e imágenes/referencias. Los seis debates y cinco páginas tienen lectura textual acreditada al corte anterior. Las dos piezas audiovisuales siguen abiertas; la reunión no tiene transcripción accesible por la vía comprobada. No calculo un porcentaje global con recursos heterogéneos ni cuento un video como revisado por su título.
+
+Cada recurso conservará URL estable, versión/fecha o huella, evidencia, estado y pendiente. Registraré segmentos efectivamente revisados de los audiovisuales y ampliaré el inventario al aparecer recursos nuevos. Los documentos anunciados pero todavía no publicados quedan separados del material disponible. El objetivo permanece activo mientras exista contenido sin analizar; la falta de una transcripción automática no lo da por completado.
+
+Amplié la automatización diaria existente para revisar también el aula, sus foros, archivos reemplazados, fechas y condiciones. Conservé 21:00 Argentina y política failed_runs_only. Las novedades o avances reales se registran aquí y los efectos técnicos en su tarea propia; ASTRA-33 conserva sólo respaldo y configuración. No habrá envíos ni entregas desde el aula.
+
+Objetivo e inventario: https://github.com/edulandoni/astra-cansat/blob/88996d3c95fd1deb04760bdc08e778830bc7144d/ground-station/docs/aula/2026-10-19/objetivo-cobertura-total.md  
+Inventario estructurado: https://github.com/edulandoni/astra-cansat/blob/88996d3c95fd1deb04760bdc08e778830bc7144d/ground-station/docs/aula/2026-10-19/cobertura-inicial.json  
+Cambio: https://github.com/edulandoni/astra-cansat/commit/88996d3c95fd1deb04760bdc08e778830bc7144d
+
+Esta entrada registra el objetivo y alcance; no presenta análisis nuevo del audio ni una ejecución futura de la automatización.
+
+### 2026-10-19T21:36:34.543-0300 — comentario 10079
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-37?focusedCommentId=10079). Última edición informada: 2026-10-19T21:36:34.543-0300.
+
+## 19/10/2026 — COMENTARIO 3 — ACTUALIZACIÓN de cobertura y lectura de apertura
+
+Amplío los comentarios 1 y 2, sin sustituirlos. Completé el control de las 12 páginas de bases, siete de anexo, 89 diapositivas y seis imágenes incrustadas, y 177 filas con contenido de la hoja PDR. Revisé los 127 criterios con máximo numérico, incluidos 41 ocultos. El anexo enumera 65 requisitos; la referencia oculta a 55 es heredada. Cinco nombres definidos de puntuación conservan #REF! y PDRScore apunta a G2. No modifiqué los originales.
+
+Pude obtener el audio completo de apertura (51:45) y leí toda la transcripción automática local, que no es una transcripción oficial. Inspeccioné 53 muestras visuales de esa reunión y 30 del institucional (2:26); el reconocimiento del audio institucional no produjo voz. Registro esos límites: no declaro 100% audiovisual exhaustivo ni confundo ausencia de voz reconocida con prueba de silencio. El objetivo sigue activo. El inventario ampliado reúne 22 recursos, incluidos siete debates y páginas auxiliares; no calculo un porcentaje mezclando recursos heterogéneos.
+
+La apertura precisa: video 10–20 minutos; documentación/diapositivas en inglés y exposición en español (inglés oral permitido sin puntaje adicional); promedio de tres evaluadores y calidad de presentación hasta 10. Esto resuelve la duda sobre la excepción del máximo 10, pero no las filas ocultas ni la fórmula que promedia dos jurados. Se retiraron exigencias heredadas de Net ID/XBee; no se impone LoRa ni se elimina X2. El banco de simulación sigue siendo útil aunque no se exijan los comandos/modo heredados.
+
+Hay diferencias que conservo expresamente: la charla admite separar partes y menciona margen de longitud, mientras el foro posterior indica conjunto unido y máximo 90×200 mm. No uso la grabación anterior para dar por aprobada otra configuración. Para el rotor se permite estudiar alternativas de descenso y se exige garantizar que no se abran dentro del cohete; no hay aprobación ni prueba de nuestra generación.
+
+Volví a comprobar la entrega: acepta desde 17/11 00:00 y muestra vencimiento en ese mismo instante, aunque descripción y charla dicen 17–21. Mi recomendación inicial de anticipar al 17 no soluciona una actividad que todavía no permite entregar: hay que preparar antes y aclarar la configuración. No envié consultas ni entregas.
+
+Encontré una séptima discusión, mensaje 50097, sobre autonomía/control desde tierra, sin respuesta oficial. Es una consulta de otro equipo, no una regla nueva. Avisos/presentaciones siguen vacíos; insignias/competencias/calificaciones no aportan documentación adicional. El plano del vector y perfiles anunciados siguen pendientes.
+
+Publiqué mis notas y controles en groundstation, exclusivamente ground-station/. No hubo cambios de código ni ensayos físicos. La continuación es verificar íntegramente los audiovisuales y seguir las aclaraciones/versiones. Las consecuencias RF y rotor se registran en ASTRA-18 y ASTRA-36; el respaldo en ASTRA-33.
+
+Auditoría: https://github.com/edulandoni/astra-cansat/blob/5728978901d20b221c6cd5c50c9841ac357be0bb/ground-station/docs/aula/2026-10-19/auditoria-archivos-actualizacion-01.md  
+Audiovisuales, timestamps y novedades: https://github.com/edulandoni/astra-cansat/blob/5728978901d20b221c6cd5c50c9841ac357be0bb/ground-station/docs/aula/2026-10-19/audiovisuales-y-foro-actualizacion-02.md  
+Inventario y pendientes: https://github.com/edulandoni/astra-cansat/blob/5728978901d20b221c6cd5c50c9841ac357be0bb/ground-station/docs/aula/2026-10-19/cobertura-actualizacion-02.json  
+Copia Drive leída después de subirla: https://drive.google.com/file/d/1-4LCEyCUqAB6JCbZGa0nUAeqlLz0HUfK/view?usp=drivesdk  
+Cambio: https://github.com/edulandoni/astra-cansat/commit/5728978901d20b221c6cd5c50c9841ac357be0bb
+
+### 2026-10-19T22:06:23.094-0300 — comentario 10084
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-37?focusedCommentId=10084). Última edición informada: 2026-10-19T22:06:23.094-0300.
+
+## 19/10/2026 — COMENTARIO 4 — ACTUALIZACIÓN y cierre documental del material disponible
+
+Actualizo el comentario 3 sin reemplazarlo. Cerré la investigación del material visible/enlazado disponible al corte de esta jornada; el seguimiento diario y las aclaraciones abiertas continúan. No equivale a cumplimiento de la misión ni a una certificación infalible de las herramientas.
+
+### Qué faltaba y qué completé
+
+Seguí el enlace de la página 5 de las bases al sitio oficial: recorrí seis páginas relacionadas y encontré el reglamento de participación de dos páginas. Leí sus ocho apartados y revisé el render sin completar firmas ni aceptar nada. Conservé esos originales de referencia y capturas privadas. Las copias públicas de bases/anexo coinciden con las del aula.
+
+Volví a abrir el curso, las nueve actividades, las siete discusiones completas y las páginas auxiliares. Continúan las tres secciones y 14 mensajes técnicos. La pregunta sobre autonomía sigue sin respuesta; no hay avisos/presentaciones ni documentos nuevos de vector/ensayos. El resumen de conservación de Moodle no añade requisitos de misión. El inventario pasó de 22 a 30 entradas: seis páginas oficiales, reglamento y resumen de plataforma. No calculo un porcentaje mezclando recursos heterogéneos ni cuento duplicados como contenido nuevo.
+
+Descargué otra vez los cuatro materiales del aula y comprobé que sus huellas son idénticas a las ya analizadas. No deduje estabilidad por nombre o URL. El foro puede mostrar como última fecha la del mensaje inicial aunque haya respuestas posteriores; por eso revisé los cuerpos completos.
+
+### Audiovisuales y evidencia
+
+Completé una segunda pasada de ambos audios con otro tamaño de modelo local, sin filtro previo de voz, y leí/contrasté toda la transcripción recuperada. Apertura recorre 51:45 y llega al cierre. El institucional tampoco produjo segmentos de voz en esta segunda configuración: no lo llamo silencio ni prueba absoluta de ausencia de voz.
+
+Procesé toda la línea visual: 3659 cuadros del institucional y 93151 de apertura, sin errores de decodificación ni huecos superiores al intervalo de un cuadro. Apliqué OCR cada segundo y en cambios bruscos: 209/3106 imágenes respectivamente. Inspeccioné las 209 selecciones institucionales en 18 hojas y 24 candidatos adicionales de apertura, además de las 53 imágenes periódicas anteriores. No encontré otra presentación técnica o requisitos CanSat adicionales en esos materiales.
+
+Conservo los límites: esto es análisis asistido, no escucha humana ni inspección manual de cada píxel, y dos modelos coincidentes no miden exactitud. La reserva de cobertura anterior se actualiza por la segunda lectura completa, el control de toda la línea visual y las referencias incorporadas. No queda un material localizado sin analizar con el método documentado.
+
+### Qué sigue abierto
+
+Se conservan las diferencias de fecha de entrega, envolvente/separación y evaluación, además de preguntas de medición/autonomía sin aclaración. La actividad sigue abriendo y venciendo el 17/11 a las 00:00, frente a la ventana 17–21 de otras fuentes. El cronograma público contiene instrucciones antiguas de reuniones; no lo trato automáticamente como posterior a la charla/foro.
+
+El plano del vector, perfiles de ensayo y futuros materiales CDR aún no publicados quedan en seguimiento, nunca como leídos. No envié consultas, inscripciones ni entregas; no cambié estados, responsables, firmware, parámetros RF ni otras áreas. Esta tarea continúa En curso por su seguimiento y aclaraciones; el corte de investigación documental actual está cerrado.
+
+Amplié la automatización existente para comparar también cronograma/descargas oficiales enlazados por bases. Conservé frecuencia diaria 21:00 Argentina, estado ACTIVE y configuración de avisos. Comprobé la configuración guardada; no acredita una ejecución futura.
+
+Informe y auditoría de cierre: https://github.com/edulandoni/astra-cansat/blob/3887c316d2a202f220ec687ed6a1fbfdba670124/ground-station/docs/aula/2026-10-19/referencias-y-verificacion-actualizacion-03.md  
+Inventario vigente: https://github.com/edulandoni/astra-cansat/blob/3887c316d2a202f220ec687ed6a1fbfdba670124/ground-station/docs/aula/2026-10-19/cobertura-actualizacion-03.json  
+Controles audiovisuales: https://github.com/edulandoni/astra-cansat/blob/3887c316d2a202f220ec687ed6a1fbfdba670124/ground-station/docs/aula/2026-10-19/control-audiovisual-actualizacion-03.json  
+Versiones/huellas: https://github.com/edulandoni/astra-cansat/blob/3887c316d2a202f220ec687ed6a1fbfdba670124/ground-station/docs/aula/2026-10-19/fuentes-actualizacion-03.json  
+Copia Drive leída después de subirla: https://drive.google.com/file/d/1chQKLRid1GQzvK1oyajmSSrI74BeOtso/view?usp=drivesdk  
+Cambio: https://github.com/edulandoni/astra-cansat/commit/3887c316d2a202f220ec687ed6a1fbfdba670124
+
+### 2026-10-20T12:08:00.467-0300 — comentario 10089
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-37?focusedCommentId=10089). Última edición informada: 2026-10-20T12:08:00.467-0300.
+
+## 20/10/2026 — COMENTARIO 5 — ACTUALIZACIÓN del cierre documental del 19/10: respuesta sobre comandos
+
+Actualizo el pendiente de autonomía de mi comentario 4 y del cierre documental del 19/10, conservándolos. [CONAE respondió p50098](https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2965#p50098) el 20/10 a las 08:28: admite comandos para acciones específicas si justificamos su uso y cumplimos la misión primaria. La pregunta pasa de sin respuesta a respondida con condiciones; eso no aprueba control manual general ni un formato de telecomandos.
+
+Releí siete debates y 15 mensajes. Los otros seis debates conservan sus cuerpos visibles respecto del control anterior; excluí sólo navegación inferior y espacios al comparar. Avisos continúa vacío y presentaciones sin temas. Descargué nuevamente bases, anexo v2, plantilla y scoresheet: las cuatro huellas son iguales al 19/10. La entrega sigue mostrando el conflicto de texto 17–21/11 frente a vencimiento configurado 17/11 00:00. No aparece el documento anunciado del vector ni perfiles ambientales.
+
+El panorama explicado por prioridades continúa ahora en [ASTRA-38](https://astrateam2026.atlassian.net/browse/ASTRA-38), sin reemplazar esta tarea de fuentes. [Informe en Drive](https://drive.google.com/file/d/13hQj8Ckp6KJv3cu1L5xeCX3Rwx4_NbLe/view?usp=drivesdk) y [control/versiones publicados](https://github.com/edulandoni/astra-cansat/commit/9208b923e87ddc301a89951e6b362ccd861e0d93). El efecto sobre interfaz se registra en ASTRA-24.
+
+Reutilizo los análisis de audiovisuales del 19/10 con sus límites; no los doy por revalidados byte por byte hoy. Las descargas nuevas conservan nombres y copias anteriores, en 2026-10-20_corte_aula_01 con registro de movimientos. No modifiqué fuentes oficiales, envié consultas ni cambié estados de otras tareas.
+
+### 2026-10-20T21:06:34.526-0300 — comentario 10095
+
+Autoría original: Cristian Ponsone. [Abrir original](https://astrateam2026.atlassian.net/browse/ASTRA-37?focusedCommentId=10095). Última edición informada: 2026-10-20T21:06:34.526-0300.
+
+20/10/2026 — COMENTARIO 6 — ACTUALIZACIÓN del registro de fuentes de las 11:56 ART
+
+Detecté cuatro mensajes nuevos publicados hoy a las 12:54, 13:50, 16:08 y 18:04; el foro pasa de siete debates/15 mensajes a once/19. Son preguntas sin respuesta, no aclaraciones CONAE:
+
+* [Carcasa y fibra de vidrio, p50099](https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2966#p50099).
+* [Ventana del promedio de descenso, p50100](https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2967#p50100).
+* [Desprendimiento y recuperación de partes, p50101](https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2968#p50101).
+* [PDR, carcasa y dos transmisores, p50102](https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2969#p50102).
+
+Comparé los siete debates previos sin cambios en mensajes; excluí controles/navegación, conservando cuerpos y fechas. No encontré adjuntos nuevos. Revalidé por descarga y SHA-256 bases, anexo v2, plantilla y scoresheet: idénticos al corte anterior. Curso: tres secciones/nueve actividades. Avisos/presentaciones vacíos; vector/perfiles ambientales siguen anunciados sin documento visible. Calendario de noviembre conserva vencimiento el 17, contradictorio con texto hasta el 21. Referencias públicas releídas; no las considero más nuevas por defecto.
+
+Límite: videos heredan análisis del 19/10, sin comparación binaria o escucha nueva. No afirmo 100% revalidado. [Control verificable](https://github.com/edulandoni/astra-cansat/blob/cc2b6fd43bb544540e21837098d9aa1e0a142b65/ground-station/docs/aula/2026-10-20/control-del-corte-2103-ART.json) · [Análisis priorizado en Drive](https://drive.google.com/file/d/1IEjo_KDtY_J644xVQJyVwiDvvggk9Q5G/view) · diario ASTRA-38. Conservo el comentario anterior.
+
+## Historial de cambios de campos
+
+### 2026-10-19T21:01:21.876-0300 — cambio 10143
+
+Autoría original: Cristian Ponsone.
+
+Campo: status.
+
+Antes: Backlog
+
+Después: Por hacer
+
+### 2026-10-19T21:01:27.216-0300 — cambio 10144
+
+Autoría original: Cristian Ponsone.
+
+Campo: status.
+
+Antes: Por hacer
+
+Después: En curso
+

@@ -1,0 +1,96 @@
+{
+  "created_utc": "2026-10-24T02:44:24.070140+00:00",
+  "source_journal_sha256": "99a120904509750a0d80b7f5146e1fc811edc14262712bf4599e097dd4618d72",
+  "normalization": "Sólo retiro claves root de estados de almacenamiento; conservo eventos, fechas y bytes. Original local íntegro.",
+  "events": 1528,
+  "segments": [
+    {
+      "segment": "0002_f603464eeee6",
+      "rows": 131,
+      "first": 1,
+      "last": 131,
+      "csv_sha256": "960efb7bfbb6a9689d5df911c16a1c31e2e4c49d1c9a112d98695b2363962293"
+    },
+    {
+      "segment": "0004_70d27df5de1c",
+      "rows": 131,
+      "first": 1,
+      "last": 131,
+      "csv_sha256": "8ce1ff3249a6c31982caf7f0ab5318b2053e7abbe46aab2401cadf63771e28fd"
+    }
+  ],
+  "contexts": [
+    {
+      "received_utc": "2026-10-24T02:16:11.428994+00:00",
+      "segment": "0001_7eb7f64c4cae",
+      "boot": "cdd083adc284734f",
+      "run": "idle"
+    },
+    {
+      "received_utc": "2026-10-24T02:16:11.908656+00:00",
+      "segment": "0002_f603464eeee6",
+      "boot": "cdd083adc284734f",
+      "run": "5"
+    },
+    {
+      "received_utc": "2026-10-24T02:40:16.313971+00:00",
+      "segment": "0003_984aecc92053",
+      "boot": "db40b035fbb715d0",
+      "run": "idle"
+    },
+    {
+      "received_utc": "2026-10-24T02:40:56.221144+00:00",
+      "segment": "0004_70d27df5de1c",
+      "boot": "db40b035fbb715d0",
+      "run": "6"
+    }
+  ],
+  "physical_observations": [
+    "Primera pulsación reportada terminó en DOWNLOAD_BOOT y waiting for download; causa de GPIO0 no demostrada.",
+    "Segunda pulsación EN/RST reportada produjo hello con boot distinto, campos y gráficos vacíos; RUN posterior recibió1..131.",
+    "No recargué firmware entre estas pulsaciones. Tras RST, offset de altitud12m y hora13:00:00 son valores ficticios iniciales, sin recalibración hasta la siguiente corrida."
+  ],
+  "corrected_receiver_replay": [
+    {
+      "phase": "captura real del arranque en descarga reproducida con receptor corregido",
+      "epoch": null,
+      "latest_is_none": true,
+      "ambiguous": true,
+      "waiting_identity": true
+    }
+  ],
+  "replayed_unique": 262,
+  "storage": {
+    "pc_session": "20261024T021610_386155Z_741428a90d6e",
+    "closed_utc": "2026-10-24T02:43:48.635527+00:00",
+    "events": 1528,
+    "destinations": [
+      {
+        "destination": 0,
+        "kind": "raw",
+        "saved": 1528,
+        "pending": 0,
+        "error": "",
+        "dropped": 0,
+        "dropped_seq_ranges": [],
+        "loss_ledger_truncated": false,
+        "last_confirmed_seq": 1528,
+        "capacity": 600
+      },
+      {
+        "destination": 0,
+        "kind": "csv",
+        "saved": 262,
+        "pending": 0,
+        "error": "",
+        "dropped": 0,
+        "dropped_seq_ranges": [],
+        "loss_ledger_truncated": false,
+        "last_confirmed_seq": 1520,
+        "capacity": 600
+      }
+    ],
+    "note": "Confirmado significa flush+fsync completados; no certifica resistencia elÃ©ctrica. Una escritura cuyo resultado es incierto puede quedar parcial o duplicada y debe reconciliarse."
+  },
+  "limits": "La captura física usó el proceso anterior a la corrección ROM. La invalidación sin hello se verifica después con sus bytes capturados y tests; no afirmo que aquel proceso ya tuviera la corrección. No es desconexión USB, autonomía ni prueba de dos horas."
+}

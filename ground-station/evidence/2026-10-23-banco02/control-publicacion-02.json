@@ -1,0 +1,17 @@
+{
+  "created_utc": "2026-10-24T02:20:28.766804+00:00",
+  "update_of": "fuentes-y-copias-01.json",
+  "correction": "El campo created_utc de fuentes-y-copias-01 es una referencia aproximada al inicio de etapa, no una medición de creación. Uso las fechas exactas de los eventos de campaña y esta fecha real para el control de publicación. Conservo el registro anterior.",
+  "files": {
+    "control-publicacion-02.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fuentes-y-copias-01.json": "4116c3dfff6acf323aff6561884be28d89363f8e9cd17cb23cdd43379ad422cd",
+    "pc-campaign-original-01.json": "7409145f623dd1a1fb90b55843e21c05d454fd5f4f8db5ef36d54e6946e3df6a",
+    "usb-campaign-original-01.json": "483335ef7809742df8b13c5983ee4ed8388025f2f8fd2b59b599d49955bd8917",
+    "usb-cinco-escenarios-01.json": "bbca0eb37aad4b47510f14fe6cefa380965a0eb1438830a32251f814ee018905",
+    "usb-cinco-escenarios-01/segments/0002_47ba98ef0c31/Flight_1000.csv": "fc40bbcd907616fd8eea1e8727fa03b585a426312dd9e93159538c69f5641190",
+    "usb-cinco-escenarios-01/segments/0003_86f9798fa4ec/Flight_1000.csv": "c502ead062e195343ec16115fe0a5e5f6fd77fe731f13fd5fa9cb8c2be23000d",
+    "usb-cinco-escenarios-01/segments/0004_40b8d8cf95ae/Flight_1000.csv": "834399f952492b057518fcd97b59d8d4122e2c1e30e94fdfe1634c8a9b3a38cf",
+    "usb-cinco-escenarios-01/segments/0005_a732812d6888/Flight_1000.csv": "423fbb7d55172a28313491c34a34413e69a678d4998a8233a3ff6f6adedf38d0",
+    "usb-cinco-escenarios-01/segments/0006_b29c354787be/Flight_1000.csv": "318c933ae5a263467d99e8706d0338a0f79ef978a0d32bb5d7fb0177da010166"
+  }
+}

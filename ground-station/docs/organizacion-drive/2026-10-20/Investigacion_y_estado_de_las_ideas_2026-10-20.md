@@ -1,0 +1,6 @@
+# Investigación y propuestas
+20/10/2026. Separo tres líneas: [antecedentes CanSat](https://drive.google.com/drive/folders/1RH2Q1chaF0YNMZy3XKEjQQDo-bf09yWx) — [ASTRA-35](https://astrateam2026.atlassian.net/browse/ASTRA-35); [calidad de datos y prevención](https://drive.google.com/drive/folders/1IL0hGxgxzt7K8_Q6PNfYtTM3dF8S3niU) — [ASTRA-34](https://astrateam2026.atlassian.net/browse/ASTRA-34); y [rotor y energía](https://drive.google.com/drive/folders/1zag_HwHRkb6JK6ovV8MavUg4jsZNCL6G) — [ASTRA-36](https://astrateam2026.atlassian.net/browse/ASTRA-36).
+
+En antecedentes conservo el catálogo y sus fuentes, sin llamar ganador a un proyecto que sólo tiene diseño publicado. En calidad distingo sondeos ya ejecutados de mejoras todavía propuestas. En rotor conservo cálculos bajo supuestos y restricciones de despliegue; no hay mecanismo físico validado ni aprobación de una misión opcional.
+
+Cada investigación puede producir una decisión o una implementación futura, que registro en su tarea técnica con enlace al estudio. No convierto una idea en función terminada por cambiarla de carpeta. Las referencias antiguas a ASTRA-21 dentro de los informes originales se conservan como historia; el diario actual de calidad es ASTRA-34. La recuperación del CSV de misión sigue en ASTRA-21.

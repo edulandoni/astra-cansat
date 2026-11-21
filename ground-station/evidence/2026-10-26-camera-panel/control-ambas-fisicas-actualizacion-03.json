@@ -1,0 +1,167 @@
+{
+  "recorded_utc": "2026-10-26T05:11:21.903064+00:00",
+  "jira": "ASTRA-39",
+  "updates": "control-camara1-fisica-actualizacion-02.json",
+  "panel_attempts": [
+    {
+      "camera": "camara-1",
+      "started_utc": "2026-10-26T04:57:26.909440+00:00",
+      "finished_utc": "2026-10-26T04:57:27.161068+00:00",
+      "result": "incomplete",
+      "error": "La placa está en modo programación; no está ejecutando la cámara. Hace falta un arranque normal, sin BOOT/IO0 pulsado.",
+      "private_result_sha256": "bc2f0efe9ce7c521ab17d9d5c2600371fb0f1a08b765fd210b0163775ede9a0d"
+    },
+    {
+      "camera": "camara-1",
+      "started_utc": "2026-10-26T04:57:35.928035+00:00",
+      "finished_utc": "2026-10-26T04:58:06.027471+00:00",
+      "result": "incomplete",
+      "error": "Sin resultado completo en el tiempo de espera; no reenvío la orden",
+      "private_result_sha256": "01969a676fb158eff163a59d8e53d11d41345fade239b4708dc8159304b106ea"
+    },
+    {
+      "camera": "camara-1",
+      "started_utc": "2026-10-26T05:00:52.575463+00:00",
+      "finished_utc": "2026-10-26T05:00:57.071678+00:00",
+      "result": "incomplete",
+      "error": "La cámara informó: WARMUP_1_FAILED",
+      "private_result_sha256": "5aa8fe6b743cbfdeff3bf1cd38279cc4131fd68139857902b5a00e1dbb713f96"
+    },
+    {
+      "camera": "camara-1",
+      "started_utc": "2026-10-26T05:01:41.381666+00:00",
+      "finished_utc": "2026-10-26T05:01:45.862912+00:00",
+      "result": "incomplete",
+      "error": "La cámara informó: WARMUP_1_FAILED",
+      "private_result_sha256": "e74f8dd7661f969bf5e15194a0fc55d1728fc1a3e9c41becec15f3f98ca618d3"
+    },
+    {
+      "camera": "camara-1",
+      "started_utc": "2026-10-26T05:03:50.212418+00:00",
+      "finished_utc": "2026-10-26T05:03:51.985656+00:00",
+      "result": "photo_and_sd_checked",
+      "error": null,
+      "private_result_sha256": "542ebe3080f309194c3a25dd532b2d8206b256f2437565bb9ac10db9e5015be6",
+      "validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "bee27afa41532415059568e11a62cff06f672d6d244f77e2c4072d04fcaa2c3a",
+        "decoded": true,
+        "sd_readback_verified_by_device": true,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      },
+      "frame": {
+        "v": 1,
+        "event": "frame",
+        "id": "757f6f927582b8c0",
+        "request_us": 64889483,
+        "capture_us": 64983551,
+        "length": 9599,
+        "crc32": "6bc792ae",
+        "width": 640,
+        "height": 480,
+        "saved": true,
+        "sd_status": "READBACK_OK",
+        "path": "/ASTRA_CHECK_1e5d86b9c724f74d_757f6f927582b8c0.jpg"
+      }
+    },
+    {
+      "camera": "camara-1",
+      "started_utc": "2026-10-26T05:04:16.029341+00:00",
+      "finished_utc": "2026-10-26T05:04:18.250936+00:00",
+      "result": "photo_and_sd_checked",
+      "error": null,
+      "private_result_sha256": "326348fc8b7820e9a27fc0ed22f0556794a3ae75281b1e0e7bd38daf6d81c858",
+      "validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "7da347b200b6d97eae09a3fcdf5ff4bbd0d29cf6478acd8061fc96f6825be15e",
+        "decoded": true,
+        "sd_readback_verified_by_device": true,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      },
+      "frame": {
+        "v": 1,
+        "event": "frame",
+        "id": "0c8085e33008bd05",
+        "request_us": 90703481,
+        "capture_us": 90813216,
+        "length": 14379,
+        "crc32": "da3a85a9",
+        "width": 640,
+        "height": 480,
+        "saved": true,
+        "sd_status": "READBACK_OK",
+        "path": "/ASTRA_CHECK_1e5d86b9c724f74d_0c8085e33008bd05.jpg"
+      }
+    },
+    {
+      "camera": "camara-2",
+      "started_utc": "2026-10-26T05:07:58.785162+00:00",
+      "finished_utc": "2026-10-26T05:07:59.023216+00:00",
+      "result": "incomplete",
+      "error": "La placa está en modo programación; no está ejecutando la cámara. Hace falta un arranque normal, sin BOOT/IO0 pulsado.",
+      "private_result_sha256": "f4fc7dd92fe0fe577f61433532ce3e3cca6930b04b5dd563e67be784301281f6"
+    },
+    {
+      "camera": "camara-2",
+      "started_utc": "2026-10-26T05:08:47.478142+00:00",
+      "finished_utc": "2026-10-26T05:08:50.403797+00:00",
+      "result": "photo_and_sd_checked",
+      "error": null,
+      "private_result_sha256": "e4859b585f147c05da9f69d9475f5e3a6ab76bf366610c5d2714e18dd3dc0f16",
+      "validation": {
+        "width": 640,
+        "height": 480,
+        "mode": "RGB",
+        "sha256": "09d3928a369515dfe2fa13298a736beecab37953d39e0070efe2e2ac3aa3081d",
+        "decoded": true,
+        "sd_readback_verified_by_device": true,
+        "power_loss_survival_verified": false,
+        "continuous_video_verified": false
+      },
+      "frame": {
+        "v": 1,
+        "event": "frame",
+        "id": "9ad3a5d3f24bffdc",
+        "request_us": 15260536,
+        "capture_us": 15364450,
+        "length": 22497,
+        "crc32": "4381bdd3",
+        "width": 640,
+        "height": 480,
+        "saved": true,
+        "sd_status": "READBACK_OK",
+        "path": "/ASTRA_CHECK_91aca1f86184acf2_9ad3a5d3f24bffdc.jpg"
+      }
+    }
+  ],
+  "summary": {
+    "attempts": 8,
+    "incomplete": 5,
+    "valid_photos_and_device_sd_readback": 3,
+    "two_cameras_verified_in_same_panel_round_sequentially": true,
+    "simultaneous_camera_operation_verified": false,
+    "new_panel_files_verified_in_external_reader": false,
+    "repeatable_boot_verified": false,
+    "live_wrong_identity_tested": false,
+    "video_verified": false,
+    "power_measured": false
+  },
+  "camera2_recovery_console": {
+    "started_utc": "2026-10-26T05:08:31.719376+00:00",
+    "reset_once": true,
+    "jpeg_bytes": 17481,
+    "sd_status": "READBACK_OK",
+    "sha256": "69dd1c66aab12cd5e8665dc88e05ab0e60d4d5f1c8db63bd9d3648ebcd509812"
+  },
+  "private_screenshot_sha256": "ba312a5f1c62a12ceb3f3fa60630d91f52d3d1ca3eb98b88f605999e88a9e1a4",
+  "source_sha256": {
+    "camera_panel.py": "178eb6dac734b4435a2410a84b883cec9ddf1e2563e831140d97ea7c4550fcee",
+    "camera_session.py": "e5402371cefaf122f8f7e1a2e2a235879b2aa7dbd7a371a0731fd19331120e29"
+  }
+}

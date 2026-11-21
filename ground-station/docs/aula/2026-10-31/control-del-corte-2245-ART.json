@@ -1,0 +1,31 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-11-01T01:44:13.153Z",
+  "cut_utc": "2026-11-01T01:45:13Z",
+  "status": "PARCIAL",
+  "previous_cut": "29/10/2026 21:01 ART",
+  "last_successful_cut": "20/10/2026 21:03 ART",
+  "attempts": [
+    "Curso106: Timeout fetching",
+    "Ingreso oficial: Timeout fetching"
+  ],
+  "credentials_entered": false,
+  "public_pages": "Cronograma e inscripción consultados; sin cambios sustantivos detectados en texto relevante; binarios no revalidados",
+  "pending": [
+    "Foros y mensajes completos desde última lectura válida",
+    "Adjuntos/versiones/huellas",
+    "Calendario y entrega",
+    "Audiovisuales",
+    "Vector y ensayos ambientales"
+  ],
+  "research": {
+    "source": "https://kshayik.com/projects/djs-arya-cansat-gcs/",
+    "read": true,
+    "claims_not_validated": true,
+    "images_pixels_inspected": 0,
+    "gallery_host": "images.unsplash.com",
+    "new_reproducible_results": false
+  },
+  "desktop_used": false,
+  "downloads": false
+}
+

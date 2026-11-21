@@ -1,0 +1,20 @@
+{
+  "recorded_utc": "2026-10-24T03:18:38.881827+00:00",
+  "command": "python -m unittest -q test_bench",
+  "result": "OK",
+  "tests": 13,
+  "reported_duration_seconds": 6.574,
+  "scope": "Software: agregué ráfaga de trama excesiva, equipo ajeno y diagnóstico intercalado; recupera la muestra válida sin mezclarla. El avisoGUI de desborde se agregó después de la captura física. El firmware de cadencia se compila por separado; estos tests no lo ejecutan.",
+  "python_source_sha256": {
+    "analyze.py": "446d825a0e869d432e5ef0f0aa3024ee597841b4ddfc02b609100325c591d218",
+    "app.py": "711921a936c74ed02a4bedb19d6a86ae1ba4509f3c8c8b707959bc7628cba507",
+    "campaign.py": "ae39c2ef56210f97ee5368593d9f7d742ac22d546ad4692bf08f0e77aca3b2f6",
+    "engine.py": "f5fce95dce60b2dee5af021073de15272a2322ddc29a1593c2a93b68a5385085",
+    "journal.py": "b846dc060e71fc4306e9b7ab5526318eb43814c744a0933b1005ba5466100ead",
+    "mission.py": "d66b5260961bd5628dd38b08882511d576c44ac11bbee79b3d61010c8e3b6b39",
+    "recover.py": "0b251f4b8f5ba704c38f2018c139f0aee44f1e4f4e526c540b33858a0ff961b3",
+    "sources.py": "42936d5669426f51040d3a04c56321de0873635c948395e6115c1bfdc83e64f6",
+    "test_bench.py": "a5e23fd32358dfa703e2a5bc95546ff0c4d904a869e8a41aa0ec4b6abbf2f681",
+    "wire.py": "9968dfd8cea3575510bed93965c695b683d0cb1f6f0e1a30da62180a936f52a7"
+  }
+}

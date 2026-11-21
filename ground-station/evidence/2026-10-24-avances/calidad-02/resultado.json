@@ -1,0 +1,103 @@
+{
+  "recorded_utc": "2026-10-24T06:46:02.023711+00:00",
+  "source": "VIRTUAL_CLOCK_SOFTWARE",
+  "grid_seconds": 0.25,
+  "thresholds_seconds": {
+    "telemetry": 3,
+    "gps": 3
+  },
+  "cases": [
+    {
+      "case": "nominal",
+      "target": "any",
+      "onset_s": null,
+      "end_s": null,
+      "first_detection_s": null,
+      "detection_delay_from_first_fault_s": null,
+      "previous_first_detection_s": null,
+      "recovery_s": null,
+      "unexpected_positive_observations": 0,
+      "separate_gps_alerts_during_telemetry_pause": null,
+      "passed": true
+    },
+    {
+      "case": "altura_constante",
+      "target": "any",
+      "onset_s": null,
+      "end_s": null,
+      "first_detection_s": null,
+      "detection_delay_from_first_fault_s": null,
+      "previous_first_detection_s": null,
+      "recovery_s": null,
+      "unexpected_positive_observations": 0,
+      "separate_gps_alerts_during_telemetry_pause": null,
+      "passed": true
+    },
+    {
+      "case": "gps_sin_fix",
+      "target": "gps_no_fix",
+      "onset_s": 50.0,
+      "end_s": 65.0,
+      "first_detection_s": 50.0,
+      "detection_delay_from_first_fault_s": 0.0,
+      "previous_first_detection_s": 50.0,
+      "recovery_s": 65.0,
+      "unexpected_positive_observations": 0,
+      "separate_gps_alerts_during_telemetry_pause": null,
+      "passed": true
+    },
+    {
+      "case": "hora_gps_congelada",
+      "target": "gps_stale",
+      "onset_s": 10.0,
+      "end_s": 20.0,
+      "first_detection_s": 12.25,
+      "detection_delay_from_first_fault_s": 2.25,
+      "previous_first_detection_s": null,
+      "recovery_s": 20.0,
+      "unexpected_positive_observations": 0,
+      "separate_gps_alerts_during_telemetry_pause": null,
+      "passed": true
+    },
+    {
+      "case": "hora_mision_congelada",
+      "target": "mission_clock_frozen",
+      "onset_s": 10.0,
+      "end_s": 20.0,
+      "first_detection_s": 12.0,
+      "detection_delay_from_first_fault_s": 2.0,
+      "previous_first_detection_s": 12.0,
+      "recovery_s": 20.0,
+      "unexpected_positive_observations": 0,
+      "separate_gps_alerts_during_telemetry_pause": null,
+      "passed": true
+    },
+    {
+      "case": "telemetria_pausada_con_control_activo",
+      "target": "telemetry_stale",
+      "onset_s": 10.0,
+      "end_s": 16.0,
+      "first_detection_s": 12.25,
+      "detection_delay_from_first_fault_s": 2.25,
+      "previous_first_detection_s": 12.25,
+      "recovery_s": 16.0,
+      "unexpected_positive_observations": 0,
+      "separate_gps_alerts_during_telemetry_pause": 0,
+      "passed": true
+    }
+  ],
+  "source_sha256": {
+    "engine.py": "dcc3deec62a18a7bb6fb835b6eed846f3a233a525117a5b901bd8c772092f875",
+    "quality.py": "c2bbc38cfc5bbd83f91f141c2171816b70fa804354c976bd17e20fbeef7278ae",
+    "mission.py": "d66b5260961bd5628dd38b08882511d576c44ac11bbee79b3d61010c8e3b6b39",
+    "journal.py": "b2640d2af85c630b7df196ac2eb823543f2a70386b98c9739a6b50f4aace3d19"
+  },
+  "passed": true,
+  "limits": [
+    "Casos elegidos, no tasa estadística de fallas ni confiabilidad de vuelo.",
+    "Tiempos de regla sobre reloj virtual; no latencia física ni demora máxima de GUI.",
+    "La comparación anterior reproduce reglas declaradas, no ejecuta una GUI histórica.",
+    "Altitud constante no prueba sensor averiado; no agrego rangos no acordados.",
+    "Los umbrales son de banco, no decisiones del ICD."
+  ]
+}

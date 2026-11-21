@@ -1,0 +1,161 @@
+{
+  "source": "USB_BENCH",
+  "input_sha256": "b9d82892443b2dedc6b2283b8c07f3c21ad1bfa526f85055cf736107fac10c43",
+  "events": 2884,
+  "cases": [
+    {
+      "segment": "0002_47ba98ef0c31",
+      "scenario": "NOMINAL",
+      "unique": 131,
+      "rejected_in_segment": 0,
+      "oracle": {
+        "emitted": 131
+      },
+      "elapsed_first_to_last": 132.57258296012878,
+      "interval_min": 0.9791679382324219,
+      "interval_median": 1.0113381147384644,
+      "interval_max": 1.0827858448028564,
+      "checks": {
+        "counts_equal_expected": true,
+        "oracle_equal_expected": true,
+        "rejected_equal_expected": true,
+        "csv_equal_packets": true,
+        "gps_retained": true,
+        "gps_missing_expected": true
+      },
+      "passed": true
+    },
+    {
+      "segment": "0003_86f9798fa4ec",
+      "scenario": "PACKET_LOSS",
+      "unique": 118,
+      "rejected_in_segment": 0,
+      "oracle": {
+        "emitted": 118,
+        "omitted": 13
+      },
+      "elapsed_first_to_last": 132.58419609069824,
+      "interval_min": 0.9567849636077881,
+      "interval_median": 1.0146138668060303,
+      "interval_max": 2.085783004760742,
+      "checks": {
+        "counts_equal_expected": true,
+        "oracle_equal_expected": true,
+        "rejected_equal_expected": true,
+        "csv_equal_packets": true,
+        "gps_retained": true,
+        "gps_missing_expected": true
+      },
+      "passed": true
+    },
+    {
+      "segment": "0004_40b8d8cf95ae",
+      "scenario": "CORRUPTED_PACKET",
+      "unique": 121,
+      "rejected_in_segment": 10,
+      "oracle": {
+        "emitted": 121,
+        "corrupted": 10
+      },
+      "elapsed_first_to_last": 133.11074995994568,
+      "interval_min": 0.969933032989502,
+      "interval_median": 1.0165834426879883,
+      "interval_max": 2.0930449962615967,
+      "checks": {
+        "counts_equal_expected": true,
+        "oracle_equal_expected": true,
+        "rejected_equal_expected": true,
+        "csv_equal_packets": true,
+        "gps_retained": true,
+        "gps_missing_expected": true
+      },
+      "passed": true
+    },
+    {
+      "segment": "0005_a732812d6888",
+      "scenario": "GPS_LOSS",
+      "unique": 131,
+      "rejected_in_segment": 0,
+      "oracle": {
+        "emitted": 131
+      },
+      "elapsed_first_to_last": 132.5804181098938,
+      "interval_min": 0.9578390121459961,
+      "interval_median": 1.0124343633651733,
+      "interval_max": 1.0812249183654785,
+      "checks": {
+        "counts_equal_expected": true,
+        "oracle_equal_expected": true,
+        "rejected_equal_expected": true,
+        "csv_equal_packets": true,
+        "gps_retained": true,
+        "gps_missing_expected": true
+      },
+      "passed": true
+    },
+    {
+      "segment": "0006_b29c354787be",
+      "scenario": "RESET",
+      "unique": 128,
+      "rejected_in_segment": 0,
+      "oracle": {
+        "emitted": 128,
+        "omitted": 3
+      },
+      "elapsed_first_to_last": 132.00797486305237,
+      "interval_min": 0.9572179317474365,
+      "interval_median": 1.0094881057739258,
+      "interval_max": 4.03627610206604,
+      "checks": {
+        "counts_equal_expected": true,
+        "oracle_equal_expected": true,
+        "rejected_equal_expected": true,
+        "csv_equal_packets": true,
+        "gps_retained": true,
+        "gps_missing_expected": true
+      },
+      "passed": true
+    }
+  ],
+  "command_requests": {
+    "CAL_ZERO": 1,
+    "SET_TIME": 1,
+    "POWER_STATUS": 1,
+    "RUN": 5
+  },
+  "manual_repeat_ids": [
+    "20261024T020226_377031Z_a129450997e3:4",
+    "20261024T020226_377031Z_a129450997e3:5",
+    "20261024T020226_377031Z_a129450997e3:6",
+    "20261024T020226_377031Z_a129450997e3:7",
+    "20261024T020226_377031Z_a129450997e3:8"
+  ],
+  "storage": [
+    {
+      "destination": 0,
+      "kind": "raw",
+      "saved": 2884,
+      "pending": 0,
+      "error": "",
+      "dropped": 0,
+      "dropped_seq_ranges": [],
+      "loss_ledger_truncated": false,
+      "last_confirmed_seq": 2884,
+      "capacity": 600
+    },
+    {
+      "destination": 0,
+      "kind": "csv",
+      "saved": 629,
+      "pending": 0,
+      "error": "",
+      "dropped": 0,
+      "dropped_seq_ranges": [],
+      "loss_ledger_truncated": false,
+      "last_confirmed_seq": 2883,
+      "capacity": 600
+    }
+  ],
+  "all_cases_match": true,
+  "note": "Análisis posterior del original conservado. Los rechazos del primer campaign-result eran acumulados; aquí se calculan por segmento. No acredita RF, autonomía, reinicio físico ni ensayo prolongado."
+}

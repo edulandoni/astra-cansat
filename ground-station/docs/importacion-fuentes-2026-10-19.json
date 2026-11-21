@@ -1,0 +1,91 @@
+{
+  "fecha": "2026-10-19",
+  "fuentes": [
+    {
+      "path": "ground-station/archive/DEPRECATED/estacion-v04/Estacion_simulada/app.js",
+      "url": "https://drive.google.com/file/d/1pqLxhVovqt5s7KzIuURkhDrWkwXcfck1/view?usp=drivesdk",
+      "bytes": 16149,
+      "modified_time": "2026-10-08T23:21:54.000Z",
+      "sha256": "2cc98665ac0b6fd4caa3e84080cc220be69e95af60e550041fbb7873fad52340"
+    },
+    {
+      "path": "ground-station/archive/DEPRECATED/estacion-v04/Estacion_simulada/core.js",
+      "url": "https://drive.google.com/file/d/1FKoztyCLxAU8rtukeL4LGOuPkBR_v_Bo/view?usp=drivesdk",
+      "bytes": 13046,
+      "modified_time": "2026-10-08T23:21:54.000Z",
+      "sha256": "eefec6672761a9132ed578d273beca73c6772d129fa5a64b5230dfb79a8ce8f0"
+    },
+    {
+      "path": "ground-station/archive/DEPRECATED/estacion-v04/Estacion_simulada/ABRIR_ESTACION.cmd",
+      "url": "https://drive.google.com/file/d/19hiw90mgx_Pqf27waFrFqbl51_VpV59F/view?usp=drivesdk",
+      "bytes": 37,
+      "modified_time": "2026-10-08T23:20:52.000Z",
+      "sha256": "c369a077a253e26e89b85071fb50bb426ab159e49027572d5f1f18497386f266"
+    },
+    {
+      "path": "ground-station/archive/DEPRECATED/estacion-v04/Estacion_simulada/learning.js",
+      "url": "https://drive.google.com/file/d/14dPRPNjKySbbw9wNprWWnkWRCq1HA0pi/view?usp=drivesdk",
+      "bytes": 31003,
+      "modified_time": "2026-10-08T23:20:52.000Z",
+      "sha256": "8a3801552a2d34950fee370ed43255d05e6d798cd1b8de360f71a553b425ba24"
+    },
+    {
+      "path": "ground-station/archive/DEPRECATED/estacion-v04/Estacion_simulada/LEEME.txt",
+      "url": "https://drive.google.com/file/d/1i0MeZLMDAPj4-UfmlD0H97Nwmf-OV-8G/view?usp=drivesdk",
+      "bytes": 1130,
+      "modified_time": "2026-10-08T23:20:52.000Z",
+      "sha256": "391920808cc2fba09456a1e800b53f85949cfb2841b9e8e84a24739827c6e0c4"
+    },
+    {
+      "path": "ground-station/archive/DEPRECATED/estacion-v04/Estacion_simulada/index.html",
+      "url": "https://drive.google.com/file/d/1o35fNh4AUE_wq_9n1mvSJyKADvB8g47X/view?usp=drivesdk",
+      "bytes": 6777,
+      "modified_time": "2026-10-08T23:18:16.000Z",
+      "sha256": "0f0485384f1aaf7595f0727ac0e43faea7f5513c0a063a0875f65c699a96a1bd"
+    },
+    {
+      "path": "ground-station/archive/DEPRECATED/estacion-v04/Estacion_simulada/styles.css",
+      "url": "https://drive.google.com/file/d/1u5M_GUWN6xoasP8Ahd0e4CRSSR9SRzpb/view?usp=drivesdk",
+      "bytes": 5708,
+      "modified_time": "2026-10-08T23:16:00.000Z",
+      "sha256": "456dab40461ab36651521a6808f840767348833781e86910cc7b9882e3408cfe"
+    },
+    {
+      "path": "ground-station/archive/DEPRECATED/estacion-v04/Estacion_simulada/protocol.js",
+      "url": "https://drive.google.com/file/d/1AaSqI-qxHr23HGL61tw-MsaTGKABxE8o/view?usp=drivesdk",
+      "bytes": 9100,
+      "modified_time": "2026-10-08T23:13:34.000Z",
+      "sha256": "1593abc1b974a3f183b415a0dd48934346b97bef793c796319e429f164c78325"
+    },
+    {
+      "path": "ground-station/archive/DEPRECATED/laboratorio-v05/Laboratorio/index.html",
+      "url": "https://drive.google.com/file/d/1Ok9Ooa-8zGMw6RFvYAuh6DJfs8MMsIxX/view?usp=drivesdk",
+      "bytes": 8684,
+      "modified_time": "2026-10-10T14:27:44.000Z",
+      "sha256": "169c2442e9dcd097c34b7692b1eba1cf45b9280ddbdd09d7e8996900c590074e"
+    },
+    {
+      "path": "ground-station/archive/DEPRECATED/laboratorio-v05/Laboratorio/laboratorio.js",
+      "url": "https://drive.google.com/file/d/1pGKYbYzUEnKEdN9EeD7VYvOE-oJhgkSs/view?usp=drivesdk",
+      "bytes": 8954,
+      "modified_time": "2026-10-10T14:26:20.000Z",
+      "sha256": "c5a69bec6961f4f1e6586b1301e8e4b28a25d5fe817070a23f5c5355d12ea328"
+    },
+    {
+      "path": "ground-station/archive/DEPRECATED/laboratorio-v05/Laboratorio/mediciones.js",
+      "url": "https://drive.google.com/file/d/1Wre0da-dKvFHEM8IcmTtRJwZwgWc5kdc/view?usp=drivesdk",
+      "bytes": 2358,
+      "modified_time": "2026-10-10T14:26:20.000Z",
+      "sha256": "ad10e01521b008065e5deaa520f4d530bf8732a58aa9fe58f02eceab729f2d4c"
+    },
+    {
+      "path": "ground-station/archive/DEPRECATED/estacion-v04/Estacion_simulada/Pruebas/test_station_v04.cjs",
+      "url": "https://drive.google.com/file/d/1G5EsxqG77si0c00eTtSVznOIMFAd_Rs7/view?usp=drivesdk",
+      "bytes": 5898,
+      "modified_time": "2026-10-08T23:21:58.000Z",
+      "sha256": "3deef2be468fb3b06b4ba50fcd3d150535d4be2dd3e1e1b3034cca0ca9e8888f"
+    }
+  ],
+  "movimientos": [],
+  "organizacion": "Copias nuevas directas a ground-station/archive; originales Drive conservados. Sin movimientos de archivos ajenos."
+}

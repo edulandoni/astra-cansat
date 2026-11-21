@@ -1,0 +1,26 @@
+{
+  "recorded_utc": "2026-10-26T04:54:03.802580+00:00",
+  "jira": "ASTRA-39",
+  "tests": {
+    "run": 19,
+    "failures": 0,
+    "errors": 0,
+    "output": "test_crc_corruption (test_camera_check.CameraTests.test_crc_corruption) ... ok\ntest_diagnostics_and_stale_response_ignored (test_camera_check.CameraTests.test_diagnostics_and_stale_response_ignored) ... ok\ntest_download_mode_reports_boot_instead_of_generic_timeout (test_camera_check.CameraTests.test_download_mode_reports_boot_instead_of_generic_timeout) ... ok\ntest_expected_camera_is_checked_before_capture_or_sd_request (test_camera_check.CameraTests.test_expected_camera_is_checked_before_capture_or_sd_request) ... ok\ntest_explicit_reset_keeps_old_boot_bytes_and_never_resends_order (test_camera_check.CameraTests.test_explicit_reset_keeps_old_boot_bytes_and_never_resends_order) ... ok\ntest_fragmentation_and_burst_decode (test_camera_check.CameraTests.test_fragmentation_and_burst_decode) ... ok\ntest_freshness_identity_and_sd (test_camera_check.CameraTests.test_freshness_identity_and_sd) ... ok\ntest_image_geometry_and_color (test_camera_check.CameraTests.test_image_geometry_and_color) ... ok\ntest_matching_crc_does_not_prove_jpeg (test_camera_check.CameraTests.test_matching_crc_does_not_prove_jpeg) ... ok\ntest_no_automatic_retry_on_timeout (test_camera_check.CameraTests.test_no_automatic_retry_on_timeout) ... ok\ntest_oversize_header_and_payload_limits (test_camera_check.CameraTests.test_oversize_header_and_payload_limits) ... ok\ntest_truncation_reset_and_wrong_order (test_camera_check.CameraTests.test_truncation_reset_and_wrong_order) ... ok\ntest_distinct_registry_required (test_camera_session.SessionTests.test_distinct_registry_required) ... ok\ntest_missing_result_never_retries_and_diagnostics_are_conserved (test_camera_session.SessionTests.test_missing_result_never_retries_and_diagnostics_are_conserved) ... ok\ntest_one_failure_cannot_approve_two_cameras_and_rounds_do_not_reuse_success (test_camera_session.SessionTests.test_one_failure_cannot_approve_two_cameras_and_rounds_do_not_reuse_success) ... ok\ntest_saved_photo_rechecked_not_trusted_from_cached_success (test_camera_session.SessionTests.test_saved_photo_rechecked_not_trusted_from_cached_success) ... ok\ntest_sd_failure_keeps_valid_photo_without_approving_operation (test_camera_session.SessionTests.test_sd_failure_keeps_valid_photo_without_approving_operation) ... ok\ntest_single_operation_owner_and_wrong_camera_result_rejected (test_camera_session.SessionTests.test_single_operation_owner_and_wrong_camera_result_rejected) ... ok\ntest_wrong_unit_and_wrong_request_rejected (test_camera_session.SessionTests.test_wrong_unit_and_wrong_request_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.296s\n\nOK\n"
+  },
+  "native_window_created_and_two_real_archived_photos_loaded": true,
+  "visual_review": {
+    "performed": true,
+    "first_layout_clipped_bottom": true,
+    "corrected_layout_inspected": true,
+    "history_label_and_footer_visible": true,
+    "final_edit_removed_reset_checkbox": true
+  },
+  "ports_opened_in_ui_review": 0,
+  "live_capture_through_panel_verified": false,
+  "telemetry_sources_modified": false,
+  "source_sha256": {
+    "camera_panel.py": "a1582cdc9be25d121dc9d724535332a401e2e6994ee77c671539e1f742e5409f",
+    "camera_session.py": "ec1bc607a036cbaca057bed6243c202821a9f80fdf14244c8baed82b3dd85a30",
+    "test_camera_session.py": "9bfa0e419772438cd2bfa59f2e27e1305f24aba1675b775eb453c3c325d916f6"
+  }
+}

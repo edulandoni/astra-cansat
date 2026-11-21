@@ -1,0 +1,83 @@
+{
+  "kind": "offline-calculation-not-RF-test",
+  "source": "https://cdn.sparkfun.com/assets/7/7/3/2/2/SX1276_Datasheet.pdf",
+  "revision": "7 - May 2020",
+  "pdf_sha256": "330745f933df00015d2de3efd582608339350ba3a21001d11b9d449839ce016b",
+  "read_text_pages": [
+    1,
+    84
+  ],
+  "pdf_total_pages": 132,
+  "limitation": "Semtech authored, SparkFun mirror; no binary equality verified against manufacturer download",
+  "assumptions": "134 payload bytes, preamble 8, CR4/5, CRC on. Illustrative only; no RF configured. One-percent intervals are arithmetic, not a regulatory interpretation.",
+  "cases": [
+    {
+      "payload_bytes": 134,
+      "sf": 6,
+      "bw_hz": 500000,
+      "cr_code": 1,
+      "preamble": 8,
+      "crc": 1,
+      "implicit": 1,
+      "de": 0,
+      "symbol_seconds": 0.000128,
+      "payload_symbols": 233,
+      "airtime_seconds": 0.031391999999999996,
+      "one_packet_per_second_air_fraction": 0.031391999999999996,
+      "fits_one_second_before_commands_and_guards": true,
+      "note": "Sólo cálculo. No incluye órdenes, ACK, guardas, reintentos ni restricciones de potencia/regulación. No configura RF.",
+      "minimum_interval_at_one_percent_s": 3.1391999999999998
+    },
+    {
+      "payload_bytes": 134,
+      "sf": 7,
+      "bw_hz": 125000,
+      "cr_code": 1,
+      "preamble": 8,
+      "crc": 1,
+      "implicit": 0,
+      "de": 0,
+      "symbol_seconds": 0.001024,
+      "payload_symbols": 203,
+      "airtime_seconds": 0.220416,
+      "one_packet_per_second_air_fraction": 0.220416,
+      "fits_one_second_before_commands_and_guards": true,
+      "note": "Sólo cálculo. No incluye órdenes, ACK, guardas, reintentos ni restricciones de potencia/regulación. No configura RF.",
+      "minimum_interval_at_one_percent_s": 22.0416
+    },
+    {
+      "payload_bytes": 134,
+      "sf": 9,
+      "bw_hz": 125000,
+      "cr_code": 1,
+      "preamble": 8,
+      "crc": 1,
+      "implicit": 0,
+      "de": 0,
+      "symbol_seconds": 0.004096,
+      "payload_symbols": 158,
+      "airtime_seconds": 0.697344,
+      "one_packet_per_second_air_fraction": 0.697344,
+      "fits_one_second_before_commands_and_guards": true,
+      "note": "Sólo cálculo. No incluye órdenes, ACK, guardas, reintentos ni restricciones de potencia/regulación. No configura RF.",
+      "minimum_interval_at_one_percent_s": 69.7344
+    },
+    {
+      "payload_bytes": 134,
+      "sf": 12,
+      "bw_hz": 125000,
+      "cr_code": 1,
+      "preamble": 8,
+      "crc": 1,
+      "implicit": 0,
+      "de": 1,
+      "symbol_seconds": 0.032768,
+      "payload_symbols": 143,
+      "airtime_seconds": 5.087232,
+      "one_packet_per_second_air_fraction": 5.087232,
+      "fits_one_second_before_commands_and_guards": false,
+      "note": "Sólo cálculo. No incluye órdenes, ACK, guardas, reintentos ni restricciones de potencia/regulación. No configura RF.",
+      "minimum_interval_at_one_percent_s": 508.7232
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "created_date_argentina": "25/10/2026",
+  "capture_date_argentina": "24/10/2026",
+  "source": "ESP32 físico → USB → PC; reproducción de captura conservada",
+  "values": "Sintéticos: sin sensores físicos ni RF",
+  "rows": 131,
+  "packet_count_first": 1,
+  "packet_count_last": 131,
+  "csv_sha256": "cb98ef8c6b9f7a4e0402440075ff5dfdd48624342513620e8cb3af2a798aab41",
+  "source_file": "../../../evidence/2026-10-24-avances/usb-guardas-02/Flight_1000.csv",
+  "omitted_from_visual": [
+    "GPS_LATITUDE",
+    "GPS_LONGITUDE"
+  ],
+  "note": "La animación usa 131 filas realmente guardadas el 24/10; no genera otra trayectoria ni corresponde a la sesión interactiva abierta del 25/10. Acelerar reproducción no acelera la transmisión original."
+}

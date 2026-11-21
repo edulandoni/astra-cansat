@@ -1,0 +1,121 @@
+ASTRA — CONTINUIDAD GROUND SEGMENT / COMMS — 17/10/2026
+
+FUENTES Y ALCANCE
+Se recuperó el historial de «Revisar proyecto CanSat» y su continuación.
+Se leyó el anexo técnico compartido en Drive:
+https://drive.google.com/file/d/1ClQ6-2E9n8deEy40NVR0KD00IIEnRNlS/view
+Se leyó el informe previo, incluyendo redundancia, capacidad y limitaciones:
+https://drive.google.com/file/d/1JWF0SGr2vqOWcNde7DDraJDny64J78Pv/view
+Jira respondió en lectura: proyecto ASTRA, 29 tareas accesibles, sin página siguiente.
+Se leyeron títulos, estados, asignados y descripciones. No se auditaron comentarios,
+adjuntos, historial de cambios, incidencias no accesibles ni otros proyectos.
+En la respuesta aparece un perfil de Cristian Ponsone. No se demuestra todavía
+que las dos cuentas históricas cristianponsone9/cristianponsone se hayan unificado.
+No se modificó Jira, Drive ni GitHub y no se enviaron mensajes a Edu.
+
+LO QUE SE PUEDE HACER CON EL HARDWARE ACTUAL
+El usuario confirma tener el microcontrolador previsto para tierra, sin antena.
+El modelo exacto no está identificado: ESP32 clásico es la hipótesis del prompt,
+no una identificación física verificada. También sigue pendiente confirmar si
+hay módulo RF disponible además del MCU; antena y radio son elementos distintos.
+El primer banco puede avanzar íntegramente en PC y luego por USB. No requiere
+compras, SX1276 ni elección unilateral de perfil RF.
+
+TEAM_ID, NETID/PANID Y UNICAST SON CAPAS DIFERENTES
+El anexo sección 3.1.1.1 coloca TEAM_ID como PRIMER CAMPO del payload ASCII y
+define cuatro dígitos. Eso son cuatro caracteres ASCII, no cuatro bits, ni toda
+la cabecera física que la radio transmite antes del payload.
+X2 exige NetID/PanID con número de equipo; X3 prohíbe broadcast. No se reduce
+la verificación de estos requisitos a comparar TEAM_ID en el parser de PC.
+El gateway puede filtrar IDs ajenos, pero eso no evita recepción de energía RF,
+colisiones, interferencia ni demuestra autenticidad del emisor.
+Sync Word no debe confundirse con TEAM_ID completo ni con autorización de comandos.
+La implementación equivalente para SX1276 requiere ASTRA-18 y revisión en ASTRA-19;
+la aceptación reglamentaria de una equivalencia propia queda TBR con CONAE.
+No es defendible garantizar que poner TEAM_ID resuelve por sí solo la prohibición.
+
+Documento de Semtech SX1276/77/78/79 Rev.4, marzo 2015, sección 4.1.5/filtrado:
+https://cdn-shop.adafruit.com/product-files/3179/sx1276_77_78_79.pdf
+Es una copia del documento del fabricante alojada por distribuidor. La página
+directa de Semtech devolvió 403 en esta consulta. El documento describe filtrado
+por software sobre primeros bytes del payload en LoRa y mecanismos de filtrado
+de direcciones en packet mode FSK/OOK. No implica aprobación de CONAE.
+
+FORMATO BASE RECUPERADO
+TEAM_ID,MISSION_TIME,PACKET_COUNT,MODE,STATE,ALTITUDE,TEMPERATURE,PRESSURE,
+VOLTAGE,CURRENT,GYRO_R,GYRO_P,GYRO_Y,ACCEL_R,ACCEL_P,ACCEL_Y,GPS_TIME,
+GPS_ALTITUDE,GPS_LATITUDE,GPS_LONGITUDE,GPS_SATS,CMD_ECHO
+Un paquete por segundo; separador coma; terminador CR único. 22 campos obligatorios.
+Opcionales tras un campo vacío: CMD_ECHO,,OPTIONAL_DATA. No anteponer cabecera
+propia al CSV de jueces ni agregar CRC como columna sin acuerdo de extensión.
+Flight_<TEAM_ID>.csv debe mantener encabezados y datos originales recibidos.
+MISSION_TIME es hora UTC hh:mm:ss, no segundos de misión transcurridos ni hora local.
+MODE=S para este banco. Altitud relativa al suelo y GPS_ALTITUDE MSL son distintas.
+Presión kPa (no Pa/hPa). Usar precisión interna para altitud, antes de redondear.
+
+TBR DEL ANEXO QUE NO DEBEN RESOLVERSE SILENCIOSAMENTE
+1. ACCEL_R/P/Y se describe en grados/s², aunque SN5 pide aceleración y giro y G6
+   pide SI. Banco usa aceleración lineal m/s², rotaciones °/s según formato; marcar
+   explícitamente TBR con Edu/CONAE y no afirmar cumplimiento definitivo.
+2. Longitud descrita en grados Oeste: aclarar magnitud positiva oeste frente a
+   longitud geográfica con signo (banco usa negativa en Argentina). Latitud también
+   usa signo sur en banco. No invertir signos entre firmware y PC.
+3. X4 activa al separarse, G5 pide visualización en ascenso/descenso y el apartado
+   de telemetría menciona CXON. Acordar activación y operación previa al lanzamiento.
+4. C4 habla de liberar al 80% de altitud máxima; estados PROBE_RELEASE y
+   PAYLOAD_RELEASE deben mapearse a mecanismos reales con Edu. No inventar secuencias.
+5. Pérdida de GPS: convención de campos inválidos y criterio fix válido aún TBR.
+6. Persistencia de contador/UTC/calibración/estado: diseñar y ensayar frente a
+   reinicio real, no sólo una interrupción lógica en el banco.
+
+ORDEN DE TRABAJO TRAZADO A JIRA
+ASTRA-18 (Cristian): justificar modo RF y X1-X7; NetID/PANID y unicast aún abiertos.
+https://astrateam2026.atlassian.net/browse/ASTRA-18
+ASTRA-19 (Edu): única baseline ICD, revisión compartida y autoridad de Systems.
+https://astrateam2026.atlassian.net/browse/ASTRA-19
+ASTRA-20 (Cristian): simulador PC más sketch USB preparados aquí; queda compilar,
+cargar y medir 1 Hz en placa identificada. No marcar terminado sólo por los tests.
+https://astrateam2026.atlassian.net/browse/ASTRA-20
+ASTRA-21 (Cristian): parser/logging/ingestión implementados como prototipo; falta
+USB físico, reconexión, fallos de disco y prueba con la notebook/backup reales.
+https://astrateam2026.atlassian.net/browse/ASTRA-21
+ASTRA-22 (Cristian): GUI mínima preparada; falta validación de toda la pantalla,
+sol intenso, resolución real y capturas de evidencia de la misión con hardware.
+https://astrateam2026.atlassian.net/browse/ASTRA-22
+ASTRA-23 (Cristian): gateway SX1276 después de ICD/RF/placa/módulo/pinout confirmados.
+ASTRA-24 (Cristian + Edu): interoperabilidad STM32-radio-gateway, telecomandos,
+CRC/direcciones, reset y acta reproducible; no se acredita con simulación de PC.
+ASTRA-25 (Cristian): link budget con fuentes; faltan antenas, pérdidas y perfil.
+No fijar alcance por sensibilidad de catálogo o resultados de terceros.
+
+DEPENDENCIAS RESTANTES DEL PROYECTO
+ASTRA-4/5/6/7/13/14 (Edu): candidatos MCU, sensores, arquitectura, I/O y baseline
+Engineering Model. El hardware disponible no vuelve definitivos los pinouts.
+ASTRA-8/9/10/11/12 (Edu): estados, productores de campos, telecomandos,
+persistencia e interfaces; determinan los contratos de nuestra adquisición.
+ASTRA-15 (Edu): alimentación de vuelo 1S1P; confirmar autonomía e integración.
+ASTRA-16 (Edu): cámaras autónomas; video a bordo no se presume tráfico de radio.
+ASTRA-17 (Edu): módulo/antenas SX1276; coordinar con ASTRA-18 antes de comprar.
+ASTRA-26/27/28/29/30/31 (Rebeca): matriz, subsistemas, métodos V&V, pruebas,
+TBD/TBR y evidencias. Este banco aporta código y resultados, no cierre automático.
+ASTRA-32 (Rebeca): dron para ensayos; etapa posterior, sin bloquear USB.
+Consulta completa y estados observados: JIRA_LECTURA_2026-10-17.txt.
+
+REDUNDANCIA Y PRESUPUESTO
+Conservar registro a bordo, independencia del gateway y PC, respaldo en otro disco,
+alimentación/autonomía de campo y recuperación de huecos como líneas del diseño.
+Una cola RAM no sobrevive al apagado. Este sketch no implementa aún archivo en gateway.
+No existe recuperación de medidas que nunca se tomaron o que nadie conservó.
+Reenviar históricos por RF requiere protocolo acordado y presupuesto de tiempo de aire;
+no repetir automáticamente la transmisión antigua con contadores inconsistentes.
+No hace falta agregar una radio o memoria para comenzar este banco. Una segunda radio
+terrestre es una opción posterior con falla cubierta y costo justificados.
+No se reauditaron compras ni se actualizaron precios en esta continuación.
+
+PDR: EVIDENCIA QUE YA EXISTE Y EVIDENCIA QUE FALTA
+Existe: arquitectura de módulos, software reproducible, resultados de nueve pruebas,
+CSV de una misión sintética completa y registro de anomalías de escenarios sintéticos.
+Pendiente: compilación y captura ESP32, medida tasa real, desconexión/reconexión USB,
+dos horas de estabilidad/autonomía, respaldo en disco físico distinto, solar y comandos,
+Radio Profile compartido, X2/X3 aceptados, interoperabilidad con STM32 y ensayos RF.
+No se cambian estados de Jira ni se afirma cumplimiento de hardware sin evidencia.

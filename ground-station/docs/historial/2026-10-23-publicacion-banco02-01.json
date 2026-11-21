@@ -1,0 +1,100 @@
+{
+  "created_utc": "2026-10-24 02:30:54 UTC",
+  "scope": "groundstation / ground-station/; primera etapa de implementación, aceptación física todavía parcial",
+  "commits": [
+    "114616a4dc5d1f09706b623581b9fdd0714621da",
+    "fc6e6d22b46104127b1a83c973ac86c4a22b59a9"
+  ],
+  "jira": [
+    {
+      "key": "ASTRA-20",
+      "id": "10116",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10116",
+      "title": "23/10/2026 — COMENTARIO 14 — ACTUALIZACIÓN COMENTARIO 13: firmware configurable y cinco escenarios USB",
+      "all_prior_comments_unchanged": true,
+      "total": 14
+    },
+    {
+      "key": "ASTRA-21",
+      "id": "10117",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10117",
+      "title": "23/10/2026 — COMENTARIO 15 — ACTUALIZACIÓN COMENTARIO 14: adquisición y guardado independientes",
+      "all_prior_comments_unchanged": true,
+      "total": 15
+    },
+    {
+      "key": "ASTRA-22",
+      "id": "10118",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-22?focusedCommentId=10118",
+      "title": "23/10/2026 — COMENTARIO 7 — ACTUALIZACIÓN COMENTARIO 6: interfaz de banco bidireccional",
+      "all_prior_comments_unchanged": true,
+      "total": 7
+    },
+    {
+      "key": "ASTRA-24",
+      "id": "10120",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-24?focusedCommentId=10120",
+      "title": "23/10/2026 — COMENTARIO 5 — Preparación iniciada: propuesta de interfaz y extremo USB de banco",
+      "all_prior_comments_unchanged": true,
+      "total": 5
+    },
+    {
+      "key": "ASTRA-25",
+      "id": "10121",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-25?focusedCommentId=10121",
+      "title": "23/10/2026 — COMENTARIO 5 — ACTUALIZACIÓN COMENTARIO 4: comparación preliminar y link budget con entradas pendientes",
+      "all_prior_comments_unchanged": true,
+      "total": 5
+    },
+    {
+      "key": "ASTRA-34",
+      "id": "10119",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-34?focusedCommentId=10119",
+      "title": "23/10/2026 — COMENTARIO 5 — ACTUALIZACIÓN COMENTARIO 4: criterios convertidos en implementación y pruebas",
+      "all_prior_comments_unchanged": true,
+      "total": 5
+    },
+    {
+      "key": "ASTRA-35",
+      "id": "10122",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-35?focusedCommentId=10122",
+      "title": "23/10/2026 — COMENTARIO 8 — Antecedentes convertidos en decisiones y pruebas propias",
+      "all_prior_comments_unchanged": true,
+      "total": 8
+    }
+  ],
+  "drive": [
+    {
+      "name": "2026-10-23-banco02-actualizacion-01.md",
+      "id": "1xvE1kleYV87FcYdauACFBdL49K941VCQ",
+      "url": "https://drive.google.com/file/d/1xvE1kleYV87FcYdauACFBdL49K941VCQ/view?usp=drivesdk",
+      "parent": "13_8vXCp0y_ZmDmbBt74g-o_noXORcOKM",
+      "contentMatches": true,
+      "parentVerified": true
+    },
+    {
+      "name": "2026-10-23-propuesta-banco-y-vuelo.md",
+      "id": "1oYWR-t__bDmwQAEvgOG-pSiADT5qDQOK",
+      "url": "https://drive.google.com/file/d/1oYWR-t__bDmwQAEvgOG-pSiADT5qDQOK/view?usp=drivesdk",
+      "parent": "1i523f6PGiS5qzzRei1rGly_dQpq7r40M",
+      "contentMatches": true,
+      "parentVerified": true
+    },
+    {
+      "name": "2026-10-23-antenas-y-link-budget-preliminar.md",
+      "id": "1KM8qlFtnFBjQaLrBYLvAhZ75QNc0jttZ",
+      "url": "https://drive.google.com/file/d/1KM8qlFtnFBjQaLrBYLvAhZ75QNc0jttZ/view?usp=drivesdk",
+      "parent": "1i523f6PGiS5qzzRei1rGly_dQpq7r40M",
+      "contentMatches": true,
+      "parentVerified": true
+    },
+    {
+      "name": "2026-10-23-antecedentes-a-pruebas.md",
+      "id": "1NiH9-b93CM91oOYWh8naujQ0lX7idqlQ",
+      "url": "https://drive.google.com/file/d/1NiH9-b93CM91oOYWh8naujQ0lX7idqlQ/view?usp=drivesdk",
+      "parent": "1RH2Q1chaF0YNMZy3XKEjQQDo-bf09yWx",
+      "contentMatches": true,
+      "parentVerified": true
+    }
+  ]
+}

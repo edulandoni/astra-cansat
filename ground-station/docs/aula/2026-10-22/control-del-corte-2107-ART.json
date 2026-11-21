@@ -1,0 +1,46 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-10-23T00:02:05.730Z",
+  "cut_utc": "2026-10-23T00:07:54.218277+00:00",
+  "cut_argentina": "22/10/2026 21:07:54 ART",
+  "status": "PARCIAL — aula inaccesible",
+  "course": "https://educacion.conae.gov.ar/aulavirtual/course/view.php?id=106",
+  "attempts": [
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/course/view.php?id=106",
+      "result": "Timeout de navegación; página de error de conexión del navegador."
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/login/index.php",
+      "result": "Timeout de navegación; no se llegó al formulario ni se introdujeron credenciales."
+    }
+  ],
+  "last_successful_cut": "20/10/2026 21:03:49 ART",
+  "last_known_threads": 11,
+  "last_known_messages": 19,
+  "current_thread_count": null,
+  "current_message_count": null,
+  "new_messages": null,
+  "files_revalidated_today": [],
+  "pending": [
+    "Secciones y recursos actuales del curso",
+    "Foros, mensajes completos y adjuntos nuevos",
+    "Calendario y configuración actual de entrega",
+    "Versiones binarias de bases/anexo/PDR/scoresheet",
+    "Grabaciones: referencia y versión actuales",
+    "Publicación eventual del vector y perfiles ambientales"
+  ],
+  "public_pages_read": [
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/cronograma",
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/como-me-inscribo"
+  ],
+  "public_result": "Sin cambio sustantivo detectado en texto relevante frente al corte anterior; no se compararon binarios de descargas públicas.",
+  "limits": [
+    "El fallo observado desde este acceso no prueba una caída global del servidor.",
+    "No se puede afirmar sin novedades en el aula ni conocer la respuesta actual de las cuatro preguntas publicadas el 20/10.",
+    "Audiovisuales conservan análisis del 19/10, sin revalidación hoy.",
+    "Conteos 11/19 y huellas anteriores son históricos, no observaciones de hoy."
+  ],
+  "previous_cut": "21/10/2026 21:30:25 ART — parcial",
+  "same_access_impediment_as_previous": true,
+  "source_issue_update": "No duplico aviso de impedimento en ASTRA-37; el corte obligatorio se registra en ASTRA-38."
+}

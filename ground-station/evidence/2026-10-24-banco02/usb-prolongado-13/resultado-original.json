@@ -1,0 +1,127 @@
+{
+  "recorded_utc": "2026-10-24T06:10:25.914881+00:00",
+  "source": "USB_BENCH",
+  "segment": "0002_904ef3a9ce10",
+  "packets": 7261,
+  "expected_packets": 7261,
+  "minimum_real_seconds": 7200,
+  "first_received_utc": "2026-10-24T04:09:02.750961+00:00",
+  "last_received_utc": "2026-10-24T06:10:03.084043+00:00",
+  "monotonic_span_seconds": 7260.3279999999795,
+  "utc_span_seconds": 7260.333081960678,
+  "interval_seconds": {
+    "min": 0.9369999999180436,
+    "median": 1.0150000000139698,
+    "mean": 1.000045179063358,
+    "max": 1.0630000000819564
+  },
+  "gui": {
+    "observations_during_flow": 1407,
+    "maximum_callback_gap_seconds": 5.265999999945052,
+    "observed_working_set_bytes": {
+      "min": 38019072,
+      "max": 47038464,
+      "first": 44490752,
+      "last": 38555648
+    },
+    "memory_reader_initializations": [
+      1
+    ],
+    "maximum_history": 300,
+    "maximum_display_queue": 1
+  },
+  "checks": {
+    "source_usb": true,
+    "monotonic_timestamps": true,
+    "at_least_required_real_seconds": true,
+    "expected_counter_sequence": true,
+    "csv_equals_packets": true,
+    "synthetic_mode_declared": true,
+    "mission_clock_advances": true,
+    "no_active_frame_errors": true,
+    "no_duplicates_or_conflicts": true,
+    "writers_drained": true,
+    "raw_conserved": true,
+    "gui_progress_observed": true,
+    "bounded_observed_containers": true,
+    "memory_reader_initialized_once": true,
+    "input_read_clean": true
+  },
+  "passed": true,
+  "active_errors": {
+    "rejected": 0,
+    "overflow": 0,
+    "source_error": 0,
+    "disconnected": 0
+  },
+  "total_events_by_kind": {
+    "environment": 1,
+    "connected": 1,
+    "command_queued": 5,
+    "command_sent": 5,
+    "wire": 10015,
+    "control": 7273,
+    "segment": 2,
+    "validated": 7261,
+    "packet": 7261,
+    "gui_health": 1410
+  },
+  "mission_clock_step_histogram": {
+    "1": 7260
+  },
+  "states": {
+    "LAUNCH_PAD": 10,
+    "ASCENT": 20,
+    "APOGEE": 1,
+    "DESCENT": 6,
+    "PROBE_RELEASE": 1,
+    "PAYLOAD_RELEASE": 79,
+    "LANDED": 7144
+  },
+  "read_errors": [],
+  "destinations": [
+    {
+      "destination": 0,
+      "kind": "raw",
+      "saved": 33234,
+      "pending": 0,
+      "error": "",
+      "dropped": 0,
+      "dropped_seq_ranges": [],
+      "loss_ledger_truncated": false,
+      "last_confirmed_seq": 33234,
+      "capacity": 600
+    },
+    {
+      "destination": 0,
+      "kind": "csv",
+      "saved": 7261,
+      "pending": 0,
+      "error": "",
+      "dropped": 0,
+      "dropped_seq_ranges": [],
+      "loss_ledger_truncated": false,
+      "last_confirmed_seq": 33230,
+      "capacity": 600
+    }
+  ],
+  "source_files_sha256": {
+    "journal.jsonl": "854a6b940a6bdcc0e28861d931cebb0cb724c77e67e7b96008ade52974022639",
+    "storage-summary.json": "42ff27d6867495719cdeed11c1f850db154ef2778bd5141d4186e912af8755fa",
+    "segments/0002_904ef3a9ce10/Flight_1000.csv": "f62404025543b6391957352b5de0c081f91557d6c41f6d1e6fd83643f243e1c2"
+  },
+  "software_source_sha256": {
+    "analyze.py": "446d825a0e869d432e5ef0f0aa3024ee597841b4ddfc02b609100325c591d218",
+    "app.py": "12008dbd99185978984823eb23311e84f756b097c9b101cfb6cd457335fc99b3",
+    "campaign.py": "ae39c2ef56210f97ee5368593d9f7d742ac22d546ad4692bf08f0e77aca3b2f6",
+    "engine.py": "c8ffaa58e56147ee1ca46f820b6aa065715444402d3941200e3a21fd4399e6be",
+    "journal.py": "a949e02c24d8851380ff73cea27737b975385f9979eb4d6dc0e0f4d15bc5d3f6",
+    "mission.py": "d66b5260961bd5628dd38b08882511d576c44ac11bbee79b3d61010c8e3b6b39",
+    "recover.py": "0b251f4b8f5ba704c38f2018c139f0aee44f1e4f4e526c540b33858a0ff961b3",
+    "sources.py": "49f2173007990b6beae4056ddb04b671cf21a173e423b795b7763f1c276738b1",
+    "test_bench.py": "40aa5b8f16fd7f4b5389b33ec9c73656f63f4f3a9b2242277098027dda8e385f",
+    "wire.py": "9968dfd8cea3575510bed93965c695b683d0cb1f6f0e1a30da62180a936f52a7",
+    "firmware\\AstraBench02\\AstraBench02.ino": "a0df3d3d47896444b252da68a17c0956168910fbf4cc7504b4bffba86de69fbe"
+  },
+  "limits": "Ensayo de flujo USB sintético, sin RF ni autonomía. Working set es memoria residente observada, no prueba universal de ausencia de fugas. GUI observada por callbacks y contenedores; un intervalo de más de10s entre registros impide aprobar continuidad por este analizador. No equiparo cantidad acelerada o ventana abierta a dos horas reales."
+}

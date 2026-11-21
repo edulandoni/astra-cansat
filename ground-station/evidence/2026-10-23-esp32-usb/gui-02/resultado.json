@@ -1,0 +1,38 @@
+{
+  "cut_utc": "2026-10-24T00:59:14.732296+00:00",
+  "port": "COM5",
+  "firmware_scenario": "NOMINAL",
+  "team": "1000 ficticio",
+  "received": 131,
+  "first_count": 1,
+  "last_count": 131,
+  "last_state": "LANDED",
+  "rejected": 0,
+  "observed_gaps": 0,
+  "duplicates": 0,
+  "bench_resets": 1,
+  "startup_events": 1,
+  "source_snapshot": "Copia al corte de la sesión de pantalla; la ventana permanece abierta. El sketch terminó su secuencia de 131 muestras.",
+  "source_files_sha256": {
+    "Flight_1000.csv": "cccb6bee79a1da0215d87a1d5448a7bfee5c22042d715c452fe57585bb7a97b7",
+    "reception.jsonl": "c131df577585383bbd15ea6a1a1f35ce9e39a91f22dc65587cd92753e94361f6"
+  },
+  "code_sha256": {
+    "app.py": "2dc08622768c1952d483577335aa69a9eda56d0902465c38a5a30af5bb075d89",
+    "acquisition.py": "7e642e64d6ad7daf0bb1a4119240b39166229fc7ebc4532bec8f0b487e7b8550",
+    "protocol.py": "ffa0342449326ba7c9a14b2ccd1c557324bbc2c6979d94ba13332742be7ca1fd"
+  },
+  "prior_gui": {
+    "received": 76,
+    "first_count": 2,
+    "last_count": 77,
+    "rejected": 7,
+    "stop_reason": "Cerré voluntariamente la ventana para probar la corrección; no es fin de vuelo ni pérdida RF"
+  },
+  "tests": {
+    "command": "python -m unittest -v test_ground test_usb_startup",
+    "passed": 11,
+    "reconnection_test": "Puerto simulado; no prueba reconexión física"
+  },
+  "limits": "Todos los datos de misión son sintéticos. No se cambiaron parser, firmware o perfil RF. La ventana inicial de 0,5 s se separa sólo con opción explícita de banco. Originales de ambas sesiones conservados localmente."
+}

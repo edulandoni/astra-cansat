@@ -1,0 +1,18 @@
+REFERENCIA VIGENTE DESDE LA REVISION DEL 17/10/2026
+
+Este banco conserva un perfil ASCII heredado de v1. Los 22 campos, CR, estados,
+TEAM_ID de cuatro digitos, nombres de comandos y Flight_<TEAM_ID>.csv son
+convenciones de banco pendientes del ICD ASTRA, no un formato oficial de v2.
+El anexo v2 sigue exigiendo funciones de telemetria, CSV, telecomandos y persistencia.
+
+La revision completa y los cambios necesarios estan documentados en:
+https://docs.google.com/document/d/1WwZ83me8W0qA7T8eum6xSrYxVtpbYoT9OYq1Z0WPMNI/edit
+
+Documentos previos LEEME.txt y ANALISIS_Y_PENDIENTES.txt describen el antecedente
+v1. Cuando usan la palabra obligatorio u oficial para su sintaxis, leer este aviso.
+Esta aclaracion no cambia los bytes ni aprueba un nuevo protocolo compartido.
+
+Pendientes principales del banco: comandos y solar; unidades SI en presentacion;
+perfil de descenso verificable; persistencia real ante reset/corte; prueba USB;
+dos horas y dos soportes fisicos; identificacion de placa y compilacion del sketch.
+Nueve pruebas de software aprobadas no acreditan esos ensayos de hardware.

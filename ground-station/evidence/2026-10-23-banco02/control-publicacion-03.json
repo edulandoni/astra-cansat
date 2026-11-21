@@ -1,0 +1,37 @@
+{
+  "created_utc": "2026-10-24T02:25:48.717228+00:00",
+  "updates": [
+    "fuentes-y-copias-01.json",
+    "control-publicacion-02.json"
+  ],
+  "corrections": [
+    "La fecha aproximada de fuentes-y-copias-01 no se usa como medición: las fechas exactas constan en las campañas.",
+    "El autocontrol de control-publicacion-02 tomó su propio archivo aún vacío: ese hash no es válido. Este control excluye su propio archivo y calcula los demás antes de abrir la salida. Conservo los originales."
+  ],
+  "evidence_sha256": {
+    "control-publicacion-02.json": "cfc578e810754e6293ba59b384463ab00e7c6ccfcc5e27157480401cb4847429",
+    "fuentes-y-copias-01.json": "4116c3dfff6acf323aff6561884be28d89363f8e9cd17cb23cdd43379ad422cd",
+    "pc-campaign-original-01.json": "7409145f623dd1a1fb90b55843e21c05d454fd5f4f8db5ef36d54e6946e3df6a",
+    "software-tests-02.json": "9aaf7ef2b27d01c6cae357f0d3762db6cd7b7dcf82e48a9092804691d0287324",
+    "usb-campaign-original-01.json": "483335ef7809742df8b13c5983ee4ed8388025f2f8fd2b59b599d49955bd8917",
+    "usb-cinco-escenarios-01.json": "bbca0eb37aad4b47510f14fe6cefa380965a0eb1438830a32251f814ee018905",
+    "usb-cinco-escenarios-01/segments/0002_47ba98ef0c31/Flight_1000.csv": "fc40bbcd907616fd8eea1e8727fa03b585a426312dd9e93159538c69f5641190",
+    "usb-cinco-escenarios-01/segments/0003_86f9798fa4ec/Flight_1000.csv": "c502ead062e195343ec16115fe0a5e5f6fd77fe731f13fd5fa9cb8c2be23000d",
+    "usb-cinco-escenarios-01/segments/0004_40b8d8cf95ae/Flight_1000.csv": "834399f952492b057518fcd97b59d8d4122e2c1e30e94fdfe1634c8a9b3a38cf",
+    "usb-cinco-escenarios-01/segments/0005_a732812d6888/Flight_1000.csv": "423fbb7d55172a28313491c34a34413e69a678d4998a8233a3ff6f6adedf38d0",
+    "usb-cinco-escenarios-01/segments/0006_b29c354787be/Flight_1000.csv": "318c933ae5a263467d99e8706d0338a0f79ef978a0d32bb5d7fb0177da010166"
+  },
+  "source_sha256": {
+    "analyze.py": "446d825a0e869d432e5ef0f0aa3024ee597841b4ddfc02b609100325c591d218",
+    "app.py": "86f9c6f02bb0030eb9b8e6ead02b961fd9fedab52ce2efbca508879092be8f9f",
+    "campaign.py": "ae39c2ef56210f97ee5368593d9f7d742ac22d546ad4692bf08f0e77aca3b2f6",
+    "engine.py": "e531da6fa0877af30f3c585e426535aca6f77c572533c647cb0940074b3896c5",
+    "journal.py": "b846dc060e71fc4306e9b7ab5526318eb43814c744a0933b1005ba5466100ead",
+    "mission.py": "d66b5260961bd5628dd38b08882511d576c44ac11bbee79b3d61010c8e3b6b39",
+    "recover.py": "0b251f4b8f5ba704c38f2018c139f0aee44f1e4f4e526c540b33858a0ff961b3",
+    "sources.py": "42936d5669426f51040d3a04c56321de0873635c948395e6115c1bfdc83e64f6",
+    "test_bench.py": "307a8646beb9bc630a700b96f372546a2ebd71d419f15ffe1ef3a52028ca2be3",
+    "wire.py": "9968dfd8cea3575510bed93965c695b683d0cb1f6f0e1a30da62180a936f52a7",
+    "firmware/AstraBench02/AstraBench02.ino": "bb46ae48b14adf76c29f746d9da6d14e77815f4a9113b99e0c7e89d11a609f9a"
+  }
+}

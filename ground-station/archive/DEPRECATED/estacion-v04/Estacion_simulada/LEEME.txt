@@ -1,0 +1,18 @@
+CANSAT UTN FRD - ESTACIÓN CON APRENDIZAJE v04
+
+Abrir index.html o ABRIR_ESTACION.cmd. No requiere instalación ni internet.
+Conservar juntos los archivos de Estacion_simulada y la carpeta hermana Referencias.
+
+Iniciar: comienza el vuelo ficticio. +1 s: avanza un segundo. Velocidad 20x: lo recorre rápido.
+Cada símbolo de información abre una explicación detallada y pausa el ensayo mientras la leés.
+Otras estaciones muestra pantallas documentadas de dos equipos y enlaces a las fuentes.
+Ensayar fallas prepara escenarios reproducibles. Aplicar reemplaza la sesión en memoria.
+
+Guardar JSON permite reproducir bytes y comandos. CSV de práctica guarda mensajes aceptados.
+Exportar antes de cerrar o cambiar de sesión si querés conservar el registro.
+No hay guardado automático ni conexión a hardware. Todo queda identificado como simulación.
+
+La vista completa entra en 1366x768, 1366x900 y 1920x1080 de espacio útil de navegador a escala 100%.
+Si la ventana no alcanza, aparece un aviso. El zoom, paneles y barras reducen ese espacio.
+
+Para otro chat: ../CONTINUAR_AQUI_v04.md y ../Requisitos_y_referencias_v04.md.

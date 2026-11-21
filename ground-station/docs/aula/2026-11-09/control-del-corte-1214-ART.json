@@ -1,0 +1,20 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-11-09T15:13:16.595Z",
+  "cut_utc": "2026-11-09T15:14:59Z",
+  "status": "PARCIAL",
+  "previous_cut": "06/11/2026 21:33 ART",
+  "last_successful_cut": "20/10/2026 21:03 ART",
+  "access": "Lector devuelve ingreso no autenticado; copia rastreada hace dos días; servidor actual no verificado",
+  "credentials_entered": false,
+  "pending": [
+    "Acceso autenticado",
+    "Mensajes y recursos desde última lectura válida",
+    "Adjuntos, versiones y huellas",
+    "Entrega y calendario",
+    "Audiovisuales",
+    "Vector y ensayos ambientales"
+  ],
+  "public_pages": "Textos relevantes sin cambios sustantivos detectados; binarios no revalidados",
+  "research": "Testimonio DJS 2025; sin datos reproducibles nuevos ni píxeles inspeccionados",
+  "desktop_used": false
+}

@@ -1,0 +1,44 @@
+{
+  "recorded_utc": "2026-10-26T15:08:09.863364+00:00",
+  "jira": [
+    "ASTRA-39",
+    "ASTRA-41"
+  ],
+  "scope": "Preparacion de software y compilacion; sin apertura de puerto, carga ni ensayo fisico de secuencia",
+  "tests": {
+    "run": 31,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 0.7040000000015425,
+    "output": "test_crc_corruption (test_camera_check.CameraTests.test_crc_corruption) ... ok\ntest_diagnostics_and_stale_response_ignored (test_camera_check.CameraTests.test_diagnostics_and_stale_response_ignored) ... ok\ntest_download_mode_reports_boot_instead_of_generic_timeout (test_camera_check.CameraTests.test_download_mode_reports_boot_instead_of_generic_timeout) ... ok\ntest_expected_camera_is_checked_before_capture_or_sd_request (test_camera_check.CameraTests.test_expected_camera_is_checked_before_capture_or_sd_request) ... ok\ntest_explicit_reset_keeps_old_boot_bytes_and_never_resends_order (test_camera_check.CameraTests.test_explicit_reset_keeps_old_boot_bytes_and_never_resends_order) ... ok\ntest_fragmentation_and_burst_decode (test_camera_check.CameraTests.test_fragmentation_and_burst_decode) ... ok\ntest_freshness_identity_and_sd (test_camera_check.CameraTests.test_freshness_identity_and_sd) ... ok\ntest_image_geometry_and_color (test_camera_check.CameraTests.test_image_geometry_and_color) ... ok\ntest_matching_crc_does_not_prove_jpeg (test_camera_check.CameraTests.test_matching_crc_does_not_prove_jpeg) ... ok\ntest_no_automatic_retry_on_timeout (test_camera_check.CameraTests.test_no_automatic_retry_on_timeout) ... ok\ntest_oversize_header_and_payload_limits (test_camera_check.CameraTests.test_oversize_header_and_payload_limits) ... ok\ntest_truncation_reset_and_wrong_order (test_camera_check.CameraTests.test_truncation_reset_and_wrong_order) ... ok\ntest_boot_failure_preserves_explanation_instead_of_missing_info_key (test_camera_session.SessionTests.test_boot_failure_preserves_explanation_instead_of_missing_info_key) ... ok\ntest_distinct_registry_required (test_camera_session.SessionTests.test_distinct_registry_required) ... ok\ntest_human_messages_keep_failure_scope_and_unknown_errors (test_camera_session.SessionTests.test_human_messages_keep_failure_scope_and_unknown_errors) ... ok\ntest_missing_result_never_retries_and_diagnostics_are_conserved (test_camera_session.SessionTests.test_missing_result_never_retries_and_diagnostics_are_conserved) ... ok\ntest_one_failure_cannot_approve_two_cameras_and_rounds_do_not_reuse_success (test_camera_session.SessionTests.test_one_failure_cannot_approve_two_cameras_and_rounds_do_not_reuse_success) ... ok\ntest_saved_photo_rechecked_not_trusted_from_cached_success (test_camera_session.SessionTests.test_saved_photo_rechecked_not_trusted_from_cached_success) ... ok\ntest_sd_failure_keeps_valid_photo_without_approving_operation (test_camera_session.SessionTests.test_sd_failure_keeps_valid_photo_without_approving_operation) ... ok\ntest_single_operation_owner_and_wrong_camera_result_rejected (test_camera_session.SessionTests.test_single_operation_owner_and_wrong_camera_result_rejected) ... ok\ntest_wrong_unit_and_wrong_request_rejected (test_camera_session.SessionTests.test_wrong_unit_and_wrong_request_rejected) ... ok\ntest_bounded_decoder_and_unexpected_frame (test_sequence_request.RequestTests.test_bounded_decoder_and_unexpected_frame) ... ok\ntest_fragmented_report_is_not_independent_proof (test_sequence_request.RequestTests.test_fragmented_report_is_not_independent_proof) ... ok\ntest_partial_reset_and_contradictory_result (test_sequence_request.RequestTests.test_partial_reset_and_contradictory_result) ... ok\ntest_timeout_does_not_send_any_retry (test_sequence_request.RequestTests.test_timeout_does_not_send_any_retry) ... ok\ntest_wrong_unit_and_old_firmware_prevent_clip (test_sequence_request.RequestTests.test_wrong_unit_and_old_firmware_prevent_clip) ... ok\ntest_bad_crc_and_missing_file (test_sequence_verify.SequenceTests.test_bad_crc_and_missing_file) ... ok\ntest_camera_requires_independent_expected_identity (test_sequence_verify.SequenceTests.test_camera_requires_independent_expected_identity) ... ok\ntest_duplicate_and_time (test_sequence_verify.SequenceTests.test_duplicate_and_time) ... ok\ntest_incomplete_and_reset (test_sequence_verify.SequenceTests.test_incomplete_and_reset) ... ok\ntest_nominal_and_timing (test_sequence_verify.SequenceTests.test_nominal_and_timing) ... ok\n\n----------------------------------------------------------------------\nRan 31 tests in 0.700s\n\nOK\n"
+  },
+  "source_sha256": {
+    "camaras-banco/sequence_verify.py": "f68cb9e9c047830a96eb87d8f40e6c567204200d8e4aedda190a883ebb6a1093",
+    "camaras-banco/sequence_request.py": "6c414b2dc905437998e93b79bdf06bfb0829edfe0264bf4a9a05156846e1fa3f",
+    "camaras-banco/test_sequence_request.py": "ff004d5478959c092e37b0363e12783f1774ca3f3bdcb589b1c3c40cbe30d80a",
+    "camaras-banco/test_sequence_verify.py": "58640fc1e90e32c6b56537cfb4e5d028b419373919737fb0341dbe0c7f5060f4",
+    "camaras-banco/firmware/AstraCameraSequenceBench/AstraCameraSequenceBench.ino": "7a826aebfc825eff463e02ff72784130eea0fd4fd9245c3a55c2a8492342f14f",
+    "camaras-banco/firmware/AstraCameraSequenceBench/sequence_capture.h": "f98b91f025a3dd52cc42da6aa42903a5337238acd10638e4cc9657175bc2d9f9"
+  },
+  "firmware": {
+    "compiled": true,
+    "uploaded": false,
+    "physical_sequence_tested": false,
+    "cli": "1.5.1",
+    "arduino_esp32": "3.3.12",
+    "fqbn": "esp32:esp32:esp32cam:FlashMode=dio,DebugLevel=warn",
+    "program_used_bytes": 476739,
+    "static_ram_bytes": 35144,
+    "binary_bytes": 476880,
+    "binary_sha256": "853d3f665d2ed0fb369e14f1cd8cc6ce59d307dd5893925bdb5f2aff2cbe00e5"
+  },
+  "physical_results": {
+    "frame_count": null,
+    "cadence_fps": null,
+    "current_A": null,
+    "reset_tolerance": null,
+    "video_playback": null,
+    "audio": null
+  },
+  "note": "Mensajes e imagenes de los tests son sinteticos. Compilacion no acredita funcionamiento del periferico."
+}

@@ -1,0 +1,166 @@
+{
+  "cut_utc": "2026-10-21T00:03:49.673435+00:00",
+  "cut_argentina": "20/10/2026 21:03:49 ART",
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-10-20T23:55:09.922Z",
+  "previous_report": "Informe_aula_2026-10-20_1156_ART.md",
+  "course_sections": 3,
+  "module_activities": 9,
+  "technical_threads": 11,
+  "technical_messages": 19,
+  "new_messages": 4,
+  "new_official_answers": 0,
+  "thread_comparison": [
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2969",
+      "messages": 1,
+      "permalinks": [
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2969#p50102"
+      ],
+      "sha256": "5c18d725a7eb5adede1b1b6db9a67eaf44d07f5b4025e3db6617ebfcb9ab2508",
+      "same_message_bodies_as_1156": null
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2968",
+      "messages": 1,
+      "permalinks": [
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2968#p50101"
+      ],
+      "sha256": "b8e9c1aad402f906c5df37614f01205ab2f64222b01ef8fd9fb104bfde20e6e7",
+      "same_message_bodies_as_1156": null
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2967",
+      "messages": 1,
+      "permalinks": [
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2967#p50100"
+      ],
+      "sha256": "b3bfc1b080828fefdf124ddd9d8e30a1db7d97c3f7e488eeac9f1d06706ed4d2",
+      "same_message_bodies_as_1156": null
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2966",
+      "messages": 1,
+      "permalinks": [
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2966#p50099"
+      ],
+      "sha256": "1457d94bd73aa4b434328cfcb927cce71a11da9fe08691252c5540227cba8b15",
+      "same_message_bodies_as_1156": null
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2965",
+      "messages": 2,
+      "permalinks": [
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2965#p50097",
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2965#p50098"
+      ],
+      "sha256": "7165f483ef22e7813a3293921f54d45bcd0209d498518a64512a8ab2efa269b7",
+      "same_message_bodies_as_1156": true
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2964",
+      "messages": 2,
+      "permalinks": [
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2964#p50095",
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2964#p50096"
+      ],
+      "sha256": "4cc8344a268c27ef724aad5f98403376e6dd78db16bb667f09b5ee5116b0f4d1",
+      "same_message_bodies_as_1156": true
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2959",
+      "messages": 3,
+      "permalinks": [
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2959#p50084",
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2959#p50085",
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2959#p50094"
+      ],
+      "sha256": "64db1cc9185386884ee49556e270f394fff48e4b608ce1fa526961a088aeec33",
+      "same_message_bodies_as_1156": true
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2963",
+      "messages": 2,
+      "permalinks": [
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2963#p50089",
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2963#p50093"
+      ],
+      "sha256": "9b5fabfbaf74714b3bce078718680d2a0ee5a130b979e4d0992fd588ba6b2b6f",
+      "same_message_bodies_as_1156": true
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2962",
+      "messages": 2,
+      "permalinks": [
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2962#p50088",
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2962#p50092"
+      ],
+      "sha256": "41e8ccaa4c94e9a62e16b3606707326c33442e20d9b0fd9c739e9dba170e3f38",
+      "same_message_bodies_as_1156": true
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2961",
+      "messages": 2,
+      "permalinks": [
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2961#p50087",
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2961#p50091"
+      ],
+      "sha256": "4b809547991a0d6cc1fddbd7ea354b0d083c379e256dc5aa43e5f62eadb34f97",
+      "same_message_bodies_as_1156": true
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2960",
+      "messages": 2,
+      "permalinks": [
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2960#p50086",
+        "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2960#p50090"
+      ],
+      "sha256": "42c8adf80b4d5f7d2b5e9e563a6776401cd6c7f1debc40c6cab59e206401a7b5",
+      "same_message_bodies_as_1156": true
+    }
+  ],
+  "comparison_exclusions": "Controles de orden, suscripción y navegación entre temas/actividades; se conservan cuerpos, fechas y autores de todos los mensajes.",
+  "files_revalidated": [
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5139",
+      "name": "bases_y_condiciones_-_cansat_universitario_2026-2027.pdf",
+      "sha256": "d416ed8c463786b4c23196bec8b2e31002156f27126a3e7d9e14fe0dac6c39eb",
+      "bytes": 285660,
+      "same_as_1156": true
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5140",
+      "name": "Anexo A v2 .pdf",
+      "sha256": "27932c87654b64b443d41483c9b48adb06d7d1379dd7a01d54e4ea0035057bc7",
+      "bytes": 532650,
+      "same_as_1156": true
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5465",
+      "name": "PDR Template - V2 (1).pptx",
+      "sha256": "38122779a5245f5015eb67fd26c7da60a29c6272cbe85b5797cda6bdffb37036",
+      "bytes": 3364607,
+      "same_as_1156": true
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5466",
+      "name": "Scoresheet V2.xlsx",
+      "sha256": "a72559e8d3473d7a40e5737bdabbd9aacf6c8db5e94517df91f4ab0e09c84f97",
+      "bytes": 43312,
+      "same_as_1156": true
+    }
+  ],
+  "new_forum_attachments": 0,
+  "announcements_messages": 0,
+  "presentations_threads": 0,
+  "calendar": "Octubre sin eventos; noviembre conserva vencimiento PDR el 17.",
+  "public_pages_revalidated": [
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/cronograma",
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/como-me-inscribo"
+  ],
+  "limits": [
+    "Corte parcial respecto de revalidación total de versiones audiovisuales: análisis de videos heredado del 19/10; sin nueva escucha ni comparación binaria.",
+    "Los enlaces públicos se leyeron completos en navegador tras timeout web; no se revalidaron binariamente sus tres descargas separadas.",
+    "Documentos del vector y ensayos ambientales anunciados pero no visibles; no se consideran analizados.",
+    "No se publican cuerpos completos de terceros, credenciales, sesiones ni copias de material restringido."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "created_utc": "2026-11-18T02:11:04Z",
+  "cut_art": "2026-11-17",
+  "jira": [
+    "ASTRA-24",
+    "ASTRA-22",
+    "ASTRA-25",
+    "ASTRA-39",
+    "ASTRA-40"
+  ],
+  "slide_count": 23,
+  "spanish_notes": 23,
+  "native_tables": 17,
+  "native_linked_charts": 1,
+  "template_sha256": "38122779a5245f5015eb67fd26c7da60a29c6272cbe85b5797cda6bdffb37036",
+  "source_code_commit": "70b9f9d4e495f322b80ecd5bae16df3f8e3290f0",
+  "visual_review": {
+    "local_pages": 23,
+    "google_pdf_pages": 23,
+    "conversion_repairs": [
+      "Editable linked chart replacing flattened import",
+      "Camera-2 connector routing",
+      "PC-to-storage arrow direction"
+    ],
+    "ui_capture": "Offscreen PC simulation, no serial connection"
+  },
+  "checks": {
+    "native_structure_errors": 0,
+    "native_package_validation": "pass; 10 table-fit warnings reviewed visually in Google export",
+    "pdf_pages": 23,
+    "physical_tests_added": false
+  },
+  "links": {
+    "presentation": "https://docs.google.com/presentation/d/1dv-g1evAmf3LArVfY4a5PJi2HuX7AskXARAF_BDuIpQ/edit",
+    "pdf": "https://drive.google.com/file/d/10k89pF17tmLcZIHZD0VVJQinUEt7-Q95/view",
+    "chart_source": "https://docs.google.com/spreadsheets/d/1PDCUhIAHUZhUbBnQpa6QC4-_B2Ye1K-f9PKs99P7RBE/edit"
+  },
+  "boundaries": [
+    "Deliverable authored; flight readiness is not complete",
+    "No final shared ICD or RF profile approval",
+    "No independent readback of the new camera recordings",
+    "No simultaneous mission-duration dual-camera test on flight power",
+    "No current authenticated aula coverage claim",
+    "No change to flight/protocol/HARDWARE/DOCUMENTOS"
+  ],
+  "files": [
+    {
+      "name": "ASTRA_PDR_Groundstation_2026-11-17_v2_revision01.pdf",
+      "bytes": 1610830,
+      "sha256": "7be8be1ddb656e4e36cf3b3c1b6719565f18dc04aa020dd64ffc896b0ec187df",
+      "role": "Verified Google export"
+    },
+    {
+      "name": "ASTRA_PDR_Groundstation_2026-11-17_v2.pptx",
+      "bytes": 764995,
+      "sha256": "f4fced6fc460551bad25daf1f3fd57804bf3c2db9080778450160ffeef638b6d",
+      "role": "Validated pre-import local source; final Google connector/chart corrections are on the native deck"
+    }
+  ]
+}

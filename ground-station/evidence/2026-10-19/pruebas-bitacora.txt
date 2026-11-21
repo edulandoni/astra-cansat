@@ -1,0 +1,17 @@
+test_incomplete_and_foreign_captures_leave_no_output (test_bitacora.BitacoraTests.test_incomplete_and_foreign_captures_leave_no_output) ... ok
+test_restricted_comments_and_contact_metadata_are_not_published (test_bitacora.BitacoraTests.test_restricted_comments_and_contact_metadata_are_not_published) ... FAIL
+test_same_content_and_sync_notice_do_not_create_loops (test_bitacora.BitacoraTests.test_same_content_and_sync_notice_do_not_create_loops) ... ok
+test_updates_preserve_original (test_bitacora.BitacoraTests.test_updates_preserve_original) ... ok
+
+======================================================================
+FAIL: test_restricted_comments_and_contact_metadata_are_not_published (test_bitacora.BitacoraTests.test_restricted_comments_and_contact_metadata_are_not_published)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\crist\.codex\.chatgpt-projects\g-p-6ac80fe5e54c8191a4c2e82344c06e67\github_groundstation_2026-10-19\ground-station\tools\test_bitacora.py", line 59, in test_restricted_comments_and_contact_metadata_are_not_published
+    self.assertNotIn('interno',text)
+AssertionError: 'interno' unexpectedly found in '{\n  "captured_utc": "2026-10-19T22:00:00Z",\n  "source": "Jira MCP",\n  "complete": true,\n  "issues": [\n    {\n      "summary": "Banco USB",\n      "description": "Prueba de software",\n      "status": "En curso",\n      "assignee": "",\n      "creator": "",\n      "updated": "",\n      "key": "ASTRA-20",\n      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-20",\n      "owner_is_cristian": true,\n      "comments_complete": true,\n      "changelog_complete": true,\n      "comments": [\n        {\n          "author": "Cristian",\n          "created": "2026-10-17",\n          "updated": "",\n          "body": "Resultado inicial",\n          "id": "1",\n          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=1"\n        },\n        {\n          "author": "",\n          "created": "",\n          "updated": "",\n          "body": "Consultar a [correo omitido en copia p�blica]",\n          "id": "4",\n          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=4"\n        }\n      ],\n      "excluded_comments": 2,\n      "changelog": []\n    }\n  ],\n  "export_note": "Copia p�blica de contenido autorizado: omito correos, identificadores de cuenta y comentarios restringidos o internos. Conservo el original en Jira. No incluyo adjuntos binarios ni reacciones."\n}\n'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.187s
+
+FAILED (failures=1)

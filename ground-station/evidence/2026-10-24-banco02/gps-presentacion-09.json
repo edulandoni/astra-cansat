@@ -1,0 +1,45 @@
+{
+  "recorded_utc": "2026-10-24T04:01:48.425924+00:00",
+  "kind": "software-and-REPLAY-GUI-not-physical-GPS",
+  "tests": {
+    "count": 16,
+    "passed": true,
+    "runtime_seconds": 6.928,
+    "method": "python test_bench.py; final direct invocation"
+  },
+  "fixture": "First sample valid at count50, second count51 no fix with numeric zero coordinates; separate unit cases have no prior fix and recovery. Input uses synthetic model, not USB capture.",
+  "gui_observed": {
+    "source": "REPLAY",
+    "count": 51,
+    "gps_sats": 0,
+    "shown_last_time": "13:00:49",
+    "shown_last_altitude_m": 368.3,
+    "shown_last_latitude_deg": -34.6,
+    "shown_last_longitude_deg": -58.4,
+    "labels": "última válida",
+    "fix_flag": true,
+    "command_buttons_disabled": true,
+    "plots_visible": 6,
+    "desktop_control_closed_after": true
+  },
+  "capture_hashes": {
+    "errors.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "input.jsonl": "7a5867bff7087976c8b9d7a511ed8902a4947120aa45780a6e7e65ac292d5672",
+    "output/20261024T040001_560325Z_ea4b464e8adc/journal.jsonl": "b153345bbfa299a418e8b604ccd34d6e797d643e96281d7c4eb061d0454eb8b9",
+    "output/20261024T040001_560325Z_ea4b464e8adc/storage-summary.json": "cae896908d502fc964879f10d29bbe714c93e162635d41b43dadd1fb7162c0cf",
+    "output/20261024T040001_560325Z_ea4b464e8adc/segments/0001_e743ca82bbef/Flight_1000.csv": "29a8e5c0ed754165090e9a732da827314f86ec8610855fba9b232cc4d80aaadf"
+  },
+  "source_sha256": {
+    "analyze.py": "446d825a0e869d432e5ef0f0aa3024ee597841b4ddfc02b609100325c591d218",
+    "app.py": "3b1593009c52e7f111b10166f5168df2f7c96149619a2124748f4215f38474f0",
+    "campaign.py": "ae39c2ef56210f97ee5368593d9f7d742ac22d546ad4692bf08f0e77aca3b2f6",
+    "engine.py": "c8ffaa58e56147ee1ca46f820b6aa065715444402d3941200e3a21fd4399e6be",
+    "journal.py": "a949e02c24d8851380ff73cea27737b975385f9979eb4d6dc0e0f4d15bc5d3f6",
+    "mission.py": "d66b5260961bd5628dd38b08882511d576c44ac11bbee79b3d61010c8e3b6b39",
+    "recover.py": "0b251f4b8f5ba704c38f2018c139f0aee44f1e4f4e526c540b33858a0ff961b3",
+    "sources.py": "49f2173007990b6beae4056ddb04b671cf21a173e423b795b7763f1c276738b1",
+    "test_bench.py": "3724d712bc1c59396dc9faef0d397387e278fdc087755c26761f02fa10a444d9",
+    "wire.py": "9968dfd8cea3575510bed93965c695b683d0cb1f6f0e1a30da62180a936f52a7"
+  },
+  "limits": "Only presentation changed; no RF, receiver, firmware or data-file mutation. The long USB test is running a frozen prior snapshot and does not cover this later no-fix presentation change."
+}

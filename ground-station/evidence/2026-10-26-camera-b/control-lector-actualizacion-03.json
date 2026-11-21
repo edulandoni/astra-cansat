@@ -1,0 +1,31 @@
+{
+  "recorded_utc": "2026-10-26T04:31:55.507924+00:00",
+  "jira": "ASTRA-39",
+  "updates": "control-sd-capturas-actualizacion-02.json",
+  "reader_verification_started_utc": "2026-10-26T04:31:26.149516+00:00",
+  "reader_verification_finished_utc": "2026-10-26T04:31:27.765861+00:00",
+  "original_files_checked": 24,
+  "all_original_files_match": true,
+  "photos": [
+    {
+      "path": "ASTRA_CHECK_03dd0a3c1f975bb9_1f06470029e81b9c.jpg",
+      "bytes": 23862,
+      "sha256": "15121e243ef858f2c558ba3dec3667aaf98ec26bf56cc171373f813886605c2f",
+      "matches_usb_bytes": true,
+      "reader_decoded": true
+    },
+    {
+      "path": "ASTRA_CHECK_03dd0a3c1f975bb9_2f5e1dc2a255ae72.jpg",
+      "bytes": 22935,
+      "sha256": "f3b0794ee9816296623159a0b551508fb73de6a22a06b4ebcf15324767807a33",
+      "matches_usb_bytes": true,
+      "reader_decoded": true
+    }
+  ],
+  "independent_reader_verified": true,
+  "verified_after_camera_disconnection": true,
+  "power_interruption_during_write_tested": false,
+  "video_verified": false,
+  "power_control_verified": false,
+  "private_verification_sha256": "cea5aa3413abc3e0e5599a60e8622376e8d374705a3cedf994e9d26043816518"
+}

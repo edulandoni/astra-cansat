@@ -1,0 +1,24 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-11-10T05:55:00.568Z",
+  "cut_utc": "2026-11-10T05:56:43Z",
+  "status": "PARCIAL",
+  "previous_cut": "09/11/2026 12:14 ART",
+  "last_successful_cut": "20/10/2026 21:03 ART",
+  "access": "Ingreso público rastreado hoy, sin sesión autenticada",
+  "credentials_entered": false,
+  "pending": [
+    "Acceso autenticado",
+    "Mensajes y recursos completos",
+    "Adjuntos/versiones/huellas",
+    "Calendario y entrega",
+    "Audiovisuales",
+    "Vector y ensayos ambientales"
+  ],
+  "public_pages": "Textos relevantes sin cambios sustantivos detectados; binarios no revalidados",
+  "research": {
+    "candidate": "https://spaceac.tech/competition/daedalus",
+    "status": "Localizado en búsqueda, no auditado; sin nuevos datos reproducibles",
+    "new_pixels": 0
+  },
+  "desktop_used": false
+}

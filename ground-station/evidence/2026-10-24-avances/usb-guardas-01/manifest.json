@@ -1,0 +1,14 @@
+{
+  "Flight_1000.csv": {
+    "bytes": 17245,
+    "sha256": "b4872491c62a01d45b12c2063ccc476b5c6b903b6b44076f8e24152b060feffa"
+  },
+  "journal.jsonl": {
+    "bytes": 365227,
+    "sha256": "156a260c22353b822056ba743df104b1c576da3e6c397dc01b877ef752691c45"
+  },
+  "resultado.json": {
+    "bytes": 5161,
+    "sha256": "c43136b559551fbadfbba220b47a24c3f430b2699c7580de35f22d239c9ec21d"
+  }
+}

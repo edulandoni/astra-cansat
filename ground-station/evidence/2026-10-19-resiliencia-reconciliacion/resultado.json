@@ -1,0 +1,64 @@
+{
+  "primary_rows": 21,
+  "backup_rows": 31,
+  "unique_candidates": 31,
+  "conflicts": [],
+  "recovered_from_backup": [
+    {
+      "team": "1000",
+      "packet_count": 11
+    },
+    {
+      "team": "1000",
+      "packet_count": 12
+    },
+    {
+      "team": "1000",
+      "packet_count": 13
+    },
+    {
+      "team": "1000",
+      "packet_count": 14
+    },
+    {
+      "team": "1000",
+      "packet_count": 15
+    },
+    {
+      "team": "1000",
+      "packet_count": 16
+    },
+    {
+      "team": "1000",
+      "packet_count": 17
+    },
+    {
+      "team": "1000",
+      "packet_count": 18
+    },
+    {
+      "team": "1000",
+      "packet_count": 19
+    },
+    {
+      "team": "1000",
+      "packet_count": 20
+    }
+  ],
+  "original_sha256": {
+    "principal": "0db5b4e01ba10c5b43a3d0cd2619a8bff9027e3ad740f413cf1a7e28e8c1f34e",
+    "respaldo": "5ae7700856dc8faa15c568a456d9609aa06d5265c5ddee94530e1660089d5300"
+  },
+  "scope": "Copias de una misma sesión del experimento; no resuelve identificación de sesión de vuelo ni autenticidad de datos.",
+  "negative_control": [
+    {
+      "team": "1000",
+      "packet_count": 1,
+      "fields": [
+        "ALTITUDE"
+      ]
+    }
+  ],
+  "candidate_written": true,
+  "originals_unchanged": true
+}

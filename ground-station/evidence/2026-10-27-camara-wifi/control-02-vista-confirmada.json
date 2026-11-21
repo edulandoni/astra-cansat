@@ -1,0 +1,43 @@
+{
+  "created_utc": "2026-10-27T17:05:29.630146+00:00",
+  "jira": [
+    "ASTRA-39",
+    "ASTRA-41"
+  ],
+  "unit": "camera1",
+  "physical_preview": {
+    "display_confirmed": true,
+    "evidence": "Confirmation of use in native Laboratory; not measured fps/latency",
+    "continuous_sd_recording_verified": false,
+    "initial_download_mode_and_manual_reset_observed": true
+  },
+  "wifi_off": {
+    "identity_verified": true,
+    "firmware_acknowledged": true,
+    "pc_network_changed": false,
+    "rf_emissions_measured": false
+  },
+  "sd_sequence": {
+    "reported_closed": true,
+    "frames": 12,
+    "reason": "COMPLETE",
+    "independent_readback_verified": false,
+    "public_response_sha256": "e452153e5ce2bff565faa35eb1aeff051b15d814da54e64b8caa386304c80027",
+    "sd_formatted": false
+  },
+  "usb_reopen": {
+    "trials": 3,
+    "successful_info": 3,
+    "distinct_boots": 1,
+    "explicit_resets": 0,
+    "cold_power_cycles": false
+  },
+  "pending": [
+    "continuous autonomous SD recording",
+    "independent readback of this clip",
+    "measured streaming fps/latency",
+    "root cause of programming-mode startup",
+    "shared STA network and dual viewer",
+    "power/reset/energy tests"
+  ]
+}

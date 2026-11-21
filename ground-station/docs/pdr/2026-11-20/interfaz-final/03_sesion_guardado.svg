@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-labelledby="03_sesion_guardado-title 03_sesion_guardado-desc">
+<title id="03_sesion_guardado-title">03 · Sesión y archivos</title><desc id="03_sesion_guardado-desc">Preparación de fuente y destino, estado por escritor y cierre con evidencia. Diseño final de la interfaz, datos de ejemplo.</desc>
+<g font-family="Inter, Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="1600" height="1000" fill="#F2F5F8"/>
+<rect x="0" y="0" width="1600" height="82" fill="#102C43"/>
+<text x="29" y="47.71" fill="#FFFFFF" font-size="33" font-weight="700">ASTRA</text>
+<text x="171" y="48.36" fill="#FFFFFF" font-size="28" font-weight="700">REGISTRO Y RESPALDO</text>
+<rect x="1200" y="20" width="371" height="42" fill="#E3F3F0"/>
+<text x="1215" y="46.40" fill="#08756A" font-size="20" font-weight="700">USB DE BANCO · EJEMPLO</text>
+<text x="30" y="108.53" fill="#40586D" font-size="19" font-weight="400">SESIÓN Y ARCHIVOS  /  Configuración antes de iniciar y seguimiento durante la sesión</text>
+<rect x="30" y="951" width="1540" height="1" fill="#CDD9E2"/>
+<text x="30" y="978.66" fill="#40586D" font-size="18" font-weight="400">La pérdida de un destino se presenta por separado. Los resultados de independencia requieren comprobar los soportes físicos.</text>
+<rect x="30" y="132" width="740" height="335" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="162.27" fill="#112A40" font-size="21" font-weight="700">ANTES DE INICIAR</text>
+<text x="48" y="204.53" fill="#112A40" font-size="19" font-weight="700">Fuente explícita</text>
+<text x="48" y="256.53" fill="#112A40" font-size="19" font-weight="700">Puerto y perfil</text>
+<text x="48" y="308.53" fill="#112A40" font-size="19" font-weight="700">Destino principal</text>
+<text x="48" y="360.53" fill="#112A40" font-size="19" font-weight="700">Segundo destino</text>
+<rect x="48" y="411" width="223" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="59" y="434.66" fill="#112A40" font-size="18" font-weight="700">Comprobar destinos</text>
+<rect x="285" y="411" width="197" height="40" fill="#08756A" stroke="#08756A"/>
+<text x="296" y="434.66" fill="#FFFFFF" font-size="18" font-weight="700">Iniciar sesión</text>
+<rect x="792" y="132" width="778" height="335" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="808" y="162.27" fill="#112A40" font-size="21" font-weight="700">DURANTE LA ADQUISICIÓN</text>
+<rect x="809" y="185" width="744" height="63" fill="#FFF0CD"/>
+<text x="823" y="209.53" fill="#815000" font-size="19" font-weight="700">DESTINO SECUNDARIO DEGRADADO</text>
+<text x="823" y="233.79" fill="#112A40" font-size="17" font-weight="400">CSV secundario: error de acceso · ejemplo</text>
+<text x="808" y="282.53" fill="#112A40" font-size="19" font-weight="700">Principal operativo</text>
+<text x="808" y="305.66" fill="#40586D" font-size="18" font-weight="400">La recepción sigue activa y el resultado del escritor queda visible.</text>
+<text x="808" y="334.53" fill="#112A40" font-size="19" font-weight="700">Pendientes y descartes</text>
+<text x="808" y="357.66" fill="#40586D" font-size="18" font-weight="400">Cada cola conserva su propio conteo y último error.</text>
+<rect x="808" y="411" width="234" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="819" y="434.66" fill="#112A40" font-size="18" font-weight="700">Ver evento</text>
+<rect x="1056" y="411" width="223" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="1067" y="434.66" fill="#112A40" font-size="18" font-weight="700">Abrir carpeta</text>
+<rect x="30" y="492" width="1540" height="425" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="522.27" fill="#112A40" font-size="21" font-weight="700">RESUMEN POR ESCRITOR Y CIERRE</text>
+<rect x="47" y="545" width="1507" height="235" fill="#FFFFFF" stroke="#CDD9E2"/>
+<rect x="47" y="545" width="1507" height="47" fill="#102C43"/>
+<text x="58" y="568.66" fill="#FFFFFF" font-size="18" font-weight="700">Destino</text>
+<text x="308" y="568.66" fill="#FFFFFF" font-size="18" font-weight="700">Registro</text>
+<text x="503" y="568.66" fill="#FFFFFF" font-size="18" font-weight="700">Guardadas</text>
+<text x="684" y="568.66" fill="#FFFFFF" font-size="18" font-weight="700">Pendientes</text>
+<text x="868" y="568.66" fill="#FFFFFF" font-size="18" font-weight="700">Descartadas</text>
+<text x="1055" y="568.66" fill="#FFFFFF" font-size="18" font-weight="700">Estado</text>
+<rect x="47" y="592" width="1507" height="47" fill="#F2F5F8"/>
+<text x="58" y="615.66" fill="#112A40" font-size="18" font-weight="700">Principal</text>
+<text x="308" y="615.66" fill="#112A40" font-size="18" font-weight="400">Diario</text>
+<text x="503" y="615.66" fill="#112A40" font-size="18" font-weight="400">131</text>
+<text x="684" y="615.66" fill="#112A40" font-size="18" font-weight="400">0</text>
+<text x="868" y="615.66" fill="#112A40" font-size="18" font-weight="400">0</text>
+<text x="1055" y="615.66" fill="#112A40" font-size="18" font-weight="400">Operativo</text>
+<text x="58" y="662.66" fill="#112A40" font-size="18" font-weight="700">Principal</text>
+<text x="308" y="662.66" fill="#112A40" font-size="18" font-weight="400">CSV</text>
+<text x="503" y="662.66" fill="#112A40" font-size="18" font-weight="400">131</text>
+<text x="684" y="662.66" fill="#112A40" font-size="18" font-weight="400">0</text>
+<text x="868" y="662.66" fill="#112A40" font-size="18" font-weight="400">0</text>
+<text x="1055" y="662.66" fill="#112A40" font-size="18" font-weight="400">Operativo</text>
+<rect x="47" y="686" width="1507" height="47" fill="#F2F5F8"/>
+<text x="58" y="709.66" fill="#112A40" font-size="18" font-weight="700">Secundario</text>
+<text x="308" y="709.66" fill="#112A40" font-size="18" font-weight="400">Diario</text>
+<text x="503" y="709.66" fill="#112A40" font-size="18" font-weight="400">118</text>
+<text x="684" y="709.66" fill="#112A40" font-size="18" font-weight="400">13</text>
+<text x="868" y="709.66" fill="#112A40" font-size="18" font-weight="400">0</text>
+<text x="1055" y="709.66" fill="#112A40" font-size="18" font-weight="400">Pendiente de escritura</text>
+<text x="58" y="756.66" fill="#112A40" font-size="18" font-weight="700">Secundario</text>
+<text x="308" y="756.66" fill="#112A40" font-size="18" font-weight="400">CSV</text>
+<text x="503" y="756.66" fill="#112A40" font-size="18" font-weight="400">118</text>
+<text x="684" y="756.66" fill="#112A40" font-size="18" font-weight="400">13</text>
+<text x="868" y="756.66" fill="#112A40" font-size="18" font-weight="400">0</text>
+<text x="1055" y="756.66" fill="#112A40" font-size="18" font-weight="400">Error de acceso</text>
+<text x="48" y="815.40" fill="#112A40" font-size="20" font-weight="700">Cerrar sesión</text>
+<text x="48" y="849.53" fill="#40586D" font-size="19" font-weight="400">Esperar cierre de escritores y mostrar el resumen con guardadas, pendientes, descartadas y errores.</text>
+<rect x="48" y="868" width="231" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="59" y="891.66" fill="#112A40" font-size="18" font-weight="700">Ver resumen</text>
+<rect x="48" y="207" width="561" height="27" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="59" y="225.79" fill="#112A40" font-size="17" font-weight="400">USB de banco   ▾</text>
+<rect x="48" y="259" width="561" height="27" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="59" y="277.79" fill="#112A40" font-size="17" font-weight="400">COM4 · Perfil USB de banco   ▾</text>
+<rect x="621" y="259" width="130" height="27" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="628" y="276.92" fill="#112A40" font-size="16" font-weight="700">Actualizar</text>
+<rect x="48" y="311" width="561" height="27" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="59" y="329.79" fill="#112A40" font-size="17" font-weight="400">Sesiones / ASTRA</text>
+<rect x="621" y="311" width="130" height="27" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="628" y="328.92" fill="#112A40" font-size="16" font-weight="700">Elegir carpeta</text>
+<rect x="48" y="363" width="561" height="27" fill="#F2F5F8" stroke="#A7BBC8"/>
+<text x="59" y="381.79" fill="#112A40" font-size="17" font-weight="400">Unidad externa E: / ASTRA</text>
+<rect x="621" y="363" width="130" height="27" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="628" y="380.92" fill="#112A40" font-size="16" font-weight="700">Elegir carpeta</text>
+</g></svg>

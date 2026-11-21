@@ -1,0 +1,37 @@
+{
+  "files": {
+    "Flight_1000.csv": {
+      "bytes": 904067,
+      "sha256": "f62404025543b6391957352b5de0c081f91557d6c41f6d1e6fd83643f243e1c2"
+    },
+    "flujo-memoria-y-colas.png": {
+      "bytes": 102178,
+      "sha256": "5eec43fdbece31a4f05e5c5fcc983cb80c21b2205902ecfeb044092edd9d52bc"
+    },
+    "flujo-memoria-y-colas.svg": {
+      "bytes": 107468,
+      "sha256": "ebb3b42c23ebd8b8f5b4528eeb5a4a28d82cea94e3bc808bd6c1af263fd160f9"
+    },
+    "health.csv": {
+      "bytes": 59275,
+      "sha256": "5136dc4c5fff3ffcacdf67f1f99c3c7812267862d2180814069ce696c4e0a81a"
+    },
+    "resultado-original.json": {
+      "bytes": 4330,
+      "sha256": "c728145e1660237477c70b6689ee5ddef64f78cd7cc802651deef616e30e0453"
+    },
+    "run_soak.py": {
+      "bytes": 1002,
+      "sha256": "3003d677ae874cf48cceb070ab98d126423467eb5a742925fac790458b51ebda"
+    },
+    "source-manifest.json": {
+      "bytes": 8244,
+      "sha256": "4e68eaab6d4179d3d7ecc7a7cac0cc8ed31f7f6f02df18584985e3bb71a52eb3"
+    },
+    "verificacion-y-recuperacion.json": {
+      "bytes": 2033,
+      "sha256": "ce6b461bbc89c75f40ad7b0af754d720a3ce41162a3d7951e1568aeacc3d6993"
+    }
+  },
+  "exclusions": "Original raw journal and recovery provenance remain private. Published CSV/health are synthetic; graph is derived, not a GUI screenshot."
+}

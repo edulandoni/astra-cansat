@@ -1,0 +1,146 @@
+{
+  "recorded_utc": "2026-10-24T03:35:30.575962+00:00",
+  "runs": [
+    {
+      "pc_session": "20261024T033427_317634Z_c88f27749ae3",
+      "boot": "95eb1a8feb242968",
+      "run": "20261024T033427_317634Z_c88f27749ae3_5",
+      "run_identity": "client-sequence",
+      "cadence": "fixed-deadline-1000ms",
+      "case": {
+        "scenario": "NOMINAL",
+        "segment": "0002_43f79b8909bf",
+        "elapsed_seconds": 12.187000000034459,
+        "unique": 12,
+        "received": 12,
+        "rejected": 0,
+        "duplicates": 0,
+        "observed_gaps": 0,
+        "oracle": {
+          "emitted": 12
+        },
+        "expected": {
+          "emitted": 12,
+          "omitted": 0,
+          "corrupted": 0
+        },
+        "last_state": "ASCENT",
+        "unique_matches": true,
+        "oracle_matches": true,
+        "rejections_match": true,
+        "gaps_match": true
+      },
+      "all_cases_match": true,
+      "source_journal_sha256": "972468e22a0714e93e14ca12ffb4c7aa4c161755b220080dff4b01c3bb0bc230",
+      "storage": [
+        {
+          "destination": 0,
+          "kind": "raw",
+          "saved": 102,
+          "pending": 0,
+          "error": "",
+          "dropped": 0,
+          "dropped_seq_ranges": [],
+          "loss_ledger_truncated": false,
+          "last_confirmed_seq": 102,
+          "capacity": 600
+        },
+        {
+          "destination": 0,
+          "kind": "csv",
+          "saved": 12,
+          "pending": 0,
+          "error": "",
+          "dropped": 0,
+          "dropped_seq_ranges": [],
+          "loss_ledger_truncated": false,
+          "last_confirmed_seq": 101,
+          "capacity": 600
+        }
+      ]
+    },
+    {
+      "pc_session": "20261024T033441_148250Z_1305f6fee13a",
+      "boot": "95eb1a8feb242968",
+      "run": "20261024T033441_148250Z_1305f6fee13a_5",
+      "run_identity": "client-sequence",
+      "cadence": "fixed-deadline-1000ms",
+      "case": {
+        "scenario": "NOMINAL",
+        "segment": "0002_7a83ee8d7bb4",
+        "elapsed_seconds": 12.14000000001397,
+        "unique": 12,
+        "received": 12,
+        "rejected": 0,
+        "duplicates": 0,
+        "observed_gaps": 0,
+        "oracle": {
+          "emitted": 12
+        },
+        "expected": {
+          "emitted": 12,
+          "omitted": 0,
+          "corrupted": 0
+        },
+        "last_state": "ASCENT",
+        "unique_matches": true,
+        "oracle_matches": true,
+        "rejections_match": true,
+        "gaps_match": true
+      },
+      "all_cases_match": true,
+      "source_journal_sha256": "c27a9b30bebdf43ff3a8a9d5959553161dc0eac4230d5ac73c792e7042bc1962",
+      "storage": [
+        {
+          "destination": 0,
+          "kind": "raw",
+          "saved": 90,
+          "pending": 0,
+          "error": "",
+          "dropped": 0,
+          "dropped_seq_ranges": [],
+          "loss_ledger_truncated": false,
+          "last_confirmed_seq": 90,
+          "capacity": 600
+        },
+        {
+          "destination": 0,
+          "kind": "csv",
+          "saved": 12,
+          "pending": 0,
+          "error": "",
+          "dropped": 0,
+          "dropped_seq_ranges": [],
+          "loss_ledger_truncated": false,
+          "last_confirmed_seq": 89,
+          "capacity": 600
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "same_boot": true,
+    "different_run": true,
+    "both_advertise_client_sequence": true,
+    "both_passed": true
+  },
+  "upload": {
+    "manual": true,
+    "offset": "0x10000",
+    "bytes": 311488,
+    "compressed_bytes": 184304,
+    "reported_seconds": 17.2,
+    "hash_verified": true,
+    "failed_automatic_attempt": "Wrong boot mode0x13; no llegó a escribir"
+  },
+  "firmware": {
+    "program_bytes": 311336,
+    "global_variables_bytes": 25332
+  },
+  "software_tests": {
+    "count": 15,
+    "result": "OK",
+    "reported_seconds": 6.79
+  },
+  "limits": "Dos corridas físicas de12muestras, no dos misiones completas ni dos horas. Las ventanas de programa y aplicación se separan de arranque/ejecución. No configuraRF."
+}

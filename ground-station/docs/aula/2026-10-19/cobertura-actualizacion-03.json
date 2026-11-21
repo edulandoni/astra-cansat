@@ -1,0 +1,348 @@
+{
+  "fecha_local": "2026-10-19",
+  "zona_horaria": "America/Buenos_Aires",
+  "tarea": "ASTRA-37",
+  "objetivo": "Investigar el 100% de documentación oficial disponible para nuestra cuenta",
+  "base": "Relectura de todos los debates y páginas, verificación nueva de archivos actuales, referencias oficiales enlazadas, dos lecturas completas de audio y control de toda la línea visual.",
+  "cobertura_total_acreditada": true,
+  "porcentaje_global": null,
+  "criterio": "No sumar recursos heterogéneos para fingir porcentaje de contenido. Distinguir localizado/descargado/revisión parcial/completa y evidencias. Incorporar material nuevo y páginas/adjuntos adicionales que aparezcan.",
+  "recursos": [
+    {
+      "id": "bases",
+      "titulo": "Bases y condiciones",
+      "tipo": "archivo",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5139",
+      "sha256": "d416ed8c463786b4c23196bec8b2e31002156f27126a3e7d9e14fe0dac6c39eb",
+      "estado": "revision_completa",
+      "evidencia": "auditoria-archivos-actualizacion-01.md; nueva copia del aula con misma huella en fuentes-actualizacion-03.json.",
+      "pendiente": "Seguimiento de versiones y aclaraciones; no quedan páginas, diapositivas o criterios sin leer en esta copia."
+    },
+    {
+      "id": "anexo",
+      "titulo": "Anexo A v2, actualizado 16/10",
+      "tipo": "archivo",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5140",
+      "sha256": "27932c87654b64b443d41483c9b48adb06d7d1379dd7a01d54e4ea0035057bc7",
+      "estado": "revision_completa",
+      "evidencia": "auditoria-archivos-actualizacion-01.md; nueva copia del aula con misma huella en fuentes-actualizacion-03.json.",
+      "pendiente": "Seguimiento de versiones y aclaraciones; no quedan páginas, diapositivas o criterios sin leer en esta copia."
+    },
+    {
+      "id": "pdr",
+      "titulo": "Plantilla PDR v2",
+      "tipo": "archivo",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5465",
+      "sha256": "38122779a5245f5015eb67fd26c7da60a29c6272cbe85b5797cda6bdffb37036",
+      "estado": "revision_completa",
+      "evidencia": "auditoria-archivos-actualizacion-01.md; nueva copia del aula con misma huella en fuentes-actualizacion-03.json.",
+      "pendiente": "Seguimiento de versiones y aclaraciones; no quedan páginas, diapositivas o criterios sin leer en esta copia."
+    },
+    {
+      "id": "scores",
+      "titulo": "Planilla PDR Scoresheet v2",
+      "tipo": "archivo",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5466",
+      "sha256": "a72559e8d3473d7a40e5737bdabbd9aacf6c8db5e94517df91f4ab0e09c84f97",
+      "estado": "revision_completa",
+      "evidencia": "auditoria-archivos-actualizacion-01.md; nueva copia del aula con misma huella en fuentes-actualizacion-03.json.",
+      "pendiente": "Seguimiento de versiones y aclaraciones; no quedan páginas, diapositivas o criterios sin leer en esta copia."
+    },
+    {
+      "id": "foro-2959",
+      "titulo": "Incertidumbres, altitudes y costos",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2959",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Revisar nuevas respuestas o ediciones; una pregunta sin respuesta no equivale a incumplir la lectura."
+    },
+    {
+      "id": "foro-2960",
+      "titulo": "Descenso, separación, autonomía, ensayos y envolvente",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2960",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Revisar nuevas respuestas o ediciones; una pregunta sin respuesta no equivale a incumplir la lectura."
+    },
+    {
+      "id": "foro-2961",
+      "titulo": "Formato de telemetría y segundo descenso",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2961",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Revisar nuevas respuestas o ediciones; una pregunta sin respuesta no equivale a incumplir la lectura."
+    },
+    {
+      "id": "foro-2962",
+      "titulo": "Material estructural",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2962",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Revisar nuevas respuestas o ediciones; una pregunta sin respuesta no equivale a incumplir la lectura."
+    },
+    {
+      "id": "foro-2963",
+      "titulo": "Diseño, comunicaciones y formato PDR",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2963",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Revisar nuevas respuestas o ediciones; una pregunta sin respuesta no equivale a incumplir la lectura."
+    },
+    {
+      "id": "foro-2964",
+      "titulo": "Curva de impulso del vector",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2964",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Revisar nuevas respuestas o ediciones; una pregunta sin respuesta no equivale a incumplir la lectura."
+    },
+    {
+      "id": "curso",
+      "titulo": "Página y secciones del curso",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/course/view.php?id=106",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Comparar contenido sustantivo en las revisiones diarias; contradicciones se conservan abiertas."
+    },
+    {
+      "id": "avisos",
+      "titulo": "Avisos y novedades",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/view.php?id=5134",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Comparar contenido sustantivo en las revisiones diarias; contradicciones se conservan abiertas."
+    },
+    {
+      "id": "presentaciones",
+      "titulo": "Presentación de equipos",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/view.php?id=5144",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Comparar contenido sustantivo en las revisiones diarias; contradicciones se conservan abiertas."
+    },
+    {
+      "id": "entrega",
+      "titulo": "Entrega del PDR",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/assign/view.php?id=5467",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Comparar contenido sustantivo en las revisiones diarias; contradicciones se conservan abiertas."
+    },
+    {
+      "id": "calendario",
+      "titulo": "Calendario del curso",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/calendar/view.php?view=month&course=106",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Comparar contenido sustantivo en las revisiones diarias; contradicciones se conservan abiertas.",
+      "url_lectura_noviembre": "https://educacion.conae.gov.ar/aulavirtual/calendar/view.php?view=month&time=1793502000&course=106"
+    },
+    {
+      "id": "video-apertura",
+      "titulo": "Reunión de apertura del 16/10",
+      "tipo": "audiovisual",
+      "url": "https://www.youtube.com/watch?v=m4-HQMSi2Wo",
+      "duracion": "00:51:45",
+      "estado": "revision_integral_asistida",
+      "evidencia": "referencias-y-verificacion-actualizacion-03.md y control-audiovisual-actualizacion-03.json",
+      "segmentos_audio_revisados": [
+        {
+          "inicio_s": 0,
+          "fin_s": 3105.041,
+          "metodo": "Dos pasadas completas de reconocimiento local; lectura/contraste de todos los segmentos recuperados. No escucha humana."
+        }
+      ],
+      "pendiente": "Seguimiento de nuevas versiones. Los límites del método y dudas normativas se conservan; no queda un tramo excluido del análisis descrito.",
+      "sha256_audio": "45b5ebff7bee0cc3966c9bfeaef9d33cb7d977244ef05f21ff8071a3e117b740",
+      "muestras_visuales": 53,
+      "rango_audio_analizado_s": [
+        0,
+        3105.041
+      ],
+      "cuadros_decodificados": 93151,
+      "cuadros_ocr": 3106
+    },
+    {
+      "id": "video-institucional",
+      "titulo": "CONAE - Presentacion.mp4",
+      "tipo": "audiovisual",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/course/view.php?id=106#section-0",
+      "duracion": "00:02:26.36",
+      "estado": "revision_integral_asistida",
+      "evidencia": "referencias-y-verificacion-actualizacion-03.md y control-audiovisual-actualizacion-03.json",
+      "segmentos_audio_revisados": [
+        {
+          "inicio_s": 0,
+          "fin_s": 146.36,
+          "metodo": "Dos pasadas completas de reconocimiento local; lectura/contraste de todos los segmentos recuperados. No escucha humana."
+        }
+      ],
+      "pendiente": "Seguimiento de nuevas versiones. Los límites del método y dudas normativas se conservan; no queda un tramo excluido del análisis descrito.",
+      "sha256": "aeea75cd9f7b71f504648c5fc772b49636060dc9d548f1fd077916c0fa1b3a1f",
+      "muestras_visuales": 30,
+      "rango_audio_analizado_s": [
+        0,
+        146.36
+      ],
+      "cuadros_decodificados": 3659,
+      "cuadros_ocr": 209
+    },
+    {
+      "id": "foro-2965",
+      "titulo": "Consulta sobre la autonomía",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2965#p50097",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Revisar novedades; una consulta sin responder no es una aclaración oficial."
+    },
+    {
+      "id": "indice-foro-tecnico",
+      "titulo": "Índice de consultas Etapa 2",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/view.php?id=5141",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Seguimiento de cambios."
+    },
+    {
+      "id": "insignias",
+      "titulo": "Insignias",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/badges/view.php?type=2&id=106",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Seguimiento de cambios."
+    },
+    {
+      "id": "competencias",
+      "titulo": "Competencias",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/admin/tool/lp/coursecompetencies.php?courseid=106",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Seguimiento de cambios."
+    },
+    {
+      "id": "calificaciones",
+      "titulo": "Calificaciones de nuestra cuenta",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/grade/report/index.php?id=106",
+      "estado": "revision_completa",
+      "evidencia": "Relectura completa del corte 03; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Seguimiento de cambios."
+    },
+    {
+      "id": "web-entrada",
+      "titulo": "Entrada CanSat Argentina",
+      "tipo": "pagina",
+      "alcance": "Referencia oficial enlazada desde bases; no sitio completo de CONAE",
+      "url": "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina",
+      "estado": "revision_completa",
+      "evidencia": "referencias-y-verificacion-actualizacion-03.md; huellas en fuentes-actualizacion-03.json",
+      "pendiente": "Seguimiento de ediciones; no se enviaron formularios."
+    },
+    {
+      "id": "web-universitario",
+      "titulo": "Presentación universitaria",
+      "tipo": "pagina",
+      "alcance": "Referencia oficial enlazada desde bases; no sitio completo de CONAE",
+      "url": "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/cansat-universitario",
+      "estado": "revision_completa",
+      "evidencia": "referencias-y-verificacion-actualizacion-03.md; huellas en fuentes-actualizacion-03.json",
+      "pendiente": "Seguimiento de ediciones; no se enviaron formularios."
+    },
+    {
+      "id": "web-indice",
+      "titulo": "Índice público de requisitos",
+      "tipo": "pagina",
+      "alcance": "Referencia oficial enlazada desde bases; no sitio completo de CONAE",
+      "url": "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario",
+      "estado": "revision_completa",
+      "evidencia": "referencias-y-verificacion-actualizacion-03.md; huellas en fuentes-actualizacion-03.json",
+      "pendiente": "Seguimiento de ediciones; no se enviaron formularios."
+    },
+    {
+      "id": "web-cronograma",
+      "titulo": "Cronograma oficial referenciado en bases",
+      "tipo": "pagina",
+      "alcance": "Referencia oficial enlazada desde bases; no sitio completo de CONAE",
+      "url": "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/cronograma",
+      "estado": "revision_completa",
+      "evidencia": "referencias-y-verificacion-actualizacion-03.md; huellas en fuentes-actualizacion-03.json",
+      "pendiente": "Seguimiento de ediciones; no se enviaron formularios."
+    },
+    {
+      "id": "web-inscripcion",
+      "titulo": "Cómo inscribirse y descargas oficiales",
+      "tipo": "pagina",
+      "alcance": "Referencia oficial enlazada desde bases; no sitio completo de CONAE",
+      "url": "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/como-me-inscribo",
+      "estado": "revision_completa",
+      "evidencia": "referencias-y-verificacion-actualizacion-03.md; huellas en fuentes-actualizacion-03.json",
+      "pendiente": "Seguimiento de ediciones; no se enviaron formularios."
+    },
+    {
+      "id": "web-convocatoria",
+      "titulo": "Convocatoria/formulario cerrado",
+      "tipo": "pagina",
+      "alcance": "Referencia oficial enlazada desde bases; no sitio completo de CONAE",
+      "url": "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/convocatoria-cansat-universitario-2026",
+      "estado": "revision_completa",
+      "evidencia": "referencias-y-verificacion-actualizacion-03.md; huellas en fuentes-actualizacion-03.json",
+      "pendiente": "Seguimiento de ediciones; no se enviaron formularios."
+    },
+    {
+      "id": "reglamento",
+      "titulo": "Reglamento de participación y autorización de uso de imagen",
+      "tipo": "archivo",
+      "url": "https://www.argentina.gob.ar/sites/default/files/2026/08/reglamento_de_participacion_-_cansat_universitario_2026-2027.pdf",
+      "sha256": "8f9ee4268ca41ec94450e797dc3d363ad57c2f2b9be24f7f07669a6945f16067",
+      "paginas_revisadas": [
+        1,
+        2
+      ],
+      "estado": "revision_completa",
+      "evidencia": "Lectura completa y renderización; referencias-y-verificacion-actualizacion-03.md.",
+      "pendiente": "Seguimiento de versiones; no firmado ni aceptado en esta tarea."
+    },
+    {
+      "id": "conservacion-plataforma",
+      "titulo": "Resumen de conservación de datos de Moodle",
+      "tipo": "pagina",
+      "alcance": "Información general de plataforma; no requisito de misión",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/admin/tool/dataprivacy/summary.php",
+      "estado": "revision_completa",
+      "evidencia": "Texto completo leído; no muestra períodos definidos en sus categorías. No aporta documentación de misión.",
+      "pendiente": "No inferir plazos de conservación efectivos a partir de un campo sin definir."
+    }
+  ],
+  "publicaciones_anunciadas_no_incluidas_en_denominador": [
+    "Documento del vector y curva de impulso",
+    "Perfiles y documentación de ensayos ambientales",
+    "Material CDR de etapas futuras aún no visible"
+  ],
+  "exclusiones": "Datos personales de participantes, perfil y ajustes de cuenta no constituyen documentación técnica del certamen; no exportar nóminas ni credenciales.",
+  "fecha_utc": "2026-10-20T01:03:10.591880+00:00",
+  "actualiza": "cobertura-actualizacion-02.json",
+  "limite_global": "Se conservan límites de reconocimiento automático y lectura asistida. No quedan archivos o tramos localizados sin someter al análisis descrito; las dudas de interpretación y publicaciones futuras están separadas de la cobertura.",
+  "alcance_conclusion": "Todos los materiales visibles/enlazados del certamen e inventariados al corte fueron analizados. Cobertura documental con el método descrito; no certifica interpretación sin errores, todos los píxeles por observación humana, cumplimiento ni recursos futuros todavía no publicados.",
+  "aclaraciones_abiertas": [
+    "Fecha de apertura/vencimiento frente a ventana 17–21/11",
+    "Envolvente y separación: diferencias entre bases/anexo, charla y foro",
+    "Fórmulas y criterios ocultos del Scoresheet",
+    "Detalles de referencia, promediado y tolerancias de medición pendientes de respuesta",
+    "Consulta de autonomía/control desde tierra sin respuesta oficial"
+  ]
+}

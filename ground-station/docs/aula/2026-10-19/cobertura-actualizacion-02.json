@@ -1,0 +1,237 @@
+{
+  "fecha_local": "2026-10-19",
+  "zona_horaria": "America/Buenos_Aires",
+  "tarea": "ASTRA-37",
+  "objetivo": "Investigar el 100% de documentación oficial disponible para nuestra cuenta",
+  "base": "Revisión ampliada de los cuatro archivos, audio completo de apertura, imágenes de ambos videos, nueva consulta y páginas auxiliares.",
+  "cobertura_total_acreditada": false,
+  "porcentaje_global": null,
+  "criterio": "No sumar recursos heterogéneos para fingir porcentaje de contenido. Distinguir localizado/descargado/revisión parcial/completa y evidencias. Incorporar material nuevo y páginas/adjuntos adicionales que aparezcan.",
+  "recursos": [
+    {
+      "id": "bases",
+      "titulo": "Bases y condiciones",
+      "tipo": "archivo",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5139",
+      "sha256": "d416ed8c463786b4c23196bec8b2e31002156f27126a3e7d9e14fe0dac6c39eb",
+      "estado": "revision_completa",
+      "evidencia": "auditoria-archivos-actualizacion-01.md y control-archivos-actualizacion-01.json",
+      "pendiente": "Seguimiento de versiones y aclaraciones; no quedan páginas, diapositivas o criterios sin leer en esta copia."
+    },
+    {
+      "id": "anexo",
+      "titulo": "Anexo A v2, actualizado 16/10",
+      "tipo": "archivo",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5140",
+      "sha256": "27932c87654b64b443d41483c9b48adb06d7d1379dd7a01d54e4ea0035057bc7",
+      "estado": "revision_completa",
+      "evidencia": "auditoria-archivos-actualizacion-01.md y control-archivos-actualizacion-01.json",
+      "pendiente": "Seguimiento de versiones y aclaraciones; no quedan páginas, diapositivas o criterios sin leer en esta copia."
+    },
+    {
+      "id": "pdr",
+      "titulo": "Plantilla PDR v2",
+      "tipo": "archivo",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5465",
+      "sha256": "38122779a5245f5015eb67fd26c7da60a29c6272cbe85b5797cda6bdffb37036",
+      "estado": "revision_completa",
+      "evidencia": "auditoria-archivos-actualizacion-01.md y control-archivos-actualizacion-01.json",
+      "pendiente": "Seguimiento de versiones y aclaraciones; no quedan páginas, diapositivas o criterios sin leer en esta copia."
+    },
+    {
+      "id": "scores",
+      "titulo": "Planilla PDR Scoresheet v2",
+      "tipo": "archivo",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/resource/view.php?id=5466",
+      "sha256": "a72559e8d3473d7a40e5737bdabbd9aacf6c8db5e94517df91f4ab0e09c84f97",
+      "estado": "revision_completa",
+      "evidencia": "auditoria-archivos-actualizacion-01.md y control-archivos-actualizacion-01.json",
+      "pendiente": "Seguimiento de versiones y aclaraciones; no quedan páginas, diapositivas o criterios sin leer en esta copia."
+    },
+    {
+      "id": "foro-2959",
+      "titulo": "Incertidumbres, altitudes y costos",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2959",
+      "estado": "revision_completa",
+      "evidencia": "Texto de preguntas y respuestas visibles leído en la primera revisión; síntesis y enlaces permanentes en revision-aula.md.",
+      "pendiente": "Revisar nuevas respuestas o ediciones; una pregunta sin respuesta no equivale a incumplir la lectura."
+    },
+    {
+      "id": "foro-2960",
+      "titulo": "Descenso, separación, autonomía, ensayos y envolvente",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2960",
+      "estado": "revision_completa",
+      "evidencia": "Texto de preguntas y respuestas visibles leído en la primera revisión; síntesis y enlaces permanentes en revision-aula.md.",
+      "pendiente": "Revisar nuevas respuestas o ediciones; una pregunta sin respuesta no equivale a incumplir la lectura."
+    },
+    {
+      "id": "foro-2961",
+      "titulo": "Formato de telemetría y segundo descenso",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2961",
+      "estado": "revision_completa",
+      "evidencia": "Texto de preguntas y respuestas visibles leído en la primera revisión; síntesis y enlaces permanentes en revision-aula.md.",
+      "pendiente": "Revisar nuevas respuestas o ediciones; una pregunta sin respuesta no equivale a incumplir la lectura."
+    },
+    {
+      "id": "foro-2962",
+      "titulo": "Material estructural",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2962",
+      "estado": "revision_completa",
+      "evidencia": "Texto de preguntas y respuestas visibles leído en la primera revisión; síntesis y enlaces permanentes en revision-aula.md.",
+      "pendiente": "Revisar nuevas respuestas o ediciones; una pregunta sin respuesta no equivale a incumplir la lectura."
+    },
+    {
+      "id": "foro-2963",
+      "titulo": "Diseño, comunicaciones y formato PDR",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2963",
+      "estado": "revision_completa",
+      "evidencia": "Texto de preguntas y respuestas visibles leído en la primera revisión; síntesis y enlaces permanentes en revision-aula.md.",
+      "pendiente": "Revisar nuevas respuestas o ediciones; una pregunta sin respuesta no equivale a incumplir la lectura."
+    },
+    {
+      "id": "foro-2964",
+      "titulo": "Curva de impulso del vector",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2964",
+      "estado": "revision_completa",
+      "evidencia": "Texto de preguntas y respuestas visibles leído en la primera revisión; síntesis y enlaces permanentes en revision-aula.md.",
+      "pendiente": "Revisar nuevas respuestas o ediciones; una pregunta sin respuesta no equivale a incumplir la lectura."
+    },
+    {
+      "id": "curso",
+      "titulo": "Página y secciones del curso",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/course/view.php?id=106",
+      "estado": "revision_completa",
+      "evidencia": "Recomprobación posterior en esta revisión; audiovisuales-y-foro-actualizacion-02.md.",
+      "pendiente": "Comparar contenido sustantivo en las revisiones diarias; contradicciones se conservan abiertas."
+    },
+    {
+      "id": "avisos",
+      "titulo": "Avisos y novedades",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/view.php?id=5134",
+      "estado": "revision_completa",
+      "evidencia": "Recomprobación posterior en esta revisión; audiovisuales-y-foro-actualizacion-02.md.",
+      "pendiente": "Comparar contenido sustantivo en las revisiones diarias; contradicciones se conservan abiertas."
+    },
+    {
+      "id": "presentaciones",
+      "titulo": "Presentación de equipos",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/view.php?id=5144",
+      "estado": "revision_completa",
+      "evidencia": "Recomprobación posterior en esta revisión; audiovisuales-y-foro-actualizacion-02.md.",
+      "pendiente": "Comparar contenido sustantivo en las revisiones diarias; contradicciones se conservan abiertas."
+    },
+    {
+      "id": "entrega",
+      "titulo": "Entrega del PDR",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/assign/view.php?id=5467",
+      "estado": "revision_completa",
+      "evidencia": "Recomprobación posterior en esta revisión; audiovisuales-y-foro-actualizacion-02.md.",
+      "pendiente": "Comparar contenido sustantivo en las revisiones diarias; contradicciones se conservan abiertas."
+    },
+    {
+      "id": "calendario",
+      "titulo": "Calendario del curso",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/calendar/view.php?view=month&course=106",
+      "estado": "revision_completa",
+      "evidencia": "Texto y contenido visible revisados; estado al 19/10/2026 registrado en revision-aula.md.",
+      "pendiente": "Comparar contenido sustantivo en las revisiones diarias; contradicciones se conservan abiertas."
+    },
+    {
+      "id": "video-apertura",
+      "titulo": "Reunión de apertura del 16/10",
+      "tipo": "audiovisual",
+      "url": "https://www.youtube.com/watch?v=m4-HQMSi2Wo",
+      "duracion": "00:51:45",
+      "estado": "analisis_audio_completo_asistido_revision_visual_por_muestreo",
+      "evidencia": "audiovisuales-y-foro-actualizacion-02.md; transcripción local completa leída, no oficial.",
+      "segmentos_audio_revisados": [
+        {
+          "inicio_s": 0,
+          "fin_s": 3105.041,
+          "metodo": "Lectura de toda la transcripción automática local; no escucha independiente de cada palabra."
+        }
+      ],
+      "pendiente": "Verificación audiovisual íntegra si se requiere certificar 100%; no presentar muestreo o reconocimiento automático como evidencia perfecta.",
+      "sha256_audio": "45b5ebff7bee0cc3966c9bfeaef9d33cb7d977244ef05f21ff8071a3e117b740",
+      "muestras_visuales": 53
+    },
+    {
+      "id": "video-institucional",
+      "titulo": "CONAE - Presentacion.mp4",
+      "tipo": "audiovisual",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/course/view.php?id=106#section-0",
+      "duracion": "00:02:26.36",
+      "estado": "analisis_visual_por_muestreo_audio_sin_voz_reconocida",
+      "evidencia": "audiovisuales-y-foro-actualizacion-02.md; 30 imágenes inspeccionadas, audio completo procesado sin segmentos de voz.",
+      "segmentos_audio_revisados": [],
+      "pendiente": "Verificación audiovisual íntegra antes de certificar 100%; no inferir ausencia absoluta de voz por ausencia de transcripción.",
+      "sha256": "aeea75cd9f7b71f504648c5fc772b49636060dc9d548f1fd077916c0fa1b3a1f",
+      "muestras_visuales": 30
+    },
+    {
+      "id": "foro-2965",
+      "titulo": "Consulta sobre la autonomía",
+      "tipo": "debate",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/discuss.php?d=2965#p50097",
+      "estado": "revision_completa",
+      "evidencia": "Pregunta de otro equipo leída, sin respuesta oficial ni adjuntos al corte. Véase audiovisuales-y-foro-actualizacion-02.md.",
+      "pendiente": "Revisar novedades; una consulta sin responder no es una aclaración oficial."
+    },
+    {
+      "id": "indice-foro-tecnico",
+      "titulo": "Índice de consultas Etapa 2",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/mod/forum/view.php?id=5141",
+      "estado": "revision_completa",
+      "evidencia": "Siete debates, catorce mensajes al corte; no se muestra otra página. Véase audiovisuales-y-foro-actualizacion-02.md.",
+      "pendiente": "Seguimiento de cambios."
+    },
+    {
+      "id": "insignias",
+      "titulo": "Insignias",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/badges/view.php?type=2&id=106",
+      "estado": "revision_completa",
+      "evidencia": "No hay insignias disponibles. Véase audiovisuales-y-foro-actualizacion-02.md.",
+      "pendiente": "Seguimiento de cambios."
+    },
+    {
+      "id": "competencias",
+      "titulo": "Competencias",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/admin/tool/lp/coursecompetencies.php?courseid=106",
+      "estado": "revision_completa",
+      "evidencia": "No se han vinculado competencias con este curso. Véase audiovisuales-y-foro-actualizacion-02.md.",
+      "pendiente": "Seguimiento de cambios."
+    },
+    {
+      "id": "calificaciones",
+      "titulo": "Calificaciones de nuestra cuenta",
+      "tipo": "pagina",
+      "url": "https://educacion.conae.gov.ar/aulavirtual/grade/report/index.php?id=106",
+      "estado": "revision_completa",
+      "evidencia": "Sin calificación/retroalimentación ni documentos adicionales visibles; no se exportan datos personales. Véase audiovisuales-y-foro-actualizacion-02.md.",
+      "pendiente": "Seguimiento de cambios."
+    }
+  ],
+  "publicaciones_anunciadas_no_incluidas_en_denominador": [
+    "Documento del vector y curva de impulso",
+    "Perfiles y documentación de ensayos ambientales",
+    "Material CDR de etapas futuras aún no visible"
+  ],
+  "exclusiones": "Datos personales de participantes, perfil y ajustes de cuenta no constituyen documentación técnica del certamen; no exportar nóminas ni credenciales.",
+  "fecha_utc": "2026-10-20T00:35:08.026035+00:00",
+  "actualiza": "cobertura-inicial.json",
+  "limite_global": "No declaro 100% audiovisual exhaustivo: el audio de apertura se analizó íntegramente mediante transcripción automática local y las imágenes mediante muestras; el video institucional no produjo voz reconocida. La lectura de los archivos y foros está completa. Conservo explícita la diferencia entre análisis asistido y verificación audiovisual íntegra."
+}

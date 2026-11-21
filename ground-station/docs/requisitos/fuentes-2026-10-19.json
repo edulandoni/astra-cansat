@@ -1,0 +1,15 @@
+{
+  "origen": "Revisión original del 17/10/2026; selección para groundstation el 19/10/2026",
+  "archivos": [
+    {
+      "ruta": "fuentes\\anexo_requerimientos_tecnicos_-_cansat_universitario_2026-2027.pdf",
+      "bytes": 290309,
+      "sha256": "8699695ff06fbb00010dc22d8f4d802f7495acfa175405384ffba4156c6bc532"
+    },
+    {
+      "ruta": "fuentes\\anexo_requerimientos_tecnicos_-_cansat_universitario_2026-2027_v2.pdf",
+      "bytes": 532650,
+      "sha256": "27932c87654b64b443d41483c9b48adb06d7d1379dd7a01d54e4ea0035057bc7"
+    }
+  ]
+}

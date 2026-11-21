@@ -1,0 +1,112 @@
+{
+  "captured_utc": "2026-10-19T22:57:33.691147+00:00",
+  "scope": "Sondeo de software con entradas deliberadamente modificadas; sin hardware, RF ni evaluación estadística de fiabilidad.",
+  "baseline_source_sha256": {
+    "simulator.py": "ce99626666d5c52f96b1d6f248dd4270cd09413ea19b132087b033eaae37d3e6",
+    "protocol.py": "ffa0342449326ba7c9a14b2ccd1c557324bbc2c6979d94ba13332742be7ca1fd",
+    "acquisition.py": "78e5cc82aeab68ae8b1767f6fd9ef3c7c196b6a914a21d37ef2a11efcc19d20a",
+    "storage.py": "c6156a5956deed4ea4bd134afb1d9f7c5b86df47d905a656c71201419a1dc119"
+  },
+  "cases": [
+    {
+      "case": "control_nominal",
+      "observation": "El parser acepta la misión sintética base.",
+      "accepted": 131,
+      "rejected": 0
+    },
+    {
+      "case": "control_equipo_ajeno",
+      "observation": "El parser rechaza el identificador ajeno de banco.",
+      "accepted": 0,
+      "rejected": 1
+    },
+    {
+      "case": "salto_altitud",
+      "observation": "Un número finito con formato correcto atraviesa el parser; no hay una alarma semántica en esta capa.",
+      "injected_field": "ALTITUDE",
+      "injected_value": "3000.0",
+      "accepted": 1,
+      "rejected": 0
+    },
+    {
+      "case": "temperatura_extrema",
+      "observation": "Un número finito con formato correcto atraviesa el parser; no hay una alarma semántica en esta capa.",
+      "injected_field": "TEMPERATURE",
+      "injected_value": "999.0",
+      "accepted": 1,
+      "rejected": 0
+    },
+    {
+      "case": "giro_extremo",
+      "observation": "Un número finito con formato correcto atraviesa el parser; no hay una alarma semántica en esta capa.",
+      "injected_field": "GYRO_R",
+      "injected_value": "9999.0",
+      "accepted": 1,
+      "rejected": 0
+    },
+    {
+      "case": "altura_congelada",
+      "observation": "El parser acepta veinte alturas iguales mientras la presión sintética cambia. Esto no identifica por sí solo qué sensor falló.",
+      "pressure_distinct": 12,
+      "accepted": 20,
+      "rejected": 0
+    },
+    {
+      "case": "reloj_congelado",
+      "observation": "Acepta diez horas de misión iguales con contadores crecientes; una hora bien escrita no acredita avance temporal.",
+      "counters": [
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ],
+      "accepted": 10,
+      "rejected": 0
+    },
+    {
+      "case": "duplicado_con_contenido_distinto",
+      "observation": "El segundo paquete con el mismo contador se cuenta como duplicado y queda en raw, pero no se compara su contenido para avisar conflicto.",
+      "received": 2,
+      "duplicates": 1,
+      "displayed_altitude": "375.0",
+      "warning": "",
+      "invalid": 0
+    },
+    {
+      "case": "reinicio_real_de_contador_modelado",
+      "observation": "Con un contador que vuelve al inicio hay aviso de ambigüedad. La recepción continúa pero latest conserva el contador alto anterior. Necesito acordar cómo distinguir sesiones.",
+      "latest_before": 106,
+      "latest_after": 106,
+      "received": 12,
+      "warning": "Contador retrocedió: revisar reset/sesión; no estimar pérdidas",
+      "latest_state": "PAYLOAD_RELEASE",
+      "recent_reception": true
+    },
+    {
+      "case": "fallo_escritura_raw",
+      "observation": "Una excepción sintética al registrar raw termina el worker con ERROR. No hay continuidad degradada ni recuperación automática en esta ruta.",
+      "status": "ERROR: FALLO_SINTETICO_REGISTRO_RAW",
+      "received": 0,
+      "files_closed": true
+    }
+  ],
+  "not_implemented": [
+    "monitor semántico",
+    "estimación automática de causa",
+    "integración GUI",
+    "cambio de formato o ICD",
+    "recuperación durable del registro"
+  ],
+  "limits": [
+    "Casos de demostración escogidos; no estiman probabilidad real de fallas.",
+    "Un valor extremo, constante o discordante requiere contexto; no establece por sí solo un sensor averiado.",
+    "Presión y altura barométrica pueden derivarse del mismo sensor y no son redundancia independiente.",
+    "La GUI ya distingue algunos datos retenidos y avisos de contador; el sondeo no afirma ausencia de todas las advertencias."
+  ]
+}

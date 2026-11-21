@@ -1,0 +1,13 @@
+{
+  "packets": 131,
+  "counter_sequence_exact": true,
+  "csv_identical_to_packets": true,
+  "classifications": {
+    "new": 131
+  },
+  "storage_clean": true,
+  "tests_asserted": 14,
+  "all_cases_passed": true,
+  "raw_sha256": "156a260c22353b822056ba743df104b1c576da3e6c397dc01b877ef752691c45",
+  "scope": "Independent verification of original trial; final CLI also gates acceptance on drained writers. Original result remains unchanged."
+}

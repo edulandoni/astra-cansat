@@ -1,0 +1,316 @@
+{
+  "recorded_utc": "2026-10-26T02:25:59.400380+00:00",
+  "scope": "Datos sintéticos enviados por ESP32 físico USB. 03: reconexión física; 04: cierre y apertura manual del puerto. No prueba RF ni autonomía.",
+  "source_note": "Después del ensayo sólo normalicé CRLF a LF; comparo también las huellas normalizadas para conservar procedencia.",
+  "source_lf_matches": {
+    "app.py": "0e5490181f56fd66e623352b004545e7f1b342c90d2975f523de6c12df6da554",
+    "engine.py": "cdc8f1329672ee688162dbfd13acc109a81054c35b545470c41ff2ba74b9e90d",
+    "quality.py": "dd066c3259feb2ddcdf11622322524f51f6f6c0d78690d0b187ddad9b2832ef8",
+    "desktop.py": "71abd22054373aca18573f2cdd37ab4470804bbc13efa12a90b4e621d96587ab",
+    "ui_model.py": "cedbe8b2ebe09e5a96f9d2f8eabbb01b843323d40cc0e8438980e0fee06375e7"
+  },
+  "campaigns": [
+    {
+      "campaign": "03",
+      "pc_session": "20261026T021356_496787Z_3894de817877",
+      "journal_sha256": "5183561ab0dcfd0a0ff5d510f54b28353168ce78c5806c18602a8057430351f3",
+      "journal_events": 1553,
+      "closed_utc": "2026-10-26T02:20:37.621663+00:00",
+      "physical_source_sha256": {
+        "analyze.py": "446d825a0e869d432e5ef0f0aa3024ee597841b4ddfc02b609100325c591d218",
+        "app.py": "1132493560b8c55941c54aac88286907072418b89584a548d8121c3f10c5396a",
+        "campaign.py": "ae39c2ef56210f97ee5368593d9f7d742ac22d546ad4692bf08f0e77aca3b2f6",
+        "desktop.py": "47f0053b97ff07a1ed41a6faf4d3d801266f1016500fe37744ef2d93dd8d7994",
+        "engine.py": "cdc8f1329672ee688162dbfd13acc109a81054c35b545470c41ff2ba74b9e90d",
+        "journal.py": "b2640d2af85c630b7df196ac2eb823543f2a70386b98c9739a6b50f4aace3d19",
+        "mission.py": "d66b5260961bd5628dd38b08882511d576c44ac11bbee79b3d61010c8e3b6b39",
+        "quality.py": "dd066c3259feb2ddcdf11622322524f51f6f6c0d78690d0b187ddad9b2832ef8",
+        "recover.py": "9d6b15114b7a542eb8121c0adf99b1b175406973aa13b772c0e9a550f152000d",
+        "sources.py": "49f2173007990b6beae4056ddb04b671cf21a173e423b795b7763f1c276738b1",
+        "test_bench.py": "4011731a7f0e8a9ff794516fc5a69cc1d7a82a7e2884987e20e39d2a2b3307a2",
+        "test_quality.py": "dae2595930d15769bea4ce63d062fb37b18cd5ab562ed2f0dcd2954bbcaf2e1a",
+        "test_ui.py": "2acb2b501ab833fe1aa461145c1c8c703494b29ef2d281bfac01c2d0d801259a",
+        "ui_model.py": "3ef440d34e61b9ce36d18dd85be44780208187636ba4539199e44f4b4bdcdbfc",
+        "wire.py": "9968dfd8cea3575510bed93965c695b683d0cb1f6f0e1a30da62180a936f52a7",
+        "firmware\\AstraBench02\\AstraBench02.ino": "a0df3d3d47896444b252da68a17c0956168910fbf4cc7504b4bffba86de69fbe"
+      },
+      "interruptions": [
+        {
+          "received_utc": "2026-10-26T02:14:21.819657+00:00",
+          "kind": "interruption_started",
+          "interruption": {
+            "number": 1,
+            "started_at": 3363.281,
+            "reconnected_at": null,
+            "duration": null,
+            "before_epoch": [
+              "291601e54dec1e68",
+              "20261026T021356_496787Z_3894de817877_5"
+            ],
+            "before_count": 23,
+            "result": "awaiting_identity",
+            "first_count_after": null,
+            "gap_at_resume": null,
+            "reason": "ClearCommError failed (PermissionError(13, 'Acceso denegado.', None, 5))"
+          }
+        },
+        {
+          "received_utc": "2026-10-26T02:14:31.961003+00:00",
+          "kind": "interruption_reconnected",
+          "interruption": {
+            "number": 1,
+            "started_at": 3363.281,
+            "reconnected_at": 3373.421,
+            "duration": 10.139999999999873,
+            "before_epoch": [
+              "291601e54dec1e68",
+              "20261026T021356_496787Z_3894de817877_5"
+            ],
+            "before_count": 23,
+            "result": "awaiting_identity",
+            "first_count_after": null,
+            "gap_at_resume": null,
+            "reason": "ClearCommError failed (PermissionError(13, 'Acceso denegado.', None, 5))"
+          }
+        },
+        {
+          "received_utc": "2026-10-26T02:14:32.048295+00:00",
+          "kind": "interruption_resolved",
+          "interruption": {
+            "number": 1,
+            "started_at": 3363.281,
+            "reconnected_at": 3373.421,
+            "duration": 10.139999999999873,
+            "before_epoch": [
+              "291601e54dec1e68",
+              "20261026T021356_496787Z_3894de817877_5"
+            ],
+            "before_count": 23,
+            "result": "restarted",
+            "first_count_after": null,
+            "gap_at_resume": null,
+            "reason": "ClearCommError failed (PermissionError(13, 'Acceso denegado.', None, 5))",
+            "after_epoch": [
+              "f965b2f85cafacfa",
+              "idle"
+            ]
+          }
+        }
+      ],
+      "last_gui": {
+        "received_utc": "2026-10-26T02:20:35.612545+00:00",
+        "ui_state": "Recibiendo datos",
+        "interruption": "Corte 1: duró 10.1 s. La placa volvió a arrancar; no puedo determinar cuántos mensajes faltaron.",
+        "totals": {
+          "total_valid": 310,
+          "total_unique": 310,
+          "invalid": 0,
+          "overflows": 1,
+          "data_age": 0.21900000000005093,
+          "link_age": 0.21900000000005093,
+          "unique": 259,
+          "observed_gaps": 0
+        },
+        "quality_flags": {
+          "telemetry_stale": false,
+          "gps_no_fix": false,
+          "gps_stale": false,
+          "mission_clock_frozen": false,
+          "ambiguous_context": false,
+          "storage_error": false,
+          "known_storage_loss": false,
+          "loss_detail_incomplete": false
+        },
+        "history_size": 258,
+        "update_queue": 1
+      },
+      "storage": [
+        {
+          "destination": 0,
+          "kind": "raw",
+          "saved": 1553,
+          "pending": 0,
+          "error": "",
+          "dropped": 0,
+          "dropped_seq_ranges": [],
+          "loss_ledger_truncated": false,
+          "last_confirmed_seq": 1553,
+          "capacity": 600
+        },
+        {
+          "destination": 0,
+          "kind": "csv",
+          "saved": 312,
+          "pending": 0,
+          "error": "",
+          "dropped": 0,
+          "dropped_seq_ranges": [],
+          "loss_ledger_truncated": false,
+          "last_confirmed_seq": 1553,
+          "capacity": 600
+        }
+      ],
+      "csv": [
+        {
+          "path": "segments/0002_15c05745a17c/Flight_1000.csv",
+          "sha256": "03013be9e82a509bfa433ac57abaa7bce2cbbe5c365754058d292fd177ef81da",
+          "rows": 23
+        },
+        {
+          "path": "segments/0004_4ba62c56e4ad/Flight_1000.csv",
+          "sha256": "9bb13ff49fbd0fc717add69fe975cb1397f0751194bf9aea18ad745a8cbd04fa",
+          "rows": 28
+        },
+        {
+          "path": "segments/0005_a77ff6993585/Flight_1000.csv",
+          "sha256": "42c43403ad676c6ad18f7b5b42c6567a61e3db3b9b743609e46884180f2dd4fb",
+          "rows": 261
+        }
+      ]
+    },
+    {
+      "campaign": "04",
+      "pc_session": "20261026T022038_015703Z_0fd5698e8b80",
+      "journal_sha256": "a67fb4f3e568306ace900c1c3828b20c3d46a8f2745d040572542f6e471a4e43",
+      "journal_events": 605,
+      "closed_utc": "2026-10-26T02:25:11.533121+00:00",
+      "physical_source_sha256": {
+        "analyze.py": "446d825a0e869d432e5ef0f0aa3024ee597841b4ddfc02b609100325c591d218",
+        "app.py": "dc196422a66110c23151d3b5a35f4166714174e5a4d1c5601ba488c297e8a07c",
+        "campaign.py": "ae39c2ef56210f97ee5368593d9f7d742ac22d546ad4692bf08f0e77aca3b2f6",
+        "desktop.py": "49adc1b55f3769e5d497290e7ac7db154c60d321eef7528b047aa6afcf188afe",
+        "engine.py": "cdc8f1329672ee688162dbfd13acc109a81054c35b545470c41ff2ba74b9e90d",
+        "journal.py": "b2640d2af85c630b7df196ac2eb823543f2a70386b98c9739a6b50f4aace3d19",
+        "mission.py": "d66b5260961bd5628dd38b08882511d576c44ac11bbee79b3d61010c8e3b6b39",
+        "quality.py": "dd066c3259feb2ddcdf11622322524f51f6f6c0d78690d0b187ddad9b2832ef8",
+        "recover.py": "9d6b15114b7a542eb8121c0adf99b1b175406973aa13b772c0e9a550f152000d",
+        "sources.py": "49f2173007990b6beae4056ddb04b671cf21a173e423b795b7763f1c276738b1",
+        "test_bench.py": "4011731a7f0e8a9ff794516fc5a69cc1d7a82a7e2884987e20e39d2a2b3307a2",
+        "test_quality.py": "dae2595930d15769bea4ce63d062fb37b18cd5ab562ed2f0dcd2954bbcaf2e1a",
+        "test_ui.py": "ee2431e603851d89eb41a93f7a4aac6f863be923355987295cead2c4b4ec4bf9",
+        "ui_model.py": "cedbe8b2ebe09e5a96f9d2f8eabbb01b843323d40cc0e8438980e0fee06375e7",
+        "wire.py": "9968dfd8cea3575510bed93965c695b683d0cb1f6f0e1a30da62180a936f52a7",
+        "firmware\\AstraBench02\\AstraBench02.ino": "a0df3d3d47896444b252da68a17c0956168910fbf4cc7504b4bffba86de69fbe"
+      },
+      "interruptions": [
+        {
+          "received_utc": "2026-10-26T02:21:45.104284+00:00",
+          "kind": "interruption_started",
+          "interruption": {
+            "number": 1,
+            "started_at": 3806.578,
+            "reconnected_at": null,
+            "duration": null,
+            "before_epoch": [
+              "5dffc1c9de5b348e",
+              "20261026T022038_015703Z_0fd5698e8b80_5"
+            ],
+            "before_count": 65,
+            "result": "awaiting_identity",
+            "first_count_after": null,
+            "gap_at_resume": null,
+            "reason": "Cierre manual del puerto"
+          }
+        },
+        {
+          "received_utc": "2026-10-26T02:22:02.485717+00:00",
+          "kind": "interruption_reconnected",
+          "interruption": {
+            "number": 1,
+            "started_at": 3806.578,
+            "reconnected_at": 3823.953,
+            "duration": 17.375,
+            "before_epoch": [
+              "5dffc1c9de5b348e",
+              "20261026T022038_015703Z_0fd5698e8b80_5"
+            ],
+            "before_count": 65,
+            "result": "awaiting_identity",
+            "first_count_after": null,
+            "gap_at_resume": null,
+            "reason": "Cierre manual del puerto"
+          }
+        },
+        {
+          "received_utc": "2026-10-26T02:22:03.287596+00:00",
+          "kind": "interruption_resolved",
+          "interruption": {
+            "number": 1,
+            "started_at": 3806.578,
+            "reconnected_at": 3823.953,
+            "duration": 17.375,
+            "before_epoch": [
+              "5dffc1c9de5b348e",
+              "20261026T022038_015703Z_0fd5698e8b80_5"
+            ],
+            "before_count": 65,
+            "result": "same_run",
+            "first_count_after": 84,
+            "gap_at_resume": 18,
+            "reason": "Cierre manual del puerto"
+          }
+        }
+      ],
+      "last_gui": {
+        "received_utc": "2026-10-26T02:25:06.443150+00:00",
+        "ui_state": "Ensayo terminado",
+        "interruption": "Corte 1: duró 17.4 s. Misma ejecución; hueco al volver: 18 muestras.",
+        "totals": {
+          "total_valid": 113,
+          "total_unique": 113,
+          "invalid": 0,
+          "overflows": 0,
+          "data_age": 136.14100000000008,
+          "link_age": 136.14100000000008,
+          "unique": 113,
+          "observed_gaps": 18
+        },
+        "quality_flags": {
+          "telemetry_stale": false,
+          "gps_no_fix": false,
+          "gps_stale": false,
+          "mission_clock_frozen": false,
+          "ambiguous_context": false,
+          "storage_error": false,
+          "known_storage_loss": false,
+          "loss_detail_incomplete": false
+        },
+        "history_size": 113,
+        "update_queue": 0
+      },
+      "storage": [
+        {
+          "destination": 0,
+          "kind": "raw",
+          "saved": 605,
+          "pending": 0,
+          "error": "",
+          "dropped": 0,
+          "dropped_seq_ranges": [],
+          "loss_ledger_truncated": false,
+          "last_confirmed_seq": 605,
+          "capacity": 600
+        },
+        {
+          "destination": 0,
+          "kind": "csv",
+          "saved": 113,
+          "pending": 0,
+          "error": "",
+          "dropped": 0,
+          "dropped_seq_ranges": [],
+          "loss_ledger_truncated": false,
+          "last_confirmed_seq": 577,
+          "capacity": 600
+        }
+      ],
+      "csv": [
+        {
+          "path": "segments/0002_d89df3b89aec/Flight_1000.csv",
+          "sha256": "231a7eb172f482335bc1479a4b87f3676c846836bb918cc2fddd140610087f21",
+          "rows": 113
+        }
+      ]
+    }
+  ]
+}

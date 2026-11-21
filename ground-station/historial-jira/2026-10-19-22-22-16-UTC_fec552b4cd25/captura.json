@@ -1,0 +1,603 @@
+{
+  "captured_utc": "2026-10-19 22:22:16 UTC",
+  "source": "Jira MCP; descripciones y comentarios en el formato devuelto por el conector",
+  "complete": true,
+  "issues": [
+    {
+      "summary": "COMMS — Verificar SX1276 contra X1–X6 v2 y seleccionar modo RF",
+      "description": "## Objetivo\n\nEvaluar SX1276 contra X1–X6 del anexo CONAE v2 y proponer el modo RF para revisión conjunta del ICD con Edu y Systems.\n\n## Trabajo a realizar\n\n* Revisar documentación oficial Semtech y comparar LoRa/FSK/GFSK: robustez, tasa, CRC, identificación, destino y verificación.\n* Mapear banda X1, prohibición de broadcast X2, comienzo de misión X3 (TBR), tasa X4, contenido X5 y consulta batería/solar X6.\n* Definir direccionamiento y aceptación de paquetes propios sin confundir filtrado de TEAM_ID con ausencia de broadcast o de interferencia.\n* El NetID/PANID con número de equipo era X2 v1 y NO aparece en v2: conservarlo como antecedente; su implementación sólo será una decisión interna justificada si se adopta en el ICD.\n* Preparar consulta sobre el comando automático de X3 y sobre cualquier documento separado de protocolo.\n* No fijar frecuencia exacta, modo, potencia, Sync Word, destino o framing unilateralmente.\n\n## Entregable\n\nMatriz Requisito v2 | implementación candidata | evidencia | estado, con relación a los IDs v1 y recomendación de modo RF.\n\n## Criterio de finalización\n\n* X1–X6 evaluados con evidencia y pendientes identificados.\n* Modo y destino sin broadcast justificados y acordados en ASTRA-19.\n* X3 aclarado o registrado TBR con responsable.\n* No se exige como obligación v2 el NetID/PANID retirado.\n* Fuentes y configuración de ensayo permiten reproducir la evaluación.\n\n## Referencia vigente y revisión\n\nAnexo CONAE v2 publicado el 16/10/2026: https://www.argentina.gob.ar/sites/default/files/2026/08/anexo_requerimientos_tecnicos\\_-\\_cansat_universitario_2026-2027_v2.pdf\n\nInforme de impacto v1 → v2: https://docs.google.com/document/d/1WwZ83me8W0qA7T8eum6xSrYxVtpbYoT9OYq1Z0WPMNI/edit?usp=drivesdk\n\nMatriz completa y fuentes conservadas: https://drive.google.com/drive/folders/16P_8tdACes23uirmR-koQlB5iE0oVhEf\n\nEsta actualización cambia la referencia de diseño; no acredita implementación ni ensayo físico. Se conservan responsable y estado. Presupuesto fuera de esta revisión.",
+      "status": "En curso",
+      "assignee": "Cristian Ponsone",
+      "creator": "Eduardo Landoni",
+      "updated": "2026-10-17T12:43:26.355-0300",
+      "key": "ASTRA-18",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-18",
+      "owner_is_cristian": true,
+      "comments_complete": true,
+      "changelog_complete": true,
+      "comments": [
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:29:03.603-0300",
+          "updated": "2026-10-17T12:41:59.524-0300",
+          "body": "## Bitácora 17/10/2026 — descripción anterior conservada y motivo de su actualización\n\nIncorporo al historial la descripción que conservé antes de actualizar la referencia de v1 a v2. Dejo esta versión anterior para que podamos reconstruir la evolución de la tarea. Este registro no implica una aprobación ni una nueva implementación.\n\n**Título anterior:** COMMS — Verificar SX1276 contra X1–X7 y seleccionar modo RF\n\n### Descripción anterior íntegra\n\n## Objetivo\n\nDeterminar si el SX1276 puede satisfacer de forma defendible los requisitos CONAE X1–X7 y seleccionar el modo de operación RF a utilizar en el prototipo/PDR.\n\n## Trabajo a realizar\n\n* Revisar datasheet oficial Semtech SX1276.\n* Comparar LoRa vs FSK/GFSK para: identificación de red, direccionamiento unicast, CRC, tasa de datos, robustez y facilidad de verificación.\n* Mapear X1–X7 a funciones/configuración concreta del SX1276 y del protocolo ASTRA.\n* Definir cómo se implementarán NetID/PANID equivalente y prohibición de broadcast.\n* Identificar cualquier requisito que siga siendo TBR y preparar consulta a CONAE si fuera necesaria.\n\n## Entregable\n\nMatriz `Requisito CONAE | Implementación SX1276 | Evidencia | Estado` + recomendación de modo RF.\n\n## Criterio de finalización\n\n* X1–X7 evaluados uno por uno.\n* La selección LoRa/FSK/GFSK está justificada con documentación oficial.\n* NetID/PANID y unicast quedan técnicamente definidos o marcados TBR.\n* Fuentes oficiales enlazadas.\n* Resultado listo para incorporar a la PDR y al ICD de comunicaciones.\n\n### Qué cambió y por qué\n\nLa descripción actual distingue requisitos CONAE v2, convenciones heredadas v1 y decisiones internas pendientes. Cambios concretos: retiro de NetID/PANID como obligación normativa, renumeración de X, redacción ambigua del comienzo de misión y ausencia del formato detallado en el PDF v2. Se preservaron responsable y estado.\n\nRegistro los avances, las correcciones y sus fundamentos como entradas de bitácora. Si necesito actualizar una descripción, primero conservo la versión anterior y explico el cambio. Dejo el material necesario para preparar el PDR dentro de Jira. La migración y su matriz están en ASTRA-26; el contrato compartido, en ASTRA-19.",
+          "id": "10014",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-18?focusedCommentId=10014"
+        },
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:31:25.774-0300",
+          "updated": "2026-10-17T12:42:01.802-0300",
+          "body": "## Bitácora 17/10/2026 — identificación propia y comparación RF después de v2\n\n### Propuesta que quiero evaluar con el equipo\n\nAl desaparecer la obligación expresa NetID/PANID y mantenerse la prohibición de broadcast, proponemos construir identificación lógica y destinos propios en nuestro protocolo. La intención atribuida al organizador es una interpretación del equipo; no una aclaración oficial de CONAE. Podemos ensayar aislamiento lógico con emisores sintéticos antes de disponer de radio.\n\n### Qué confirmó la revisión del fabricante\n\nSX1276 admite LoRa y FSK; GFSK usa conformado gaussiano de FSK. En packet mode FSK puede aceptarse sólo NodeAddress (AddressFiltering=01); la opción que acepta también BroadcastAddress no corresponde al ensayo sin broadcast. En LoRa hay filtrado por software del payload; no trasladar registros de direccionamiento FSK a LoRa.\n\nFuente del fabricante: Semtech SX1276/77/78/79 Rev.4, secciones 4.1.5, 4.2.2.3 y 4.2.13, copia publicada por distribuidor: https://cdn-shop.adafruit.com/product-files/3179/sx1276_77_78_79.pdf\n\n### Propuesta para revisar con Edu\n\nEvaluar una envolvente lógica con versión, identificación de red/equipo, origen, destino, tipo, secuencia e integridad, manteniendo el modelo de telemetría desacoplado. No se eligieron aún tamaños, valores de direcciones, algoritmo de integridad, frecuencia, modulación ni Sync Word. Un NetID propio sería una decisión ASTRA; no una nueva obligación CONAE ni un requisito que haya que simular para cumplir.\n\nIdentificar el equipo y dirigir cada paquete a un destinatario permiten descartar tráfico ajeno. Una antena sigue recibiendo energía de otras emisiones y pueden existir interferencias. El identificador no demuestra autenticidad ni confidencialidad. El criterio defendible es aceptar/procesar sólo el tráfico destinado al extremo correcto y demostrarlo, sin prometer exclusividad física de la señal.\n\n### Ensayos propuestos y resultados esperados\n\n1. Mezclar dos emisores sintéticos: aceptar el equipo propio, registrar/rechazar el ajeno.\n2. Mismo equipo con destino equivocado: no aceptar telemetría ni ejecutar comando.\n3. Trama incompleta, versión incompatible o integridad fallida: rechazar sin bloquear recepción.\n4. Repetición y atraso: conservar observación, evitar duplicar medida o actuación.\n5. Comando destinado al extremo correcto: demostrar recepción, aceptación y resultado por separado.\n6. Con RF integrado, repetir en ambos sentidos y medir pérdidas/latencia mientras otro emisor comparte canal. El filtrado no recupera una colisión física.\n\n### Estado real y próximo paso\n\nEstas pruebas de identificación extendida son un plan: todavía no se implementó esta envolvente ni se ensayó LoRa/FSK/GFSK. El parser de banco sí compara TEAM_ID, que cubre sólo una parte. Comparar robustez, tiempo de aire a 1 Hz, comandos, consumo, complejidad y disponibilidad del módulo; cerrar Radio Profile e ICD en ASTRA-19 y demostrar interoperabilidad ASTRA-24. La eliminación de NetID/PANID no descarta ninguno de esos modos por sí sola.",
+          "id": "10025",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-18?focusedCommentId=10025"
+        },
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:43:26.355-0300",
+          "updated": "2026-10-17T12:43:26.355-0300",
+          "body": "## Bitácora 17/10/2026 — estado de trabajo y alcance\n\nPaso esta tarea de Backlog a **En curso**.\n\nYa empecé a revisar la v2, comparar LoRa/FSK/GFSK y proponer identificación y destinos propios. Me falta cerrar el Radio Profile y la verificación con Edu.\n\nUso Backlog para ideas que todavía no asumimos; Por hacer para trabajo previsto sin iniciar; y En curso cuando ya estoy trabajando. La tarea sigue abierta hasta cumplir sus criterios y conservar la evidencia. En adelante gestiono únicamente tareas que creé o que están asignadas a mí; las dependencias con Edu y Rebe las documento desde mis propias tareas.",
+          "id": "10029",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-18?focusedCommentId=10029"
+        }
+      ],
+      "excluded_comments": 0,
+      "changelog": [
+        {
+          "id": "10075",
+          "author": "Eduardo Landoni",
+          "created": "2026-10-13T01:43:10.055-0300",
+          "items": [
+            {
+              "field": "Rank",
+              "fromString": "",
+              "toString": "Ranked higher"
+            }
+          ]
+        },
+        {
+          "id": "10087",
+          "author": "Eduardo Landoni",
+          "created": "2026-10-13T01:56:03.266-0300",
+          "items": [
+            {
+              "field": "assignee",
+              "fromString": "cristianponsone9",
+              "toString": "Cristian Ponsone"
+            }
+          ]
+        },
+        {
+          "id": "10114",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:13:42.062-0300",
+          "items": [
+            {
+              "field": "description",
+              "fromString": "h2. Objetivo\n\nDeterminar si el SX1276 puede satisfacer de forma defendible los requisitos CONAE X1–X7 y seleccionar el modo de operación RF a utilizar en el prototipo/PDR.\n\nh2. Trabajo a realizar\n\n* Revisar datasheet oficial Semtech SX1276.\n* Comparar LoRa vs FSK/GFSK para: identificación de red, direccionamiento unicast, CRC, tasa de datos, robustez y facilidad de verificación.\n* Mapear X1–X7 a funciones/configuración concreta del SX1276 y del protocolo ASTRA.\n* Definir cómo se implementarán NetID/PANID equivalente y prohibición de broadcast.\n* Identificar cualquier requisito que siga siendo TBR y preparar consulta a CONAE si fuera necesaria.\n\nh2. Entregable\n\nMatriz {{Requisito CONAE | Implementación SX1276 | Evidencia | Estado}} + recomendación de modo RF.\n\nh2. Criterio de finalización\n\n* X1–X7 evaluados uno por uno.\n* La selección LoRa/FSK/GFSK está justificada con documentación oficial.\n* NetID/PANID y unicast quedan técnicamente definidos o marcados TBR.\n* Fuentes oficiales enlazadas.\n* Resultado listo para incorporar a la PDR y al ICD de comunicaciones.",
+              "toString": "h2. Objetivo\n\nEvaluar SX1276 contra X1–X6 del anexo CONAE v2 y proponer el modo RF para revisión conjunta del ICD con Edu y Systems.\n\nh2. Trabajo a realizar\n\n* Revisar documentación oficial Semtech y comparar LoRa/FSK/GFSK: robustez, tasa, CRC, identificación, destino y verificación.\n* Mapear banda X1, prohibición de broadcast X2, comienzo de misión X3 (TBR), tasa X4, contenido X5 y consulta batería/solar X6.\n* Definir direccionamiento y aceptación de paquetes propios sin confundir filtrado de TEAM_ID con ausencia de broadcast o de interferencia.\n* El NetID/PANID con número de equipo era X2 v1 y NO aparece en v2: conservarlo como antecedente; su implementación sólo será una decisión interna justificada si se adopta en el ICD.\n* Preparar consulta sobre el comando automático de X3 y sobre cualquier documento separado de protocolo.\n* No fijar frecuencia exacta, modo, potencia, Sync Word, destino o framing unilateralmente.\n\nh2. Entregable\n\nMatriz Requisito v2 | implementación candidata | evidencia | estado, con relación a los IDs v1 y recomendación de modo RF.\n\nh2. Criterio de finalización\n\n* X1–X6 evaluados con evidencia y pendientes identificados.\n* Modo y destino sin broadcast justificados y acordados en ASTRA-19.\n* X3 aclarado o registrado TBR con responsable.\n* No se exige como obligación v2 el NetID/PANID retirado.\n* Fuentes y configuración de ensayo permiten reproducir la evaluación.\n\nh2. Referencia vigente y revisión\n\nAnexo CONAE v2 publicado el 16/10/2026: [https://www.argentina.gob.ar/sites/default/files/2026/08/anexo_requerimientos_tecnicos_-_cansat_universitario_2026-2027_v2.pdf|https://www.argentina.gob.ar/sites/default/files/2026/08/anexo_requerimientos_tecnicos_-_cansat_universitario_2026-2027_v2.pdf|smart-link]\n\nInforme de impacto v1 → v2: [https://docs.google.com/document/d/1WwZ83me8W0qA7T8eum6xSrYxVtpbYoT9OYq1Z0WPMNI/edit?usp=drivesdk|https://docs.google.com/document/d/1WwZ83me8W0qA7T8eum6xSrYxVtpbYoT9OYq1Z0WPMNI/edit?usp=drivesdk|smart-link]\n\nMatriz completa y fuentes conservadas: [https://drive.google.com/drive/folders/16P_8tdACes23uirmR-koQlB5iE0oVhEf|https://drive.google.com/drive/folders/16P_8tdACes23uirmR-koQlB5iE0oVhEf|smart-link]\n\nEsta actualización cambia la referencia de diseño; no acredita implementación ni ensayo físico. Se conservan responsable y estado. Presupuesto fuera de esta revisión."
+            },
+            {
+              "field": "summary",
+              "fromString": "COMMS — Verificar SX1276 contra X1–X7 y seleccionar modo RF",
+              "toString": "COMMS — Verificar SX1276 contra X1–X6 v2 y seleccionar modo RF"
+            }
+          ]
+        },
+        {
+          "id": "10119",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:42:30.433-0300",
+          "items": [
+            {
+              "field": "status",
+              "fromString": "Backlog",
+              "toString": "Por hacer"
+            }
+          ]
+        },
+        {
+          "id": "10126",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:43:16.883-0300",
+          "items": [
+            {
+              "field": "status",
+              "fromString": "Por hacer",
+              "toString": "En curso"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "summary": "GND — Implementar simulador de vuelo CONAE en ESP32 por USB",
+      "description": "## Objetivo\n\nUsar el ESP32 de la Ground Station como generador de telemetría de vuelo ficticia para desarrollar la aplicación de PC antes de integrar el enlace RF.\n\n## Trabajo a realizar\n\n* Generar a 1 Hz paquetes ASCII con el formato oficial CONAE.\n* Simular una misión coherente: LAUNCH_PAD → ASCENT → APOGEE → DESCENT → eventos de recovery → LANDED.\n* Generar perfiles plausibles de altitud, presión, temperatura, batería, corriente, IMU y GPS.\n* Incrementar PACKET_COUNT correctamente.\n* Incluir escenarios de prueba seleccionables: nominal, pérdida de paquetes, paquete corrupto, pérdida GPS y reset simulado.\n* Transmitir inicialmente por USB Serial a la notebook.\n\n## Entregable\n\nFirmware `GCS_FlightSimulator v0.1` + ejemplo de log de una misión completa.\n\n## Criterio de finalización\n\n* Emite 1 paquete/s durante una misión completa.\n* El formato es parseable y compatible con CONAE.\n* El perfil de vuelo tiene estados y variables coherentes.\n* Al menos un escenario de fallo puede activarse.\n* Funciona conectado por USB sin depender todavía del SX1276.\n\n",
+      "status": "En curso",
+      "assignee": "Cristian Ponsone",
+      "creator": "Eduardo Landoni",
+      "updated": "2026-10-17T12:51:27.592-0300",
+      "key": "ASTRA-20",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-20",
+      "owner_is_cristian": true,
+      "comments_complete": true,
+      "changelog_complete": true,
+      "comments": [
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:14:52.795-0300",
+          "updated": "2026-10-17T12:14:52.795-0300",
+          "body": "## Evaluación del banco frente a v2 — 17/10/2026\n\nQuedó conservado en Drive un banco Python y sketch ESP32 USB con perfil heredado v1, 131 muestras y escenarios NOMINAL/PACKET_LOSS/CORRUPTED_PACKET/GPS_LOSS/RESET. Nueve pruebas de software vuelven a aprobar: nominal 131 válidos; pérdidas 13 huecos; corruptos 10 rechazos y 10 huecos; RESET lógico tres huecos.\n\nPendientes: identificar placa y compilar/cargar; medir tasa USB; corregir escenario de verificación C3 (h=500−(t−30)² no sostiene 15±3 m/s); distinguir señales IMU ilustrativas de dinámica coherente. RESET es omisión de entrega con contador/hora en RAM, no corte/reinicio físico F1/F2/F5. El ASCII22 y nombres de estados ya no figuran como formato obligatorio en el PDF v2 y quedan por confirmar en ICD.\n\nInforme y alcance: https://docs.google.com/document/d/1WwZ83me8W0qA7T8eum6xSrYxVtpbYoT9OYq1Z0WPMNI/edit?usp=drivesdk  \nCódigo, tests y logs sintéticos: https://drive.google.com/drive/folders/16P_8tdACes23uirmR-koQlB5iE0oVhEf\n\nEste comentario documenta el prototipo; la tarea conserva su estado y no se afirma ensayo de hardware.",
+          "id": "10008",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10008"
+        },
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:31:19.882-0300",
+          "updated": "2026-10-17T12:41:52.867-0300",
+          "body": "## Bitácora 17/10/2026 — desarrollo del simulador de misión y alcance alcanzado\n\n### Por qué lo hicimos\n\nTengo el microcontrolador destinado a tierra, aunque todavía no identifiqué el modelo exacto y no tengo la antena. Se preparó un banco que permita desarrollar recepción, parser, registro y pantalla antes de integrar SX1276 o depender del firmware STM32 de Edu. No requiere comprar hardware para iniciar en PC y evita fijar unilateralmente el Radio Profile.\n\n### Qué esperamos demostrar\n\nUna misión sintética transmitida/entregada a razón nominal de una muestra por segundo, con variables y estado visibles, registro íntegro de paquetes aceptados y anomalías detectables. Queremos mantener el mismo payload y parser cuando el transporte USB provenga después del gateway RF, sujeto al ICD acordado.\n\n### Qué hicimos\n\nBanco Python separado en simulator.py, protocol.py, acquisition.py, storage.py y app.py. Sketch GCS_FlightSimulator.ino preparado para Arduino ESP32, todavía sin compilación/carga. Se genera una misión de 131 instantes de muestreo: plataforma, ascenso, apogeo, descenso, eventos de recuperación y aterrizaje. Altitud, presión, temperatura, alimentación, IMU y GPS son ficticios. Se conserva perfil ASCII22 heredado de v1, marcado como banco pendiente de aprobación; 1000 es TEAM_ID ficticio. No hay radio ni actuadores.\n\n### Escenarios y resultados de software\n\n* NOMINAL: 131 paquetes válidos, cero huecos observados.\n* PACKET_LOSS: 118 válidos y 13 huecos observados.\n* CORRUPTED_PACKET: 121 válidos, 10 rechazados y 10 huecos.\n* GPS_LOSS: 131 válidos; retención del último fix y señal de ausencia mediante GPS_SATS=0, convención provisional del banco.\n* RESET: 128 válidos y tres huecos; omisión lógica de entrega con contador y hora conservados en RAM.\n\nNueve tests aprobados: misión/estados; reconstrucción en todos los tamaños de fragmento ensayados; recuperación de trama excesiva; validación; atrasados/duplicados/huecos; salto grande sin reservar memoria proporcional; cinco escenarios con comparación de dos CSV; GPS retenido; sesiones sin sobrescritura. Durante la verificación se detectó una colisión de nombres al crear sesiones casi simultáneas: se corrigió agregando identificador único a la carpeta y se repitieron los tests con éxito.\n\n### Hasta dónde llegamos y por qué\n\nSe verificó software en la notebook. Faltan modelo exacto de placa, toolchain/configuración, compilación, carga y puerto físico. RESET no ejecuta reinicio real ni corte: no acredita F1/F2/F5. PACKET_LOSS no es una medición RF. La primera fase de descenso usa h=500−(t−30)² y no representa régimen sostenido 15±3 m/s: corregir antes de usarla como evidencia C3. Las lecturas IMU son ilustrativas y no validan dinámica. La tasa real de hardware y dos horas de continuidad no se ensayaron.\n\n### Evidencia y repetición\n\nCódigo, sketch, nueve tests, informe de verificación y logs/CSV de los cinco escenarios: https://drive.google.com/file/d/1dOL2imloQJ7vsTKhMbexEt3YG8NyAUSK/view  \nCarpeta de respaldo documental: https://drive.google.com/drive/folders/16P_8tdACes23uirmR-koQlB5iE0oVhEf  \nDentro del paquete ejecutar python app.py para NOMINAL, o --scenario PACKET_LOSS/CORRUPTED_PACKET/GPS_LOSS/RESET. Repetir software con python -m unittest -v test_ground. Serial exige pyserial y puerto real identificado. El código y la evidencia quedan accesibles por enlace; el intento de adjuntar el ZIP directamente a Jira no llegó a completarse porque el host de carga no resolvió en esta sesión.\n\n### Material para PDR y siguiente paso\n\nSe puede afirmar que existe un prototipo reproducible con escenarios y validación de software. Corregir perfil físico, cerrar esquema con Edu, identificar placa y ensayar USB antes de integrar RF. No afirmar misión real, cumplimiento integral v2 ni persistencia física.",
+          "id": "10022",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10022"
+        },
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:43:28.289-0300",
+          "updated": "2026-10-17T12:43:28.289-0300",
+          "body": "## Bitácora 17/10/2026 — estado de trabajo y alcance\n\nPaso esta tarea de Backlog a **En curso**.\n\nYa preparé el simulador PC y el sketch ESP32, ejecuté nueve pruebas de software y conservé los registros. Me falta identificar la placa, corregir el perfil de verificación y probar USB físico.\n\nUso Backlog para ideas que todavía no asumimos; Por hacer para trabajo previsto sin iniciar; y En curso cuando ya estoy trabajando. La tarea sigue abierta hasta cumplir sus criterios y conservar la evidencia. En adelante gestiono únicamente tareas que creé o que están asignadas a mí; las dependencias con Edu y Rebe las documento desde mis propias tareas.",
+          "id": "10030",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10030"
+        },
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:45:26.936-0300",
+          "updated": "2026-10-17T12:45:26.936-0300",
+          "body": "## Bitácora 17/10/2026 — redacción y estados de mis tareas\n\nCorregí doce comentarios propios y las referencias equivalentes del informe para que expresen mi trabajo en primera persona y el trabajo compartido como equipo. Conservé el contenido técnico y las capturas de las descripciones anteriores; la corrección es de redacción y autoría, sin atribuir nuevos ensayos o aprobaciones.\n\nOrganizo mis tareas con este criterio:\n\n* **En curso:** ASTRA-18 (evaluación RF), ASTRA-20 (simulador), ASTRA-21 (recepción/CSV) y ASTRA-22 (pantalla). Ya tengo análisis, implementación o evidencia de trabajo iniciado; todavía quedan sus criterios de cierre.\n* **Por hacer:** ASTRA-23 (integración SX1276), ASTRA-24 (interoperabilidad) y ASTRA-25 (link budget). Son compromisos de desarrollo y ensayo, pendientes de comenzar en su alcance específico y de resolver sus dependencias.\n* **Backlog:** lo reservo para ideas que todavía no asumimos como trabajo previsto. No cierro una tarea sólo por documentarla o por tener pruebas parciales.\n\nDe ahora en adelante sólo modifico tareas que creé o que están asignadas a mí. Documento las dependencias con Edu y Rebe desde mis tareas, sin intervenir en las suyas. Para esta corrección puntual de autoría revisé únicamente comentarios que yo había publicado; no cambié estados, responsables ni descripciones de sus tareas. Los próximos avances quedan registrados en la tarea correspondiente con motivo, alcance, resultados, limitaciones y evidencia.",
+          "id": "10036",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10036"
+        },
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:51:27.592-0300",
+          "updated": "2026-10-17T12:51:27.592-0300",
+          "body": "## 17/10/2026 — COMENTARIO 5 — Metodología fija del diario\n\nAcordamos registrar la evolución del proyecto como un diario que conserva íntegramente cada entrada. Aplico este criterio desde ahora como metodología fija de trabajo y trazabilidad para el PDR.\n\n### Entradas originales\n\nRegistro cada avance con fecha real, número correlativo dentro de la tarea y tema:\n\n**DD/MM/AAAA — COMENTARIO N — tema**\n\nDejo qué hice o hicimos, por qué, qué esperábamos, hasta dónde llegamos, pruebas/resultados, evidencia, limitaciones y pendientes.\n\n### Cambios posteriores\n\nSi una decisión cambia, deja de servir o necesita una corrección, no borro, edito ni sustituyo la entrada anterior. Publico un comentario nuevo:\n\n**DD/MM/AAAA — ACTUALIZACIÓN COMENTARIO N (del DD/MM/AAAA) — tema**\n\nIdentifico el original con su número, fecha y enlace. Explico qué punto actualizo, qué cambió, por qué, con qué evidencia, desde cuándo aplica y qué consecuencias tiene para el diseño, las pruebas y otras tareas. Indico si la conclusión anterior queda corregida, ampliada, sustituida o descartada, pero siempre conservo su contenido.\n\nSi hay varias actualizaciones de la misma decisión, vinculo también la actualización anterior para reconstruir toda la cadena. Para los comentarios antiguos sin numeración uso su fecha y enlace de Jira; no los edito para renumerarlos ni cambio retroactivamente su fecha.\n\n### Ejemplo de aplicación\n\nSi inicialmente seleccionamos un microcontrolador para prototipo y posteriormente validamos que sirve para vuelo, conservo la entrada inicial. Agrego una actualización a esa entrada con los requisitos revisados, pruebas y fundamentos que respaldan su nuevo uso. Una posibilidad o una simulación no se registra como validación física ya realizada.\n\n### Descripciones, estados y archivos\n\nMantengo la descripción original de la tarea. Los cambios de alcance o criterio técnico se registran en nuevas actualizaciones. Los archivos se conservan por versión, sin reemplazar el original vinculado a una entrada anterior. Los estados operativos pueden avanzar mediante las transiciones de Jira y dejo el motivo en el diario; su evolución no borra el trabajo anterior.\n\nEsta metodología sustituye el criterio anterior que permitía actualizar una descripción después de conservar una copia. Desde ahora la actualización va en una entrada nueva. Para la organización vigente: ideas en Backlog, trabajo previsto en Por hacer y trabajo iniciado en En curso. Sólo gestiono tareas que creé o que están asignadas a mí, y escribo por mi trabajo en primera persona y por el equipo cuando corresponda.",
+          "id": "10037",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-20?focusedCommentId=10037"
+        }
+      ],
+      "excluded_comments": 0,
+      "changelog": [
+        {
+          "id": "10077",
+          "author": "Eduardo Landoni",
+          "created": "2026-10-13T01:43:10.718-0300",
+          "items": [
+            {
+              "field": "Rank",
+              "fromString": "",
+              "toString": "Ranked higher"
+            }
+          ]
+        },
+        {
+          "id": "10089",
+          "author": "Eduardo Landoni",
+          "created": "2026-10-13T01:56:09.606-0300",
+          "items": [
+            {
+              "field": "assignee",
+              "fromString": "cristianponsone9",
+              "toString": "Cristian Ponsone"
+            }
+          ]
+        },
+        {
+          "id": "10120",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:42:32.873-0300",
+          "items": [
+            {
+              "field": "status",
+              "fromString": "Backlog",
+              "toString": "Por hacer"
+            }
+          ]
+        },
+        {
+          "id": "10127",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:43:19.226-0300",
+          "items": [
+            {
+              "field": "status",
+              "fromString": "Por hacer",
+              "toString": "En curso"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "summary": "GND — Implementar receptor serial, parser y logging CSV v0.1",
+      "description": "## Objetivo\n\nCrear la capa de adquisición de la Ground Station independiente de la GUI y del medio RF.\n\n## Trabajo a realizar\n\n* Abrir/reconectar puerto serie de forma robusta.\n* Recibir líneas ASCII completas y validar framing.\n* Parsear todos los campos CONAE.\n* Rechazar/registrar paquetes malformados sin bloquear la aplicación.\n* Calcular paquetes recibidos y perdidos usando PACKET_COUNT.\n* Registrar telemetría en `Flight_<TEAM_ID>.csv` con encabezados correctos.\n* Diseñar la capa para que posteriormente la fuente USB pueda reemplazarse por el gateway SX1276 sin modificar parser/GUI.\n\n## Entregable\n\nMódulo de ingestión/parsing/logging v0.1 + CSV generado desde el simulador ESP32.\n\n## Criterio de finalización\n\n* Procesa una misión simulada completa sin pérdida por software.\n* Detecta saltos de PACKET_COUNT.\n* Tolera líneas corruptas y reconexión del puerto.\n* Genera CSV válido y legible por Excel.\n* La lógica de parsing está desacoplada de la presentación gráfica.\n\n",
+      "status": "En curso",
+      "assignee": "Cristian Ponsone",
+      "creator": "Eduardo Landoni",
+      "updated": "2026-10-17T12:43:30.339-0300",
+      "key": "ASTRA-21",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-21",
+      "owner_is_cristian": true,
+      "comments_complete": true,
+      "changelog_complete": true,
+      "comments": [
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:14:54.870-0300",
+          "updated": "2026-10-17T12:14:54.870-0300",
+          "body": "## Revisión de adquisición y CSV frente a v2 — 17/10/2026\n\nEl banco Python separa framer/parser, adquisición, CSV/registro bruto y GUI. Tiene reconexión serie programada y copia de CSV configurable. G2 sigue vigente. Flight\\_<TEAM_ID>.csv, CR y las 22 columnas se conservan como perfil heredado v1, no formato oficial v2 confirmado.\n\nFalta comprobar puerto/reconexión físicos, dos horas, segundo disco independiente, disco lleno y desconexión del respaldo. Los fallos de CSV se anuncian sin recuperación automática; un fallo del registro bruto puede detener adquisición. Definir política de degradación y recuperación. Acordar identificación de sesión, RX exitosos/únicos/duplicados, límites de pérdidas observables y tratamiento de GPS ausente/antiguo. Los opcionales todavía se rechazan en este adaptador hasta acordar encabezados/esquema.\n\nNo eliminar el filtrado de equipo por retirarse NetID/PANID: son capas diferentes.  \nInforme: https://docs.google.com/document/d/1WwZ83me8W0qA7T8eum6xSrYxVtpbYoT9OYq1Z0WPMNI/edit?usp=drivesdk  \nFuentes y banco: https://drive.google.com/drive/folders/16P_8tdACes23uirmR-koQlB5iE0oVhEf",
+          "id": "10009",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10009"
+        },
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:31:21.802-0300",
+          "updated": "2026-10-17T12:31:21.802-0300",
+          "body": "## Bitácora 17/10/2026 — decisiones de recepción y registro del banco\n\n### Motivo y resultado esperado\n\nNecesitamos conservar datos aunque la interfaz se demore y distinguir errores de enlace, de formato y de almacenamiento. El prototipo v04 exportaba manualmente y guardaba en memoria; el banco Python agrega adquisición y escritura continua separadas de la presentación. La intención es cubrir G2/G14 y preparar el cambio de USB simulado a USB de gateway sin rehacer parser/GUI.\n\n### Decisiones implementadas\n\n* Framer CR acotado a 2048 bytes; una trama excesiva se descarta hasta el próximo CR para recuperar sincronización. El contrato ASCII/CR es heredado de v1 y pendiente del ICD.\n* Validación de número/campos/modo/estado/horas/coordenadas y rechazo de datos no finitos. No equivale a CRC ni detecta toda alteración numérica plausible.\n* Sesión nueva por ejecución y Flight_1000.csv con columnas del perfil heredado; se preservan versiones y no se sobrescribe una misión anterior.\n* reception.jsonl registra recepciones aceptadas, rechazos y desconexiones; los bytes inválidos se guardan en hexadecimal.\n* CSV de registros válidos únicos. Las recepciones duplicadas siguen en el registro bruto. Un paquete atrasado puede completar un hueco sin reemplazar el dato actual en pantalla.\n* Contadores separados de recepciones válidas, registros únicos, duplicados y huecos entre contadores observados. No se inventan pérdidas antes del primer paquete ni después del último. Retrocesos se avisan como ambiguos ante reset/atraso/duplicado.\n* Worker separado de GUI y cola de presentación acotada. Si ésta se llena, se descarta una actualización antigua de pantalla; el CSV no se descarta por esa causa.\n* Reconexión serial programada cada dos segundos y framer nuevo al reconectar para no unir fragmentos de conexiones distintas.\n* CSV con flush/fsync y segunda copia configurable mediante --backup; dos directorios del mismo disco no prueban respaldo independiente.\n\n### Resultados y límites\n\nLos nueve tests de software incluyen fragmentación, tramas inválidas, límites de buffer, duplicados/atrasados y comparación de ambos CSV en escenarios sintéticos. Falta reconexión con cable/puerto real, disco lleno, desconexión de respaldo, dos horas y corte de energía.\n\nUn fallo del log bruto puede detener la adquisición; los errores CSV se anuncian sin reintento/reconstrucción automática. Falta diseñar operación degradada y recuperación. El gateway ESP32 todavía no tiene archivo independiente ni cola durable. GPS ausente/frescura y opcionales necesitan contrato; la adquisición actual rechaza extensiones sin esquema de encabezados acordado.\n\n### Qué sigue y qué sirve para PDR\n\nDefinir política de fallos por destino, identidad de sesión y conteos, y ensayar PC/USB/discos antes de reclamar robustez operativa. El PDR puede mostrar separación de módulos, formato de evidencia y casos sintéticos; la redundancia física sigue como plan.  \nCódigo y logs: https://drive.google.com/file/d/1dOL2imloQJ7vsTKhMbexEt3YG8NyAUSK/view  \nInforme y matriz de migración: https://docs.google.com/document/d/1WwZ83me8W0qA7T8eum6xSrYxVtpbYoT9OYq1Z0WPMNI/edit",
+          "id": "10023",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10023"
+        },
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:43:30.339-0300",
+          "updated": "2026-10-17T12:43:30.339-0300",
+          "body": "## Bitácora 17/10/2026 — estado de trabajo y alcance\n\nPaso esta tarea de Backlog a **En curso**.\n\nYa implementé recepción, parser, contadores y registro CSV en el banco. Me faltan reconexión física, fallos de disco, respaldo independiente y pruebas prolongadas.\n\nUso Backlog para ideas que todavía no asumimos; Por hacer para trabajo previsto sin iniciar; y En curso cuando ya estoy trabajando. La tarea sigue abierta hasta cumplir sus criterios y conservar la evidencia. En adelante gestiono únicamente tareas que creé o que están asignadas a mí; las dependencias con Edu y Rebe las documento desde mis propias tareas.",
+          "id": "10031",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-21?focusedCommentId=10031"
+        }
+      ],
+      "excluded_comments": 0,
+      "changelog": [
+        {
+          "id": "10078",
+          "author": "Eduardo Landoni",
+          "created": "2026-10-13T01:43:11.015-0300",
+          "items": [
+            {
+              "field": "Rank",
+              "fromString": "",
+              "toString": "Ranked higher"
+            }
+          ]
+        },
+        {
+          "id": "10088",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-13T01:56:07.402-0300",
+          "items": [
+            {
+              "field": "assignee",
+              "fromString": "cristianponsone9",
+              "toString": "Cristian Ponsone"
+            }
+          ]
+        },
+        {
+          "id": "10121",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:42:35.357-0300",
+          "items": [
+            {
+              "field": "status",
+              "fromString": "Backlog",
+              "toString": "Por hacer"
+            }
+          ]
+        },
+        {
+          "id": "10128",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:43:21.528-0300",
+          "items": [
+            {
+              "field": "status",
+              "fromString": "Por hacer",
+              "toString": "En curso"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "summary": "GND — Implementar GUI PDR mínima de telemetría en tiempo real",
+      "description": "## Objetivo\n\nConstruir una primera GUI funcional de Ground Station que demuestre el flujo completo de telemetría y cubra los requisitos CONAE aplicables a visualización.\n\n## Trabajo a realizar\n\n* Mostrar simultáneamente los campos de telemetría requeridos, sin pestañas.\n* Usar tema claro, tipografía ≥14 pt y gráficos/ejes legibles bajo luz intensa.\n* Graficar en tiempo real altitud, voltaje, corriente, aceleración XYZ y giro XYZ.\n* Mostrar tiempo de misión, temperatura, GPS, paquetes recibidos/perdidos, estado FSW y CMD_ECHO.\n* Incorporar indicadores de estado de enlace y logging.\n* No acoplar la GUI directamente al puerto serie: consumir datos desde el módulo de telemetría/parser.\n\n## Entregable\n\n`ASTRA Ground Station GUI v0.1` ejecutable en la notebook de Cristian + capturas para PDR.\n\n## Criterio de finalización\n\n* Todos los datos requeridos aparecen simultáneamente.\n* Los gráficos actualizan a 1 Hz sin congelar la interfaz.\n* La GUI permanece operativa durante una misión simulada completa.\n* Diseño compatible con G5–G8 y G12–G14.\n* Capturas y arquitectura listas para la PDR.\n\n",
+      "status": "En curso",
+      "assignee": "Cristian Ponsone",
+      "creator": "Eduardo Landoni",
+      "updated": "2026-10-17T12:43:32.356-0300",
+      "key": "ASTRA-22",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-22",
+      "owner_is_cristian": true,
+      "comments_complete": true,
+      "changelog_complete": true,
+      "comments": [
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:14:56.866-0300",
+          "updated": "2026-10-17T12:14:56.866-0300",
+          "body": "## Revisión de GUI frente a v2 — 17/10/2026\n\nG5–G8 y G12–G14 conservan contenido. El banco Python muestra 22 campos y seis gráficos simultáneos sin pestañas. Se comprobó geometría de ventana; falta inspección bajo sol y en portátil de operación.\n\nG6: presentar giro en rad/s o junto a conversión SI; hoy el banco etiqueta grados/s. Conservar datos brutos con unidad de origen, sin cambiar sólo una etiqueta. Ejes/validez GPS y formato temporal deben cerrarse en el ICD. Falta señal solar y operación de comandos del esquema final; CMD_ECHO=NONE no demuestra ejecución. No transferir a operación el comportamiento de v04 que pausa la simulación al abrir una ayuda.\n\nInforme: https://docs.google.com/document/d/1WwZ83me8W0qA7T8eum6xSrYxVtpbYoT9OYq1Z0WPMNI/edit?usp=drivesdk  \nBanco y evidencias sintéticas: https://drive.google.com/drive/folders/16P_8tdACes23uirmR-koQlB5iE0oVhEf",
+          "id": "10010",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-22?focusedCommentId=10010"
+        },
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:31:23.792-0300",
+          "updated": "2026-10-17T12:31:23.792-0300",
+          "body": "## Bitácora 17/10/2026 — pantalla del banco y límites de validación\n\n### Por qué y qué se buscó\n\nG5–G8/G12–G14 requieren lectura y gráficos simultáneos, legibilidad bajo luz intensa y conteos/estado visibles. La pantalla consume la adquisición separada para mantener el registro aunque el dibujo demore. Se eligió Tkinter para que la simulación PC funcione con el Python disponible sin instalar un framework gráfico adicional.\n\n### Qué hicimos y verificamos\n\nGUI con 22 campos del perfil heredado y seis gráficos simultáneos: altitud, voltaje, corriente, aceleración XYZ, giro XYZ y presión. Fondo claro, texto de 14 pt, ejes destacados, sin pestañas. Se muestra conexión, logging, respaldo configurado/ausente, conteos y advertencia de datos antiguos tras tres segundos. El gráfico deja abiertos los huecos entre contadores. Historial de presentación acotado a 300 muestras, independiente del archivo.\n\nComprobación geométrica: ventana de 1450×949, 45 etiquetas y seis gráficos; ninguna etiqueta fuera de la ventana en la comprobación realizada. No fue un ensayo bajo sol ni valida todo tamaño/escala de portátil. Las nueve pruebas corresponden al software de datos; no certifican legibilidad ni operación de campo.\n\n### Límites y siguiente trabajo\n\nFaltan telecomandos y señal solar del esquema definitivo. El giro se muestra en grados/s: para G6 acordar y presentar conversión a rad/s con unidad correcta, conservando los datos originales. MODE/STATE/CMD_ECHO/horas/GPS siguen el perfil de banco v1 y requieren ICD. En el HTML v04 abrir una ayuda pausa la simulación; ese comportamiento no se adopta como recepción operativa.\n\nEl PDR puede mostrar la interfaz y el flujo de datos sintéticos con etiqueta de simulación. Para cerrar: notebook real, sol, distancia de lectura, resolución/escala, dos horas y casos de enlace/registro fallidos.  \nCódigo y evidencia: https://drive.google.com/file/d/1dOL2imloQJ7vsTKhMbexEt3YG8NyAUSK/view  \nInforme: https://docs.google.com/document/d/1WwZ83me8W0qA7T8eum6xSrYxVtpbYoT9OYq1Z0WPMNI/edit",
+          "id": "10024",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-22?focusedCommentId=10024"
+        },
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:43:32.356-0300",
+          "updated": "2026-10-17T12:43:32.356-0300",
+          "body": "## Bitácora 17/10/2026 — estado de trabajo y alcance\n\nPaso esta tarea de Backlog a **En curso**.\n\nYa implementé la pantalla del banco con telemetría y gráficos simultáneos. Me faltan unidades/payload definitivos, solar/comandos y prueba de legibilidad con la notebook real.\n\nUso Backlog para ideas que todavía no asumimos; Por hacer para trabajo previsto sin iniciar; y En curso cuando ya estoy trabajando. La tarea sigue abierta hasta cumplir sus criterios y conservar la evidencia. En adelante gestiono únicamente tareas que creé o que están asignadas a mí; las dependencias con Edu y Rebe las documento desde mis propias tareas.",
+          "id": "10032",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-22?focusedCommentId=10032"
+        }
+      ],
+      "excluded_comments": 0,
+      "changelog": [
+        {
+          "id": "10079",
+          "author": "Eduardo Landoni",
+          "created": "2026-10-13T01:43:11.324-0300",
+          "items": [
+            {
+              "field": "Rank",
+              "fromString": "",
+              "toString": "Ranked higher"
+            }
+          ]
+        },
+        {
+          "id": "10086",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-13T01:56:02.014-0300",
+          "items": [
+            {
+              "field": "assignee",
+              "fromString": "cristianponsone9",
+              "toString": "Cristian Ponsone"
+            }
+          ]
+        },
+        {
+          "id": "10122",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:42:37.690-0300",
+          "items": [
+            {
+              "field": "status",
+              "fromString": "Backlog",
+              "toString": "Por hacer"
+            }
+          ]
+        },
+        {
+          "id": "10129",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:43:24.059-0300",
+          "items": [
+            {
+              "field": "status",
+              "fromString": "Por hacer",
+              "toString": "En curso"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "summary": "COMMS — Integrar SX1276 con ESP32 Ground Radio",
+      "description": "## Objetivo\n\nIntegrar el módulo SX1276 con el ESP32 de Ground Station y convertirlo en un gateway RF↔USB conforme al Radio Profile/ICD aprobado.\n\n## Trabajo a realizar\n\n* Cablear SPI, RESET e IRQ/DIO necesarios.\n* Implementar inicialización y configuración del SX1276 desde parámetros centralizados.\n* Aplicar frecuencia, modulación, sync/network ID, addressing, CRC, potencia y demás parámetros del ICD.\n* Recibir telemetría RF y reenviarla a la notebook sin modificar el contenido del paquete.\n* Recibir telecomandos desde la notebook y transmitirlos al CanSat.\n* Reportar errores de radio y, cuando sea posible, métricas como RSSI/SNR.\n\n## Entregable\n\nFirmware `ASTRA_GroundRadio v0.1` + esquema de conexiones ESP32↔SX1276.\n\n## Criterio de finalización\n\n* RX y TX bidireccional demostrados en banco.\n* Configuración coincide exactamente con el ICD vigente.\n* No se utiliza broadcast.\n* El gateway puede operar de forma continua sin resets durante al menos 2 h de ensayo de banco.\n* La aplicación de PC no requiere cambios en parser/GUI al pasar de simulador USB a RF.\n\n",
+      "status": "Por hacer",
+      "assignee": "Cristian Ponsone",
+      "creator": "Eduardo Landoni",
+      "updated": "2026-10-17T12:43:35.005-0300",
+      "key": "ASTRA-23",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-23",
+      "owner_is_cristian": true,
+      "comments_complete": true,
+      "changelog_complete": true,
+      "comments": [
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:15:03.037-0300",
+          "updated": "2026-10-17T12:15:03.037-0300",
+          "body": "## Trazabilidad RF v2 — 17/10/2026\n\nActualizar referencias a X1–X6: broadcast es X2; tasa 1 Hz X4; contenido X5; batería/solar X6; X3 comienzo de misión requiere aclaración. NetID/PANID con número de equipo ya no aparece como obligación en v2.\n\nMantener dependencia del Radio Profile/ICD compartido ASTRA-18/19. No hay parámetros RF elegidos por esta auditoría. Destino sin broadcast, CRC, comandos/respuestas y payload versionado se prueban con ambos extremos en ASTRA-24; filtrado de TEAM_ID no prueba ausencia de broadcast ni inmunidad a interferencias. La estimación de tiempo de aire ASTRA-25 debe recalcularse con el paquete máximo y sobrecargas acordados.\n\nInforme: https://docs.google.com/document/d/1WwZ83me8W0qA7T8eum6xSrYxVtpbYoT9OYq1Z0WPMNI/edit?usp=drivesdk  \nFuentes: https://drive.google.com/drive/folders/16P_8tdACes23uirmR-koQlB5iE0oVhEf",
+          "id": "10013",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-23?focusedCommentId=10013"
+        },
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:43:35.005-0300",
+          "updated": "2026-10-17T12:43:35.005-0300",
+          "body": "## Bitácora 17/10/2026 — estado de trabajo y alcance\n\nPaso esta tarea de Backlog a **Por hacer**.\n\nVoy a integrar SX1276 con el ESP32 cuando identifiquemos el módulo y cerremos el Radio Profile/ICD. Es trabajo previsto, todavía sin cableado ni integración RF realizados.\n\nUso Backlog para ideas que todavía no asumimos; Por hacer para trabajo previsto sin iniciar; y En curso cuando ya estoy trabajando. La tarea sigue abierta hasta cumplir sus criterios y conservar la evidencia. En adelante gestiono únicamente tareas que creé o que están asignadas a mí; las dependencias con Edu y Rebe las documento desde mis propias tareas.",
+          "id": "10033",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-23?focusedCommentId=10033"
+        }
+      ],
+      "excluded_comments": 0,
+      "changelog": [
+        {
+          "id": "10080",
+          "author": "Eduardo Landoni",
+          "created": "2026-10-13T01:43:11.687-0300",
+          "items": [
+            {
+              "field": "Rank",
+              "fromString": "",
+              "toString": "Ranked higher"
+            }
+          ]
+        },
+        {
+          "id": "10085",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-13T01:55:56.632-0300",
+          "items": [
+            {
+              "field": "assignee",
+              "fromString": "cristianponsone9",
+              "toString": "Cristian Ponsone"
+            }
+          ]
+        },
+        {
+          "id": "10123",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:42:39.952-0300",
+          "items": [
+            {
+              "field": "status",
+              "fromString": "Backlog",
+              "toString": "Por hacer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "summary": "COMMS — Ejecutar prueba de interoperabilidad STM32 ↔ ESP32/SX1276",
+      "description": "## Objetivo\n\nDemostrar que los dos extremos desarrollados por separado interoperan usando exclusivamente la baseline del ICD de comunicaciones.\n\n## Trabajo a realizar\n\n* Configurar Black Pill + SX1276 con el mismo Radio Profile que Ground Station.\n* Ejecutar telemetría STM32→ESP32 y telecomandos ESP32→STM32.\n* Verificar formato, TEAM_ID, packet count, CRC, addressing/unicast y CMD_ECHO.\n* Probar reinicio de uno de los extremos y recuperación del enlace.\n* Registrar incompatibilidades como issue y corregir el ICD antes que aplicar parches locales divergentes.\n\n## Responsabilidades\n\nCristian lidera el ensayo de interfaz/Ground Segment. Edu implementa y corrige el extremo STM32/Flight Software. Cambios compartidos requieren actualización del ICD.\n\n## Entregable\n\nActa de prueba de interoperabilidad v0.1 con configuración utilizada, resultados, fallos y evidencias.\n\n## Criterio de finalización\n\n* Telemetría válida recibida durante una misión simulada completa.\n* Telecomandos obligatorios de prueba cruzan el enlace y generan respuesta/CMD_ECHO.\n* Se demuestra recuperación tras al menos un reset controlado.\n* No existen parámetros RF hardcodeados de forma contradictoria entre ambos firmwares.\n\n",
+      "status": "Por hacer",
+      "assignee": "Cristian Ponsone",
+      "creator": "Eduardo Landoni",
+      "updated": "2026-10-17T12:43:37.055-0300",
+      "key": "ASTRA-24",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-24",
+      "owner_is_cristian": true,
+      "comments_complete": true,
+      "changelog_complete": true,
+      "comments": [
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:43:37.008-0300",
+          "updated": "2026-10-17T12:43:37.008-0300",
+          "body": "## Bitácora 17/10/2026 — estado de trabajo y alcance\n\nPaso esta tarea de Backlog a **Por hacer**.\n\nVoy a realizar con Edu la prueba de interoperabilidad entre ambos extremos. Depende del ICD y de los firmwares y módulos integrados; todavía no iniciamos ese ensayo.\n\nUso Backlog para ideas que todavía no asumimos; Por hacer para trabajo previsto sin iniciar; y En curso cuando ya estoy trabajando. La tarea sigue abierta hasta cumplir sus criterios y conservar la evidencia. En adelante gestiono únicamente tareas que creé o que están asignadas a mí; las dependencias con Edu y Rebe las documento desde mis propias tareas.",
+          "id": "10034",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-24?focusedCommentId=10034"
+        }
+      ],
+      "excluded_comments": 0,
+      "changelog": [
+        {
+          "id": "10082",
+          "author": "Eduardo Landoni",
+          "created": "2026-10-13T01:54:43.792-0300",
+          "items": [
+            {
+              "field": "Rank",
+              "fromString": "",
+              "toString": "Ranked higher"
+            }
+          ]
+        },
+        {
+          "id": "10084",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-13T01:55:51.090-0300",
+          "items": [
+            {
+              "field": "assignee",
+              "fromString": "cristianponsone9",
+              "toString": "Cristian Ponsone"
+            }
+          ]
+        },
+        {
+          "id": "10124",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:42:42.448-0300",
+          "items": [
+            {
+              "field": "status",
+              "fromString": "Backlog",
+              "toString": "Por hacer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "summary": "COMMS — Realizar link budget preliminar y plan de ensayo RF 915 MHz",
+      "description": "## Objetivo\n\nCuantificar el margen esperado del enlace CanSat↔Ground Station y definir cómo se verificará experimentalmente antes de CDR/FRR.\n\n## Trabajo a realizar\n\n* Relevar potencia TX, sensibilidad RX, pérdidas de cable/conectores y ganancias de antena con fuentes oficiales.\n* Calcular FSPL para distancias representativas del perfil de misión y un caso conservador.\n* Definir margen de enlace preliminar.\n* Considerar orientación/polarización, shadowing por estructura y pérdida por desalineación.\n* Proponer escalera de ensayos LOS a distancias crecientes con registro de RSSI/SNR/packet loss.\n* Identificar qué datos de antenas/módulos siguen TBD.\n\n## Entregable\n\nLink budget v0.1 + plan de ensayo RF.\n\n## Criterio de finalización\n\n* Todas las entradas del cálculo tienen fuente o están marcadas TBD.\n* Se reporta margen de enlace y sensibilidad a pérdidas adicionales.\n* Existe un plan de ensayo reproducible.\n* Resultados listos para alimentar selección de antena definitiva y PDR/CDR.\n\n",
+      "status": "Por hacer",
+      "assignee": "Cristian Ponsone",
+      "creator": "Eduardo Landoni",
+      "updated": "2026-10-17T12:43:38.943-0300",
+      "key": "ASTRA-25",
+      "url": "https://astrateam2026.atlassian.net/browse/ASTRA-25",
+      "owner_is_cristian": true,
+      "comments_complete": true,
+      "changelog_complete": true,
+      "comments": [
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:31:32.033-0300",
+          "updated": "2026-10-17T12:31:32.033-0300",
+          "body": "## Bitácora 17/10/2026 — capacidad de enlace y redundancia como antecedentes de diseño\n\n### Por qué se analizó\n\nNecesitamos sostener telemetría a 1 Hz y permitir comandos sin que duplicados o recuperación de históricos ocupen todo el enlace. Antes de elegir modo/perfil calculamos tiempo de aire y memoria; no damos por probado un alcance por usar SX1276.\n\n### Trabajo y resultados anteriores conservados\n\nEl cálculo de capacidad se contrastó en 2304 comparaciones de fórmulas con el driver de referencia usado en el análisis. Ejemplo hipotético LoRa, BW125 kHz, CR4/5, preámbulo 8, cabecera explícita, CRC: un payload de 200 bytes requiere 317,696 ms en SF7, 563,712 ms en SF8 y 1004,544 ms en SF9. Son resultados de ese conjunto de supuestos, no el Radio Profile elegido. En SF9 ese paquete ya supera un segundo antes de comandos/márgenes.\n\nCon 200 B de datos y 24 B locales, dos minutos a 1 Hz ocupan 26 880 B y dos horas 1 612 800 B, antes de otros costos. Un ejemplo de recuperación con histórico de 208 B, comando de 23 B y margen total50 ms permite un histórico adicional por ventana de segundo en SF7; con paquete actual200 B no cabe bajo ese esquema SF8. Recuperación masiva compite con datos actuales: prioridad inferior y control de backlog por acordar.\n\n### Qué cambia con v2 y qué falta\n\nAl no incluir el anexo consultado un formato detallado, hay que cerrar en ICD payload máximo, envolvente/destino, integridad, respuestas y reintentos y recalcular. El programa de fórmulas no prueba propagación, antenas, potencia, sensibilidad del módulo instalado, interferencias ni pérdidas reales. Falta link budget trazable y escalera de ensayos LOS con RSSI/SNR/pérdidas según modo.\n\nNo se eligen SF, modulación, potencia ni frecuencia por estos ejemplos. La comparación LoRa/FSK/GFSK y aislamiento lógico se registra en ASTRA-18. Dos receptores o memorias sólo se justifican por la falla que cubren y sus dependencias comunes; no hay segunda estación física validada.\n\n### Evidencia para el PDR\n\nCódigo reproducible: https://github.com/edulandoni/astra-cansat/blob/docs/ground-station-continuidad/verification/ground-station-capacity-analysis.py  \nResultados: https://github.com/edulandoni/astra-cansat/blob/docs/ground-station-continuidad/verification/ground-station-capacity-analysis.json  \nModelo de redundancia: https://github.com/edulandoni/astra-cansat/blob/docs/ground-station-continuidad/verification/ground-station-redundancy-analysis.js  \nInforme de fuentes/antecedentes e impacto actual: https://docs.google.com/document/d/1WwZ83me8W0qA7T8eum6xSrYxVtpbYoT9OYq1Z0WPMNI/edit  \nPara usarlo en PDR presentar hipótesis, resultados teóricos y validación RF todavía pendiente.",
+          "id": "10028",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-25?focusedCommentId=10028"
+        },
+        {
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:43:38.943-0300",
+          "updated": "2026-10-17T12:43:38.943-0300",
+          "body": "## Bitácora 17/10/2026 — estado de trabajo y alcance\n\nPaso esta tarea de Backlog a **Por hacer**.\n\nVoy a preparar el link budget y el plan RF. Los cálculos previos de tiempo de aire y memoria son antecedentes útiles, pero todavía no constituyen el presupuesto de enlace con parámetros y antenas concretos.\n\nUso Backlog para ideas que todavía no asumimos; Por hacer para trabajo previsto sin iniciar; y En curso cuando ya estoy trabajando. La tarea sigue abierta hasta cumplir sus criterios y conservar la evidencia. En adelante gestiono únicamente tareas que creé o que están asignadas a mí; las dependencias con Edu y Rebe las documento desde mis propias tareas.",
+          "id": "10035",
+          "url": "https://astrateam2026.atlassian.net/browse/ASTRA-25?focusedCommentId=10035"
+        }
+      ],
+      "excluded_comments": 0,
+      "changelog": [
+        {
+          "id": "10081",
+          "author": "Eduardo Landoni",
+          "created": "2026-10-13T01:53:22.576-0300",
+          "items": [
+            {
+              "field": "assignee",
+              "fromString": "cristianponsone9",
+              "toString": "Cristian Ponsone"
+            }
+          ]
+        },
+        {
+          "id": "10083",
+          "author": "Eduardo Landoni",
+          "created": "2026-10-13T01:54:44.171-0300",
+          "items": [
+            {
+              "field": "Rank",
+              "fromString": "",
+              "toString": "Ranked higher"
+            }
+          ]
+        },
+        {
+          "id": "10125",
+          "author": "Cristian Ponsone",
+          "created": "2026-10-17T12:42:44.849-0300",
+          "items": [
+            {
+              "field": "status",
+              "fromString": "Backlog",
+              "toString": "Por hacer"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "export_note": "Copia pública de contenido autorizado: omito correos, identificadores de cuenta y comentarios restringidos o internos. Conservo el original en Jira. No incluyo adjuntos binarios ni reacciones."
+}

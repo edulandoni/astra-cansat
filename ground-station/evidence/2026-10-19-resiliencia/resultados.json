@@ -1,0 +1,63 @@
+{
+  "captured_utc": "2026-10-19T23:10:59.623066+00:00",
+  "scope": "Experimentos de integración de software, sin GUI ejecutada, hardware, RF ni cortes físicos.",
+  "source_sha256": {
+    "acquisition.py": "78e5cc82aeab68ae8b1767f6fd9ef3c7c196b6a914a21d37ef2a11efcc19d20a",
+    "storage.py": "c6156a5956deed4ea4bd134afb1d9f7c5b86df47d905a656c71201419a1dc119",
+    "protocol.py": "ffa0342449326ba7c9a14b2ccd1c557324bbc2c6979d94ba13332742be7ca1fd",
+    "simulator.py": "ce99626666d5c52f96b1d6f248dd4270cd09413ea19b132087b033eaae37d3e6"
+  },
+  "cases": [
+    {
+      "case": "7200_paquetes_sin_consumidor_de_pantalla",
+      "received": 7200,
+      "unique": 7200,
+      "invalid": 0,
+      "presentation_queue": 250,
+      "latest_count": 7200,
+      "csv_rows": 7200,
+      "raw_events": 7200,
+      "elapsed_seconds": 6.155729299993254,
+      "csv_sha256": "8dcf392da40701c01a3c18961d466b36f9b1e9daa18f29b9cafae439aa2db5ab",
+      "observation": "Conservo los 7200 registros en CSV y raw aunque solo quedan 250 actualizaciones en la cola de presentación. No ejecuto la GUI ni dos horas de operación real."
+    },
+    {
+      "case": "csv_principal_falla_diez_escrituras_y_vuelve",
+      "received": 31,
+      "primary_csv_rows": 21,
+      "backup_csv_rows": 31,
+      "raw_events": 31,
+      "missing_primary_counts": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "error_reported": "FALLO_SINTETICO_CSV_PRINCIPAL",
+      "observation": "El CSV de respaldo y raw conservan los 31 mensajes. El principal recupera escritura pero no rellena los diez faltantes. Son dos carpetas del mismo disco, no soportes independientes."
+    },
+    {
+      "case": "apertura_fallida_corte_y_reconexion_virtual",
+      "open_attempts": 3,
+      "disconnect_events": 2,
+      "retry_delays_requested_seconds": [
+        2,
+        2
+      ],
+      "csv_packet_counts": [
+        2,
+        3
+      ],
+      "invalid": 0,
+      "files_closed": true,
+      "observation": "Ejecuto el bucle serie real con un sustituto que entrega bytes/excepciones. Descarta el fragmento anterior al corte y recibe los dos paquetes completos de la nueva conexión. Las esperas de 2 s se registran sin realizarlas; no prueba controlador USB, COM real ni temporización física."
+    }
+  ],
+  "checks": "Todas las comprobaciones de conteos y contenido especificadas en el experimento se cumplieron."
+}

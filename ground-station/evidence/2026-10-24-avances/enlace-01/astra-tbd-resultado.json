@@ -1,0 +1,66 @@
+{
+  "label": "ASTRA: entradas pendientes, sin perfil aprobado",
+  "example_only": false,
+  "missing": [
+    "frequency_mhz",
+    "distance_m",
+    "tx_power_dbm",
+    "tx_gain_dbi",
+    "rx_gain_dbi",
+    "tx_cable_loss_db",
+    "rx_cable_loss_db",
+    "polarization_loss_db",
+    "other_loss_db",
+    "rx_sensitivity_dbm",
+    "required_margin_db"
+  ],
+  "fspl_db": null,
+  "received_power_dbm": null,
+  "margin_db": null,
+  "headroom_above_required_db": null,
+  "additional_loss_sweep": [
+    {
+      "extra_loss_db": 0,
+      "margin_db": null
+    },
+    {
+      "extra_loss_db": 3,
+      "margin_db": null
+    },
+    {
+      "extra_loss_db": 6,
+      "margin_db": null
+    },
+    {
+      "extra_loss_db": 10,
+      "margin_db": null
+    }
+  ],
+  "values": {
+    "frequency_mhz": null,
+    "distance_m": null,
+    "tx_power_dbm": null,
+    "tx_gain_dbi": null,
+    "rx_gain_dbi": null,
+    "tx_cable_loss_db": null,
+    "rx_cable_loss_db": null,
+    "polarization_loss_db": null,
+    "other_loss_db": null,
+    "rx_sensitivity_dbm": null,
+    "required_margin_db": null
+  },
+  "sources": {
+    "frequency_mhz": "TBD: acuerdo o medición requerida",
+    "distance_m": "TBD: acuerdo o medición requerida",
+    "tx_power_dbm": "TBD: acuerdo o medición requerida",
+    "tx_gain_dbi": "TBD: acuerdo o medición requerida",
+    "rx_gain_dbi": "TBD: acuerdo o medición requerida",
+    "tx_cable_loss_db": "TBD: acuerdo o medición requerida",
+    "rx_cable_loss_db": "TBD: acuerdo o medición requerida",
+    "polarization_loss_db": "TBD: acuerdo o medición requerida",
+    "other_loss_db": "TBD: acuerdo o medición requerida",
+    "rx_sensitivity_dbm": "TBD: acuerdo o medición requerida",
+    "required_margin_db": "TBD: acuerdo o medición requerida"
+  },
+  "limits": "Referencia de espacio libre, no alcance medido. Ganancias en la dirección real y sensibilidad del mismo modo/perfil. No incluye automáticamente suelo, interferencia, shadowing o normativa. TBD no se reemplaza por cero."
+}

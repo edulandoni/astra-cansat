@@ -1,0 +1,30 @@
+ASTRA - verificacion de software 17/10/2026
+
+test_framing_all_chunk_sizes (test_ground.GroundTests.test_framing_all_chunk_sizes) ... ok
+test_full_nominal_and_states (test_ground.GroundTests.test_full_nominal_and_states) ... ok
+test_gaps_late_duplicates (test_ground.GroundTests.test_gaps_late_duplicates) ... ok
+test_gps_loss_retains_last_fix (test_ground.GroundTests.test_gps_loss_retains_last_fix) ... ok
+test_large_gap_is_bounded (test_ground.GroundTests.test_large_gap_is_bounded) ... ok
+test_overlong_recovers (test_ground.GroundTests.test_overlong_recovers) ... ok
+test_scenarios_and_recording (test_ground.GroundTests.test_scenarios_and_recording) ... ok
+test_sessions_do_not_overwrite (test_ground.GroundTests.test_sessions_do_not_overwrite) ... ok
+test_strict_validation (test_ground.GroundTests.test_strict_validation) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 2.015s
+
+OK
+
+NOMINAL: RX=131; huecos=0; rechazados=0; CSV=evidence\NOMINAL\20261017T143502_186952Z_0612803b7d61\Flight_1000.csv
+
+PACKET_LOSS: RX=118; huecos=13; rechazados=0; CSV=evidence\PACKET_LOSS\20261017T143502_404329Z_ebd27af1d5dc\Flight_1000.csv
+
+CORRUPTED_PACKET: RX=121; huecos=10; rechazados=10; CSV=evidence\CORRUPTED_PACKET\20261017T143502_565048Z_5502aebd8d1c\Flight_1000.csv
+
+GPS_LOSS: RX=131; huecos=0; rechazados=0; CSV=evidence\GPS_LOSS\20261017T143502_737568Z_77868ac41cdf\Flight_1000.csv
+
+RESET: RX=128; huecos=3; rechazados=0; CSV=evidence\RESET\20261017T143502_889871Z_024d2196e9e4\Flight_1000.csv
+
+Ensayos acelerados de software, sin puerto USB fisico ni RF.
+Firmware ESP32 sin compilar/cargar, modelo de placa pendiente.
+GUI: 1450x949, 45 etiquetas y seis graficos, sin etiquetas fuera de ventana en chequeo geometrico. No es verificacion visual bajo sol.

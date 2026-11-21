@@ -1,0 +1,163 @@
+{
+  "context": {
+    "team": "TEAM_BENCH",
+    "local": "ground",
+    "peer": "flight",
+    "version": "POLICY_EXPERIMENT_1"
+  },
+  "vectors": [
+    {
+      "case": "propio",
+      "input": {
+        "team": "TEAM_BENCH",
+        "source": "flight",
+        "destination": "ground",
+        "version": "POLICY_EXPERIMENT_1",
+        "broadcast": false,
+        "integrity_checked": true
+      },
+      "expected": "ACCEPT",
+      "actual": "ACCEPT",
+      "passed": true
+    },
+    {
+      "case": "equipo_ajeno",
+      "input": {
+        "team": "OTHER",
+        "source": "flight",
+        "destination": "ground",
+        "version": "POLICY_EXPERIMENT_1",
+        "broadcast": false,
+        "integrity_checked": true
+      },
+      "expected": "FOREIGN_TEAM",
+      "actual": "FOREIGN_TEAM",
+      "passed": true
+    },
+    {
+      "case": "destino_otro",
+      "input": {
+        "team": "TEAM_BENCH",
+        "source": "flight",
+        "destination": "elsewhere",
+        "version": "POLICY_EXPERIMENT_1",
+        "broadcast": false,
+        "integrity_checked": true
+      },
+      "expected": "OTHER_DESTINATION",
+      "actual": "OTHER_DESTINATION",
+      "passed": true
+    },
+    {
+      "case": "origen_no_esperado",
+      "input": {
+        "team": "TEAM_BENCH",
+        "source": "elsewhere",
+        "destination": "ground",
+        "version": "POLICY_EXPERIMENT_1",
+        "broadcast": false,
+        "integrity_checked": true
+      },
+      "expected": "UNEXPECTED_SOURCE",
+      "actual": "UNEXPECTED_SOURCE",
+      "passed": true
+    },
+    {
+      "case": "version_incompatible",
+      "input": {
+        "team": "TEAM_BENCH",
+        "source": "flight",
+        "destination": "ground",
+        "version": "other",
+        "broadcast": false,
+        "integrity_checked": true
+      },
+      "expected": "UNSUPPORTED_VERSION",
+      "actual": "UNSUPPORTED_VERSION",
+      "passed": true
+    },
+    {
+      "case": "integridad_fallida",
+      "input": {
+        "team": "TEAM_BENCH",
+        "source": "flight",
+        "destination": "ground",
+        "version": "POLICY_EXPERIMENT_1",
+        "broadcast": false,
+        "integrity_checked": false
+      },
+      "expected": "INTEGRITY_NOT_VERIFIED",
+      "actual": "INTEGRITY_NOT_VERIFIED",
+      "passed": true
+    },
+    {
+      "case": "integridad_no_comprobada",
+      "input": {
+        "team": "TEAM_BENCH",
+        "source": "flight",
+        "destination": "ground",
+        "version": "POLICY_EXPERIMENT_1",
+        "broadcast": false
+      },
+      "expected": "INTEGRITY_NOT_VERIFIED",
+      "actual": "INTEGRITY_NOT_VERIFIED",
+      "passed": true
+    },
+    {
+      "case": "broadcast",
+      "input": {
+        "team": "TEAM_BENCH",
+        "source": "flight",
+        "destination": "ground",
+        "version": "POLICY_EXPERIMENT_1",
+        "broadcast": true,
+        "integrity_checked": true
+      },
+      "expected": "BROADCAST_REJECTED",
+      "actual": "BROADCAST_REJECTED",
+      "passed": true
+    },
+    {
+      "case": "broadcast_sin_politica",
+      "input": {
+        "team": "TEAM_BENCH",
+        "source": "flight",
+        "destination": "ground",
+        "version": "POLICY_EXPERIMENT_1",
+        "integrity_checked": true
+      },
+      "expected": "UNKNOWN_DESTINATION_POLICY",
+      "actual": "UNKNOWN_DESTINATION_POLICY",
+      "passed": true
+    },
+    {
+      "case": "sin_destino",
+      "input": {
+        "team": "TEAM_BENCH",
+        "source": "flight",
+        "version": "POLICY_EXPERIMENT_1",
+        "broadcast": false,
+        "integrity_checked": true
+      },
+      "expected": "MISSING_METADATA",
+      "actual": "MISSING_METADATA",
+      "passed": true
+    },
+    {
+      "case": "broadcast_no_booleano",
+      "input": {
+        "team": "TEAM_BENCH",
+        "source": "flight",
+        "destination": "ground",
+        "version": "POLICY_EXPERIMENT_1",
+        "broadcast": "false",
+        "integrity_checked": true
+      },
+      "expected": "UNKNOWN_DESTINATION_POLICY",
+      "actual": "UNKNOWN_DESTINATION_POLICY",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "scope": "Metadatos ficticios; no bytes de vuelo o perfil adoptado, CRC calculado, autenticación o RF. No resuelve colisiones ni impide recepción física de otras señales."
+}

@@ -1,0 +1,191 @@
+{
+  "recorded_utc": "2026-10-27T15:16:58.183349+00:00",
+  "jira": [
+    "ASTRA-39",
+    "ASTRA-41"
+  ],
+  "unit": "camera1",
+  "physical_test": true,
+  "photo_visible_window_confirmed": true,
+  "firmware": {
+    "application_sha256": "853d3f665d2ed0fb369e14f1cd8cc6ce59d307dd5893925bdb5f2aff2cbe00e5",
+    "application_address": "0x10000",
+    "esptool_hash_verified": true,
+    "returncode": 0,
+    "partitions_unchanged": true,
+    "bootloader_written": false
+  },
+  "sequence_reader": {
+    "profile": "camera-sequence-0.1",
+    "origin": "camera",
+    "complete": true,
+    "expected_frames": 12,
+    "checked_frames": 12,
+    "errors": [],
+    "frames": [
+      {
+        "index": 1,
+        "file": "frame_0001.jpg",
+        "capture_us": 39114913,
+        "bytes": 16834,
+        "sha256": "926fc5fb5f188c4fb5fa330992654eb6004b224d5071cdb0da36c61c396276e7"
+      },
+      {
+        "index": 2,
+        "file": "frame_0002.jpg",
+        "capture_us": 39234883,
+        "bytes": 16736,
+        "sha256": "7d97da9f05ddb81e31f31bcbde56b828ea026ae89dbe18b2957e01377936ed48"
+      },
+      {
+        "index": 3,
+        "file": "frame_0003.jpg",
+        "capture_us": 39834639,
+        "bytes": 16844,
+        "sha256": "c751a3d004ce61877cf3b65831bebf475bfc48bc9863e8c6b2c1ace1b2c01e8d"
+      },
+      {
+        "index": 4,
+        "file": "frame_0004.jpg",
+        "capture_us": 40394417,
+        "bytes": 17067,
+        "sha256": "3baf973c7b1599a5ac7ebe1fcc18a59955efbaea54910d6ff3f6d1d5fda1fa8e"
+      },
+      {
+        "index": 5,
+        "file": "frame_0005.jpg",
+        "capture_us": 40994176,
+        "bytes": 17179,
+        "sha256": "3f68d078d53062869d252f00708bb8ae0a8ee08bf6c71952528fa256ebf0b319"
+      },
+      {
+        "index": 6,
+        "file": "frame_0006.jpg",
+        "capture_us": 41593936,
+        "bytes": 17243,
+        "sha256": "9647634fb6cbe169ecad45835baa9bd585df975d5c9c2a84beafc0eaef9b2a53"
+      },
+      {
+        "index": 7,
+        "file": "frame_0007.jpg",
+        "capture_us": 42193695,
+        "bytes": 17094,
+        "sha256": "73fdb7ecccc8cf37f15a5c6735aed39ced19d3dacfe1484f7062f74fffeb1e4d"
+      },
+      {
+        "index": 8,
+        "file": "frame_0008.jpg",
+        "capture_us": 42793458,
+        "bytes": 16949,
+        "sha256": "4bf4e8716e758fc91cf8aee75ebc8cc2af79302beb411e9cae665a220430d048"
+      },
+      {
+        "index": 9,
+        "file": "frame_0009.jpg",
+        "capture_us": 43393216,
+        "bytes": 16976,
+        "sha256": "88475a2f286ed4cb2daa8f43df74f804979981309d3aea41bb5c506ebc9c0b78"
+      },
+      {
+        "index": 10,
+        "file": "frame_0010.jpg",
+        "capture_us": 43992981,
+        "bytes": 16961,
+        "sha256": "5c1c424635975c06427e72b3fecf4d675908229ed019184306020aec6170a5c9"
+      },
+      {
+        "index": 11,
+        "file": "frame_0011.jpg",
+        "capture_us": 44592735,
+        "bytes": 16937,
+        "sha256": "64f14d0977090ef1df44cdcd9c51b72470009ebc2f36508a872b980b0152ab3e"
+      },
+      {
+        "index": 12,
+        "file": "frame_0012.jpg",
+        "capture_us": 45192497,
+        "bytes": 16898,
+        "sha256": "574423869a6f487349122646e8fcc14131578ead831f211a9ae1d6fe078f6adb"
+      }
+    ],
+    "originals_unchanged": true,
+    "fingerprinted_files": 12,
+    "declared_files": 12,
+    "first_to_last_seconds": 6.077584,
+    "intervals_seconds": [
+      0.11997,
+      0.599756,
+      0.559778,
+      0.599759,
+      0.59976,
+      0.599759,
+      0.599763,
+      0.599758,
+      0.599765,
+      0.599754,
+      0.599762
+    ],
+    "mean_interval_fps": 1.8099297352368968,
+    "note": "Cadencia entre marcas declaradas desde arranque; no mide exposición, reloj UTC, continuidad física, audio ni energía. pc-fixture es simulación."
+  },
+  "copied_files": 26,
+  "copy_verified": true,
+  "photo_independent_sd_readback": true,
+  "old_photos_preserved": 9,
+  "historical_files": {
+    "matches_on_current_card": 5,
+    "absent_on_current_card": 19,
+    "all_24_local_backups_verified": true,
+    "absence_time_and_cause_unknown": true,
+    "note": "Comparación con referencias históricas; no dispongo de inventario independiente de esta tarjeta inmediatamente anterior al ensayo. No repongo ni borro originales."
+  },
+  "video_export": {
+    "state": "verified",
+    "source_origin": "camera",
+    "audio": false,
+    "frames": 12,
+    "source_timestamps_us": [
+      0,
+      119970,
+      719726,
+      1279504,
+      1879263,
+      2479023,
+      3078782,
+      3678545,
+      4278303,
+      4878068,
+      5477822,
+      6077584
+    ],
+    "decoded_timestamps_us": [
+      0,
+      119970,
+      719726,
+      1279504,
+      1879263,
+      2479023,
+      3078782,
+      3678545,
+      4278303,
+      4878068,
+      5477822,
+      6077584
+    ],
+    "max_timestamp_error_us": 0,
+    "first_to_last_seconds": 6.077584,
+    "container_duration_us": 6117584,
+    "originals_unchanged": true,
+    "sha256": "3dfe5b7e48bfdb32135690060742c61d63a97f33ef7331bea8652d0fce197cf3",
+    "pyav_version": "19.0.1",
+    "note": "MP4 H.264 derivado con recompresión; JPEG originales conservados. Sin interpolación ni audio. Tiempos relativos del emisor, no exposición exacta ni UTC. La duración final del último cuadro pertenece al contenedor; no se midió como captura.",
+    "recorded_utc": "2026-10-27T15:10:24.513521+00:00"
+  },
+  "limits": [
+    "Una secuencia corta, una cámara, una tarjeta; no fiabilidad estadística",
+    "Cadencia medida de marcas del emisor; no exposición exacta, reloj UTC o 25 fps de captura",
+    "MP4 derivado en PC, no contenedor MP4 grabado por la cámara",
+    "Sin audio, consumo, autonomía, apagado ni tolerancia a reset verificados",
+    "Fotos y video privados, sin adjuntos binarios públicos"
+  ]
+}

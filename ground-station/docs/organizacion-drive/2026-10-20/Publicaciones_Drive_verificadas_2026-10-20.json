@@ -1,0 +1,161 @@
+{
+  "fecha": "2026-10-20",
+  "jira": "ASTRA-33",
+  "publicaciones": [
+    {
+      "name": "00_EMPEZAR_ACA_2026-10-20.md",
+      "id": "12H-VdifFyThzj4Tz-kXOLtM6EO0BBj49",
+      "url": "https://drive.google.com/file/d/12H-VdifFyThzj4Tz-kXOLtM6EO0BBj49/view?usp=drivesdk",
+      "parent_id": "1A0cwBwNxL71eGML2LtCtk9gcUtgK1u50",
+      "kind": "guia",
+      "local_sha256": "62df725f3f9e36e683caad377b6eaf34fddebed333d5f348462571736af1c199",
+      "source": null
+    },
+    {
+      "name": "Mantenimiento_y_mejora_continua_2026-10-20.md",
+      "id": "1CI3WMSbKoRgJsBWNnndZ4AgolJRQ-34V",
+      "url": "https://drive.google.com/file/d/1CI3WMSbKoRgJsBWNnndZ4AgolJRQ-34V/view?usp=drivesdk",
+      "parent_id": "1vj3ahMZcdAkrf8ePNREI_fyzy82ZsogP",
+      "kind": "guia",
+      "local_sha256": "8772c11ae043488198527260b467ece48425d31a293c2508fdf0603ccb36bbc8",
+      "source": null
+    },
+    {
+      "name": "Mapa_Drive_Jira_GitHub_2026-10-20.md",
+      "id": "1LIF_YtBnltenTIXojtHhaE4o8xGO4hWM",
+      "url": "https://drive.google.com/file/d/1LIF_YtBnltenTIXojtHhaE4o8xGO4hWM/view?usp=drivesdk",
+      "parent_id": "1vj3ahMZcdAkrf8ePNREI_fyzy82ZsogP",
+      "kind": "guia",
+      "local_sha256": "018214ef7e82ee774c04275b16330bb102d3be4c4ae8cbdb82cee7f7606f62b0",
+      "source": null
+    },
+    {
+      "name": "Desarrollo_y_banco_USB_2026-10-20.md",
+      "id": "1V22bAxp2p7CfRRPXy0tF3X1WKu5_lmme",
+      "url": "https://drive.google.com/file/d/1V22bAxp2p7CfRRPXy0tF3X1WKu5_lmme/view?usp=drivesdk",
+      "parent_id": "1f0FDLVv-JTNntZuxuveJLvkG6OPM0QP8",
+      "kind": "guia",
+      "local_sha256": "6baa4fe6e5a14d2131dc42ff36f702a078d2e5a5f59ecd147eedb2f624915679",
+      "source": null
+    },
+    {
+      "name": "Requisitos_fuentes_y_pendientes_2026-10-20.md",
+      "id": "18f7j--mGYvyaIkXE4ntVa9wrJUvQkufe",
+      "url": "https://drive.google.com/file/d/18f7j--mGYvyaIkXE4ntVa9wrJUvQkufe/view?usp=drivesdk",
+      "parent_id": "1-bP1G1SJQ0rPiITxEWzIyLK3W5qofIK0",
+      "kind": "guia",
+      "local_sha256": "fe2c140b150667a601962cae1c0cb6ebbf5ac69ca64ed521ebb273bbe51f280b",
+      "source": null
+    },
+    {
+      "name": "Historico_y_DEPRECATED_2026-10-20.md",
+      "id": "1LrhGfuercaFtbWMkDHTgNRuSJQK0bZkU",
+      "url": "https://drive.google.com/file/d/1LrhGfuercaFtbWMkDHTgNRuSJQK0bZkU/view?usp=drivesdk",
+      "parent_id": "1m8UuMYo1uPxvCZOqLKsNPPRGEoFaxsp9",
+      "kind": "guia",
+      "local_sha256": "f37d4f06783270e1858c7d71d3d22e74e032f46507e8e78ecda6fce39847de70",
+      "source": null
+    },
+    {
+      "name": "Investigacion_y_estado_de_las_ideas_2026-10-20.md",
+      "id": "1qfDXLtABcSzrIQQSNry1O0dk1WwH50Q7",
+      "url": "https://drive.google.com/file/d/1qfDXLtABcSzrIQQSNry1O0dk1WwH50Q7/view?usp=drivesdk",
+      "parent_id": "1S8nVqudilvHrPWxr1FW-ZRHrQbQNSukE",
+      "kind": "guia",
+      "local_sha256": "4371d1ca0964c2ea05071d19e9d6e07df7668cecf681e360fbd91ae254c13caf",
+      "source": null
+    },
+    {
+      "name": "Ensayos_evidencia_y_reproduccion_2026-10-20.md",
+      "id": "1FMIqxAZqkdamJMJ1ObIlpMjkH3cictql",
+      "url": "https://drive.google.com/file/d/1FMIqxAZqkdamJMJ1ObIlpMjkH3cictql/view?usp=drivesdk",
+      "parent_id": "13_8vXCp0y_ZmDmbBt74g-o_noXORcOKM",
+      "kind": "guia",
+      "local_sha256": "c6a3a93234e812450cede15518793f6b1f3b4c649578959999facfba8a4ac6ba",
+      "source": null
+    },
+    {
+      "name": "Material_PDR_y_video_2026-10-20.md",
+      "id": "1EwFMrUSZiGu_atCcs1zzDbjkYfCeBI2t",
+      "url": "https://drive.google.com/file/d/1EwFMrUSZiGu_atCcs1zzDbjkYfCeBI2t/view?usp=drivesdk",
+      "parent_id": "1t_MY6pQ0dQlwyEijGzghcCDUrdUNqTSH",
+      "kind": "guia",
+      "local_sha256": "14d88bae98837318d3b261eecc181981a867aebfedd17114edc49c0579e2fbf5",
+      "source": null
+    },
+    {
+      "name": "pendientes-groundstation-2026-10-19.md",
+      "id": "16HjPLx0ZMEbL0WdGY1lDWt8jv_e0I3rc",
+      "url": "https://drive.google.com/file/d/16HjPLx0ZMEbL0WdGY1lDWt8jv_e0I3rc/view?usp=drivesdk",
+      "parent_id": "1i523f6PGiS5qzzRei1rGly_dQpq7r40M",
+      "kind": "copia_consulta",
+      "local_sha256": "604ca7259084b915c4cd6d8ce5e53728e8f2118f707c24fd490dab351c326659",
+      "source": "docs/interfaces/pendientes-groundstation-2026-10-19.md"
+    },
+    {
+      "name": "metodologia-2026-10-19.md",
+      "id": "1yoskwMYdTVN5KPfzVKdPSEZRRXY1cYwe",
+      "url": "https://drive.google.com/file/d/1yoskwMYdTVN5KPfzVKdPSEZRRXY1cYwe/view?usp=drivesdk",
+      "parent_id": "1i523f6PGiS5qzzRei1rGly_dQpq7r40M",
+      "kind": "copia_consulta",
+      "local_sha256": "cc3c8547c52db8b4721c873c37e86ab69bd22fa4556a4f3a856a02e801289b77",
+      "source": "docs/metodologia-2026-10-19.md"
+    },
+    {
+      "name": "2026-10-19-innovacion-y-prevencion.md",
+      "id": "1b01Qc7DAqaV8GyF8z_vSYI0Awmmb96Af",
+      "url": "https://drive.google.com/file/d/1b01Qc7DAqaV8GyF8z_vSYI0Awmmb96Af/view?usp=drivesdk",
+      "parent_id": "1IL0hGxgxzt7K8_Q6PNfYtTM3dF8S3niU",
+      "kind": "copia_consulta",
+      "local_sha256": "28b885a55015d223f7b294786e3145585ae76d9df56eec12737198e7b9b0bddc",
+      "source": "docs/investigacion/2026-10-19-innovacion-y-prevencion.md"
+    },
+    {
+      "name": "2026-10-19-resiliencia-y-recuperacion.md",
+      "id": "1-uOQrEel2tuwk48ZgtxhgpxgkEa5nWSp",
+      "url": "https://drive.google.com/file/d/1-uOQrEel2tuwk48ZgtxhgpxgkEa5nWSp/view?usp=drivesdk",
+      "parent_id": "13_8vXCp0y_ZmDmbBt74g-o_noXORcOKM",
+      "kind": "copia_consulta",
+      "local_sha256": "0f6b486ccb4ebb565e920ec1fa92c3c7cd8a1c7843142e52149e5c9d589c33fb",
+      "source": "docs/investigacion/2026-10-19-resiliencia-y-recuperacion.md"
+    },
+    {
+      "name": "pruebas-2026-10-19.md",
+      "id": "1v8u_g9v9e9b2qoAf5Nu1Df1pvaNWE4pb",
+      "url": "https://drive.google.com/file/d/1v8u_g9v9e9b2qoAf5Nu1Df1pvaNWE4pb/view?usp=drivesdk",
+      "parent_id": "13_8vXCp0y_ZmDmbBt74g-o_noXORcOKM",
+      "kind": "copia_consulta",
+      "local_sha256": "eb8be016c09e5378987288709ed87b1eacc0bf246bde57dc92ce94c5fd5af32d",
+      "source": "docs/pruebas-2026-10-19.md"
+    },
+    {
+      "name": "v1-v2-groundstation-2026-10-19.md",
+      "id": "1ORgTrnnD88SJ4IgM_b0T2sgaNnEQbmz-",
+      "url": "https://drive.google.com/file/d/1ORgTrnnD88SJ4IgM_b0T2sgaNnEQbmz-/view?usp=drivesdk",
+      "parent_id": "1iFKw_xhV6nifKSPLrurKMlmgZBXnxfPb",
+      "kind": "copia_consulta",
+      "local_sha256": "dc252ebf457f9ff689ddb338b63c149dc6fd7e4e6356f9b1ded3603b4e36e1ed",
+      "source": "docs/requisitos/v1-v2-groundstation-2026-10-19.md"
+    },
+    {
+      "name": "Evidencias_y_experimentos_PC_2026-10-19.zip",
+      "id": "1iivBri2-v-b6dQeOi7q9KId0zxaM8ACf",
+      "url": "https://drive.google.com/file/d/1iivBri2-v-b6dQeOi7q9KId0zxaM8ACf/view?usp=drivesdk",
+      "parent_id": "13_8vXCp0y_ZmDmbBt74g-o_noXORcOKM",
+      "kind": "evidencia",
+      "local_sha256": "1351e3d6ddca1e643e63dcd4a3ebf70ae02542fe353e94782bc990fe1ef8c289",
+      "source": null
+    },
+    {
+      "name": "Registro_movimientos_Drive_2026-10-20.json",
+      "id": "1HzmyHC56TMmEU8mlIeICc2xucVqjt9JP",
+      "url": "https://drive.google.com/file/d/1HzmyHC56TMmEU8mlIeICc2xucVqjt9JP/view?usp=drivesdk",
+      "parent_id": "1vj3ahMZcdAkrf8ePNREI_fyzy82ZsogP",
+      "kind": "registro",
+      "local_sha256": "8d6cfef880c8f7e2390f2e246f00e03105216a8b13f0cc4d562f5d7f69f93f7a",
+      "source": null
+    }
+  ],
+  "verification": "15 Markdown releídos completos con igualdad tras normalizar fin de línea; JSON semánticamente idéntico; ZIP idéntico por SHA-256. Nombres y carpetas verificados. 20 movimientos/cambios de nombre con identificadores preservados.",
+  "evidence_zip_files_verified": 39
+}

@@ -1,0 +1,57 @@
+{
+  "created_utc": "2026-10-27T16:13:27.893442+00:00",
+  "jira": [
+    "ASTRA-39",
+    "ASTRA-41",
+    "ASTRA-24"
+  ],
+  "software_tests": {
+    "camera_suite": 43,
+    "laboratory_suite": 26,
+    "laboratory_subprocess_returncode": 0,
+    "network_fixture": "PC HTTP server; no physical streaming claim",
+    "qt_platform": "offscreen"
+  },
+  "firmware": {
+    "arduino_cli": "1.5.1",
+    "arduino_esp32": "3.3.12",
+    "fqbn": "esp32:esp32:esp32cam",
+    "program_bytes": 1118015,
+    "static_bytes": 58540,
+    "identity_verified": true,
+    "same_partitions_as_tested": true,
+    "application_only_offset": "0x10000",
+    "binary_bytes": 1118160,
+    "binary_sha256": "ba24abe39077f5002a509a5efc238b8bee0e042f4404f5e75ff169d9050f18b6",
+    "upload_exit": 0,
+    "flash_verified": true,
+    "sd_formatted": false
+  },
+  "physical_info": {
+    "unit": "camera1",
+    "identity_verified": true,
+    "ready": true,
+    "psram_bytes": 4194304,
+    "wifi_not_started_at_boot_reported": true,
+    "extra_manual_reset_after_flash": false
+  },
+  "pending": [
+    "physical Wi-Fi activation and image",
+    "measured fps and capture-to-display latency",
+    "SD and streaming coexistence",
+    "continuous autonomous recording",
+    "independent two-card simultaneous test",
+    "power and reset continuity",
+    "cold start without USB/buttons"
+  ],
+  "source_sha256": {
+    "ground-station/camaras-banco/firmware/AstraCameraPreviewBench/AstraCameraPreviewBench.ino": "bba506c644282f07886239322e5cf76f1b2c98d2bbde0cf50f456900bfd5afa8",
+    "ground-station/camaras-banco/firmware/AstraCameraPreviewBench/preview_wifi.h": "854631e76b26a1549423c6ba88437a5f21aaaaf2d1aadc2aa8dde0486d077ed3",
+    "ground-station/camaras-banco/firmware/AstraCameraPreviewBench/sequence_capture.h": "f98b91f025a3dd52cc42da6aa42903a5337238acd10638e4cc9657175bc2d9f9",
+    "ground-station/laboratorio/camera_stream.py": "f286d0980104e573b144a14edc4cfcff47fa95e3b8c97660d30ec75a4b20384e",
+    "ground-station/laboratorio/camera_health.py": "0ef97a72e7944b581ce1526864673a76747ecd943bc9a5843a9d1192e9d36110",
+    "ground-station/laboratorio/qt_camera_live.py": "e1be6b64cddcaf8812a988efd6490184a58dab901f55b8bccbf31a5198418d9c",
+    "ground-station/laboratorio/qt_app.py": "f3a640ad28c4354f6f19bffa31b7425c8e9ba6fcfcc67effcb61157ddba5b43e",
+    "ground-station/camaras-banco/preview_control.py": "5d1f0941f0b57ce1b0ea9dce48313ddb5e27933ce30021d0f1b85aac552873ff"
+  }
+}

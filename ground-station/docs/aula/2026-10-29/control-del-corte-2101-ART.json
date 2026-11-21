@@ -1,0 +1,55 @@
+{
+  "execution_id": "respaldo-diario-jira-github-groundstation/2026-10-29T23:59:29.426Z",
+  "cut_utc": "2026-10-30T00:01:02Z",
+  "cut_argentina": "2026-10-29T21:01:02 ART",
+  "status": "PARCIAL",
+  "last_successful_cut": "20/10/2026 21:03 ART",
+  "previous_cut": "28/10/2026 22:20 ART",
+  "attempts": [
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/course/view.php?id=106",
+      "result": "Timeout fetching"
+    },
+    {
+      "url": "https://educacion.conae.gov.ar/aulavirtual/login/index.php",
+      "result": "Timeout fetching"
+    }
+  ],
+  "credentials_entered": false,
+  "public_pages_read": [
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/cronograma",
+    "https://www.argentina.gob.ar/ciencia/conae/cansat-argentina/requisitos-cansat-universitario/como-me-inscribo"
+  ],
+  "public_result": "Texto relevante sin cambios sustantivos detectados; binarios no revalidados",
+  "current_message_count": null,
+  "entries_revalidated_today": false,
+  "pending": [
+    "Secciones y recursos actuales",
+    "Foros, mensajes completos, respuestas y adjuntos desde el último acceso válido",
+    "Calendario y entrega",
+    "Versiones y huellas",
+    "Audiovisuales nuevos o modificados",
+    "Documentación del vector y ensayos ambientales"
+  ],
+  "source_issue_update": "Sin aviso repetido en ASTRA-37",
+  "research": {
+    "queries": [
+      "\"Daedalus\" \"CanSat\" \"PFR\" 2025",
+      "\"DJS Arya\" \"Mark Walker\" technical ground station documentation"
+    ],
+    "result": "Sin evidencia técnica nueva útil obtenida; no otra ficha ni comentario repetido",
+    "attempted_url": "https://spaceac.tech/competition/daedalus",
+    "attempt_result": "Timeout fetching",
+    "new_images_inspected": 0,
+    "documents_in_search_not_claimed_read": true
+  },
+  "downloads": "Sin descargas binarias ni movimientos de Descargas",
+  "desktop_used": false,
+  "limits": [
+    "No afirmo ausencia de novedades del aula",
+    "Timeout no demuestra caída global",
+    "Sin 100% de cobertura",
+    "No declaro inexistente la documentación no localizada"
+  ]
+}
+
