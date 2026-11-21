@@ -1,0 +1,182 @@
+{
+  "partialBudget": {
+    "kind": "subtotales_ilustrativos_de_precios_textuales_no_cotizacion_actual",
+    "sourceRows": "Sheet1!A2:F25",
+    "unitPriceAssumption": "F interpretado como precio unitario para este ejemplo; requiere confirmar donde no dice c/u",
+    "oneUnitInstalledPerListedType": true,
+    "low": 98600,
+    "high": 105400,
+    "optionalServo": 7200,
+    "knownPendingRadioAndBeacon": {
+      "flightLow": 18800,
+      "flightHigh": 20800,
+      "ground": 16800,
+      "totalLow": 35600,
+      "totalHigh": 37600
+    },
+    "excluded": [
+      "microSD tarjeta: precio variable",
+      "regulacion/proteccion final y montaje",
+      "camaras",
+      "estructura y mecanismos",
+      "paracaidas",
+      "interruptores, capacitores y conectores",
+      "PCB",
+      "costos/logistica que correspondan",
+      "componentes adquiridos cuyo precio real no consta"
+    ],
+    "regulatoryLimitARS": 1000000,
+    "limitStrictlyLess": true,
+    "groundExcludedByC9": true
+  },
+  "derivedChecks": {
+    "at24c32TotalBytes": 4096,
+    "telemetryRecordsAt224Bytes": 18,
+    "holdTime470uF100mA500mVDropSeconds": 0.0023499999999999997,
+    "holdTime100uF100mA500mVDropSeconds": 0.0005
+  },
+  "greenCount": 17,
+  "pendingCount": 7,
+  "statusContradictions": [
+    {
+      "row": 3,
+      "subsystem": "Programación",
+      "item": "ST-Link V2",
+      "qty": 1,
+      "fill": "FF92D050",
+      "status": "COMPRAR",
+      "price": "~$7k",
+      "available": true
+    },
+    {
+      "row": 4,
+      "subsystem": "Batería",
+      "item": "18650 Samsung INR18650-30Q 3000 mAh",
+      "qty": 2,
+      "fill": "FF92D050",
+      "status": "COMPRAR",
+      "price": "~$19–20k c/u",
+      "available": true
+    },
+    {
+      "row": 5,
+      "subsystem": "Carga/protección",
+      "item": "TP4056 USB-C con protección",
+      "qty": 2,
+      "fill": "FF92D050",
+      "status": "COMPRAR",
+      "price": "~$3–5k c/u",
+      "available": true
+    },
+    {
+      "row": 6,
+      "subsystem": "Conversión 5 V",
+      "item": "SX1308/MT3608 2 A",
+      "qty": 2,
+      "fill": "FF92D050",
+      "status": "COMPRAR PARA BANCO",
+      "price": "~$3–4k",
+      "available": true
+    },
+    {
+      "row": 8,
+      "subsystem": "Temperatura interna",
+      "item": "DS18B20 TO-92",
+      "qty": 2,
+      "fill": "FF92D050",
+      "status": "COMPRAR",
+      "price": "~$2,4k",
+      "available": true
+    },
+    {
+      "row": 9,
+      "subsystem": "IMU",
+      "item": "MPU9250/6500",
+      "qty": 2,
+      "fill": "FF00B050",
+      "status": "COMPRAR",
+      "price": "~$5,8–6,1k",
+      "available": true
+    },
+    {
+      "row": 10,
+      "subsystem": "GNSS",
+      "item": "ATGM336H + antena",
+      "qty": 1,
+      "fill": "FF00B050",
+      "status": "COMPRAR",
+      "price": "~$18k",
+      "available": true
+    },
+    {
+      "row": 11,
+      "subsystem": "V/I batería",
+      "item": "INA3221 3 canales",
+      "qty": 2,
+      "fill": "FF92D050",
+      "status": "COMPRAR",
+      "price": "~$5,1k",
+      "available": true
+    },
+    {
+      "row": 12,
+      "subsystem": "RTC + persistencia",
+      "item": "DS3231 + AT24C32",
+      "qty": 1,
+      "fill": "FF92D050",
+      "status": "COMPRAR",
+      "price": "~$6k",
+      "available": true
+    },
+    {
+      "row": 14,
+      "subsystem": "Memoria",
+      "item": "microSD 16/32 GB High Endurance",
+      "qty": 1,
+      "fill": "FF00B050",
+      "status": "COMPRAR",
+      "price": "variable",
+      "available": true
+    },
+    {
+      "row": 15,
+      "subsystem": "Solar",
+      "item": "Panel 5 V ~25 mA, ~45×25 mm",
+      "qty": 1,
+      "fill": "FF92D050",
+      "status": "COMPRAR",
+      "price": "~$6–7k",
+      "available": true
+    },
+    {
+      "row": 18,
+      "subsystem": "Gateway tierra",
+      "item": "ESP32",
+      "qty": 1,
+      "fill": "FF00B050",
+      "status": "USAR SI YA TENÉS",
+      "price": "~$10–15k",
+      "available": true
+    },
+    {
+      "row": 19,
+      "subsystem": "Actuador",
+      "item": "MG90S engranajes metálicos",
+      "qty": 1,
+      "fill": "FF00B050",
+      "status": "ESPERAR/PROTO",
+      "price": "~$7,2k",
+      "available": true
+    },
+    {
+      "row": 23,
+      "subsystem": "Indicador",
+      "item": "LED + resistencia",
+      "qty": 1,
+      "fill": "FF00B050",
+      "status": "COMPRAR",
+      "price": "despreciable",
+      "available": true
+    }
+  ]
+}
