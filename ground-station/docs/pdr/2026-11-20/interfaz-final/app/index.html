@@ -26,7 +26,7 @@ dialog{width:min(600px,calc(100% - 28px));border:1px solid var(--line);border-ra
 <dialog id="confirm"><form method="dialog"><h2 id="dialog-title"></h2><div id="dialog-body"></div><div class="actions"><button value="cancel" autofocus>Cancelar</button><button class="primary" value="confirm" id="dialog-ok">Confirmar</button></div></form></dialog>
 <script>
 "use strict";
-const commands={CAL_ZERO:"Calibrar altura de referencia",SET_TIME:"Ajustar hora UTC",POWER_STATUS:"Consultar energía",RUN:"Iniciar emisión de banco",STOP:"Detener emisión de banco"};
+const commands={CAL_ZERO:"Referencia de altura",SET_TIME:"Ajustar hora UTC",POWER_STATUS:"Consultar energía",RUN:"Iniciar emisión de banco",STOP:"Detener emisión de banco"};
 const fields=[
 ["Misión",[["Equipo","1000"],["Etapa","Ascenso"],["Tipo","Simulación"],["Hora UTC","03:10:49"],["Contador TX","15"],["Eco","NONE"]]],
 ["Ambiente y energía",[["Altura relativa","180.0 m"],["Presión","99.2 kPa"],["Temperatura","21.8 °C"],["Batería","4.10 V"],["Corriente","0.18 A"]]],
@@ -54,7 +54,7 @@ const dialog=document.getElementById("confirm");
 const routes=["operacion","comandos","sesion","diagnostico"];
 const colors=["#006359","#255ba4","#714897"];
 const e=v=>String(v).replace(/[&<>"']/g,s=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[s]));
-const route=()=>routes.includes(location.hash.slice(1))?location.hash.slice(1):"operacion";
+const route=()=>location.hash==="#comandos-banco"?"comandos":routes.includes(location.hash.slice(1))?location.hash.slice(1):"operacion";
 const canRecordCommand=()=>state.active&&state.mode==="bank";
 const metrics=(name,value,label,cls="")=>'<article class="card metric '+cls+'"><label>'+e(name)+'</label><output class="digits">'+e(value)+'</output><p>'+e(label)+'</p></article>';
 function chart([title,ticks,series],i){
@@ -110,6 +110,8 @@ document.addEventListener("change",ev=>{
 });
 document.addEventListener("input",ev=>{if(ev.target.id==="command-time"){state.time=ev.target.value;ev.target.setCustomValidity("");state.preview=false;const b=document.querySelector('[data-action="confirm"]');if(b)b.disabled=true;}});
 document.addEventListener("click",async ev=>{
+ const internal=ev.target.closest("a[href]")?.getAttribute("href");
+ if(internal?.startsWith("#")&&routes.includes(internal.slice(1))){ev.preventDefault();location.hash=internal;return;}
  const a=ev.target.closest("[data-action]")?.dataset.action;
  if(!a)return;
  if(a==="preview"&&canRecordCommand()){
@@ -130,6 +132,7 @@ document.addEventListener("click",async ev=>{
  if(a==="event-copy"){try{await navigator.clipboard.writeText(events.map(r=>r.join("\t")).join("\n"));document.getElementById("copy-state").textContent="Eventos copiados.";}catch{document.getElementById("copy-state").textContent="El navegador no habilitó el portapapeles."}}
 });
 addEventListener("hashchange",render);
+if(location.hash==="#comandos-banco"){Object.assign(state,{mode:"bank",code:"SET_TIME",preview:true});}
 render();
 </script>
 </body>
