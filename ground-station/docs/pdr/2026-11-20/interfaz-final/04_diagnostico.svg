@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-labelledby="04_diagnostico-title 04_diagnostico-desc">
+<title id="04_diagnostico-title">04 · Diagnóstico</title><desc id="04_diagnostico-desc">Edad del dato, calidad, tramas e interrupciones desde herramientas separadas. Diseño final de la interfaz, datos de ejemplo.</desc>
+<g font-family="Inter, Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="1600" height="1000" fill="#F2F5F8"/>
+<rect x="0" y="0" width="1600" height="82" fill="#102C43"/>
+<text x="29" y="47.71" fill="#FFFFFF" font-size="33" font-weight="700">ASTRA</text>
+<text x="171" y="48.36" fill="#FFFFFF" font-size="28" font-weight="700">DIAGNÓSTICO DE INGESTA</text>
+<rect x="1200" y="20" width="371" height="42" fill="#E3F3F0"/>
+<text x="1215" y="46.40" fill="#08756A" font-size="20" font-weight="700">USB DE BANCO · EJEMPLO</text>
+<text x="30" y="108.53" fill="#40586D" font-size="19" font-weight="400">DIAGNÓSTICO  /  Acceso secundario desde operación</text>
+<rect x="30" y="951" width="1540" height="1" fill="#CDD9E2"/>
+<text x="30" y="978.66" fill="#40586D" font-size="18" font-weight="400">La consola conserva el origen y la edad de los datos. Los huecos de secuencia y las tramas inválidas son métricas distintas.</text>
+<rect x="30" y="132" width="368" height="87" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="162.27" fill="#112A40" font-size="21" font-weight="700">Paquetes RX</text>
+<text x="45" y="196.23" fill="#08756A" font-size="29" font-weight="700">118</text>
+<text x="146" y="193.79" fill="#40586D" font-size="17" font-weight="400">válidos</text>
+<rect x="409" y="132" width="368" height="87" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="425" y="162.27" fill="#112A40" font-size="21" font-weight="700">Huecos</text>
+<text x="424" y="196.23" fill="#815000" font-size="29" font-weight="700">13</text>
+<text x="525" y="193.79" fill="#40586D" font-size="17" font-weight="400">observados</text>
+<rect x="788" y="132" width="368" height="87" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="804" y="162.27" fill="#112A40" font-size="21" font-weight="700">Inválidos</text>
+<text x="803" y="196.23" fill="#08756A" font-size="29" font-weight="700">0</text>
+<text x="904" y="193.79" fill="#40586D" font-size="17" font-weight="400">rechazados</text>
+<rect x="1167" y="132" width="403" height="87" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="1183" y="162.27" fill="#112A40" font-size="21" font-weight="700">Muestra</text>
+<text x="1182" y="196.23" fill="#815000" font-size="29" font-weight="700">4.2 s</text>
+<text x="1283" y="193.79" fill="#40586D" font-size="17" font-weight="400">última lectura</text>
+<rect x="30" y="240" width="758" height="275" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="270.27" fill="#112A40" font-size="21" font-weight="700">ESTADO DE FUENTE</text>
+<rect x="47" y="289" width="723" height="63" fill="#FFF0CD"/>
+<text x="61" y="313.53" fill="#815000" font-size="19" font-weight="700">DATOS DESACTUALIZADOS</text>
+<text x="61" y="337.79" fill="#112A40" font-size="17" font-weight="400">Se conserva la última muestra con su edad.</text>
+<text x="48" y="389.53" fill="#112A40" font-size="19" font-weight="700">GPS sin solución</text>
+<text x="48" y="412.66" fill="#40586D" font-size="18" font-weight="400">Posición y altitud GPS sin solución, satélites en cero.</text>
+<text x="48" y="441.53" fill="#112A40" font-size="19" font-weight="700">Segmentos</text>
+<text x="48" y="464.66" fill="#40586D" font-size="18" font-weight="400">Los gráficos separan los reinicios y cortes de secuencia.</text>
+<rect x="807" y="240" width="763" height="275" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="823" y="270.27" fill="#112A40" font-size="21" font-weight="700">TRAMAS Y EVENTOS</text>
+<text x="825" y="307.53" fill="#112A40" font-size="19" font-weight="700">Diario de la sesión</text>
+<text x="825" y="330.66" fill="#40586D" font-size="18" font-weight="400">Tramas admitidas y rechazadas con hora, origen y clasificación.</text>
+<text x="825" y="359.53" fill="#112A40" font-size="19" font-weight="700">Registro de cambio de fuente</text>
+<text x="825" y="382.66" fill="#40586D" font-size="18" font-weight="400">USB, reproducción o desconexión, con identificación de sesión.</text>
+<text x="825" y="411.53" fill="#112A40" font-size="19" font-weight="700">Exportar evidencia</text>
+<text x="825" y="434.66" fill="#40586D" font-size="18" font-weight="400">Archivos de sesión y resumen de almacenamiento.</text>
+<rect x="30" y="539" width="1540" height="380" fill="#FFFFFF" stroke="#CDD9E2"/>
+<text x="46" y="569.27" fill="#112A40" font-size="21" font-weight="700">EVENTOS DE DIAGNÓSTICO · EJEMPLO</text>
+<rect x="47" y="592" width="1507" height="240" fill="#FFFFFF" stroke="#CDD9E2"/>
+<rect x="47" y="592" width="1507" height="48" fill="#102C43"/>
+<text x="58" y="615.66" fill="#FFFFFF" font-size="18" font-weight="700">Hora UTC</text>
+<text x="234" y="615.66" fill="#FFFFFF" font-size="18" font-weight="700">Clase</text>
+<text x="454" y="615.66" fill="#FFFFFF" font-size="18" font-weight="700">Origen</text>
+<text x="664" y="615.66" fill="#FFFFFF" font-size="18" font-weight="700">Resultado</text>
+<rect x="47" y="640" width="1507" height="48" fill="#F2F5F8"/>
+<text x="58" y="663.66" fill="#112A40" font-size="18" font-weight="700">03:14:21</text>
+<text x="234" y="663.66" fill="#112A40" font-size="18" font-weight="400">Dato antiguo</text>
+<text x="454" y="663.66" fill="#112A40" font-size="18" font-weight="400">Entrada USB</text>
+<text x="664" y="663.66" fill="#112A40" font-size="18" font-weight="400">Última lectura conservada · 4.2 s</text>
+<text x="58" y="711.66" fill="#112A40" font-size="18" font-weight="700">03:14:17</text>
+<text x="234" y="711.66" fill="#112A40" font-size="18" font-weight="400">GPS</text>
+<text x="454" y="711.66" fill="#112A40" font-size="18" font-weight="400">Telemetría</text>
+<text x="664" y="711.66" fill="#112A40" font-size="18" font-weight="400">Cero satélites · posición sin solución</text>
+<rect x="47" y="736" width="1507" height="48" fill="#F2F5F8"/>
+<text x="58" y="759.66" fill="#112A40" font-size="18" font-weight="700">03:14:12</text>
+<text x="234" y="759.66" fill="#112A40" font-size="18" font-weight="400">Hueco observado</text>
+<text x="454" y="759.66" fill="#112A40" font-size="18" font-weight="400">Contador TX</text>
+<text x="664" y="759.66" fill="#112A40" font-size="18" font-weight="400">Saltos de secuencia acumulados: 13</text>
+<text x="58" y="807.66" fill="#112A40" font-size="18" font-weight="700">03:13:45</text>
+<text x="234" y="807.66" fill="#112A40" font-size="18" font-weight="400">Registro</text>
+<text x="454" y="807.66" fill="#112A40" font-size="18" font-weight="400">Escritor CSV</text>
+<text x="664" y="807.66" fill="#112A40" font-size="18" font-weight="400">Último guardado confirmado en el destino principal</text>
+<rect x="49" y="848" width="242" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="60" y="871.66" fill="#112A40" font-size="18" font-weight="700">Abrir diario</text>
+<rect x="307" y="848" width="242" height="40" fill="#FFFFFF" stroke="#A7BBC8"/>
+<text x="318" y="871.66" fill="#112A40" font-size="18" font-weight="700">Abrir resumen</text>
+</g></svg>
